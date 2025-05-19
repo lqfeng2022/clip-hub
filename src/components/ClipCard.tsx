@@ -1,5 +1,5 @@
 import { Clip } from '../hooks/useClips';
-import { Card, Image, CardBody, Heading, Text, HStack, Avatar, Box, Flex } from '@chakra-ui/react';
+import { Image, CardBody, Heading, Text, HStack, Avatar, Box, Card } from '@chakra-ui/react';
 import TagList from './TagList';
 
 interface Props {
@@ -8,12 +8,7 @@ interface Props {
 
 const GameCard = ({ clip }: Props) => {
   return (
-    <Card 
-      width='300px' 
-      borderRadius={10} 
-      overflow='hidden' 
-      bg='gray.800'
-    >
+    <Card bg='gray.800'>
       <Image src={clip.cover} />
       <CardBody p={4}>
         <HStack>

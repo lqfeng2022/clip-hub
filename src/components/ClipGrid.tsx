@@ -2,7 +2,7 @@ import { SimpleGrid, Text } from '@chakra-ui/react';
 import useClips from '../hooks/useClips'
 import GameCard from './ClipCard';
 import ClipCardSkeleton from './ClipCardSkeleton';
-
+import CardContainer from './CardContainer';
 
 const ClipGrid = () => {
   const { clips, error, isLoading } = useClips();
@@ -18,9 +18,15 @@ const ClipGrid = () => {
       >
         {isLoading && 
           skeletons.map(
-            (skeleton) => <ClipCardSkeleton key={skeleton}/>)}
+            (skeleton) => (
+              <CardContainer key={skeleton}>
+                <ClipCardSkeleton/>
+              </CardContainer>
+          ))}
         {clips.map((clip) => (
-          <GameCard key={clip.id} clip={clip} />
+            <CardContainer key={clip.id} >
+              <GameCard clip={clip} />
+            </CardContainer>
         ))}
       </SimpleGrid>
     </>
