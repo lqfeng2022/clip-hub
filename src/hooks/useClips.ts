@@ -31,26 +31,32 @@ interface FetchclipsResponse {
 const ClipGrid = () => {
   const [clips, setclips] = useState<Clip[]>([]);
   const [error, setError] = useState('');
+  const [isLoading, setLoading] = useState(false);
 
   useEffect(() => {
     // Handle cancellations
     const controller = new AbortController(); // create a controller obj
 
+    setLoading(true);
     apiClient
       // issue: 301 Redirect, fix it: '/videos' -> '/vidoes/'
       // why? Django backend default behavior
       .get<FetchclipsResponse>('/videos/', 
         {signal: controller.signal}) // pass a signal argment
-      .then((res) => setclips(res.data.results))
+      .then((res) => {
+        setclips(res.data.results);
+        setLoading(false);
+      })
       .catch((err) => {
         // error handler to skip the 'canceled' message
         if (err instanceof CanceledError) return;
         setError(err.message)});
+        setLoading(false);
     // return a cleaner f 
     return () => controller.abort();
   }, []); // []: dependencies
 
-  return {clips, error}
+  return {clips, error, isLoading}
 };
 
 export default ClipGrid;

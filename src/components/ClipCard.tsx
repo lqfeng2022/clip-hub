@@ -8,7 +8,12 @@ interface Props {
 
 const GameCard = ({ clip }: Props) => {
   return (
-    <Card borderRadius={10} overflow='hidden' bg='gray.800'>
+    <Card 
+      width='300px' 
+      borderRadius={10} 
+      overflow='hidden' 
+      bg='gray.800'
+    >
       <Image src={clip.cover} />
       <CardBody p={4}>
         <HStack>
