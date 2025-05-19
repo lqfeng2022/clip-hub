@@ -22,7 +22,9 @@ const ClipGrid = () => {
     const controller = new AbortController(); // create a controller obj
 
     apiClient
-      .get<FetchclipsResponse>('/videos', 
+      // issue: 301 Redirect, fix it: '/videos' -> '/vidoes/'
+      // why? Django backend default behavior
+      .get<FetchclipsResponse>('/videos/', 
         {signal: controller.signal}) // pass a signal argment
       .then((res) => setclips(res.data.results))
       .catch((err) => {

@@ -7,7 +7,7 @@ interface Props {
 
 const GameCard = ({ clip }: Props) => {
   return (
-    <Card borderRadius={10} overflow='hidden'>
+    <Card borderRadius={10} overflow='hidden' bg='gray.800'>
       <Image src={clip.cover} />
       <CardBody>
         <Heading fontSize='2xl'>{clip.title}</Heading>
