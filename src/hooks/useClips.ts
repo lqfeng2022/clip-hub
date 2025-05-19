@@ -2,9 +2,10 @@ import { useEffect, useState } from 'react';
 import apiClient from '../services/api-client';
 import { CanceledError } from 'axios';
 
-interface Clip {
+export interface Clip {
   id: number;
   title: string;
+  cover: string;
 }
 
 interface FetchclipsResponse {

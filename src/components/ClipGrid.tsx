@@ -1,5 +1,6 @@
-import { Text } from '@chakra-ui/react';
+import { SimpleGrid, Text } from '@chakra-ui/react';
 import useClips from '../hooks/useClips'
+import GameCard from './ClipCard';
 
 
 const ClipGrid = () => {
@@ -8,11 +9,15 @@ const ClipGrid = () => {
   return (
     <>
       {error && <Text>{error}</Text>}
-      <ul>
+      <SimpleGrid
+        columns={{ sm: 1, md: 2, lg: 3, xl: 5 }}
+        padding={10}
+        spacing={10}
+      >
         {clips.map((clip) => (
-          <li key={clip.id}>{clip.title}</li>
+          <GameCard key={clip.id} clip={clip} />
         ))}
-      </ul>
+      </SimpleGrid>
     </>
   );
 };

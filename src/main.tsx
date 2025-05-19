@@ -10,7 +10,7 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
     <ChakraProvider theme={theme}>
       <ColorModeScript 
         initialColorMode={theme.config.initialColorMode}/>
-        <App />
+      <App />
     </ChakraProvider>
   </React.StrictMode>,
 )
