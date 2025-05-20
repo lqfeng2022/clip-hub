@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import apiClient from '../services/api-client';
-import { CanceledError } from 'axios';
+import { AxiosRequestConfig, CanceledError } from 'axios';
 
 // `<T>`: add this generic type parameter 
 interface FetchResponse<T> {
@@ -8,7 +8,12 @@ interface FetchResponse<T> {
   results: T[];
 }
 
-const useData = <T>(endpoint: string) => {
+// `AxiosRequestConfig`: pass data to the request body
+const useData = <T>(
+  endpoint: string,
+  requestConfig?: AxiosRequestConfig,
+  deps?: any[]
+) => {
   const [data, setData] = useState<T[]>([]);
   const [error, setError] = useState('');
   const [isLoading, setLoading] = useState(false);
@@ -21,8 +26,10 @@ const useData = <T>(endpoint: string) => {
     apiClient
       // issue: 301 Redirect, fix it: '/videos' -> '/vidoes/'
       // why? Django backend default behavior
-      .get<FetchResponse<T>>(
-        endpoint, {signal: controller.signal}) // pass a signal argment
+      .get<FetchResponse<T>>(endpoint, {
+        signal: controller.signal,
+        ...requestConfig,
+      }) // pass a signal argment
       .then((res) => {
         setData(res.data.results);
         setLoading(false);
@@ -33,9 +40,10 @@ const useData = <T>(endpoint: string) => {
         setError(err.message);
         setLoading(false);
       });
-    // return a cleaner f 
-    return () => controller.abort();
-  }, []); // []: dependencies
+    return () => controller.abort(); // return a cleaner f 
+  }, 
+  deps ? [...deps] : [] // []: dependencies
+); 
 
   return {data, error, isLoading};
 };

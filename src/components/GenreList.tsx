@@ -1,9 +1,13 @@
-import { List, ListItem, HStack, Image, Text, Spinner } from '@chakra-ui/react';
-import useGenres from '../hooks/useGenres';
+import { List, ListItem, HStack, Image, Spinner, Button } from '@chakra-ui/react';
+import useGenres, { Genre } from '../hooks/useGenres';
 
-
-const GenreList = () => {
-  const { data, error, isLoading } = useGenres();
+// add a new props to notify parent: 'hey, I chose a genre'
+interface Props {
+  onSelectGenre: (genre: Genre) => void;
+  selectedGenre: Genre | null;
+}
+const GenreList = ({onSelectGenre, selectedGenre}: Props) => {
+  const {data, error, isLoading} = useGenres();
 
   if (error) return null;
   if (isLoading) return <Spinner />;
@@ -11,14 +15,22 @@ const GenreList = () => {
   return (
     <List>
       {data.map((genre) => (
-        <ListItem paddingY="6px" key={genre.id}>
+        <ListItem paddingY='6px' key={genre.id}>
           <HStack>
             <Image
-              boxSize="32px"
+              boxSize='32px'
               borderRadius={8}
               src={genre.image}
             />
-            <Text fontSize="lg">{genre.title}</Text>
+            <Button
+              fontWeight={genre.id === selectedGenre?.id 
+                ? 'bold' : 'normal'}
+              onClick={() => onSelectGenre(genre)}
+              fontSize='lg'
+              variant='link'
+            >
+              {genre.title}
+            </Button>
           </HStack>
         </ListItem>
       ))}

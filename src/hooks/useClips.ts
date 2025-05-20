@@ -15,6 +15,10 @@ export interface Clip {
   tags: Tags[];
 }
 
-const ClipGrid = () => useData<Clip>('/videos/')
+const ClipGrid = (selectedGenre: Genre | null) => useData<Clip>(
+  '/videos/',
+  {params: {genre_id: selectedGenre?.id}}, 
+  [selectedGenre?.id]
+)
 
 export default ClipGrid;
