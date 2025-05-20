@@ -1,4 +1,5 @@
-import useData from "./useData";
+import languages from '../data/languages';
+// import useData from './useData';
 
 export interface Language {
   id: number;
@@ -6,8 +7,10 @@ export interface Language {
   slug: string;
 }
 
-const useLanguages = () => useData<Language>(
-  '/languages/'
+// const useLanguages = () => useData<Language>('/languages/');
+const useLanguages = () => (
+  { data: languages, error: null }
 );
+
 
 export default useLanguages;
