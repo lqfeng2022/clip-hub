@@ -1,5 +1,6 @@
+import { useQuery } from '@tanstack/react-query';
 import languages from '../data/languages';
-// import useData from './useData';
+import apiClient, { FetchResponse } from '../services/api-client';
 
 export interface Language {
   id: number;
@@ -7,10 +8,13 @@ export interface Language {
   slug: string;
 }
 
-// const useLanguages = () => useData<Language>('/languages/');
-const useLanguages = () => (
-  { data: languages, error: null }
-);
+const useLanguages = () => useQuery({
+  queryKey: ['languages'],
+  queryFn: () => apiClient.get<FetchResponse<Language>>(
+    'languages/').then((res) => res.data),
+  staleTime: 24 * 60 * 60 * 1000, //24h
+  initialData: {count: languages.length, results: languages},
+})
 
 
 export default useLanguages;

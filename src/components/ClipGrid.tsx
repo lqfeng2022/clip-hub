@@ -13,7 +13,8 @@ const ClipGrid = ({clipQuery}: Props) => {
   const {data, error, isLoading} = useClips(clipQuery);
   const skeletons = [1, 2, 3, 4, 5, 6]
 
-  if (error) return <Text>{error}</Text>;
+  // `error` -> `error.message`
+  if (error) return <Text>{error.message}</Text>;
 
   return (
     <SimpleGrid
@@ -28,7 +29,7 @@ const ClipGrid = ({clipQuery}: Props) => {
               <ClipCardSkeleton/>
             </CardContainer>
         ))}
-      {data.map((clip) => (
+      {data?.results.map((clip) => (
           <CardContainer key={clip.id} >
             <GameCard clip={clip} />
           </CardContainer>

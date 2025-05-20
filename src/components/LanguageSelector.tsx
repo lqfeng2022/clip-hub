@@ -19,7 +19,7 @@ const LanguageSelector = ({onSelectLanguage, selectedLanguage}: Props) => {
         {selectedLanguage?.title || 'Language'}
       </MenuButton>
       <MenuList>
-        {data.map((language) => (
+        {data?.results.map((language) => (
           <MenuItem 
             key={language.id}
             onClick={() => onSelectLanguage(language)}
