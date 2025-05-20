@@ -5,7 +5,7 @@ import ClipCardSkeleton from './ClipCardSkeleton';
 import CardContainer from './CardContainer';
 
 const ClipGrid = () => {
-  const { clips, error, isLoading } = useClips();
+  const { data, error, isLoading } = useClips();
   const skeletons = [1, 2, 3, 4, 5, 6]
 
   return (
@@ -23,7 +23,7 @@ const ClipGrid = () => {
                 <ClipCardSkeleton/>
               </CardContainer>
           ))}
-        {clips.map((clip) => (
+        {data.map((clip) => (
             <CardContainer key={clip.id} >
               <GameCard clip={clip} />
             </CardContainer>

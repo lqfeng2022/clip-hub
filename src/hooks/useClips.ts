@@ -1,19 +1,11 @@
-import { useEffect, useState } from 'react';
-import apiClient from '../services/api-client';
-import { CanceledError } from 'axios';
+import { Genre } from './useGenres';
+import useData from './useData';
 
 export interface Tags {
   id: number;
   title: string;
   slug: string;
 }
-
-export interface Genre {
-  id: number;
-  title: string;
-  slug: string;
-}
-
 
 export interface Clip {
   id: number;
@@ -23,40 +15,6 @@ export interface Clip {
   tags: Tags[];
 }
 
-interface FetchclipsResponse {
-  count: number;
-  results: Clip[];
-}
-
-const ClipGrid = () => {
-  const [clips, setclips] = useState<Clip[]>([]);
-  const [error, setError] = useState('');
-  const [isLoading, setLoading] = useState(false);
-
-  useEffect(() => {
-    // Handle cancellations
-    const controller = new AbortController(); // create a controller obj
-
-    setLoading(true);
-    apiClient
-      // issue: 301 Redirect, fix it: '/videos' -> '/vidoes/'
-      // why? Django backend default behavior
-      .get<FetchclipsResponse>('/videos/', 
-        {signal: controller.signal}) // pass a signal argment
-      .then((res) => {
-        setclips(res.data.results);
-        setLoading(false);
-      })
-      .catch((err) => {
-        // error handler to skip the 'canceled' message
-        if (err instanceof CanceledError) return;
-        setError(err.message)});
-        setLoading(false);
-    // return a cleaner f 
-    return () => controller.abort();
-  }, []); // []: dependencies
-
-  return {clips, error, isLoading}
-};
+const ClipGrid = () => useData<Clip>('/videos/')
 
 export default ClipGrid;
