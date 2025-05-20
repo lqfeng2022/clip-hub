@@ -4,13 +4,15 @@ import GameCard from './ClipCard';
 import ClipCardSkeleton from './ClipCardSkeleton';
 import CardContainer from './CardContainer';
 import { Genre } from '../hooks/useGenres';
+import { Language } from '../hooks/useLanguages';
 
 interface Props {
-  selectedGenre: Genre | null
+  selectedGenre: Genre | null;
+  selectedLanguage: Language | null;
 }
 
-const ClipGrid = ({selectedGenre}: Props) => {
-  const {data, error, isLoading} = useClips(selectedGenre);
+const ClipGrid = ({selectedGenre, selectedLanguage}: Props) => {
+  const {data, error, isLoading} = useClips(selectedGenre, selectedLanguage);
   const skeletons = [1, 2, 3, 4, 5, 6]
 
   return (

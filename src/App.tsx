@@ -4,9 +4,12 @@ import ClipGrid from './components/ClipGrid'
 import GenreList from './components/GenreList'
 import { Genre } from './hooks/useGenres';
 import { useState } from 'react';
+import LanguageSelector from './components/LanguageSelector';
+import { Language } from './hooks/useLanguages';
 
 function App() {
   const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
+  const [selectedLanguage, setSelectedLanguage] = useState<Language | null>(null);
 
   return (
     <Grid
@@ -26,12 +29,23 @@ function App() {
         <GridItem area='aside' px={5}>
           <GenreList 
             selectedGenre={selectedGenre}
-            onSelectGenre={(genre) => setSelectedGenre(genre)}
+            onSelectGenre={
+              (genre) => setSelectedGenre(genre)
+            }
           />
         </GridItem>
       </Show>
       <GridItem area='main'>
-        <ClipGrid selectedGenre={selectedGenre}/>
+        <LanguageSelector
+          selectedLanguage={selectedLanguage}
+          onSelectLanguage={
+            (language) => setSelectedLanguage(language)
+          }
+        />
+        <ClipGrid 
+          selectedGenre={selectedGenre} 
+          selectedLanguage={selectedLanguage}
+        />
       </GridItem>
     </Grid>
   )
