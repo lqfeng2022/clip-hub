@@ -5,14 +5,14 @@ import ClipCardSkeleton from './ClipCardSkeleton';
 import CardContainer from './CardContainer';
 import { Genre } from '../hooks/useGenres';
 import { Language } from '../hooks/useLanguages';
+import { ClipQuery } from '../App';
 
 interface Props {
-  selectedGenre: Genre | null;
-  selectedLanguage: Language | null;
+  clipQuery: ClipQuery
 }
 
-const ClipGrid = ({selectedGenre, selectedLanguage}: Props) => {
-  const {data, error, isLoading} = useClips(selectedGenre, selectedLanguage);
+const ClipGrid = ({clipQuery}: Props) => {
+  const {data, error, isLoading} = useClips(clipQuery);
   const skeletons = [1, 2, 3, 4, 5, 6]
 
   return (

@@ -7,9 +7,13 @@ import { useState } from 'react';
 import LanguageSelector from './components/LanguageSelector';
 import { Language } from './hooks/useLanguages';
 
+export interface ClipQuery {
+  genre: Genre | null;
+  language: Language | null;
+}
+
 function App() {
-  const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
-  const [selectedLanguage, setSelectedLanguage] = useState<Language | null>(null);
+  const [clipQuery, setClipQuery] = useState<ClipQuery>({} as ClipQuery)
 
   return (
     <Grid
@@ -28,23 +32,21 @@ function App() {
       <Show above='lg'>
         <GridItem area='aside' px={5}>
           <GenreList 
-            selectedGenre={selectedGenre}
+            selectedGenre={clipQuery.genre}
             onSelectGenre={
-              (genre) => setSelectedGenre(genre)
+              (genre) => setClipQuery({...clipQuery, genre})
             }
           />
         </GridItem>
       </Show>
       <GridItem area='main'>
         <LanguageSelector
-          selectedLanguage={selectedLanguage}
+          selectedLanguage={clipQuery.language}
           onSelectLanguage={
-            (language) => setSelectedLanguage(language)
+            (language) => setClipQuery({...clipQuery, language})
           }
         />
-        <ClipGrid 
-          selectedGenre={selectedGenre} 
-          selectedLanguage={selectedLanguage}
+        <ClipGrid clipQuery={clipQuery}
         />
       </GridItem>
     </Grid>

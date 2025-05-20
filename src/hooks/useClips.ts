@@ -1,6 +1,6 @@
 import { Genre } from './useGenres';
 import useData from './useData';
-import { Language } from './useLanguages';
+import { ClipQuery } from '../App';
 
 export interface Tags {
   id: number;
@@ -16,16 +16,14 @@ export interface Clip {
   tags: Tags[];
 }
 
-const ClipGrid = (
-  selectedGenre: Genre | null, 
-  selectedLanguage: Language | null) => useData<Clip>(
+const ClipGrid = (clipQuery: ClipQuery) => useData<Clip>(
   '/videos/',
   {params: {
-    genre_id: selectedGenre?.id,
-    languages: selectedLanguage?.id
+    genre_id: clipQuery.genre?.id,
+    language: clipQuery.language?.id
     }
   }, 
-  [selectedGenre?.id, selectedLanguage?.id]
+  [clipQuery],
 )
 
 export default ClipGrid;
