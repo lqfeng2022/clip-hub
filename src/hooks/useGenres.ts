@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
-import apiClient, { FetchResponse } from '../services/api-client';
 import genres from '../data/genres';
+import APIClient from '../services/api-client';
 
 export interface Genre {
   id: number;
@@ -8,15 +8,14 @@ export interface Genre {
   image: string;
 }
 
+const apiClient = new APIClient<Genre>('/genres/')
+
 const useGenres = () => useQuery({
+  // `queryKey`: a unique identifier for a specific query in React Query,
+  // of course, we can use other name, but 'genres' is the best practice
   queryKey: ['genres'],
-  queryFn: () => 
-    apiClient.get<FetchResponse<Genre>>(
-      '/genres/').then((res) => res.data),
-  // for better performance:
-  // 1. genre list, there is no need to change it frequently
+  queryFn: () => apiClient.getAll(),
   staleTime: 24 * 60 * 60 * 1000, //24h
-  // 2. provide initial data
   initialData: {count: genres.length, results: genres},
 });
 
