@@ -14,11 +14,11 @@ const GameCard = ({ clip }: Props) => {
         <HStack>
           <Avatar
             name='Segun Adebayo'
-            src='https://bit.ly/sage-adebayo'
+            src={clip.genre.image}
             alignSelf='flex-start'
           />
           <Box px={2}>
-            <Heading fontSize='2xl'>{clip.title}</Heading>
+            <Heading fontSize='xl'>{clip.title}</Heading>
             <Text paddingBottom={2}>{clip.genre.title}</Text>
             <TagList tags={clip.tags}/>
           </Box>

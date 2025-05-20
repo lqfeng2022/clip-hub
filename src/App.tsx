@@ -48,25 +48,24 @@ function App() {
         </GridItem>
       </Show>
       <GridItem area='main'>
-        <HStack spacing={5} paddingLeft={2.5} marginBottom={5}>
-          <Box padding={2.5}>
-            <ClipHeading clipQuery={clipQuery}/>
+        <Box padding={2.5}>
+          <ClipHeading clipQuery={clipQuery}/>
+          <HStack spacing={5} paddingLeft={2.5} marginBottom={5}>
+            <LanguageSelector
+              selectedLanguage={clipQuery.language}
+              onSelectLanguage={
+                (language) => setClipQuery({...clipQuery, language})
+              }
+              />
             <SortSelector
               sortOrder={clipQuery.sortOrder}
               onSelectSortOrder={(sortOrder) =>
                 setClipQuery({...clipQuery, sortOrder})
               }
               />
-            <LanguageSelector
-              selectedLanguage={clipQuery.language}
-              onSelectLanguage={
-                (language) => setClipQuery({...clipQuery, language})
-              }
-            />
-          </Box>
-        </HStack>
-        <ClipGrid clipQuery={clipQuery}
-        />
+          </HStack>
+        </Box>
+        <ClipGrid clipQuery={clipQuery}/>
       </GridItem>
     </Grid>
   )
