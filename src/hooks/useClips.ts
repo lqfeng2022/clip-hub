@@ -20,7 +20,8 @@ const ClipGrid = (clipQuery: ClipQuery) => useData<Clip>(
   '/videos/',
   {params: {
     genre_id: clipQuery.genre?.id,
-    language: clipQuery.language?.id
+    language: clipQuery.language?.id,
+    ordering: clipQuery.sortOrder,
     }
   }, 
   [clipQuery],

@@ -1,4 +1,4 @@
-import { Grid, GridItem, Show } from '@chakra-ui/react'
+import { Grid, GridItem, HStack, Show } from '@chakra-ui/react'
 import NavBar from './components/NavBar'
 import ClipGrid from './components/ClipGrid'
 import GenreList from './components/GenreList'
@@ -6,10 +6,12 @@ import { Genre } from './hooks/useGenres';
 import { useState } from 'react';
 import LanguageSelector from './components/LanguageSelector';
 import { Language } from './hooks/useLanguages';
+import SortSelector from './components/SortSelector';
 
 export interface ClipQuery {
   genre: Genre | null;
   language: Language | null;
+  sortOrder: string;
 }
 
 function App() {
@@ -40,12 +42,20 @@ function App() {
         </GridItem>
       </Show>
       <GridItem area='main'>
-        <LanguageSelector
-          selectedLanguage={clipQuery.language}
-          onSelectLanguage={
-            (language) => setClipQuery({...clipQuery, language})
-          }
-        />
+        <HStack spacing={5} paddingLeft={2.5} marginBottom={5}>
+          <SortSelector
+            sortOrder={clipQuery.sortOrder}
+            onSelectSortOrder={(sortOrder) => 
+              setClipQuery({...clipQuery, sortOrder})
+            }
+            />
+          <LanguageSelector
+            selectedLanguage={clipQuery.language}
+            onSelectLanguage={
+              (language) => setClipQuery({...clipQuery, language})
+            }
+          />
+        </HStack>
         <ClipGrid clipQuery={clipQuery}
         />
       </GridItem>
