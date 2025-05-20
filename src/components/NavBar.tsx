@@ -1,9 +1,15 @@
 import { HStack, Text } from '@chakra-ui/react';
+import SearchInput from './SearchInput';
 
-const NavBar = () => {
+interface Props {
+  onSearch: (serchText: string) => void;
+}
+
+const NavBar = ({onSearch}: Props) => {
   return (
-    <HStack>
+    <HStack p='10px'>
       <Text>NavBar</Text>
+      <SearchInput onSearch={onSearch}/>
     </HStack>
   );
 };

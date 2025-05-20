@@ -12,6 +12,7 @@ export interface ClipQuery {
   genre: Genre | null;
   language: Language | null;
   sortOrder: string;
+  searchText: string;
 }
 
 function App() {
@@ -29,7 +30,11 @@ function App() {
       }}
     >
       <GridItem area='nav'>
-        <NavBar/>
+        <NavBar
+          onSearch={(searchText) => setClipQuery(
+            {...clipQuery, searchText}
+          )}
+        />
       </GridItem>
       <Show above='lg'>
         <GridItem area='aside' px={5}>

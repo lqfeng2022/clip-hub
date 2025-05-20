@@ -22,6 +22,7 @@ const ClipGrid = (clipQuery: ClipQuery) => useData<Clip>(
     genre_id: clipQuery.genre?.id,
     language: clipQuery.language?.id,
     ordering: clipQuery.sortOrder,
+    search: clipQuery.searchText,
     }
   }, 
   [clipQuery],
