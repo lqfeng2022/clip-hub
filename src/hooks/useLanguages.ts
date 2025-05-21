@@ -13,7 +13,7 @@ const useLanguages = () => useQuery({
   queryKey: ['languages'],
   queryFn: () => apiClient.getAll(),
   staleTime: 24 * 60 * 60 * 1000, //24h
-  initialData: {count: languages.length, results: languages},
+  initialData: languages,
 })
 
 

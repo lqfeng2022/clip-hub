@@ -1,22 +1,15 @@
 import { Heading } from '@chakra-ui/react';
 import { ClipQuery } from '../App';
-import useGenres from '../hooks/useGenres';
-import useLanguages from '../hooks/useLanguages';
+import useGenre from '../hooks/useGenre';
+import useLanguage from '../hooks/useLanguage';
 
 interface Props {
   clipQuery: ClipQuery;
 }
 
 const ClipHeading = ({ clipQuery }: Props) => {
-  const {data: genres} = useGenres();
-  const genre = genres?.results.find(
-    (g) => g.id == clipQuery.genreId
-  )
-
-  const {data: languages} = useLanguages();
-  const language = languages?.results.find(
-    (l) => l.id == clipQuery.languageId
-  )
+  const genre = useGenre(clipQuery.genreId);
+  const language = useLanguage(clipQuery.languageId);
 
   // Clips
   // Japanese Clips

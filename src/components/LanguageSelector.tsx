@@ -2,6 +2,7 @@ import { Button, Menu, MenuButton, MenuItem, MenuList } from '@chakra-ui/react';
 import { BsChevronDown } from 'react-icons/bs';
 import useLanguages from '../hooks/useLanguages';
 import { Language } from '../hooks/useLanguages'
+import useLanguage from '../hooks/useLanguage';
 
 interface Props {
   onSelectLanguage: (language: Language) => void;
@@ -9,15 +10,11 @@ interface Props {
 }
 
 const LanguageSelector = (
-  {onSelectLanguage, selectedLanguageId}: Props
-) => {
+  {onSelectLanguage, selectedLanguageId}: Props) => {
   const {data, error} = useLanguages();
-  const selectedLanguage = data?.results.find(
-    (p) => p.id == selectedLanguageId
-  );
+  const selectedLanguage = useLanguage(selectedLanguageId);
 
   if (error) return null;
-
   return (
     <Menu>
       <MenuButton as={Button} rightIcon={<BsChevronDown />}>
