@@ -1,23 +1,7 @@
-import { Genre } from './useGenres';
 import { useInfiniteQuery } from '@tanstack/react-query';
 import APIClient, { FetchResponse } from '../services/api-client';
 import useClipQueryStore from '../store';
-
-export interface Tags {
-  id: number;
-  title: string;
-  slug: string;
-}
-
-export interface Clip {
-  id: number;
-  title: string;
-  slug: string;
-  description: string;
-  cover: string;
-  genre: Genre;
-  tags: Tags[];
-}
+import { Clip } from '../entities/Clip';
 
 const apiClient = new APIClient<Clip>('/videos/')
 

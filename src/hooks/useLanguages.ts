@@ -1,12 +1,8 @@
 import { useQuery } from '@tanstack/react-query';
 import languages from '../data/languages';
 import APIClient from '../services/api-client';
+import { Language } from '../entities/Language';
 
-export interface Language {
-  id: number;
-  title: string;
-  slug: string;
-}
 const apiClient = new APIClient<Language>('/languages/')
 
 const useLanguages = () => useQuery({

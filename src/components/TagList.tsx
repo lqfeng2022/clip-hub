@@ -1,5 +1,5 @@
 import { Badge, HStack } from '@chakra-ui/react';
-import {Tags} from '../hooks/useClips'
+import { Tags } from '../entities/Tag';
 
 interface Props {
   tags: Tags[];
