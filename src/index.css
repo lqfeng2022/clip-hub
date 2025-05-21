@@ -1,0 +1,21 @@
+form {
+  width: 100%;
+}
+
+@media screen and (min-width: 480px) {
+  body {
+    padding: 0 10px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  body {
+    padding: 15px 20px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  body {
+    padding: 15px 50px;
+  }
+}

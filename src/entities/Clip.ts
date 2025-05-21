@@ -1,7 +1,7 @@
-import { Genre } from './Genre';
-import { Tags } from './Tag';
+import Genre from './Genre';
+import Tags from './Tag';
 
-export interface Clip {
+export default interface Clip {
   id: number;
   title: string;
   slug: string;

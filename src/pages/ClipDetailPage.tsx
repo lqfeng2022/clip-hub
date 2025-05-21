@@ -1,8 +1,8 @@
-import { Heading, Spinner, Text } from '@chakra-ui/react';
+import { Box, Heading, Spinner } from '@chakra-ui/react';
 import { useParams } from 'react-router-dom';
 import useClip from '../hooks/useClip';
+import ExpandableText from '../components/ExpandableText';
 
-// shotcut: `rafce`
 const ClipDetailPage = () => {
   const { slug } = useParams(); // get `slug` from url
   const { data: clip, isLoading, error } = useClip(slug!);
@@ -12,7 +12,12 @@ const ClipDetailPage = () => {
   return (
     <div>
       <Heading>{clip.title}</Heading>
-      <Text>{clip.description}</Text>
+      <Box py={3}>
+        <Heading size='md'>About</Heading>
+        <ExpandableText limit={250}>
+          {clip.description}
+        </ExpandableText>
+      </Box>
     </div>
   );
 };

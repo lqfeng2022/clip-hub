@@ -1,7 +1,7 @@
 import { useInfiniteQuery } from '@tanstack/react-query';
 import APIClient, { FetchResponse } from '../services/api-client';
 import useClipQueryStore from '../store';
-import { Clip } from '../entities/Clip';
+import Clip from '../entities/Clip';
 
 const apiClient = new APIClient<Clip>('/videos/')
 
