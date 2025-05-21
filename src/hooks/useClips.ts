@@ -26,8 +26,8 @@ const useClips = (clipQuery: ClipQuery) =>
     queryKey: ['videos', clipQuery],
     queryFn: ({pageParam = 1}) => apiClient.getAll({
       params: {
-        genre_id: clipQuery.genre?.id,
-        language: clipQuery.language?.id,
+        genre_id: clipQuery.genreId,
+        language: clipQuery.languageId,
         ordering: clipQuery.sortOrder,
         search: clipQuery.searchText,
         page: pageParam,

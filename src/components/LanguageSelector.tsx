@@ -5,11 +5,16 @@ import { Language } from '../hooks/useLanguages'
 
 interface Props {
   onSelectLanguage: (language: Language) => void;
-  selectedLanguage: Language | null;
+  selectedLanguageId: number;
 }
 
-const LanguageSelector = ({onSelectLanguage, selectedLanguage}: Props) => {
+const LanguageSelector = (
+  {onSelectLanguage, selectedLanguageId}: Props
+) => {
   const {data, error} = useLanguages();
+  const selectedLanguage = data?.results.find(
+    (p) => p.id == selectedLanguageId
+  );
 
   if (error) return null;
 
