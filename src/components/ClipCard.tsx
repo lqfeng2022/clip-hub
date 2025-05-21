@@ -1,6 +1,7 @@
 import { Clip } from '../hooks/useClips';
 import { Image, CardBody, Heading, Text, HStack, Avatar, Box, Card } from '@chakra-ui/react';
 import TagList from './TagList';
+import { Link } from 'react-router-dom';
 
 interface Props {
   clip: Clip;
@@ -18,7 +19,11 @@ const GameCard = ({ clip }: Props) => {
             alignSelf='flex-start'
           />
           <Box px={2}>
-            <Heading fontSize='xl'>{clip.title}</Heading>
+            <Heading fontSize='xl'>
+              <Link to={'/clips/' + clip.slug}>
+                {clip.title}
+              </Link>
+            </Heading>
             <Text paddingBottom={2}>{clip.genre.title}</Text>
             <TagList tags={clip.tags}/>
           </Box>

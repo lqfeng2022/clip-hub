@@ -12,6 +12,8 @@ export interface Tags {
 export interface Clip {
   id: number;
   title: string;
+  slug: string;
+  description: string;
   cover: string;
   genre: Genre;
   tags: Tags[];
