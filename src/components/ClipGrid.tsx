@@ -1,40 +1,63 @@
-import { SimpleGrid, Text } from '@chakra-ui/react';
-import useClips from '../hooks/useClips'
+import { SimpleGrid, Spinner, Text } from '@chakra-ui/react';
+import React from 'react';
+import InfiniteScroll from 'react-infinite-scroll-component';
+import { ClipQuery } from '../App';
+import useClips from '../hooks/useClips';
+import CardContainer from './CardContainer';
 import GameCard from './ClipCard';
 import ClipCardSkeleton from './ClipCardSkeleton';
-import CardContainer from './CardContainer';
-import { ClipQuery } from '../App';
 
 interface Props {
   clipQuery: ClipQuery
 }
 
 const ClipGrid = ({clipQuery}: Props) => {
-  const {data, error, isLoading} = useClips(clipQuery);
+  const {
+    data, 
+    error, 
+    isLoading, 
+    isFetchingNextPage, 
+    fetchNextPage, 
+    hasNextPage,
+  } = useClips(clipQuery);
   const skeletons = [1, 2, 3, 4, 5, 6]
+  const fetchClipsCount = data?.pages.reduce(
+    (total, page) => total + page.results.length, 0
+  ) || 0;
 
   // `error` -> `error.message`
   if (error) return <Text>{error.message}</Text>;
 
   return (
-    <SimpleGrid
-      columns={{ sm: 1, md: 2, lg: 3 }}
-      padding='10px'
-      spacing={3}
+    <InfiniteScroll 
+      dataLength={fetchClipsCount} 
+      hasMore={!!hasNextPage}
+      next={() => fetchNextPage()}
+      loader={<Spinner/>}
     >
-      {isLoading && 
-        skeletons.map(
-          (skeleton) => (
-            <CardContainer key={skeleton}>
-              <ClipCardSkeleton/>
-            </CardContainer>
+      <SimpleGrid
+        columns={{ sm: 1, md: 2, lg: 3 }}
+        padding='10px'
+        spacing={3}
+      >
+        {isLoading &&
+          skeletons.map(
+            (skeleton) => (
+              <CardContainer key={skeleton}>
+                <ClipCardSkeleton/>
+              </CardContainer>
+          ))}
+        {data?.pages.map((page, index) => (
+          <React.Fragment key={index}>
+            {page?.results.map((clip) => (
+                <CardContainer key={clip.id} >
+                  <GameCard clip={clip} />
+                </CardContainer>
+            ))}
+          </React.Fragment>
         ))}
-      {data?.results.map((clip) => (
-          <CardContainer key={clip.id} >
-            <GameCard clip={clip} />
-          </CardContainer>
-      ))}
-    </SimpleGrid>
+      </SimpleGrid>
+    </InfiniteScroll>
   );
 };
 
