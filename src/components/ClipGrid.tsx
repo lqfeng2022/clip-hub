@@ -1,17 +1,12 @@
 import { SimpleGrid, Spinner, Text } from '@chakra-ui/react';
 import React from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
-import { ClipQuery } from '../App';
 import useClips from '../hooks/useClips';
 import CardContainer from './CardContainer';
 import GameCard from './ClipCard';
 import ClipCardSkeleton from './ClipCardSkeleton';
 
-interface Props {
-  clipQuery: ClipQuery
-}
-
-const ClipGrid = ({clipQuery}: Props) => {
+const ClipGrid = () => {
   const {
     data, 
     error, 
@@ -19,7 +14,7 @@ const ClipGrid = ({clipQuery}: Props) => {
     isFetchingNextPage, 
     fetchNextPage, 
     hasNextPage,
-  } = useClips(clipQuery);
+  } = useClips();
   const skeletons = [1, 2, 3, 4, 5, 6]
   const fetchClipsCount = data?.pages.reduce(
     (total, page) => total + page.results.length, 0

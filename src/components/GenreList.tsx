@@ -1,13 +1,11 @@
-import { List, ListItem, HStack, Image, Spinner, Button, Heading } from '@chakra-ui/react';
-import useGenres, { Genre } from '../hooks/useGenres';
+import { Button, Heading, HStack, Image, List, ListItem, Spinner } from '@chakra-ui/react';
+import useGenres from '../hooks/useGenres';
+import useClipQueryStore from '../store';
 
-// add a new props to notify parent: 'hey, I chose a genre'
-interface Props {
-  onSelectGenre: (genre: Genre) => void;
-  selectedGenreId: number;
-}
-const GenreList = ({onSelectGenre, selectedGenreId}: Props) => {
+const GenreList = () => {
   const {data, error, isLoading} = useGenres();
+  const selectedGenreId = useClipQueryStore((s) => s.clipQuery.genreId)
+  const setSelectedGenreId = useClipQueryStore((s) => s.setGenreId)
 
   if (error) return null;
   if (isLoading) return <Spinner />;
@@ -32,7 +30,7 @@ const GenreList = ({onSelectGenre, selectedGenreId}: Props) => {
                 fontWeight={
                   genre.id === selectedGenreId ? 'bold' : 'normal'
                 }
-                onClick={() => onSelectGenre(genre)}
+                onClick={() => setSelectedGenreId(genre.id)}
                 fontSize='lg'
                 variant='link'
               >

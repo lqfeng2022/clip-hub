@@ -1,5 +1,4 @@
 import { Box, Grid, GridItem, HStack, Show } from '@chakra-ui/react';
-import { useState } from 'react';
 import ClipGrid from './components/ClipGrid';
 import ClipHeading from './components/ClipHeading';
 import GenreList from './components/GenreList';
@@ -7,16 +6,7 @@ import LanguageSelector from './components/LanguageSelector';
 import NavBar from './components/NavBar';
 import SortSelector from './components/SortSelector';
 
-export interface ClipQuery {
-  genreId: number;
-  languageId: number;
-  sortOrder: string;
-  searchText: string;
-}
-
 function App() {
-  const [clipQuery, setClipQuery] = useState<ClipQuery>({} as ClipQuery)
-
   return (
     <Grid
       templateAreas={{
@@ -29,44 +19,25 @@ function App() {
       }}
     >
       <GridItem area='nav'>
-        <NavBar
-          onSearch={(searchText) => setClipQuery(
-            {...clipQuery, searchText}
-          )}
-        />
+        <NavBar/>
       </GridItem>
       <Show above='lg'>
         <GridItem area='aside' px={5}>
-          <GenreList 
-            selectedGenreId={clipQuery.genreId}
-            onSelectGenre={
-              (genre) => setClipQuery({...clipQuery, genreId: genre.id})
-            }
-          />
+          <GenreList />
         </GridItem>
       </Show>
       <GridItem area='main'>
         <Box padding={2.5}>
-          <ClipHeading clipQuery={clipQuery}/>
-          <HStack spacing={5} paddingLeft={2.5} marginBottom={5}>
-            <LanguageSelector
-              selectedLanguageId={clipQuery.languageId}
-              onSelectLanguage={
-                (language) => setClipQuery({...clipQuery, languageId: language.id})
-              }
-              />
-            <SortSelector
-              sortOrder={clipQuery.sortOrder}
-              onSelectSortOrder={(sortOrder) =>
-                setClipQuery({...clipQuery, sortOrder})
-              }
-              />
+          <ClipHeading/>
+          <HStack spacing={5} pl={2.5} mb={5}>
+            <LanguageSelector/>
+            <SortSelector/>
           </HStack>
         </Box>
-        <ClipGrid clipQuery={clipQuery}/>
+        <ClipGrid/>
       </GridItem>
     </Grid>
   )
 }
 
-export default App
+export default App;

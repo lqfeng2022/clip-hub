@@ -1,12 +1,8 @@
 import { Button, Menu, MenuButton, MenuItem, MenuList } from '@chakra-ui/react';
 import { BsChevronDown } from 'react-icons/bs';
+import useClipQueryStore from '../store';
 
-interface Props {
-  onSelectSortOrder: (sortOrder: string) => void;
-  sortOrder: string;
-}
-
-const SortSelector = ({onSelectSortOrder, sortOrder}: Props) => {
+const SortSelector = () => {
   const sortOrders = [
     { value: '', label: 'Relevance' },
     { value: '-last_update', label: 'Date added' },
@@ -15,6 +11,9 @@ const SortSelector = ({onSelectSortOrder, sortOrder}: Props) => {
     { value: 'original', label: 'Original' },
     { value: 'platform', label: 'Platform' },
   ];
+
+  const sortOrder = useClipQueryStore((s) => s.clipQuery.sortOrder)
+  const setSortOrder = useClipQueryStore((s) => s.setSortOrder)
 
   const currentSortOrder = sortOrders.find(
     (order) => order.value === sortOrder
@@ -28,7 +27,7 @@ const SortSelector = ({onSelectSortOrder, sortOrder}: Props) => {
       <MenuList>
         {sortOrders.map((order) => (
           <MenuItem
-            onClick={() => onSelectSortOrder(order.value)}
+            onClick={() => setSortOrder(order.value)}
             key={order.value}
             value={order.value}
           >

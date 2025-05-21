@@ -1,7 +1,7 @@
 import { Genre } from './useGenres';
-import { ClipQuery } from '../App';
 import { useInfiniteQuery } from '@tanstack/react-query';
 import APIClient, { FetchResponse } from '../services/api-client';
+import useClipQueryStore from '../store';
 
 export interface Tags {
   id: number;
@@ -19,10 +19,11 @@ export interface Clip {
 
 const apiClient = new APIClient<Clip>('/videos/')
 
-const useClips = (clipQuery: ClipQuery) => 
+const useClips = () => {
+  const clipQuery = useClipQueryStore((s) => s.clipQuery)
   // provide a generic type arg('Error')to handle error message
   // <- useQuery
-  useInfiniteQuery<FetchResponse<Clip>, Error>({
+  return useInfiniteQuery<FetchResponse<Clip>, Error>({
     queryKey: ['videos', clipQuery],
     queryFn: ({pageParam = 1}) => apiClient.getAll({
       params: {
@@ -38,5 +39,6 @@ const useClips = (clipQuery: ClipQuery) =>
     },
     staleTime: 24 * 60 * 60 * 1000 // 24h
   });
+}
 
 export default useClips;
