@@ -1,26 +1,22 @@
 import { Box, Grid, GridItem, HStack, Show } from '@chakra-ui/react';
-import ClipGrid from './components/ClipGrid';
-import ClipHeading from './components/ClipHeading';
-import GenreList from './components/GenreList';
-import LanguageSelector from './components/LanguageSelector';
-import NavBar from './components/NavBar';
-import SortSelector from './components/SortSelector';
+import ClipGrid from '../components/ClipGrid';
+import ClipHeading from '../components/ClipHeading';
+import GenreList from '../components/GenreList';
+import LanguageSelector from '../components/LanguageSelector';
+import SortSelector from '../components/SortSelector';
 
-function App() {
+function HomePage() {
   return (
     <Grid
       templateAreas={{
-        base: `'nav' 'main'`,
-        lg: `'nav nav' 'aside main'`,
+        base: `'main'`,
+        lg: `'aside main'`,
       }}
       templateColumns={{
         base: '1fr',
         lg: '200px 1fr',
       }}
     >
-      <GridItem area='nav'>
-        <NavBar/>
-      </GridItem>
       <Show above='lg'>
         <GridItem area='aside' px={5}>
           <GenreList />
@@ -40,4 +36,4 @@ function App() {
   )
 }
 
-export default App;
+export default HomePage;
