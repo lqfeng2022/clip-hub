@@ -14,7 +14,7 @@ const ClipDetailPage = () => {
   if (isLoading) return <Spinner/>;
   if (error || !clip) throw error; 
   return (
-    <div>
+    <>
       <SimpleGrid p='15px 10px' columns={{ base: 1, md: 2 }} spacing={5}>
         <GridItem>
           <Heading>{clip.title}</Heading>
@@ -32,7 +32,7 @@ const ClipDetailPage = () => {
         </GridItem>
       </SimpleGrid>
       <ExpressionList clipId={clip.id}/>
-    </div>
+    </>
   );
 };
 

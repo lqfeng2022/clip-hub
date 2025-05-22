@@ -2,12 +2,15 @@ import {
   Card,
   CardBody,
   Heading,
+  HStack,
+  Icon,
   Image,
   ListItem,
   Text,
   UnorderedList
 } from '@chakra-ui/react';
 import Expression from '../entities/Expression';
+import { HiOutlineCube } from 'react-icons/hi2';
 
 interface Props {
   expression: Expression;
@@ -21,9 +24,12 @@ const ExpressionItem = ({expression}: Props) => {
         src={expression.image} 
       />
       <CardBody p='8px 5px'>
-        <Heading fontSize='lg' color='yellow.300'>
-          {expression.title}
-        </Heading>
+        <HStack>
+          <Icon as={HiOutlineCube} boxSize={5}/>
+          <Heading fontSize='xl' color='yellow.300'>
+            {expression.title}
+          </Heading>
+        </HStack>
         <Text color='gray.300' py={3}>
           {expression.explain}
         </Text>

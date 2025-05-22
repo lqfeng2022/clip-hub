@@ -8,9 +8,10 @@ const NavBar = () => {
       <Link to='/'>
         <Text 
           as='b' 
-          fontSize='xl' 
+          fontSize='2xl' 
           color='yellow' 
           whiteSpace='nowrap'
+          textShadow='1px 2px 3px #B7791F'
         >
           C L I P s
         </Text>

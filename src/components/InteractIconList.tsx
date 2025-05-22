@@ -1,43 +1,37 @@
-import { Avatar, HStack, Icon, Text } from '@chakra-ui/react';
-import { IconType } from 'react-icons';
-import { AiFillLike } from 'react-icons/ai';
-import { FaRegEye } from 'react-icons/fa';
-import { FaShare } from 'react-icons/fa';
-import { FaBookmark } from 'react-icons/fa';
+import { Avatar, HStack, Icon, Stack, Text } from '@chakra-ui/react';
+import { FaRegComment, FaShare } from 'react-icons/fa';
+import { IoIosBookmark, IoIosHeart } from 'react-icons/io';
+import { IoEyeOutline } from 'react-icons/io5';
 import Clip from '../entities/Clip';
 
 interface Props {
   clip: Clip;
 }
-
 const InteractIconList = ({ clip }: Props) => {
-  const interacts = ['like', 'view', 'bookmark', 'share'];
-
-  const iconMap: { [key: string]: IconType } = {
-    like: AiFillLike,
-    view: FaRegEye,
-    bookmark: FaBookmark,
-    share: FaShare,
-  };
+  const pinkColor = clip.like_state ? 'pink.300' : '';
+  const greenColor = clip.bookmark_state ? 'green.300' : '';
 
   return (
-    <HStack justifyContent='space-between' margin='12px 4px'>
-      <HStack>
-        <Avatar size='sm' src={clip.genre.image}/>
-        <Text as='b'>{clip.genre.title}</Text>
+    <Stack spacing={4} m='12px 10px'>
+      <HStack justifyContent='space-between'>
+        <Icon as={FaRegComment} boxSize={6} color='gray'/>
+        <HStack>
+          <Icon as={IoIosHeart} boxSize={6} color={pinkColor}/>
+          <Text>{clip.likes}</Text>
+        </HStack>
+        <HStack>
+          <Icon as={IoEyeOutline} boxSize={6}/>
+          <Text>{clip.views}</Text>
+        </HStack>
+        <Icon as={IoIosBookmark} boxSize={6} color={greenColor}/>
+        <Icon as={FaShare} boxSize={6}/>
       </HStack>
-      <HStack gap={12} justifyContent='space-between'>
-        {interacts.map((interact) => (
-          <Icon
-            as={iconMap[interact]}
-            color='gray.500'
-            boxSize={5}
-          />
-        ))}
+      <HStack spacing={3}>
+        <Avatar boxSize='40px' src={clip.genre.image}/>
+        <Text as='abbr' fontSize='lg'>{clip.genre.title}</Text>
       </HStack>
-    </HStack>
+    </Stack>
   );
-
 }
 
 export default InteractIconList

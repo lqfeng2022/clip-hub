@@ -4,7 +4,6 @@ import Tags from '../entities/Tag';
 interface Props {
   tags: Tags[];
 }
-
 const TagList = ({ tags }: Props) => {
   return (
     <HStack pt={2} spacing={2}>

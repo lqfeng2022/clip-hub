@@ -5,7 +5,6 @@ interface Props {
   term: string;
   children: ReactNode | ReactNode[];
 }
-
 const DefinitionItem = ({ term, children }: Props) => {
   return (
     <Box my={2}>

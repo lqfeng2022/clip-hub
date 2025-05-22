@@ -1,4 +1,4 @@
-import { SimpleGrid, Text } from '@chakra-ui/react';
+import { Box, Heading, SimpleGrid } from '@chakra-ui/react';
 import Clip from '../entities/Clip';
 import DefinitionItem from './DefinitionItem';
 import TagList from './TagList';
@@ -6,33 +6,35 @@ import TagList from './TagList';
 interface Props {
   clip: Clip;
 }
-
 const ClipAttributes = ({ clip }: Props) => {
   return (
     <div>
       <SimpleGrid columns={2}>
         <DefinitionItem term='Original'>
-          <Text>{clip.original}</Text>
+          {clip.original}
         </DefinitionItem>
         <DefinitionItem term='Released year'>
-          <Text>{clip.release_year}</Text>
+          {clip.release_year}
         </DefinitionItem>
         <DefinitionItem term='Platform'>
-          <Text>{clip.platform.title}</Text>
+          {clip.platform.title}
         </DefinitionItem>
         <DefinitionItem term='Creator'>
-          <Text>{clip.creator.name}</Text>
+          {clip.creator.name}
         </DefinitionItem>
         <DefinitionItem term='Language'>
-          <Text>{clip.language.title}</Text>
+          {clip.language.title}
         </DefinitionItem>
         <DefinitionItem term='Genre'>
-          <Text>{clip.genre.title}</Text>
+          {clip.genre.title}
         </DefinitionItem>
       </SimpleGrid>
-      <DefinitionItem term='Tags'>
+      <Box my={2}>
+        <Heading fontSize='md' color='gray.500'>
+          Tags
+        </Heading>
         <TagList tags={clip.tags}/>
-      </DefinitionItem>
+      </Box>
     </div>
   );
 };

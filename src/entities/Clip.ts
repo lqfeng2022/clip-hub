@@ -19,4 +19,8 @@ export default interface Clip {
   platform: Platform;
   release_year: number;
   movies: Movie[];
+  likes: number;
+  views: number;
+  like_state: boolean;
+  bookmark_state: boolean;
 }
