@@ -1,4 +1,4 @@
-import { Badge, HStack } from '@chakra-ui/react';
+import { HStack, Tag } from '@chakra-ui/react';
 import Tags from '../entities/Tag';
 
 interface Props {
@@ -7,17 +7,11 @@ interface Props {
 
 const TagList = ({ tags }: Props) => {
   return (
-    <HStack>
+    <HStack pt={2} spacing={3}>
       {tags.map((tag) => (
-        <Badge
-          fontSize='2xs'
-          color='yellow.100'
-          p='3px 5px'
-          borderRadius='4px'
-          key={tag.id}
-        >
+        <Tag colorScheme='cyan' key={tag.id}>
           {tag.title}
-        </Badge>
+        </Tag>
       ))}
     </HStack>
   );

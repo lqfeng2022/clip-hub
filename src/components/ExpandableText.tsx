@@ -17,12 +17,11 @@ const ExpandableText = ({ limit, children }: Props) => {
 
   return (
     <>
-      <Text whiteSpace='pre-wrap' marginTop={2}>
+      <Text whiteSpace='pre-wrap' mt={2} color='gray.300'>
         {summary}
       </Text>
       <Button
         size='xs'
-        color='yellow.300'
         onClick={() => setExpanded(!expanded)}
       >
         {expanded ? 'Show Less' : 'Show More'}
