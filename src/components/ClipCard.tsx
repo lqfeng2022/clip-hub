@@ -1,5 +1,13 @@
-import { Image, CardBody, Heading, Text, HStack, Avatar, Box, Card } from '@chakra-ui/react';
-import TagList from './TagList';
+import { 
+  Image, 
+  CardBody, 
+  Heading, 
+  Text, 
+  HStack, 
+  Avatar, 
+  Box, 
+  Card 
+} from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
 import Clip from '../entities/Clip';
 
@@ -9,23 +17,29 @@ interface Props {
 
 const GameCard = ({ clip }: Props) => {
   return (
-    <Card bg='gray.800'>
+    <Card bg='gray.800' overflow='hidden'>
       <Image src={clip.cover} />
       <CardBody p='12px 4px'>
-        <HStack>
+        <HStack align='flex-start' wrap='wrap' spacing={4}>
           <Avatar
-            size='sm'
+            size='md'
             src={clip.genre.image}
             alignSelf='flex-start'
+            flexShrink={0}
           />
-          <Box>
-            <Heading fontSize='md'>
+          <Box flex='1' minW={0}>
+            <Heading fontSize='xl' noOfLines={2}>
               <Link to={'/clips/' + clip.slug}>
                 {clip.title}
               </Link>
             </Heading>
-            <Text py={1} fontSize='sm'>{clip.genre.title}</Text>
-            <TagList tags={clip.tags}/>
+            <Text as='b' py={1} fontSize='sm' color='yellow.200'>
+              {clip.genre.title}
+            </Text>
+            <HStack>
+              <Text as='b' mr={3}>{clip.release_year}</Text>
+              <Text>{clip.original}</Text>
+            </HStack>
           </Box>
         </HStack>
       </CardBody>

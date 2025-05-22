@@ -20,7 +20,7 @@ const ExpressionItem = ({expression}: Props) => {
         objectFit='cover'
         src={expression.image} 
       />
-      <CardBody p={3}>
+      <CardBody p='8px 5px'>
         <Heading fontSize='lg' color='yellow.300'>
           {expression.title}
         </Heading>

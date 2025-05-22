@@ -5,6 +5,7 @@ import ExpandableText from '../components/ExpandableText';
 import ClipAttributes from '../components/ClipAttributes';
 import ClipMovie from '../components/ClipMovie';
 import ExpressionList from '../components/ExpressionList';
+import InteractIconList from '../components/InteractIconList';
 
 const ClipDetailPage = () => {
   const { slug } = useParams(); // get `slug` from url
@@ -18,7 +19,7 @@ const ClipDetailPage = () => {
         <GridItem>
           <Heading>{clip.title}</Heading>
           <Box py={3}>
-            <Heading size='md'>About</Heading>
+            <Heading size='md' color='gray.500'>About</Heading>
             <ExpandableText limit={250}>
               {clip.description}
             </ExpandableText>
@@ -27,6 +28,7 @@ const ClipDetailPage = () => {
         </GridItem>
         <GridItem>
           <ClipMovie movie={clip.movies[0]}/>
+          <InteractIconList clip={clip}/>
         </GridItem>
       </SimpleGrid>
       <ExpressionList clipId={clip.id}/>

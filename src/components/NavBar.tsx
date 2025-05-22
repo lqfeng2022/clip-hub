@@ -6,7 +6,12 @@ const NavBar = () => {
   return (
     <HStack p='10px' gap={5} justifyContent='space-between'>
       <Link to='/'>
-        <Text as='b' fontSize='xl' color='yellow' whiteSpace='nowrap'>
+        <Text 
+          as='b' 
+          fontSize='xl' 
+          color='yellow' 
+          whiteSpace='nowrap'
+        >
           C L I P s
         </Text>
       </Link>

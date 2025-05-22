@@ -7,7 +7,7 @@ interface Props {
 
 const TagList = ({ tags }: Props) => {
   return (
-    <HStack pt={2} spacing={3}>
+    <HStack pt={2} spacing={2}>
       {tags.map((tag) => (
         <Tag colorScheme='cyan' key={tag.id}>
           {tag.title}

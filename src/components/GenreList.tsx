@@ -1,4 +1,14 @@
-import { Box, Button, Heading, HStack, Image, List, ListItem, Spinner } from '@chakra-ui/react';
+import { 
+  AspectRatio, 
+  Box, 
+  Button, 
+  Heading, 
+  HStack, 
+  Image, 
+  List, 
+  ListItem, 
+  Spinner 
+} from '@chakra-ui/react';
 import useGenres from '../hooks/useGenres';
 import useClipQueryStore from '../store';
 
@@ -18,12 +28,14 @@ const GenreList = () => {
         {data?.results.map((genre) => (
           <ListItem py='6px' key={genre.id}>
             <HStack>
-              <Image
-                boxSize='48px'
-                objectFit='cover'
-                borderRadius={8}
-                src={genre.image}
-              />
+              <AspectRatio w='80px' ratio={9 / 6}>
+                <Image
+                  objectFit='cover'
+                  borderRadius={5}
+                  src={genre.image}
+                  alt={genre.title}
+                />
+              </AspectRatio>
               <Button
                 whiteSpace='normal'
                 textAlign='left'

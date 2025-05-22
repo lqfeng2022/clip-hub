@@ -1,4 +1,4 @@
-import { Box, GridItem, Heading, SimpleGrid } from '@chakra-ui/react';
+import { Box, Heading } from '@chakra-ui/react';
 import useExpression from '../hooks/useExpression';
 import ExpressionItem from './ExpressionItem';
 
