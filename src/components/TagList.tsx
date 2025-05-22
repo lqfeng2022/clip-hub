@@ -1,5 +1,5 @@
 import { Badge, HStack } from '@chakra-ui/react';
-import { Tags } from '../entities/Tag';
+import Tags from '../entities/Tag';
 
 interface Props {
   tags: Tags[];
@@ -10,8 +10,8 @@ const TagList = ({ tags }: Props) => {
     <HStack>
       {tags.map((tag) => (
         <Badge
-          colorScheme='yellow'
-          fontSize='12px'
+          fontSize='2xs'
+          color='yellow.100'
           p='3px 5px'
           borderRadius='4px'
           key={tag.id}

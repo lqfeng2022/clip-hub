@@ -11,20 +11,20 @@ const GameCard = ({ clip }: Props) => {
   return (
     <Card bg='gray.800'>
       <Image src={clip.cover} />
-      <CardBody p={4}>
+      <CardBody p='12px 4px'>
         <HStack>
           <Avatar
-            name='Segun Adebayo'
+            size='sm'
             src={clip.genre.image}
             alignSelf='flex-start'
           />
-          <Box px={2}>
-            <Heading fontSize='xl'>
+          <Box>
+            <Heading fontSize='md'>
               <Link to={'/clips/' + clip.slug}>
                 {clip.title}
               </Link>
             </Heading>
-            <Text paddingBottom={2}>{clip.genre.title}</Text>
+            <Text py={1} fontSize='sm'>{clip.genre.title}</Text>
             <TagList tags={clip.tags}/>
           </Box>
         </HStack>

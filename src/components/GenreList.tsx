@@ -1,4 +1,4 @@
-import { Button, Heading, HStack, Image, List, ListItem, Spinner } from '@chakra-ui/react';
+import { Box, Button, Heading, HStack, Image, List, ListItem, Spinner } from '@chakra-ui/react';
 import useGenres from '../hooks/useGenres';
 import useClipQueryStore from '../store';
 
@@ -10,13 +10,13 @@ const GenreList = () => {
   if (error) return null;
   if (isLoading) return <Spinner />;
   return (
-    <>
-      <Heading fontSize="2xl" marginBottom={3}>
+    <Box mt={8}>
+      <Heading fontSize='2xl' mb={3}>
         Genres
       </Heading>
       <List>
         {data?.results.map((genre) => (
-          <ListItem paddingY='6px' key={genre.id}>
+          <ListItem py='6px' key={genre.id}>
             <HStack>
               <Image
                 boxSize='48px'
@@ -33,6 +33,7 @@ const GenreList = () => {
                 onClick={() => setSelectedGenreId(genre.id)}
                 fontSize='lg'
                 variant='link'
+                _hover={{textDecoration: 'none'}}
               >
                 {genre.title}
               </Button>
@@ -40,7 +41,7 @@ const GenreList = () => {
           </ListItem>
         ))}
       </List>
-    </>
+    </Box>
   );
 };
 

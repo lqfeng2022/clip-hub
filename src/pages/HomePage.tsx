@@ -14,7 +14,7 @@ function HomePage() {
       }}
       templateColumns={{
         base: '1fr',
-        lg: '200px 1fr',
+        lg: '250px 1fr',
       }}
     >
       <Show above='lg'>
@@ -25,7 +25,7 @@ function HomePage() {
       <GridItem area='main'>
         <Box padding={2.5}>
           <ClipHeading/>
-          <HStack spacing={5} pl={2.5} mb={5}>
+          <HStack spacing={5} mb={2}>
             <LanguageSelector/>
             <SortSelector/>
           </HStack>

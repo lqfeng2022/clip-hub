@@ -10,7 +10,7 @@ const ClipDetailPage = () => {
   if (isLoading) return <Spinner/>;
   if (error || !clip) throw error; 
   return (
-    <div>
+    <Box px='10px'>
       <Heading>{clip.title}</Heading>
       <Box py={3}>
         <Heading size='md'>About</Heading>
@@ -18,7 +18,7 @@ const ClipDetailPage = () => {
           {clip.description}
         </ExpandableText>
       </Box>
-    </div>
+    </Box>
   );
 };
 
