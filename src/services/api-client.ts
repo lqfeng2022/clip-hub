@@ -7,7 +7,8 @@ export interface FetchResponse<T> {
 }
 
 const axiosInstance = axios.create({
-  baseURL: 'http://127.0.0.1:8000/store',
+  baseURL: 'http://localhost:8000/store',
+  withCredentials: true, // send cookie to backend
   params: {}
 })
 
@@ -29,6 +30,17 @@ class APIClient<T> {
   get = (id: number | string) => {
     return axiosInstance
       .get<T>(this.endpoint + '/slug/' + id)
+      .then((res) => res.data)
+  }
+
+  post = (
+    id: number | string, 
+    action: string, 
+    data: any, 
+    config?: AxiosRequestConfig
+  ) => {
+    return axiosInstance
+      .post(`${this.endpoint}/${id}/${action}/`, data, config)
       .then((res) => res.data)
   }
 }

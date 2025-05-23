@@ -27,7 +27,10 @@ const ClipDetailPage = () => {
           <ClipAttributes clip={clip}/>
         </GridItem>
         <GridItem>
-          <ClipMovie movie={clip.movies[0]}/>
+          <ClipMovie 
+            movie={clip.movies[0]} 
+            videoId={clip.id}
+          />
           <InteractIconList clip={clip}/>
         </GridItem>
       </SimpleGrid>
