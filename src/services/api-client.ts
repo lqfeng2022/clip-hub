@@ -1,9 +1,9 @@
-import axios, { AxiosRequestConfig } from 'axios';
+import axios, { AxiosRequestConfig } from 'axios'
 
 export interface FetchResponse<T> {
-  count: number;
-  next: string | null;
-  results: T[];
+  count: number,
+  next: string | null,
+  results: T[],
 }
 
 const axiosInstance = axios.create({
@@ -13,19 +13,19 @@ const axiosInstance = axios.create({
 })
 
 class APIClient<T> {
-  endpoint: string; // give it an endpoint property
+  endpoint: string // give it an endpoint property
 
   // initialize it with constructor
   constructor(endpoint: string) {
-    this.endpoint = endpoint;
+    this.endpoint = endpoint
   }
 
   // `config`: optional parameter, cus we need it in Clips hook
   getAll = (config?: AxiosRequestConfig) => {
     return axiosInstance
       .get<FetchResponse<T>>(this.endpoint, config)
-      .then((res) => res.data); //extract data from response
-  };
+      .then((res) => res.data) //extract data from response
+  }
 
   get = (id: number | string) => {
     return axiosInstance
@@ -45,4 +45,4 @@ class APIClient<T> {
   }
 }
 
-export default APIClient;
+export default APIClient

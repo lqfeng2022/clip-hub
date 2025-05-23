@@ -1,10 +1,10 @@
-import { Box, Heading, SimpleGrid } from '@chakra-ui/react';
-import Clip from '../entities/Clip';
-import DefinitionItem from './DefinitionItem';
-import TagList from './TagList';
+import { Box, Heading, SimpleGrid } from '@chakra-ui/react'
+import Clip from '../entities/Clip'
+import DefinitionItem from './DefinitionItem'
+import TagList from './TagList'
 
 interface Props {
-  clip: Clip;
+  clip: Clip
 }
 const ClipAttributes = ({ clip }: Props) => {
   return (
@@ -36,7 +36,7 @@ const ClipAttributes = ({ clip }: Props) => {
         <TagList tags={clip.tags}/>
       </Box>
     </div>
-  );
-};
+  )
+}
 
-export default ClipAttributes;
+export default ClipAttributes

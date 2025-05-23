@@ -1,20 +1,18 @@
-import { Button, Text } from '@chakra-ui/react';
-import { useState } from 'react';
+import { Button, Text } from '@chakra-ui/react'
+import { useState } from 'react'
 
 interface Props {
-  limit: number;
-  children: string;
+  limit: number
+  children: string
 }
-
 const ExpandableText = ({ limit, children }: Props) => {
-  const [expanded, setExpanded] = useState(false);
+  const [expanded, setExpanded] = useState(false)
   const summary = expanded 
     ? children 
-    : children.substring(0, limit) + '...';
+    : children.substring(0, limit) + '...'
 
-  if (!children) return null;
-  if (children.length <= limit) return <Text>{children}</Text>;
-
+  if (!children) return null
+  if (children.length <= limit) return <Text>{children}</Text>
   return (
     <>
       <Text whiteSpace='pre-wrap' mt={2} color='gray.300'>
@@ -27,7 +25,7 @@ const ExpandableText = ({ limit, children }: Props) => {
         {expanded ? 'Show Less' : 'Show More'}
       </Button>
     </>
-  );
-};
+  )
+}
 
-export default ExpandableText;
+export default ExpandableText

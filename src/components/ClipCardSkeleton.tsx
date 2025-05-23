@@ -1,5 +1,4 @@
-import { Card, CardBody, Skeleton, SkeletonText } from '@chakra-ui/react';
-
+import { Card, CardBody, Skeleton, SkeletonText } from '@chakra-ui/react'
 
 const ClipCardSkeleton = () => {
   return (
@@ -10,7 +9,7 @@ const ClipCardSkeleton = () => {
         </CardBody>
       </Skeleton>
     </Card>
-  );
-};
+  )
+}
 
-export default ClipCardSkeleton;
+export default ClipCardSkeleton

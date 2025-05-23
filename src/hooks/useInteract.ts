@@ -1,11 +1,11 @@
-import { useMutation } from '@tanstack/react-query';
-import Clip from '../entities/Clip';
-import APIClient from '../services/api-client';
+import { useMutation } from '@tanstack/react-query'
+import Clip from '../entities/Clip'
+import APIClient from '../services/api-client'
 
 interface HistoryData {
-  visible: boolean;
+  visible: boolean
 }
-const apiClient = new APIClient<Clip>('videos');
+const apiClient = new APIClient<Clip>('videos')
 
 const useInteract = (videoId: number, action: string) => {
   return useMutation({
@@ -13,7 +13,7 @@ const useInteract = (videoId: number, action: string) => {
       apiClient.post(videoId, action, data, {
         withCredentials: true,
       }),
-  });
-};
+  })
+}
 
-export default useInteract;
+export default useInteract

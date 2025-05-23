@@ -1,10 +1,10 @@
-import { SimpleGrid, Spinner, Text } from '@chakra-ui/react';
-import React from 'react';
-import InfiniteScroll from 'react-infinite-scroll-component';
-import useClips from '../hooks/useClips';
-import CardContainer from './CardContainer';
-import GameCard from './ClipCard';
-import ClipCardSkeleton from './ClipCardSkeleton';
+import { SimpleGrid, Spinner, Text } from '@chakra-ui/react'
+import React from 'react'
+import InfiniteScroll from 'react-infinite-scroll-component'
+import useClips from '../hooks/useClips'
+import CardContainer from './CardContainer'
+import GameCard from './ClipCard'
+import ClipCardSkeleton from './ClipCardSkeleton'
 
 const ClipGrid = () => {
   const {
@@ -14,15 +14,13 @@ const ClipGrid = () => {
     isFetchingNextPage, 
     fetchNextPage, 
     hasNextPage,
-  } = useClips();
+  } = useClips()
   const skeletons = [1, 2, 3, 4, 5, 6]
   const fetchClipsCount = data?.pages.reduce(
-    (total, page) => total + page.results.length, 0
-  ) || 0;
+    (total, page) => total + page.results.length, 0) || 0
 
   // `error` -> `error.message`
-  if (error) return <Text>{error.message}</Text>;
-
+  if (error) return <Text>{error.message}</Text>
   return (
     <InfiniteScroll 
       dataLength={fetchClipsCount} 
@@ -53,7 +51,7 @@ const ClipGrid = () => {
         ))}
       </SimpleGrid>
     </InfiniteScroll>
-  );
-};
+  )
+}
 
-export default ClipGrid;
+export default ClipGrid

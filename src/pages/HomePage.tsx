@@ -1,9 +1,9 @@
-import { Box, Grid, GridItem, HStack, Show } from '@chakra-ui/react';
-import ClipGrid from '../components/ClipGrid';
-import ClipHeading from '../components/ClipHeading';
-import GenreList from '../components/GenreList';
-import LanguageSelector from '../components/LanguageSelector';
-import SortSelector from '../components/SortSelector';
+import { Box, Grid, GridItem, HStack, Show } from '@chakra-ui/react'
+import ClipGrid from '../components/ClipGrid'
+import ClipHeading from '../components/ClipHeading'
+import GenreList from '../components/GenreList'
+import LanguageSelector from '../components/LanguageSelector'
+import SortSelector from '../components/SortSelector'
 
 function HomePage() {
   return (
@@ -36,4 +36,4 @@ function HomePage() {
   )
 }
 
-export default HomePage;
+export default HomePage

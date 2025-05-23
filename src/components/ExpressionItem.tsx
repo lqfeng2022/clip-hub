@@ -1,19 +1,11 @@
-import {
-  Card,
-  CardBody,
-  Heading,
-  HStack,
-  Icon,
-  Image,
-  ListItem,
-  Text,
-  UnorderedList
-} from '@chakra-ui/react';
-import Expression from '../entities/Expression';
-import { HiOutlineCube } from 'react-icons/hi2';
+import { 
+  Card, CardBody, Heading, HStack, Icon, Image, ListItem, Text, 
+  UnorderedList } from '@chakra-ui/react'
+import Expression from '../entities/Expression'
+import { HiOutlineCube } from 'react-icons/hi2'
 
 interface Props {
-  expression: Expression;
+  expression: Expression
 }
 const ExpressionItem = ({expression}: Props) => {
   return (

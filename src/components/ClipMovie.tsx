@@ -1,12 +1,12 @@
-import { Movie } from '../entities/Movie';
-import useInteract from '../hooks/useInteract';
+import Movie from '../entities/Movie'
+import useInteract from '../hooks/useInteract'
 
 interface Props {
-  movie: Movie;
-  videoId: number;
-};
+  movie: Movie
+  videoId: number
+}
 const ClipMovie = ({ movie, videoId }: Props) => {
-  const { mutate } = useInteract(videoId, 'history');
+  const { mutate } = useInteract(videoId, 'history')
 
   return (
     <video 
@@ -16,6 +16,6 @@ const ClipMovie = ({ movie, videoId }: Props) => {
       onPlay={() => mutate({ visible: true })}
     />
   )
-};
+}
 
-export default ClipMovie;
+export default ClipMovie

@@ -1,4 +1,4 @@
-export interface Platform {
-  id: number;
-  title: string;
+export default interface Platform {
+  id: number,
+  title: string,
 }

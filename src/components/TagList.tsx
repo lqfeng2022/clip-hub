@@ -1,8 +1,8 @@
-import { HStack, Tag } from '@chakra-ui/react';
-import Tags from '../entities/Tag';
+import { HStack, Tag } from '@chakra-ui/react'
+import Tags from '../entities/Tag'
 
 interface Props {
-  tags: Tags[];
+  tags: Tags[]
 }
 const TagList = ({ tags }: Props) => {
   return (
@@ -13,7 +13,7 @@ const TagList = ({ tags }: Props) => {
         </Tag>
       ))}
     </HStack>
-  );
-};
+  )
+}
 
-export default TagList;
+export default TagList

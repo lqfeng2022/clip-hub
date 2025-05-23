@@ -1,24 +1,16 @@
 import { 
-  AspectRatio, 
-  Box, 
-  Button, 
-  Heading, 
-  HStack, 
-  Image, 
-  List, 
-  ListItem, 
-  Spinner 
-} from '@chakra-ui/react';
-import useGenres from '../hooks/useGenres';
-import useClipQueryStore from '../store';
+  AspectRatio, Box, Button, Heading, HStack, 
+  Image, List, ListItem, Spinner } from '@chakra-ui/react'
+import useGenres from '../hooks/useGenres'
+import useClipQueryStore from '../store'
 
 const GenreList = () => {
-  const {data, error, isLoading} = useGenres();
+  const {data, error, isLoading} = useGenres()
   const selectedGenreId = useClipQueryStore((s) => s.clipQuery.genreId)
   const setSelectedGenreId = useClipQueryStore((s) => s.setGenreId)
 
-  if (error) return null;
-  if (isLoading) return <Spinner />;
+  if (error) return null
+  if (isLoading) return <Spinner />
   return (
     <Box mt={8}>
       <Heading fontSize='2xl' mb={3}>
@@ -54,7 +46,7 @@ const GenreList = () => {
         ))}
       </List>
     </Box>
-  );
-};
+  )
+}
 
-export default GenreList;
+export default GenreList

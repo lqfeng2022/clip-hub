@@ -1,23 +1,23 @@
-import { Box, Heading } from '@chakra-ui/react';
-import useExpression from '../hooks/useExpression';
-import ExpressionItem from './ExpressionItem';
+import { Box, Heading } from '@chakra-ui/react'
+import useExpression from '../hooks/useExpression'
+import ExpressionItem from './ExpressionItem'
 
 interface Props {
-  clipId: number;
+  clipId: number
 }
 const ExpressionList = ({clipId}: Props) => {
-  const { data, isLoading, error } = useExpression(clipId);
+  const { data, isLoading, error } = useExpression(clipId)
 
-  if (isLoading) return null;
-  if (error) throw error;
+  if (isLoading) return null
+  if (error) throw error
   return (
     <Box p='15px 10px'>
       <Heading size='md' mb={5}>Expressions</Heading>
-      <Box sx={{ columnCount: { base: 1, md: 2, lg: 3, xl: 4 }}}
+      <Box sx={{ columnCount: {base: 1, md: 2, lg: 3, xl: 4} }}
         columnGap={6}
       >
         {data?.results.map((exp) =>
-          <Box key={exp.id} sx={{ breakInside: 'avoid'}} mb={5}>
+          <Box key={exp.id} sx={{ breakInside: 'avoid' }} mb={5}>
             <ExpressionItem expression={exp}/>
           </Box>
         )}

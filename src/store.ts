@@ -1,21 +1,21 @@
-import { create } from 'zustand';
+import { create } from 'zustand'
 
 interface ClipQuery {
-  genreId?: number;
+  genreId?: number,
   // 2.1)SOLUTION: make these properties are optional too
-  languageId?: number;
-  sortOrder?: string;
-  searchText?: string;
+  languageId?: number,
+  sortOrder?: string,
+  searchText?: string,
 }
 
 interface ClipQueryStore {
-  clipQuery: ClipQuery;
+  clipQuery: ClipQuery,
   // 1)WHY we don't have a single f like 'setClipQuery'??
   //   cus logic for updating 'searchText' is different from other props
-  setSearchText: (searchText: string) => void;
-  setGenreId: (genreId: number) => void;
-  setLanguageId: (platformId: number) => void;
-  setSortOrder: (sortOrder: string) => void;
+  setSearchText: (searchText: string) => void,
+  setGenreId: (genreId: number) => void,
+  setLanguageId: (platformId: number) => void,
+  setSortOrder: (sortOrder: string) => void,
 }
 
 const useClipQueryStore = create<ClipQueryStore>((set) => ({
@@ -33,6 +33,6 @@ const useClipQueryStore = create<ClipQueryStore>((set) => ({
     clipQuery: { ...store.clipQuery, languageId } })),
   setSortOrder: (sortOrder) => set((store) => ({ 
     clipQuery: { ...store.clipQuery, sortOrder } })),
-}));
+}))
 
-export default useClipQueryStore;
+export default useClipQueryStore

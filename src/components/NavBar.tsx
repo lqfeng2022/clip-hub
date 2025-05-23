@@ -1,6 +1,6 @@
-import { HStack, Text } from '@chakra-ui/react';
-import SearchInput from './SearchInput';
-import { Link } from 'react-router-dom';
+import { HStack, Text } from '@chakra-ui/react'
+import SearchInput from './SearchInput'
+import { Link } from 'react-router-dom'
 
 const NavBar = () => {
   return (
@@ -19,7 +19,7 @@ const NavBar = () => {
       <SearchInput/>
       <Text>Profile</Text>
     </HStack>
-  );
-};
+  )
+}
 
-export default NavBar;
+export default NavBar

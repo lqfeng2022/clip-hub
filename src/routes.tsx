@@ -1,8 +1,8 @@
-import { createBrowserRouter } from 'react-router-dom';
-import Layout from './pages/Layout';
-import HomePage from './pages/HomePage';
-import ClipDetailPage from './pages/ClipDetailPage';
-import ErrorPage from './pages/ErrorPage';
+import { createBrowserRouter } from 'react-router-dom'
+import Layout from './pages/Layout'
+import HomePage from './pages/HomePage'
+import ClipDetailPage from './pages/ClipDetailPage'
+import ErrorPage from './pages/ErrorPage'
 
 const router = createBrowserRouter([
   {
@@ -14,6 +14,6 @@ const router = createBrowserRouter([
       { path: 'clips/:slug', element: <ClipDetailPage/> }
     ],
   },
-]);
+])
 
-export default router;
+export default router

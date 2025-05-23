@@ -1,18 +1,18 @@
-import { Box, GridItem, Heading, SimpleGrid, Spinner } from '@chakra-ui/react';
-import { useParams } from 'react-router-dom';
-import useClip from '../hooks/useClip';
-import ExpandableText from '../components/ExpandableText';
-import ClipAttributes from '../components/ClipAttributes';
-import ClipMovie from '../components/ClipMovie';
-import ExpressionList from '../components/ExpressionList';
-import InteractIconList from '../components/InteractIconList';
+import { Box, GridItem, Heading, SimpleGrid, Spinner } from '@chakra-ui/react'
+import { useParams } from 'react-router-dom'
+import ClipAttributes from '../components/ClipAttributes'
+import ClipMovie from '../components/ClipMovie'
+import ExpandableText from '../components/ExpandableText'
+import ExpressionList from '../components/ExpressionList'
+import InteractIconList from '../components/InteractIconList'
+import useClip from '../hooks/useClip'
 
 const ClipDetailPage = () => {
-  const { slug } = useParams(); // get `slug` from url
-  const { data: clip, isLoading, error } = useClip(slug!);
+  const { slug } = useParams() // get `slug` from url
+  const { data: clip, isLoading, error } = useClip(slug!)
 
-  if (isLoading) return <Spinner/>;
-  if (error || !clip) throw error; 
+  if (isLoading) return <Spinner/>
+  if (error || !clip) throw error 
   return (
     <>
       <SimpleGrid p='15px 10px' columns={{ base: 1, md: 2 }} spacing={5}>
@@ -36,7 +36,7 @@ const ClipDetailPage = () => {
       </SimpleGrid>
       <ExpressionList clipId={clip.id}/>
     </>
-  );
-};
+  )
+}
 
 export default ClipDetailPage

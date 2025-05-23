@@ -1,20 +1,10 @@
-import { 
-  Image, 
-  CardBody, 
-  Heading, 
-  Text, 
-  HStack, 
-  Avatar, 
-  Box, 
-  Card 
-} from '@chakra-ui/react';
-import { Link } from 'react-router-dom';
-import Clip from '../entities/Clip';
+import { Image, CardBody, Heading, Text, HStack, Avatar, Box, Card } from '@chakra-ui/react'
+import { Link } from 'react-router-dom'
+import Clip from '../entities/Clip'
 
 interface Props {
-  clip: Clip;
+  clip: Clip
 }
-
 const GameCard = ({ clip }: Props) => {
   return (
     <Card bg='gray.800' overflow='hidden'>
@@ -44,7 +34,7 @@ const GameCard = ({ clip }: Props) => {
         </HStack>
       </CardBody>
     </Card>
-  );
-};
+  )
+}
 
-export default GameCard;
+export default GameCard
