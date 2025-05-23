@@ -7,13 +7,13 @@ interface HistoryData {
 }
 const apiClient = new APIClient<Clip>('videos');
 
-const useHistory = (videoId: number) => {
+const useInteract = (videoId: number, action: string) => {
   return useMutation({
     mutationFn: (data: HistoryData) => 
-      apiClient.post(videoId, 'history', data, {
+      apiClient.post(videoId, action, data, {
         withCredentials: true,
       }),
   });
-}
+};
 
-export default useHistory
+export default useInteract;

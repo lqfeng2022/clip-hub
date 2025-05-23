@@ -17,7 +17,7 @@ const InteractIconList = ({ clip }: Props) => {
         <Icon as={FaRegComment} boxSize={6} color='gray'/>
         <HStack>
           <Icon as={IoIosHeart} boxSize={6} color={pinkColor}/>
-          <Text>{clip.likes}</Text>
+          <Text>{clip.likes_count}</Text>
         </HStack>
         <HStack>
           <Icon as={IoEyeOutline} boxSize={6}/>
@@ -32,6 +32,6 @@ const InteractIconList = ({ clip }: Props) => {
       </HStack>
     </Stack>
   );
-}
+};
 
-export default InteractIconList
+export default InteractIconList;
