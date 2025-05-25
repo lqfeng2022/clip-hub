@@ -3,6 +3,7 @@ import Layout from './pages/Layout'
 import HomePage from './pages/HomePage'
 import ClipDetailPage from './pages/ClipDetailPage'
 import ErrorPage from './pages/ErrorPage'
+import Profile from './pages/Profile'
 
 const router = createBrowserRouter([
   {
@@ -11,7 +12,8 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage/>,
     children: [
       { index: true, element: <HomePage/> },
-      { path: 'clips/:slug', element: <ClipDetailPage/> }
+      { path: 'clips/:slug', element: <ClipDetailPage/> },
+      { path: 'profile', element: <Profile/> },
     ],
   },
 ])

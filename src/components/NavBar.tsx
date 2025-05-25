@@ -17,7 +17,9 @@ const NavBar = () => {
         </Text>
       </Link>
       <SearchInput/>
-      <Text>Profile</Text>
+      <Link to='/profile'>
+        <Text>Profile</Text>
+      </Link>
     </HStack>
   )
 }
