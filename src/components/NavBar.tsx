@@ -1,20 +1,13 @@
 import { HStack, Text } from '@chakra-ui/react'
 import SearchInput from './SearchInput'
 import { Link } from 'react-router-dom'
+import Logo from './Logo'
 
 const NavBar = () => {
   return (
     <HStack p='10px' gap={5} justifyContent='space-between'>
       <Link to='/'>
-        <Text 
-          as='b' 
-          fontSize='2xl' 
-          color='yellow' 
-          whiteSpace='nowrap'
-          textShadow='1px 2px 3px #B7791F'
-        >
-          C L I P s
-        </Text>
+        <Logo/>
       </Link>
       <SearchInput/>
       <Link to='/profile'>
