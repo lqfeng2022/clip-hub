@@ -4,6 +4,7 @@ import HomePage from './pages/HomePage'
 import ClipDetailPage from './pages/ClipDetailPage'
 import ErrorPage from './pages/ErrorPage'
 import ProfilePage from './pages/ProfilePage'
+import SigninPage from './pages/SigninPage'
 
 const router = createBrowserRouter([
   {
@@ -14,6 +15,7 @@ const router = createBrowserRouter([
       { index: true, element: <HomePage/> },
       { path: 'clips/:slug', element: <ClipDetailPage/> },
       { path: 'profile', element: <ProfilePage/> },
+      { path: 'user/signin', element: <SigninPage/> },
     ],
   },
 ])

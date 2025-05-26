@@ -1,11 +1,16 @@
-import { Outlet } from 'react-router-dom'
+import { Outlet, useLocation } from 'react-router-dom'
 import NavBar from '../components/NavBar'
 import { Box } from '@chakra-ui/react'
 
 const Layout = () => {
+  const location = useLocation()
+
+  const hideNavRoutes = ['/user/signin']
+  const shouldHideNav = hideNavRoutes.includes(location.pathname)
+
   return (
     <>
-      <NavBar/>
+      {!shouldHideNav && <NavBar/>}
       <Box>
         <Outlet/>
       </Box>
