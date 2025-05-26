@@ -3,7 +3,7 @@ import React from 'react'
 import InfiniteScroll from 'react-infinite-scroll-component'
 import useClips from '../hooks/useClips'
 import CardContainer from './CardContainer'
-import GameCard from './ClipCard'
+import ClipCard from './ClipCard'
 import ClipCardSkeleton from './ClipCardSkeleton'
 
 const ClipGrid = () => {
@@ -44,7 +44,7 @@ const ClipGrid = () => {
           <React.Fragment key={index}>
             {page?.results.map((clip) => (
                 <CardContainer key={clip.id} >
-                  <GameCard clip={clip} />
+                  <ClipCard clip={clip} />
                 </CardContainer>
             ))}
           </React.Fragment>

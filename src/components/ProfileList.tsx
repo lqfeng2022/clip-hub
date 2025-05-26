@@ -8,10 +8,10 @@ import { TbLanguageHiragana } from "react-icons/tb";
 const ProfileList = () => {
   const list = [
     { name: 'Profile', icon: CgProfile, link: '/' },
-    { name: 'Expression', icon: TbLanguageHiragana, link: '/' },
-    { name: 'Bookmark', icon: IoIosBookmark, link: '/' },
-    { name: 'Like', icon: IoIosHeart, link: '/' },
     { name: 'History', icon: RiChatHistoryFill, link: '/' },
+    { name: 'Like', icon: IoIosHeart, link: '/' },
+    { name: 'Bookmark', icon: IoIosBookmark, link: '/' },
+    { name: 'Expression', icon: TbLanguageHiragana, link: '/' },
   ]
 
   return (

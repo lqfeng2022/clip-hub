@@ -18,7 +18,7 @@ const GameCard = ({ clip }: Props) => {
             flexShrink={0}
           />
           <Box flex='1' minW={0}>
-            <Heading fontSize='xl' noOfLines={2}>
+            <Heading fontSize='lg' noOfLines={2}>
               <Link to={'/clips/' + clip.slug}>
                 {clip.title}
               </Link>
@@ -28,7 +28,7 @@ const GameCard = ({ clip }: Props) => {
             </Text>
             <HStack>
               <Text as='b' mr={3}>{clip.release_year}</Text>
-              <Text>{clip.original}</Text>
+              <Text noOfLines={1}>{clip.original}</Text>
             </HStack>
           </Box>
         </HStack>

@@ -1,5 +1,7 @@
-import { Grid, GridItem, Show } from '@chakra-ui/react'
+import { Box, Grid, GridItem, Show } from '@chakra-ui/react'
 import ProfileList from '../components/ProfileList'
+import ProfileHistory from '../components/ProfileHistory'
+import ProfileUser from '../components/ProfileUser'
 
 const Profile = () => {
   return (
@@ -19,7 +21,10 @@ const Profile = () => {
         </GridItem>
       </Show>
       <GridItem area='main'>
-        main
+        <Box>
+          <ProfileUser/>
+          <ProfileHistory/>
+        </Box>
       </GridItem> 
     </Grid>
   )
