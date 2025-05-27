@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query'
-import APIClient from '../services/api-client'
+import APIClient from '../services/api-store'
 import Expression from '../entities/Expression'
 
 const useExpression = (clipId: number) => {

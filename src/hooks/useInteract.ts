@@ -1,6 +1,6 @@
 import { useMutation } from '@tanstack/react-query'
 import Clip from '../entities/Clip'
-import APIClient from '../services/api-client'
+import APIClient from '../services/api-store'
 
 interface HistoryData {
   visible: boolean

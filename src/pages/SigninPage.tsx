@@ -1,11 +1,24 @@
 import {
-  Box, Button, FormControl, FormHelperText, 
-  Heading, HStack, Input, SimpleGrid, Stack, Text
+  Box, Button, FormControl, FormHelperText, Heading, HStack, 
+  Input, InputGroup, InputRightElement, SimpleGrid, Stack, Text
 } from '@chakra-ui/react'
 import Logo from '../components/Logo'
 import SignContainer from '../components/SignContainer'
+import { useState } from 'react'
+import useSignin from '../hooks/useSignin'
 
 const SigninPage = () => {
+  const [show, setShow] = useState(false)
+  const handleClick = () => setShow(!show)
+
+  const [username, setUsername]= useState('')
+  const [password, setPassword] = useState('')
+
+  const { mutate, error } = useSignin()
+  const message = error 
+    ? "Oops, something wrong..." 
+    : "We'll never share your info."
+  
   return (
     <SignContainer>
       <Stack p={10} gap={3}>
@@ -17,14 +30,43 @@ const SigninPage = () => {
           </Box>
           <Box>
             <FormControl>
-              <Input type='email' placeholder='Email..'/>
-              <FormHelperText>We'll never share your email.</FormHelperText>
+              <Input 
+                type='text' 
+                placeholder='User name..'
+                value={username}
+                onChange={(un) => setUsername(un.target.value)}
+              />
+              <FormHelperText color={error ? 'red.300' : undefined}>
+                {message}
+              </FormHelperText>
             </FormControl>
             <FormControl py={6}>
-              <Input type='password' placeholder='Password..'/>
-              <FormHelperText>Please protect your password.</FormHelperText>
+              <InputGroup size='md'>
+                <Input
+                  pr='4.5rem'
+                  type={show ? 'text' : 'password'}
+                  placeholder='Enter password'
+                  value={password}
+                  onChange={(ps) => setPassword(ps.target.value)}
+                />
+                <InputRightElement width='4.5rem'>
+                  <Button h='1.75rem' size='sm' onClick={handleClick}>
+                    {show ? 'Hide' : 'Show'}
+                  </Button>
+                </InputRightElement>
+              </InputGroup>
+              <FormHelperText color={error ? 'red.300' : undefined}>
+                {message}
+              </FormHelperText>
             </FormControl>
-            <Button mb={5} size='md' fontSize='lg'>Log In</Button>
+            <Button 
+              mb={5} 
+              size='md' 
+              fontSize='lg'
+              onClick={() => mutate({ username, password })}
+            >
+              Log In
+            </Button>
             <HStack justifyContent='end'>
               <Text>Don't have an account?</Text>
               <Button size='sm' variant='outline'>Sign up</Button>
