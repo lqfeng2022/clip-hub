@@ -1,11 +1,11 @@
 import { Box, GridItem, Heading, SimpleGrid, Spinner } from '@chakra-ui/react'
 import { useParams } from 'react-router-dom'
-import ClipAttributes from '../components/ClipAttributes'
-import ClipMovie from '../components/ClipMovie'
-import ExpandableText from '../components/ExpandableText'
-import ExpressionList from '../components/ExpressionList'
-import InteractIconList from '../components/InteractIconList'
+import ClipAttributes from '../components/detail/ClipAttributes'
+import ExpandableText from '../components/detail/ExpandableText'
+import ExpressionList from '../components/detail/ExpressionList'
+import InteractIconList from '../components/detail/InteractIconList'
 import useClip from '../hooks/useClip'
+import ClipMovie from '../components/detail/ClipMovie'
 
 const ClipDetailPage = () => {
   const { slug } = useParams() // get `slug` from url

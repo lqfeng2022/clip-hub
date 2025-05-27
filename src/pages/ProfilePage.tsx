@@ -1,7 +1,7 @@
 import { Box, Grid, GridItem, Show } from '@chakra-ui/react'
-import ProfileList from '../components/ProfileList'
-import ProfileHistory from '../components/ProfileHistory'
-import ProfileUser from '../components/ProfileUser'
+import ProfileList from '../components/profile/ProfileList'
+import ProfileHistory from '../components/profile/ProfileHistory'
+import ProfileUser from '../components/profile/ProfileUser'
 
 const Profile = () => {
   return (

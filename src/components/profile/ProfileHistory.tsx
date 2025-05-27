@@ -1,8 +1,8 @@
 import { Box, Button, Heading, HStack, SimpleGrid, Text } from '@chakra-ui/react'
-import useClips from '../hooks/useClips'
-import CardContainer from './CardContainer'
-import ClipCard from './ClipCard'
-import ClipCardSkeleton from './ClipCardSkeleton'
+import useClips from '../../hooks/useClips'
+import CardContainer from '../CardContainer'
+import ClipCard from '../ClipCard'
+import ClipCardSkeleton from '../ClipCardSkeleton'
 
 const ProfileHistory = () => {
   const { data, error, isLoading } = useClips()

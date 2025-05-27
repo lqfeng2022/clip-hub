@@ -1,6 +1,6 @@
 import { Avatar, Box, Button, Heading, HStack, Text } from '@chakra-ui/react'
 import { FaBloggerB, FaRegUser } from 'react-icons/fa'
-import useProfile from '../hooks/useProfile'
+import useProfile from '../../hooks/useProfile'
 
 const ProfileUser = () => {
   const { data: user, error } = useProfile()

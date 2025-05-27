@@ -1,7 +1,7 @@
 import { Avatar, HStack, Icon, Stack, Text } from '@chakra-ui/react'
 import { FaRegComment, FaShare } from 'react-icons/fa'
 import { IoEyeOutline } from 'react-icons/io5'
-import Clip from '../entities/Clip'
+import Clip from '../../entities/Clip'
 import InteractBookmark from './InteractBookmark'
 import InteractLike from './InteractLike'
 

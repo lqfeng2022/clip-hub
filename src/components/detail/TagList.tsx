@@ -1,5 +1,5 @@
 import { HStack, Tag } from '@chakra-ui/react'
-import Tags from '../entities/Tag'
+import Tags from '../../entities/Tag'
 
 interface Props {
   tags: Tags[]
