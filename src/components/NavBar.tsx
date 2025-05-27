@@ -1,9 +1,12 @@
-import { HStack, Text } from '@chakra-ui/react'
-import SearchInput from './SearchInput'
+import { Avatar, HStack } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
+import useProfile from '../hooks/useProfile'
 import Logo from './Logo'
+import SearchInput from './SearchInput'
 
 const NavBar = () => {
+  const { data: user } = useProfile()
+  
   return (
     <HStack p='10px' gap={5} justifyContent='space-between'>
       <Link to='/'>
@@ -11,7 +14,14 @@ const NavBar = () => {
       </Link>
       <SearchInput/>
       <Link to='/profile'>
-        <Text>Profile</Text>
+      {user ? 
+        <Avatar
+          size='sm'
+          fontWeight='bold'
+          name={`${user?.first_name} ${user?.last_name}`}
+        />
+        : <Avatar bg='teal.500' size='sm' />
+      }
       </Link>
     </HStack>
   )

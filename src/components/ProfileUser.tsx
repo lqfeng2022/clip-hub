@@ -11,6 +11,7 @@ const ProfileUser = () => {
       <HStack align='flex-start' wrap='wrap' spacing={4}>
         <Avatar
           size='xl'
+          fontWeight='bold'
           name={`${user?.first_name} ${user?.last_name}`}
           src=''
         />
