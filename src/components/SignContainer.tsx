@@ -1,5 +1,6 @@
-import { Box, Flex } from '@chakra-ui/react'
+import { Box, Flex, Stack } from '@chakra-ui/react'
 import { ReactNode } from 'react'
+import Logo from './Logo'
 
 interface Props {
   children: ReactNode
@@ -19,7 +20,10 @@ const SignContainer = ({ children }: Props) => {
         borderRadius='15px'
         m={{md: '40px 12px'}}
       >
-        {children}
+        <Stack p={10} gap={3}>
+          <Logo/>
+            {children}
+        </Stack>
       </Box>
     </Flex>
   )

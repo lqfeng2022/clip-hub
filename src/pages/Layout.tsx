@@ -5,7 +5,7 @@ import { Box } from '@chakra-ui/react'
 const Layout = () => {
   const location = useLocation()
 
-  const hideNavRoutes = ['/user/signin']
+  const hideNavRoutes = ['/user/signin', '/user/signup']
   const shouldHideNav = hideNavRoutes.includes(location.pathname)
 
   return (
