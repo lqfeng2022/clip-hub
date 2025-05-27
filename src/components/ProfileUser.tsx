@@ -1,19 +1,25 @@
 import { Avatar, Box, Button, Heading, HStack, Text } from '@chakra-ui/react'
 import { FaBloggerB, FaRegUser } from 'react-icons/fa'
+import useProfile from '../hooks/useProfile'
 
 const ProfileUser = () => {
+  const { data: user, error } = useProfile()
+
+  if (error) return <Text>{error.message}</Text>
   return (
     <Box mt={8} px={3}>
       <HStack align='flex-start' wrap='wrap' spacing={4}>
         <Avatar
-          size='2xl'
-          name='Christian Nwamba'
-          src='https://bit.ly/code-beast'
+          size='xl'
+          name={`${user?.first_name} ${user?.last_name}`}
+          src=''
         />
         <Box>
-          <Heading fontSize='4xl'>Bob Cooper</Heading>
+          <Heading fontSize='4xl'>
+            {`${user?.first_name} ${user?.last_name}`}
+          </Heading>
           <Text fontSize='lg' color='gray.300'>
-            @username
+            {`@${user?.username}`}
           </Text>
           <HStack gap={5} py={2}>
             <Button leftIcon={<FaRegUser/>} colorScheme='gray' size='md'>
