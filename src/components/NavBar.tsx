@@ -6,6 +6,10 @@ import { useAuth } from '../AuthContext'
 
 const NavBar = () => {
   const { user } = useAuth()
+  // ??: only return right-hand value only if the left side is null or undefined
+  const fullName = user?.first_name || user?.last_name
+      ? `${user?.first_name ?? ''} ${user?.last_name ?? ''}`.trim()
+      : user?.username;
   
   return (
     <HStack p='10px' gap={5} justifyContent='space-between'>
@@ -18,7 +22,7 @@ const NavBar = () => {
           <Avatar
             size='sm'
             fontWeight='bold'
-            name={`${user?.first_name} ${user?.last_name}`}
+            name={fullName}
           />
         </Link>
         : 

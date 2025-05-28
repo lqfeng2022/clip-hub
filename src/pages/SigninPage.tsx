@@ -1,18 +1,15 @@
 import {
-  Box, Button, FormControl, FormHelperText, FormLabel, Heading, 
-  HStack, Input, InputGroup, InputRightElement, SimpleGrid, Text
-} from '@chakra-ui/react'
+  Box, Button, FormControl, FormHelperText, FormLabel, Heading,
+  HStack, Input, SimpleGrid, Text } from '@chakra-ui/react'
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import { useAuth } from '../AuthContext'
+import PasswordInput from '../components/PasswordInput'
 import SignContainer from '../components/SignContainer'
 import useSignin from '../hooks/useSignin'
 import ProfileAPIClient from '../services/api-profile'
-import { useAuth } from '../AuthContext'
 
 const SigninPage = () => {
-  const [show, setShow] = useState(false)
-  const handleClick = () => setShow(!show)
-
   const [username, setUsername]= useState('')
   const [password, setPassword] = useState('')
 
@@ -58,36 +55,18 @@ const SigninPage = () => {
           </FormControl>
           <FormControl py={8}>
             <FormLabel>Enter your password :</FormLabel>
-            <InputGroup size='md'>
-              <Input
-                pr='4.5rem'
-                type={show ? 'text' : 'password'}
-                placeholder='Enter password'
-                value={password}
-                onChange={(ps) => setPassword(ps.target.value)}
-              />
-              <InputRightElement width='4.5rem'>
-                <Button h='1.75rem' size='sm' onClick={handleClick}>
-                  {show ? 'Hide' : 'Show'}
-                </Button>
-              </InputRightElement>
-            </InputGroup>
+            <PasswordInput value={password} onChange={setPassword}/>
             <FormHelperText color={error ? 'red.300' : undefined}>
               {message}
             </FormHelperText>
           </FormControl>
-          <Button 
-            mb={5} 
-            size='md' 
-            fontSize='lg'
-            onClick={handleSignin}
-          >
+          <Button mb={5} size='md' fontSize='lg' onClick={handleSignin}>
             Log In
           </Button>
-          <HStack justifyContent='end'>
+          <HStack justifyContent='end' gap={5}>
             <Text>Don't have an account?</Text>
             <Link to='/user/signup'>
-              <Button size='sm' variant='outline'>
+              <Button size='sm' variant='outline' colorScheme='yellow'>
                 Sign up
               </Button>
             </Link>
