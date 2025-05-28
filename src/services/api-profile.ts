@@ -1,4 +1,4 @@
-import axios, { AxiosRequestConfig } from 'axios';
+import axios, { AxiosRequestConfig } from 'axios'
 
 const axiosInstance = axios.create({
   baseURL: 'http://localhost:8000/interact/profiles',
@@ -6,7 +6,7 @@ const axiosInstance = axios.create({
   params: {}
 })
 
-class APIClient {
+class ProfileAPIClient {
   endpoint: string 
 
   constructor(endpoint: string) {
@@ -21,4 +21,4 @@ class APIClient {
 
 }
 
-export default APIClient
+export default ProfileAPIClient

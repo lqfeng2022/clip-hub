@@ -1,11 +1,13 @@
 import {
-  Box, Button, FormControl, FormHelperText, FormLabel, Heading, HStack,
-  Input, InputGroup, InputRightElement, SimpleGrid, Text
+  Box, Button, FormControl, FormHelperText, FormLabel, Heading, 
+  HStack, Input, InputGroup, InputRightElement, SimpleGrid, Text
 } from '@chakra-ui/react'
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import SignContainer from '../components/SignContainer'
 import useSignin from '../hooks/useSignin'
+import ProfileAPIClient from '../services/api-profile'
+import { useAuth } from '../AuthContext'
 
 const SigninPage = () => {
   const [show, setShow] = useState(false)
@@ -21,10 +23,15 @@ const SigninPage = () => {
     ? "Oops, something wrong..." 
     : "We'll never share your info."
 
+  const { setUser } = useAuth()
+  const apiClient = new ProfileAPIClient('/me/')
+
   const handleSignin = () => {
     mutate({ username, password }, {
       onSuccess: () => {
+        apiClient.get({ withCredentials: true }).then(setUser);
         navigate('/profile')
+        window.location.reload() // clear auth context
       }
     })
   }

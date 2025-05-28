@@ -1,11 +1,11 @@
 import { Avatar, HStack } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
-import useProfile from '../hooks/useProfile'
 import Logo from './Logo'
 import SearchInput from './SearchInput'
+import { useAuth } from '../AuthContext'
 
 const NavBar = () => {
-  const { data: user } = useProfile()
+  const { user } = useAuth()
   
   return (
     <HStack p='10px' gap={5} justifyContent='space-between'>

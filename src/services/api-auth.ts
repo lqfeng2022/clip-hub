@@ -6,7 +6,7 @@ const axiosInstance = axios.create({
   params: {}
 })
 
-class APIClient {
+class AuthAPIClient {
   endpoint: string
 
   constructor(endpoint: string) {
@@ -20,4 +20,4 @@ class APIClient {
   }
 }
 
-export default APIClient
+export default AuthAPIClient

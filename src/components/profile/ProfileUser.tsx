@@ -1,12 +1,12 @@
 import { Avatar, Box, Button, Heading, HStack, Text } from '@chakra-ui/react'
 import { FaBloggerB, FaRegUser } from 'react-icons/fa'
-import useProfile from '../../hooks/useProfile'
 import useSignout from '../../hooks/useSignout'
 import { useNavigate } from 'react-router-dom'
 import { useQueryClient } from '@tanstack/react-query'
+import { useAuth } from '../../AuthContext'
 
 const ProfileUser = () => {
-  const { data: user, error } = useProfile()
+  const { user, setUser } = useAuth()
   const { mutate } = useSignout()
   const navigate = useNavigate()
   const queryClient = useQueryClient()
@@ -16,6 +16,7 @@ const ProfileUser = () => {
     // ``: React Query lifecycle callback that fires after the mutation completes successfully
     mutate(undefined, {
       onSuccess: () => {
+        setUser(null)
         queryClient.removeQueries(['profile']) // clears user
         navigate('/')
         window.location.reload() // clear auth context
@@ -23,7 +24,6 @@ const ProfileUser = () => {
     })
   }
 
-  if (error) return <Text>{error.message}</Text>
   return (
     <Box mt={8} px={3}>
       <HStack align='flex-start' wrap='wrap' spacing={4}>

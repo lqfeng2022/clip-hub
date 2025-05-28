@@ -7,6 +7,7 @@ import { RouterProvider } from 'react-router-dom'
 import './index.css'
 import router from './routes'
 import theme from './theme'
+import { AuthProvider } from './AuthContext'
 
 const queryClient = new QueryClient()
 
@@ -17,7 +18,9 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
         initialColorMode={theme.config.initialColorMode}
       />
       <QueryClientProvider client={queryClient}>
-        <RouterProvider router={router}/>
+        <AuthProvider>
+          <RouterProvider router={router}/>
+        </AuthProvider>
         <ReactQueryDevtools/>
       </QueryClientProvider>
     </ChakraProvider>
