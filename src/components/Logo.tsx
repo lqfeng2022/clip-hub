@@ -4,7 +4,7 @@ const Logo = () => {
   return (
     <Text
       as='b'
-      fontSize='2xl'
+      fontSize='xl'
       color='yellow'
       whiteSpace='nowrap'
     >

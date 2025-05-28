@@ -16,7 +16,7 @@ const NavBar = () => {
       <Link to='/'>
         <Logo/>
       </Link>
-      <Badge variant='solid' fontSize='0.9em'>
+      <Badge variant='solid' fontSize='1em' colorScheme='gray'>
         expression
       </Badge>
       <SearchInput/>

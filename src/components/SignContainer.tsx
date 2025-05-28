@@ -1,4 +1,4 @@
-import { Box, Flex, Stack } from '@chakra-ui/react'
+import { Box, Button, Flex, Stack } from '@chakra-ui/react'
 import { ReactNode } from 'react'
 import Logo from './Logo'
 import { Link } from 'react-router-dom'
@@ -22,7 +22,11 @@ const SignContainer = ({ children }: Props) => {
         m={{md: '40px 12px'}}
       >
         <Stack p={10} gap={3}>
-          <Link to='/'><Logo/></Link>
+          <Link to='/'>
+            <Button variant='outline'>
+              <Logo/>
+            </Button>
+          </Link>
           {children}
         </Stack>
       </Box>
