@@ -1,6 +1,8 @@
 import {
-  Box, Button, FormControl, FormHelperText, FormLabel, Heading,
-  HStack, Input, SimpleGrid, Text } from '@chakra-ui/react'
+  Box, Button, FormControl, FormHelperText,
+  FormLabel, Heading,
+  HStack, Input, SimpleGrid, Text
+} from '@chakra-ui/react'
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../AuthContext'

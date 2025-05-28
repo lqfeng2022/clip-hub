@@ -32,7 +32,7 @@ const ProfileUser = () => {
     <Box mt={8} px={3}>
       <HStack align='flex-start' wrap='wrap' spacing={4}>
         <Avatar
-          size='xl'
+          size='2xl'
           fontWeight='bold'
           name={fullName}
           src={user?.portrait}
@@ -49,13 +49,16 @@ const ProfileUser = () => {
               <Button leftIcon={<FaRegUser/>} colorScheme='gray' size='sm'>
                 View Profile
               </Button>
-              <Button leftIcon={<FaBloggerB/>} colorScheme='gray' size='sm'>
+              <Button 
+                leftIcon={<FaBloggerB/>} 
+                size='sm' 
+                color='gray'
+              >
                 Be a Bro
               </Button>
             </HStack>
             <Button 
               size='sm' 
-              color='gray' 
               variant='outline'
               onClick={handleLogout} >
               Log out

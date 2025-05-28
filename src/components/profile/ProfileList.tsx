@@ -1,10 +1,11 @@
 import { Box, Heading, HStack, Icon, List, ListItem, Text } from '@chakra-ui/react';
 import { CiBookmark, CiClock2, CiHeart, CiUser } from 'react-icons/ci';
 import { HiLanguage } from 'react-icons/hi2';
+import { Link } from 'react-router-dom';
 
 const ProfileList = () => {
   const list = [
-    { name: 'Profile', icon: CiUser, link: '/' },
+    { name: 'Profile', icon: CiUser, link: '/profile/me' },
     { name: 'History', icon: CiClock2, link: '/' },
     { name: 'Like', icon: CiHeart, link: '/' },
     { name: 'Bookmark', icon: CiBookmark, link: '/' },
@@ -21,7 +22,9 @@ const ProfileList = () => {
           <ListItem py='20px' key={p.name}>
             <HStack spacing={4}>
               <Icon as={p.icon} boxSize={9}/>
-              <Text fontSize='xl'>{p.name}</Text>
+              <Link to={p.link}>
+                <Text fontSize='xl'>{p.name}</Text>
+              </Link>
             </HStack>
           </ListItem>
         ))}
