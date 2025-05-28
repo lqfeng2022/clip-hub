@@ -3,7 +3,7 @@ import ProfileList from '../components/profile/ProfileList'
 import ProfileHistory from '../components/profile/ProfileHistory'
 import ProfileUser from '../components/profile/ProfileUser'
 
-const Profile = () => {
+const Profile = () => {  
   return (
     <Grid
       templateAreas={{
@@ -12,11 +12,11 @@ const Profile = () => {
       }}
       templateColumns={{
         base: '1fr',
-        lg: '250px 1fr',
+        lg: '200px 1fr',
       }}
     >
       <Show above='lg'>
-        <GridItem area='aside' px={5}>
+        <GridItem area='aside' pl={2.5}>
           <ProfileList/>
         </GridItem>
       </Show>

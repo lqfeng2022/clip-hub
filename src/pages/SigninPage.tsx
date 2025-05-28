@@ -3,7 +3,7 @@ import {
   Input, InputGroup, InputRightElement, SimpleGrid, Text
 } from '@chakra-ui/react'
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import SignContainer from '../components/SignContainer'
 import useSignin from '../hooks/useSignin'
 
@@ -14,10 +14,20 @@ const SigninPage = () => {
   const [username, setUsername]= useState('')
   const [password, setPassword] = useState('')
 
+  const navigate = useNavigate()
+
   const { mutate, error } = useSignin()
   const message = error 
     ? "Oops, something wrong..." 
     : "We'll never share your info."
+
+  const handleSignin = () => {
+    mutate({ username, password }, {
+      onSuccess: () => {
+        navigate('/profile')
+      }
+    })
+  }
   
   return (
     <SignContainer>
@@ -63,7 +73,7 @@ const SigninPage = () => {
             mb={5} 
             size='md' 
             fontSize='lg'
-            onClick={() => mutate({ username, password })}
+            onClick={handleSignin}
           >
             Log In
           </Button>

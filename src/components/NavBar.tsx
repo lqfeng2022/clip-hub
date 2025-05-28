@@ -13,16 +13,19 @@ const NavBar = () => {
         <Logo/>
       </Link>
       <SearchInput/>
-      <Link to='/profile'>
       {user ? 
-        <Avatar
-          size='sm'
-          fontWeight='bold'
-          name={`${user?.first_name} ${user?.last_name}`}
-        />
-        : <Avatar bg='teal.500' size='sm' />
+        <Link to='/profile'>
+          <Avatar
+            size='sm'
+            fontWeight='bold'
+            name={`${user?.first_name} ${user?.last_name}`}
+          />
+        </Link>
+        : 
+        <Link to='/user/signin'>
+          <Avatar bg='teal.500' size='sm' />
+        </Link>
       }
-      </Link>
     </HStack>
   )
 }

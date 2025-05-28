@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios, { AxiosRequestConfig } from 'axios';
 
 const axiosInstance = axios.create({
   baseURL: 'http://localhost:8000/interact/profiles',
@@ -13,9 +13,9 @@ class APIClient {
     this.endpoint = endpoint
   }
 
-  get = () => {
+  get = (config?: AxiosRequestConfig) => {
     return axiosInstance
-      .get(this.endpoint)
+      .get(this.endpoint, config)
       .then((res) => res.data)
   }
 

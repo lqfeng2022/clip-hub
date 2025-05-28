@@ -10,7 +10,7 @@ interface AuthResponse {
   message: string;
 }
 
-const apiClient = new APIClient('/login')
+const apiClient = new APIClient('/login/')
 
 const useSignin = () => {
   return useMutation<AuthResponse, Error, Signin>({

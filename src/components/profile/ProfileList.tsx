@@ -1,17 +1,14 @@
-import { Box, Heading, HStack, Icon, List, ListItem, Text } from '@chakra-ui/react'
-import { IoIosHeart } from 'react-icons/io'
-import { IoIosBookmark } from 'react-icons/io'
-import { RiChatHistoryFill } from 'react-icons/ri'
-import { CgProfile } from 'react-icons/cg'
-import { TbLanguageHiragana } from "react-icons/tb";
+import { Box, Heading, HStack, Icon, List, ListItem, Text } from '@chakra-ui/react';
+import { CiBookmark, CiClock2, CiHeart, CiUser } from 'react-icons/ci';
+import { HiLanguage } from 'react-icons/hi2';
 
 const ProfileList = () => {
   const list = [
-    { name: 'Profile', icon: CgProfile, link: '/' },
-    { name: 'History', icon: RiChatHistoryFill, link: '/' },
-    { name: 'Like', icon: IoIosHeart, link: '/' },
-    { name: 'Bookmark', icon: IoIosBookmark, link: '/' },
-    { name: 'Expression', icon: TbLanguageHiragana, link: '/' },
+    { name: 'Profile', icon: CiUser, link: '/' },
+    { name: 'History', icon: CiClock2, link: '/' },
+    { name: 'Like', icon: CiHeart, link: '/' },
+    { name: 'Bookmark', icon: CiBookmark, link: '/' },
+    { name: 'Expression', icon: HiLanguage, link: '/' },
   ]
 
   return (
@@ -21,9 +18,9 @@ const ProfileList = () => {
       </Heading>
       <List>
         {list.map((p) => (
-          <ListItem py='15px' key={p.name}>
+          <ListItem py='20px' key={p.name}>
             <HStack spacing={4}>
-              <Icon as={p.icon} boxSize={10}/>
+              <Icon as={p.icon} boxSize={9}/>
               <Text fontSize='xl'>{p.name}</Text>
             </HStack>
           </ListItem>

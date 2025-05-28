@@ -15,7 +15,7 @@ class APIClient {
 
   post = (data: any, config?: AxiosRequestConfig) => {
     return axiosInstance
-      .post(`${this.endpoint}/`, data, config)
+      .post(this.endpoint, data, config)
       .then((res) => res.data)
   }
 }
