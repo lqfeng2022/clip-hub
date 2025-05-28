@@ -1,8 +1,8 @@
-import { Avatar, HStack } from '@chakra-ui/react'
+import { Avatar, Badge, HStack } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
+import { useAuth } from '../AuthContext'
 import Logo from './Logo'
 import SearchInput from './SearchInput'
-import { useAuth } from '../AuthContext'
 
 const NavBar = () => {
   const { user } = useAuth()
@@ -16,6 +16,9 @@ const NavBar = () => {
       <Link to='/'>
         <Logo/>
       </Link>
+      <Badge variant='solid' fontSize='0.9em'>
+        expression
+      </Badge>
       <SearchInput/>
       {user ? 
         <Link to='/profile'>

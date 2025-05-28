@@ -1,4 +1,4 @@
-import { Box, Grid, GridItem, Show } from '@chakra-ui/react'
+import { Box, Grid, GridItem, Show, Image } from '@chakra-ui/react'
 import ProfileList from '../components/profile/ProfileList'
 import ProfileHistory from '../components/profile/ProfileHistory'
 import ProfileUser from '../components/profile/ProfileUser'
@@ -21,7 +21,15 @@ const Profile = () => {
         </GridItem>
       </Show>
       <GridItem area='main'>
-        <Box>
+        <Box p={2}>
+          <Box
+            height='160px'
+            borderRadius={5}
+            overflow='hidden'
+            bg='gray.500'
+          >
+            <Image src='https://bit.ly/naruto-sage'/>
+          </Box>
           <ProfileUser/>
           <ProfileHistory/>
         </Box>

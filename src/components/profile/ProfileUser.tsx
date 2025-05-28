@@ -29,7 +29,7 @@ const ProfileUser = () => {
   }
 
   return (
-    <Box mt={8} px={3}>
+    <Box mt={8} px={2}>
       <HStack align='flex-start' wrap='wrap' spacing={4}>
         <Avatar
           size='2xl'

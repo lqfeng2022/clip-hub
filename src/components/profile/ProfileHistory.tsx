@@ -10,7 +10,7 @@ const ProfileHistory = () => {
 
   if (error) return <Text>{error.message}</Text>
   return (
-    <Box mt={8} px={3}>
+    <Box mt={8} px={2}>
       <HStack justifyContent='space-between' my={5}>
         <Heading fontSize='2xl'>
           History

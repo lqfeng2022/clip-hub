@@ -7,7 +7,7 @@ const ProfilePortrait = () => {
   return (
     <Box mb={5}>
       <Heading fontSize='lg'>Portrait</Heading>
-      <Text pb={2}>
+      <Text py={2}>
         Your profile picture will appear where your channel is presented on YouTube, like next to your videos and comments
       </Text>
       <HStack gap={4}>

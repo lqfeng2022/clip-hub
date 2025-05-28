@@ -7,9 +7,8 @@ const Logo = () => {
       fontSize='2xl'
       color='yellow'
       whiteSpace='nowrap'
-      textShadow='1px 2px 3px #B7791F'
     >
-      C L I P s
+      C L I P
     </Text>
   )
 }

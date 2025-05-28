@@ -14,9 +14,9 @@ import { MdAlternateEmail } from 'react-icons/md'
 const ProfileForms = () => {
   return (
     <>
-      <Box mb={5}>
+      <Box mb={7}>
         <Heading fontSize='lg'>Name</Heading>
-        <Text pb={2}>
+        <Text py={2}>
           Choose a name that represents you and your content.
         </Text>
         <HStack maxW='600px'>
@@ -32,7 +32,7 @@ const ProfileForms = () => {
           </FormControl>
         </HStack>
       </Box>
-      <Box mb={5}>
+      <Box mb={7}>
         <Heading fontSize='lg'>Username</Heading>
         <Text pb={2}>
           Choose a name that represents you and your content.
@@ -43,9 +43,9 @@ const ProfileForms = () => {
           />
         </FormControl>
       </Box>
-      <Box mb={5}>
+      <Box mb={7}>
         <Heading fontSize='lg'>Contact info</Heading>
-        <Text pb={2}>
+        <Text py={2}>
           Let us know how to contact you with better services.
         </Text>
         <FormControl maxW='600px' pb={3}>
@@ -71,9 +71,9 @@ const ProfileForms = () => {
           </InputGroup>
         </FormControl>
       </Box>
-      <Box mb={5}>
+      <Box mb={7}>
         <Heading fontSize='lg'>Birthday</Heading>
-        <Text pb={2}>
+        <Text py={2}>
           Choose a date as your birthday, maybe, you're gonna get some surprise.
         </Text>
         <FormControl maxW='600px'>

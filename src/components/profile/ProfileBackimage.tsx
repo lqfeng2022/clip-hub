@@ -8,10 +8,10 @@ const ProfileBackimage = () => {
   return (
     <Box mb={5}>
       <Heading fontSize='lg'>Back image</Heading>
-      <Text pb={2}>
+      <Text py={2}>
         This image will appear across the top of your channel
       </Text>
-      <SimpleGrid gap={4} columns={{ sm: 1, lg: 2 }}>
+      <SimpleGrid gap={4} columns={{ sm: 1, lg: 2 }} templateColumns={{lg: '1fr 200px'}}>
         <Box
           height='160px'
           borderRadius={5}
