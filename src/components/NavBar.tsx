@@ -23,6 +23,7 @@ const NavBar = () => {
             size='sm'
             fontWeight='bold'
             name={fullName}
+            src={user?.portrait}
           />
         </Link>
         : 

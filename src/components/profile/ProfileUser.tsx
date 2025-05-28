@@ -11,6 +11,10 @@ const ProfileUser = () => {
   const navigate = useNavigate()
   const queryClient = useQueryClient()
 
+  const fullName = user?.first_name || user?.last_name
+    ? `${user?.first_name ?? ''} ${user?.last_name ?? ''}`.trim()
+    : user?.username;
+
   const handleLogout = () => {
     // `undefined`: make React Query happy, cus here we don't pass any data
     // ``: React Query lifecycle callback that fires after the mutation completes successfully
@@ -30,8 +34,8 @@ const ProfileUser = () => {
         <Avatar
           size='xl'
           fontWeight='bold'
-          name={`${user?.first_name} ${user?.last_name}`}
-          src=''
+          name={fullName}
+          src={user?.portrait}
         />
         <Box flex='1'>
           <Heading fontSize='4xl'>
