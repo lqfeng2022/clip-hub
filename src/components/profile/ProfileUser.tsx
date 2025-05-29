@@ -1,9 +1,9 @@
 import { Avatar, Box, Button, Heading, HStack, Text } from '@chakra-ui/react'
-import { FaBloggerB, FaRegUser } from 'react-icons/fa'
-import useSignout from '../../hooks/useSignout'
-import { useNavigate } from 'react-router-dom'
 import { useQueryClient } from '@tanstack/react-query'
+import { FaBloggerB } from 'react-icons/fa'
+import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../../AuthContext'
+import useSignout from '../../hooks/useSignout'
 
 const ProfileUser = () => {
   const { user, setUser } = useAuth()
@@ -45,18 +45,13 @@ const ProfileUser = () => {
             {`@${user?.username}`}
           </Text>
           <HStack py={2} justifyContent='space-between'>
-            <HStack  gap={5} >
-              <Button leftIcon={<FaRegUser/>} colorScheme='gray' size='sm'>
-                View Profile
-              </Button>
-              <Button 
-                leftIcon={<FaBloggerB/>} 
-                size='sm' 
-                disabled
-              >
-                Be a Bro
-              </Button>
-            </HStack>
+            <Button 
+              leftIcon={<FaBloggerB/>} 
+              size='sm' 
+              disabled
+            >
+              Be a Bro
+            </Button>
             <Button 
               size='sm' 
               variant='outline'

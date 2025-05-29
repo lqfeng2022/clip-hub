@@ -5,8 +5,8 @@ const { defineMultiStyleConfig } = createMultiStyleConfigHelpers(avatarAnatomy.k
 
 const large = defineStyle({
   container: {
-    width: '120px',
-    height: '120px',
+    width: '122px',
+    height: '122px',
   },
   label: {
     fontSize: '7xl',

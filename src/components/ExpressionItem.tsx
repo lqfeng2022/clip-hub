@@ -2,7 +2,7 @@ import {
   Card, CardBody, Heading, HStack, Icon, 
   Image, ListItem, Text, UnorderedList 
 } from '@chakra-ui/react'
-import Expression from '../../entities/Expression'
+import Expression from '../entities/Expression'
 import { HiOutlineCube } from 'react-icons/hi2'
 
 interface Props {

@@ -7,11 +7,11 @@ import { Link } from 'react-router-dom';
 
 const ProfileList = () => {
   const list = [
+    { name: 'Expression', icon: HiLanguage, link: '/profile/expression' },
+    { name: 'Like', icon: CiHeart, link: '/profile/like' },
+    { name: 'Bookmark', icon: CiBookmark, link: '/profile/bookmark' },
+    { name: 'History', icon: CiClock2, link: '/profile/history' },
     { name: 'Profile', icon: CiUser, link: '/profile/me' },
-    { name: 'History', icon: CiClock2, link: '/' },
-    { name: 'Like', icon: CiHeart, link: '/' },
-    { name: 'Bookmark', icon: CiBookmark, link: '/' },
-    { name: 'Expression', icon: HiLanguage, link: '/' },
   ]
 
   return (

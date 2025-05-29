@@ -1,6 +1,6 @@
 import { Box, Heading } from '@chakra-ui/react'
 import useExpression from '../../hooks/useExpression'
-import ExpressionItem from './ExpressionItem'
+import ExpressionItem from '../ExpressionItem'
 
 interface Props {
   clipId: number

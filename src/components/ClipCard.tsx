@@ -5,7 +5,7 @@ import Clip from '../entities/Clip'
 interface Props {
   clip: Clip
 }
-const GameCard = ({ clip }: Props) => {
+const ClipCard = ({ clip }: Props) => {
   return (
     <Card bg='gray.800'>
       <Image src={clip.cover} />
@@ -37,4 +37,4 @@ const GameCard = ({ clip }: Props) => {
   )
 }
 
-export default GameCard
+export default ClipCard

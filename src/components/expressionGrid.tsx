@@ -4,7 +4,7 @@ import InfiniteScroll from 'react-infinite-scroll-component'
 import useExpressions from '../hooks/useExpressions'
 import CardContainer from './CardContainer'
 import ClipCardSkeleton from './ClipCardSkeleton'
-import ExpressionItem from './detail/ExpressionItem'
+import ExpressionItem from './ExpressionItem'
 
 const ExpressionGrid = () => {
   const {
