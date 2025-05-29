@@ -32,7 +32,7 @@ const ProfileUser = () => {
     <Box mt={8} px={2}>
       <HStack align='flex-start' wrap='wrap' spacing={4}>
         <Avatar
-          size='2xl'
+          size='large'
           fontWeight='bold'
           name={fullName}
           src={user?.portrait}
