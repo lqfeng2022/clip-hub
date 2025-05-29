@@ -23,7 +23,7 @@ function HomePage() {
         </GridItem>
       </Show>
       <GridItem area='main'>
-        <Box padding={2.5}>
+        <Box padding={2}>
           <ClipHeading/>
           <HStack spacing={5} mb={2}>
             <LanguageSelector/>

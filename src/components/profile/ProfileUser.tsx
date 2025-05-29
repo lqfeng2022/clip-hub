@@ -41,7 +41,7 @@ const ProfileUser = () => {
           <Heading fontSize='4xl'>
             {`${user?.first_name} ${user?.last_name}`}
           </Heading>
-          <Text fontSize='lg' color='gray.300'>
+          <Text fontSize='lg' color='gray.300' py={1}>
             {`@${user?.username}`}
           </Text>
           <HStack py={2} justifyContent='space-between'>
@@ -52,7 +52,7 @@ const ProfileUser = () => {
               <Button 
                 leftIcon={<FaBloggerB/>} 
                 size='sm' 
-                color='gray'
+                disabled
               >
                 Be a Bro
               </Button>

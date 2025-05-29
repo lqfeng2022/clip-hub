@@ -1,13 +1,17 @@
-import { Input, InputGroup, InputLeftElement } from '@chakra-ui/react'
-import { useRef } from 'react'
+import { 
+  Badge, Input, InputGroup, InputLeftElement, InputRightElement 
+} from '@chakra-ui/react'
+import { useRef, useState } from 'react'
 import { BsSearch } from 'react-icons/bs'
-import useClipQueryStore from '../store'
 import { useNavigate } from 'react-router-dom'
+import useClipQueryStore from '../store'
 
 const SearchInput = () => {
   const ref = useRef<HTMLInputElement>(null)
   const setSearchText = useClipQueryStore((s) => s.setSearchText)
   const navigate = useNavigate()
+  
+  const [isFocused, setIsFocused] = useState(false)
   
   return (
     <form 
@@ -25,7 +29,13 @@ const SearchInput = () => {
           borderRadius={20}
           placeholder='Search videos...'
           variant='filled'
+          onFocus={() => setIsFocused(true)}
+          onBlur={() => setIsFocused(false)}
         />
+       {!isFocused && <InputRightElement>
+          <Badge variant='outline' mr={10}>enter</Badge>
+        </InputRightElement>
+        }
       </InputGroup>
     </form>
   )

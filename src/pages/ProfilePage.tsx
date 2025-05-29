@@ -12,11 +12,11 @@ const Profile = () => {
       }}
       templateColumns={{
         base: '1fr',
-        lg: '200px 1fr',
+        lg: '170px 1fr',
       }}
     >
       <Show above='lg'>
-        <GridItem area='aside' pl={2.5}>
+        <GridItem area='aside' px={5}>
           <ProfileList/>
         </GridItem>
       </Show>

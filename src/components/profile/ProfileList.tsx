@@ -1,4 +1,6 @@
-import { Box, Heading, HStack, Icon, List, ListItem, Text } from '@chakra-ui/react';
+import { 
+  Box, Divider, Heading, HStack, Icon, List, ListItem, Text 
+} from '@chakra-ui/react';
 import { CiBookmark, CiClock2, CiHeart, CiUser } from 'react-icons/ci';
 import { HiLanguage } from 'react-icons/hi2';
 import { Link } from 'react-router-dom';
@@ -14,6 +16,7 @@ const ProfileList = () => {
 
   return (
     <Box mt={8}>
+      <Divider my={3} borderColor='white'/>
       <Heading fontSize='2xl' mb={3}>
         Profile List
       </Heading>
@@ -23,7 +26,7 @@ const ProfileList = () => {
             <HStack spacing={4}>
               <Icon as={p.icon} boxSize={9}/>
               <Link to={p.link}>
-                <Text fontSize='xl'>{p.name}</Text>
+                <Text fontSize='md'>{p.name}</Text>
               </Link>
             </HStack>
           </ListItem>

@@ -1,8 +1,9 @@
-import { Avatar, Badge, HStack } from '@chakra-ui/react'
+import { Avatar, Badge, HStack, Show } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
 import { useAuth } from '../AuthContext'
 import Logo from './Logo'
 import SearchInput from './SearchInput'
+import SearchDrawer from './SearchDrawer'
 
 const NavBar = () => {
   const { user } = useAuth()
@@ -12,14 +13,17 @@ const NavBar = () => {
       : user?.username;
   
   return (
-    <HStack p='10px' gap={5} justifyContent='space-between'>
+    <HStack p='16px 10px' gap={5} justifyContent='space-between'>
       <Link to='/'>
         <Logo/>
       </Link>
-      <Badge variant='solid' fontSize='1em' colorScheme='gray'>
-        expression
-      </Badge>
-      <SearchInput/>
+      <Link to='/expression'>
+        <Badge variant='solid' fontSize='1em' colorScheme='gray'>
+          expression
+        </Badge>
+      </Link>
+      <Show above='sm'><SearchInput/></Show>
+      <Show below='sm'><SearchDrawer/></Show>
       {user ? 
         <Link to='/profile'>
           <Avatar

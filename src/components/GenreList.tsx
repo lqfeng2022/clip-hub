@@ -1,5 +1,5 @@
 import { 
-  AspectRatio, Box, Button, Heading, HStack, 
+  AspectRatio, Box, Button, Divider, Heading, HStack, 
   Image, List, ListItem, Spinner } from '@chakra-ui/react'
 import useGenres from '../hooks/useGenres'
 import useClipQueryStore from '../store'
@@ -13,8 +13,9 @@ const GenreList = () => {
   if (isLoading) return <Spinner />
   return (
     <Box mt={8}>
+      <Divider my={3} borderColor='white'/>
       <Heading fontSize='2xl' mb={3}>
-        Genres
+        Clip genre
       </Heading>
       <List>
         {data?.results.map((genre) => (
