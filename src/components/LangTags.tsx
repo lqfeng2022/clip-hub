@@ -14,7 +14,7 @@ const LangTags = () => {
   return (
     <Box 
       gap={5} 
-      py={2}
+      p={2}
       display='flex' // Horizontal layout
       overflowX='auto' // Enables scrolling when content overflows
       whiteSpace='nowrap' // Prevents tag wrapping

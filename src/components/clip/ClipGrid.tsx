@@ -1,10 +1,10 @@
 import { SimpleGrid, Spinner, Text } from '@chakra-ui/react'
 import React from 'react'
 import InfiniteScroll from 'react-infinite-scroll-component'
-import useClips from '../hooks/useClips'
-import CardContainer from './CardContainer'
+import useClips from '../../hooks/useClips'
+import CardContainer from '../CardContainer'
 import ClipCard from './ClipCard'
-import ClipCardSkeleton from './ClipCardSkeleton'
+import ClipCardSkeleton from '../ClipCardSkeleton'
 
 const ClipGrid = () => {
   const {

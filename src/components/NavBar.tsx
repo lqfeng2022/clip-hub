@@ -22,8 +22,8 @@ const NavBar = () => {
           expression
         </Badge>
       </Link>
-      <Show above='sm'><SearchInput/></Show>
-      <Show below='sm'><SearchDrawer/></Show>
+      <Show above='sm'><SearchInput /></Show>
+      <Show below='sm'><SearchDrawer /></Show>
       {user ? 
         <Link to='/profile'>
           <Avatar

@@ -1,11 +1,6 @@
-import {
-  Box,
-  Spinner,
-  Tag,
-  TagLabel
-} from '@chakra-ui/react'
-import useGenres from '../hooks/useGenres'
-import useClipQueryStore from '../clipStore'
+import { Box, Spinner, Tag, TagLabel } from '@chakra-ui/react'
+import useGenres from '../../hooks/useGenres'
+import useClipQueryStore from '../../clipStore'
 
 const GenreStacks = () => {
   const {data, error, isLoading} = useGenres()

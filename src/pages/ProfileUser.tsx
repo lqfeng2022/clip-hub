@@ -1,5 +1,5 @@
 import { Button, Heading, Stack } from '@chakra-ui/react'
-import ProfileBackimage from '../components/profile/ProfileBackimage'
+import ProfileCover from '../components/profile/ProfileCover'
 import ProfileForms from '../components/profile/ProfileForms'
 import ProfilePortrait from '../components/profile/ProfilePortrait'
 
@@ -8,7 +8,7 @@ const ProfileUser = () => {
     <>
       <Stack px={2.5} maxW='800px'>
         <Heading py={4}>Profile Customization</Heading>
-        <ProfileBackimage/>
+        <ProfileCover/>
         <ProfilePortrait/>
         <ProfileForms/>
       </Stack>

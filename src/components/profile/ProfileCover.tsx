@@ -4,7 +4,7 @@ import {
   SimpleGrid, Text
 } from '@chakra-ui/react'
 
-const ProfileBackimage = () => {
+const ProfileCover = () => {
   return (
     <Box mb={5}>
       <Heading fontSize='lg'>Back image</Heading>
@@ -33,4 +33,4 @@ const ProfileBackimage = () => {
   )
 }
 
-export default ProfileBackimage
+export default ProfileCover

@@ -5,7 +5,7 @@ import ExpressionGrid from '../components/ExpressionGrid';
 const ExpressionPage = () => {
   return (
     <Box py={2}>
-      <Heading my={4} fontSize='4xl'>
+      <Heading px={2} my={4} fontSize='4xl'>
         Expressions
       </Heading>
       <LangTags />

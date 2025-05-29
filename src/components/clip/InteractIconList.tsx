@@ -1,4 +1,4 @@
-import { Avatar, HStack, Icon, Stack, Text } from '@chakra-ui/react'
+import { HStack, Icon, Stack, Text } from '@chakra-ui/react'
 import { FaRegComment, FaShare } from 'react-icons/fa'
 import { IoEyeOutline } from 'react-icons/io5'
 import Clip from '../../entities/Clip'
@@ -20,12 +20,6 @@ const InteractIconList = ({ clip }: Props) => {
         </HStack>
         <InteractBookmark clip={clip}/>
         <Icon as={FaShare} boxSize={6}/>
-      </HStack>
-      <HStack spacing={3}>
-        <Avatar boxSize='40px' src={clip.genre.image}/>
-        <Text as='abbr' fontSize='lg'>
-          {clip.genre.title}
-        </Text>
       </HStack>
     </Stack>
   )

@@ -1,6 +1,6 @@
 import { Box, Heading } from '@chakra-ui/react'
 import useExpression from '../../hooks/useExpression'
-import ExpressionItem from '../ExpressionItem'
+import ExpressionCard from '../ExpressionCard'
 
 interface Props {
   clipId: number
@@ -18,7 +18,7 @@ const ExpressionList = ({clipId}: Props) => {
       >
         {data?.results.map((exp) =>
           <Box key={exp.id} sx={{ breakInside: 'avoid' }} mb={5}>
-            <ExpressionItem expression={exp}/>
+            <ExpressionCard expression={exp}/>
           </Box>
         )}
       </Box>
