@@ -4,6 +4,7 @@ import ClipHeading from '../components/ClipHeading'
 import GenreList from '../components/GenreList'
 import LanguageSelector from '../components/LanguageSelector'
 import SortSelector from '../components/SortSelector'
+import GenreStacks from '../components/GenreStacks'
 
 function HomePage() {
   return (
@@ -25,6 +26,7 @@ function HomePage() {
       <GridItem area='main'>
         <Box padding={2}>
           <ClipHeading/>
+          <Show below='md'><GenreStacks/></Show>
           <HStack spacing={5} mb={2}>
             <LanguageSelector/>
             <SortSelector/>

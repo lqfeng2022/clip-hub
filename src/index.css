@@ -19,3 +19,10 @@ form {
     padding: 10px 50px;
   }
 }
+
+.tag-hover:hover {
+  background-color: #4A5568;
+  color: white;
+  transform: translateY(-1px);
+  transition: all 0.2s ease-in-out;
+}
