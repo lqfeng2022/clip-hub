@@ -2,7 +2,7 @@ import { Button, Menu, MenuButton, MenuItem, MenuList } from '@chakra-ui/react'
 import { BsChevronDown } from 'react-icons/bs'
 import useLanguage from '../hooks/useLanguage'
 import useLanguages from '../hooks/useLanguages'
-import useClipQueryStore from '../store'
+import useClipQueryStore from '../clipStore'
 
 const LanguageSelector = () => {
   const { data, error } = useLanguages()

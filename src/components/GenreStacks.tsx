@@ -5,7 +5,7 @@ import {
   TagLabel
 } from '@chakra-ui/react'
 import useGenres from '../hooks/useGenres'
-import useClipQueryStore from '../store'
+import useClipQueryStore from '../clipStore'
 
 const GenreStacks = () => {
   const {data, error, isLoading} = useGenres()

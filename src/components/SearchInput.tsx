@@ -4,7 +4,7 @@ import {
 import { useRef, useState } from 'react'
 import { BsSearch } from 'react-icons/bs'
 import { useNavigate } from 'react-router-dom'
-import useClipQueryStore from '../store'
+import useClipQueryStore from '../clipStore'
 
 const SearchInput = () => {
   const ref = useRef<HTMLInputElement>(null)

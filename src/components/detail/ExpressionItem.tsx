@@ -1,6 +1,7 @@
 import { 
-  Card, CardBody, Heading, HStack, Icon, Image, ListItem, Text, 
-  UnorderedList } from '@chakra-ui/react'
+  Card, CardBody, Heading, HStack, Icon, 
+  Image, ListItem, Text, UnorderedList 
+} from '@chakra-ui/react'
 import Expression from '../../entities/Expression'
 import { HiOutlineCube } from 'react-icons/hi2'
 
@@ -9,13 +10,13 @@ interface Props {
 }
 const ExpressionItem = ({expression}: Props) => {
   return (
-    <Card gap={3} overflow='hidden' variant=''>
+    <Card gap={3} my={1} overflow='hidden' variant=''>
       <Image 
-        maxH='md'
+        maxH='xs'
         objectFit='cover'
         src={expression.image} 
       />
-      <CardBody p='8px 5px'>
+      <CardBody p='5px 8px'>
         <HStack>
           <Icon as={HiOutlineCube} boxSize={5}/>
           <Heading fontSize='xl' color='yellow.300'>

@@ -2,7 +2,7 @@ import {
   AspectRatio, Box, Button, Divider, Heading, HStack, 
   Image, List, ListItem, Spinner } from '@chakra-ui/react'
 import useGenres from '../hooks/useGenres'
-import useClipQueryStore from '../store'
+import useClipQueryStore from '../clipStore'
 
 const GenreList = () => {
   const {data, error, isLoading} = useGenres()
