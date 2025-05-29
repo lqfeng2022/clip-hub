@@ -9,7 +9,7 @@ import { useAuth } from '../AuthContext'
 import PasswordInput from '../components/PasswordInput'
 import SignContainer from '../components/SignContainer'
 import useSignin from '../hooks/useSignin'
-import ProfileAPIClient from '../services/api-profile'
+import InteractAPIClient from '../services/api-interact'
 
 const SigninPage = () => {
   const [username, setUsername]= useState('')
@@ -23,12 +23,12 @@ const SigninPage = () => {
     : "We'll never share your info."
 
   const { setUser } = useAuth()
-  const apiClient = new ProfileAPIClient('/me/')
+  const apiClient = new InteractAPIClient('/profiles/me/')
 
   const handleSignin = () => {
     mutate({ username, password }, {
       onSuccess: () => {
-        apiClient.get({ withCredentials: true }).then(setUser);
+        apiClient.getProfile({ withCredentials: true }).then(setUser);
         navigate('/profile')
         window.location.reload() // clear auth context
       }

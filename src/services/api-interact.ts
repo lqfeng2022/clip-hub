@@ -1,19 +1,19 @@
 import axios, { AxiosRequestConfig } from 'axios'
 
 const axiosInstance = axios.create({
-  baseURL: 'http://localhost:8000/interact/profiles',
+  baseURL: 'http://localhost:8000/interact',
   withCredentials: true, // send cookie to backend
   params: {}
 })
 
-class ProfileAPIClient {
+class InteractAPIClient {
   endpoint: string 
 
   constructor(endpoint: string) {
     this.endpoint = endpoint
   }
 
-  get = (config?: AxiosRequestConfig) => {
+  getProfile = (config?: AxiosRequestConfig) => {
     return axiosInstance
       .get(this.endpoint, config)
       .then((res) => res.data)
@@ -21,4 +21,4 @@ class ProfileAPIClient {
 
 }
 
-export default ProfileAPIClient
+export default InteractAPIClient

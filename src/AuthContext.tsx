@@ -1,5 +1,5 @@
 import { createContext, useContext, useState, useEffect, ReactNode } from 'react'
-import ProfileAPIClient from './services/api-profile'
+import InteractAPIClient from './services/api-interact'
 import User from './entities/User'
 
 interface AuthContextType {
@@ -14,7 +14,7 @@ const AuthContext = createContext<AuthContextType>({
   isAuthenticated: false,
 })
 
-const apiClient = new ProfileAPIClient('/me/')
+const apiClient = new InteractAPIClient('/profiles/me/')
 
 // Wrap useProfile() in a context-based AuthProvider
 interface Props {
@@ -25,7 +25,7 @@ export const AuthProvider = ({ children }: Props) => {
 
   useEffect(() => {
     apiClient
-      .get({ withCredentials: true })
+      .getProfile({ withCredentials: true })
       .then(setUser)
       .catch(() => setUser(null)) // not logged in
   }, [])
