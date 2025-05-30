@@ -1,8 +1,9 @@
 import { HStack, Icon, Text } from '@chakra-ui/react'
 import { useEffect, useRef, useState } from 'react'
-import { IoIosHeart } from 'react-icons/io'
+import { IoHeartOutline, IoHeart } from 'react-icons/io5'
 import Clip from '../../entities/Clip'
 import useInteract from '../../hooks/useInteract'
+
 
 interface Props {
   clip: Clip
@@ -48,9 +49,8 @@ const InteractLike = ({clip}: Props) => {
   return (        
     <HStack>
       <Icon 
-        as={IoIosHeart} 
-        boxSize={6} 
-        color={liked ? 'pink.300' : ''} 
+        as={liked ? IoHeart : IoHeartOutline} 
+        boxSize={6}
         onClick={toggleLike}
       />
       <Text>{likesCount}</Text>

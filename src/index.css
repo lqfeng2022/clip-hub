@@ -25,4 +25,5 @@ form {
   color: white;
   transform: translateY(-1px);
   transition: all 0.2s ease-in-out;
+  cursor: pointer;
 }

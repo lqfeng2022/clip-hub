@@ -1,10 +1,16 @@
-import { Button, Menu, MenuButton, MenuItem, MenuList } from '@chakra-ui/react'
+import { 
+  Button, 
+  Menu, 
+  MenuButton, 
+  MenuItem, 
+  MenuList 
+} from '@chakra-ui/react'
 import { BsChevronDown } from 'react-icons/bs'
 import useLanguage from '../../hooks/useLanguage'
 import useLanguages from '../../hooks/useLanguages'
 import useClipQueryStore from '../../clipStore'
 
-const LanguageSelector = () => {
+const LangSelector = () => {
   const { data, error } = useLanguages()
   const selectedLanguageId = useClipQueryStore((s) => s.clipQuery.languageId)
   const setSelectLanguageId = useClipQueryStore((s) => s.setLanguageId)
@@ -30,4 +36,4 @@ const LanguageSelector = () => {
   )
 }
 
-export default LanguageSelector
+export default LangSelector

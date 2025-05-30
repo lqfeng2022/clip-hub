@@ -1,6 +1,6 @@
 import { Icon } from '@chakra-ui/react'
 import { useEffect, useRef, useState } from 'react'
-import { IoIosBookmark } from 'react-icons/io'
+import { IoBookmark, IoBookmarkOutline } from 'react-icons/io5'
 import useInteract from '../../hooks/useInteract'
 import Clip from '../../entities/Clip'
 
@@ -32,9 +32,8 @@ const InteractBookmark = ({ clip }: Props) => {
   
   return (
     <Icon
-      as={IoIosBookmark}
+      as={marked ? IoBookmark : IoBookmarkOutline}
       boxSize={6}
-      color={marked ? 'green.300' : ''}
       onClick={toggleMarked}
     />
   )

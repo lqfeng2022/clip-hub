@@ -27,7 +27,7 @@ const SearchInput = () => {
         <Input
           ref={ref}
           borderRadius={20}
-          placeholder='Search videos...'
+          placeholder='Search clips...'
           variant='filled'
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}

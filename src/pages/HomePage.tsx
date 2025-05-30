@@ -2,8 +2,8 @@ import { Box, Grid, GridItem, HStack, Show } from '@chakra-ui/react'
 import ClipGrid from '../components/clip/ClipGrid'
 import ClipHeading from '../components/clip/ClipHeading'
 import GenreList from '../components/clip/GenreList'
-import LanguageSelector from '../components/clip/LanguageSelector'
-import GenreStacks from '../components/clip/GenreStacks'
+import LangSelector from '../components/clip/LangSelector'
+import GenreTags from '../components/clip/GenreTags'
 import SortSelector from '../components/clip/SortSelector'
 
 function HomePage() {
@@ -26,9 +26,9 @@ function HomePage() {
       <GridItem area='main'>
         <Box padding={2}>
           <ClipHeading/>
-          <Show below='md'><GenreStacks/></Show>
+          <Show below='md'><GenreTags/></Show>
           <HStack spacing={5} mb={2}>
-            <LanguageSelector/>
+            <LangSelector/>
             <SortSelector/>
           </HStack>
         </Box>
