@@ -1,12 +1,13 @@
-import { 
-  AspectRatio, Box, Button, Divider, Heading, 
-  HStack, Image, List, ListItem, Spinner 
+import {
+  AspectRatio, Box, Button, Divider,
+  HStack, Image, List, ListItem, Spinner
 } from '@chakra-ui/react'
-import useGenres from '../../hooks/useGenres'
 import useClipQueryStore from '../../clipStore'
+import useGenres from '../../hooks/useGenres'
 
 const GenreList = () => {
   const {data, error, isLoading} = useGenres()
+
   const selectedGenreId = useClipQueryStore((s) => s.clipQuery.genreId)
   const setSelectedGenreId = useClipQueryStore((s) => s.setGenreId)
 
@@ -15,14 +16,11 @@ const GenreList = () => {
   return (
     <Box mt={8}>
       <Divider my={3} borderColor='white'/>
-      <Heading fontSize='2xl' mb={3}>
-        Clip genre
-      </Heading>
       <List>
         {data?.results.map((genre) => (
           <ListItem py='6px' key={genre.id}>
-            <HStack>
-              <AspectRatio w='80px' ratio={9 / 6}>
+            <HStack spacing={4}>
+              <AspectRatio w='70px' ratio={9 / 6}>
                 <Image
                   objectFit='cover'
                   borderRadius={5}
@@ -37,7 +35,7 @@ const GenreList = () => {
                   genre.id === selectedGenreId ? 'bold' : 'normal'
                 }
                 onClick={() => setSelectedGenreId(genre.id)}
-                fontSize='lg'
+                fontSize='md'
                 variant='link'
                 _hover={{textDecoration: 'none'}}
               >

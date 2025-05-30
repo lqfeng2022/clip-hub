@@ -30,8 +30,8 @@ const ClipCard = ({ clip }: Props) => {
               {clip.genre.title}
             </Text>
             <HStack>
-              <Text as='b' mr={3}>{clip.release_year}</Text>
-              <Text noOfLines={1}>{clip.original}</Text>
+              <Text mr={3}>{clip.release_year}</Text>
+              <Text as='b' noOfLines={1}>{clip.original}</Text>
             </HStack>
           </Box>
         </HStack>

@@ -1,14 +1,15 @@
 import { Box, Tag, TagLabel, TagLeftIcon } from '@chakra-ui/react';
-import { IoLanguageOutline } from 'react-icons/io5';
 import { RxLetterCaseCapitalize } from 'react-icons/rx';
 import { TbLanguageHiragana } from 'react-icons/tb';
+import { CiFries } from 'react-icons/ci';
+import { GiBrickWall } from "react-icons/gi";
 
 const LangTags = () => {
   const langs = [
     { name: 'English', icon: RxLetterCaseCapitalize, color: 'cyan' },
     { name: '日本語', icon: TbLanguageHiragana, color: 'green' },
-    { name: 'Français', icon: RxLetterCaseCapitalize, color: 'yellow' },
-    { name: '中文', icon: IoLanguageOutline, color: 'gray' },
+    { name: 'Français', icon: CiFries, color: 'yellow' },
+    { name: '中文', icon: GiBrickWall, color: 'gray' },
   ]
   
   return (

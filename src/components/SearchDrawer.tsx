@@ -19,7 +19,6 @@ const SearchDrawer = () => {
     <>
       <Circle 
         size={10}
-        as='button'
         _hover={{ bg: 'gray.500' }}
         onClick={() => handleClick('xs')}
       >

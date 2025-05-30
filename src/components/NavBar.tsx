@@ -1,9 +1,10 @@
-import { Avatar, Badge, HStack, Show } from '@chakra-ui/react'
+import { Avatar, Badge, HStack, Icon, Show } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
 import { useAuth } from '../AuthContext'
 import Logo from './Logo'
 import SearchInput from './SearchInput'
 import SearchDrawer from './SearchDrawer'
+import { TbLanguageKatakana } from "react-icons/tb";
 
 const NavBar = () => {
   const { user } = useAuth()
@@ -18,8 +19,19 @@ const NavBar = () => {
         <Logo/>
       </Link>
       <Link to='/expression'>
-        <Badge variant='solid' fontSize='1em' colorScheme='gray'>
-          expression
+        <Badge 
+          variant='subtle' 
+          fontSize='1em'
+          fontWeight='thin'
+          colorScheme='gray' 
+          className='tag-hover'
+        >
+          <Icon 
+            as={TbLanguageKatakana}
+            boxSize={5}
+            color='green.300'
+            verticalAlign='bottom'
+          /> expression
         </Badge>
       </Link>
       <Show above='sm'><SearchInput /></Show>
