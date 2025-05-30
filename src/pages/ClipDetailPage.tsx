@@ -23,7 +23,7 @@ const ClipDetailPage = () => {
         <GridItem order={{ base: 2, md: 1 }}>
           <Heading>{clip.title}</Heading>
           <Box py={3}>
-            <Heading size='md' color='gray.500'>
+            <Heading size='md' pb={1} color='gray.500'>
               About
             </Heading>
             <CollapseText limit={95}>

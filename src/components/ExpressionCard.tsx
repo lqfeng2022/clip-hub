@@ -1,10 +1,15 @@
 import {
   AspectRatio,
-  Card, CardBody, Divider, Heading,
-  Image, ListItem, Text, UnorderedList
+  Card, CardBody,
+  Heading,
+  HStack,
+  Icon,
+  Image,
+  Text
 } from '@chakra-ui/react'
 import Expression from '../entities/Expression'
 import CollapseText from './CollapseText'
+import { ImQuotesLeft } from "react-icons/im";
 
 interface Props {
   expression: Expression
@@ -20,20 +25,20 @@ const ExpressionCard = ({expression}: Props) => {
         />
       </AspectRatio>
       <CardBody p='5px 8px'>
-        <Heading fontSize='xl'>
+        <Heading pb={2} fontSize='xl' color='orange'>
           {expression.title}
         </Heading>
+        <HStack align='flex-start' wrap='wrap'>
+          <Icon as={ImQuotesLeft}/>
+          <Heading fontSize='md' flex='1' noOfLines={3}>
+            {expression.word}
+          </Heading>
+        </HStack>
         <Text color='gray.300' py={3}>
-          <CollapseText limit={70}>
+          <CollapseText limit={72}>
             {expression.explain}
           </CollapseText>
         </Text>
-        <Divider my={2}/>
-        <UnorderedList>
-          {expression.example.split('\n').map((line, i) => (
-            <ListItem key={i} mb='5px'>{line}</ListItem>
-          ))}
-        </UnorderedList>
       </CardBody>
     </Card>
   )

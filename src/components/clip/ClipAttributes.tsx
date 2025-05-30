@@ -8,7 +8,7 @@ interface Props {
 }
 const ClipAttributes = ({ clip }: Props) => {
   return (
-    <div>
+    <>
       <SimpleGrid columns={2}>
         <DefinitionItem term='Original'>
           {clip.original}
@@ -35,7 +35,7 @@ const ClipAttributes = ({ clip }: Props) => {
         </Heading>
         <TagList tags={clip.tags}/>
       </Box>
-    </div>
+    </>
   )
 }
 
