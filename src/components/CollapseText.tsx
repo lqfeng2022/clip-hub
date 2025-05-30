@@ -1,9 +1,9 @@
 import { Box, Button, Collapse } from '@chakra-ui/react'
-import { useEffect, useRef, useState } from 'react'
+import { ReactNode, useEffect, useRef, useState } from 'react'
 
 interface Props {
-  limit: number
-  children: string
+  limit: number,
+  children: ReactNode,
 }
 const CollapseText = ({ limit, children }: Props) => {
   const [show, setShow] = useState(false)

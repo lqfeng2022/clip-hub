@@ -1,5 +1,6 @@
 import { ThemeConfig, extendTheme } from '@chakra-ui/react'
-import { avatarTheme } from './components/avatar'
+import { avatarTheme } from './avatar'
+import { tableTheme } from './tableTheme'
 
 const config: ThemeConfig = {
   initialColorMode: 'dark'
@@ -21,7 +22,7 @@ const theme = extendTheme({
       900: '#0d0d0d',
     },
   },
-  components: { Avatar: avatarTheme },
+  components: { Avatar: avatarTheme, Table: tableTheme },
 })
 
 export default theme

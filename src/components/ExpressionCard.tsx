@@ -25,7 +25,7 @@ const ExpressionCard = ({expression}: Props) => {
         />
       </AspectRatio>
       <CardBody p='5px 8px'>
-        <Heading pb={2} fontSize='xl' color='orange'>
+        <Heading pb={2} fontSize='xl' color='yellow.200'>
           {expression.title}
         </Heading>
         <HStack align='flex-start' wrap='wrap'>

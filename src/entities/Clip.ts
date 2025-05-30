@@ -1,4 +1,5 @@
 import { Creator } from './Creator'
+import Expression from './Expression'
 import Genre from './Genre'
 import Language from './Language'
 import Movie from './Movie'
@@ -23,4 +24,5 @@ export default interface Clip {
   views: number,
   like_state: boolean,
   bookmark_state: boolean,
+  expressions: Expression[],
 }
