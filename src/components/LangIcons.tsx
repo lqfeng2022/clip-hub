@@ -1,11 +1,12 @@
-import { Box, Tag, TagLabel, TagLeftIcon } from '@chakra-ui/react'
-import { RxLetterCaseCapitalize } from 'react-icons/rx'
-import { TbLanguageHiragana } from 'react-icons/tb'
+import { Tag, TagLabel, TagLeftIcon } from '@chakra-ui/react'
+import { IconType } from 'react-icons'
 import { CiFries } from 'react-icons/ci'
 import { GiBrickWall } from 'react-icons/gi'
-import useLanguages from '../hooks/useLanguages'
+import { RxLetterCaseCapitalize } from 'react-icons/rx'
+import { TbLanguageHiragana } from 'react-icons/tb'
 import useExpressionQueryStore from '../expressionStore'
-import { IconType } from 'react-icons'
+import useLanguages from '../hooks/useLanguages'
+import HScrollContainer from './HScrollContainer'
 
 const LangIcons = () => {
   const { data, error } = useLanguages()
@@ -23,19 +24,10 @@ const LangIcons = () => {
   
   if (error) return null
   return (
-    <Box
-      gap={5}
-      p={2}
-      display='flex' // Horizontal layout
-      overflowX='auto' // Enables scrolling when content overflows
-      width='90vw'
-      whiteSpace='nowrap' // Prevents tag wrapping
-      scrollBehavior='smooth'
-      sx={{ '&::-webkit-scrollbar': { display: 'none' }}}
-    >
+    <HScrollContainer width='90vw'>
       {data?.results.map((lang) =>
         <Tag
-          size='lg'
+          size='md'
           variant='subtle'
           colorScheme='blue'
           flexShrink={0} // Keeps tags from shrinking
@@ -45,18 +37,16 @@ const LangIcons = () => {
         >
           <TagLeftIcon 
             as={iconMap[lang.slug]}
-            boxSize={lang.slug === 'chinese' ? '20px' : '25px'} 
+            boxSize={lang.slug === 'chinese' ? '15px' : '20px'} 
           />
-          <TagLabel fontWeight={
-            lang.id === selectedLangId 
-            ? 'bold' : 'normal'
-            }
+          <TagLabel 
+          fontWeight={ lang.id === selectedLangId ? 'bold' : 'normal' }
           >
             {lang.title}
           </TagLabel>
         </Tag> 
       )}
-    </Box>
+    </HScrollContainer>
   )
 }
 

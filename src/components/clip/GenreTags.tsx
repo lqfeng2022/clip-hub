@@ -1,6 +1,7 @@
 import { Box, Spinner, Tag, TagLabel } from '@chakra-ui/react'
 import useGenres from '../../hooks/useGenres'
 import useClipQueryStore from '../../clipStore'
+import HScrollContainer from '../HScrollContainer'
 
 const GenreTags = () => {
   const {data, error, isLoading} = useGenres()
@@ -11,13 +12,8 @@ const GenreTags = () => {
   if (isLoading) return <Spinner />
   return (
     <Box py={2}>
-      <Box 
-        gap={5}
-        py={2}
-        display='flex' // Horizontal layout
+      <HScrollContainer
         width='90vw' // '100vw' will right offset, -> '90vw'
-        overflowX='auto' // Enables scrolling when content overflows
-        whiteSpace='nowrap' // Prevents tag wrapping
       >
         {data?.results.map((genre) => (
           <Tag
@@ -34,7 +30,7 @@ const GenreTags = () => {
             <TagLabel>{genre.title}</TagLabel>
           </Tag>
         ))}
-      </Box>
+      </HScrollContainer>
     </Box>
   )
 }

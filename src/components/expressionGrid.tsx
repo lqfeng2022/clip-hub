@@ -24,7 +24,7 @@ const ExpressionGrid = () => {
       loader={<Spinner/>}
     >
       <SimpleGrid
-        columns={{ sm: 2, xl: 3 }}
+        columns={{ sm: 2, md: 3, xl: 4 }}
         py='10px'
         spacing={3}
       >
