@@ -1,5 +1,4 @@
 import {
-  AspectRatio,
   Card, CardBody,
   Heading,
   HStack,
@@ -7,30 +6,30 @@ import {
   Image,
   Text
 } from '@chakra-ui/react'
+import { ImQuotesLeft } from 'react-icons/im'
 import Expression from '../entities/Expression'
 import CollapseText from './CollapseText'
-import { ImQuotesLeft } from "react-icons/im";
+import TagList from './clip/TagList'
 
 interface Props {
   expression: Expression
 }
-const ExpressionCard = ({expression}: Props) => {
+const ExpressionCard = ({ expression }: Props) => {
   return (
-    <Card gap={3} my={1} overflow='hidden' variant=''>
-      <AspectRatio ratio={ 16 / 9 }>
-        <Image
-          maxH='xs'
-          objectFit='cover'
-          src={expression.image}
-        />
-      </AspectRatio>
+    <Card gap={2} my={1} overflow='hidden' variant=''>
+      <Image
+        maxH='xs'
+        objectFit='cover'
+        src={expression.image}
+      />
+      <TagList tags={expression.langtags} color={'teal'}/>
       <CardBody p='5px 8px'>
         <Heading pb={2} fontSize='xl' color='yellow.200'>
           {expression.title}
         </Heading>
         <HStack align='flex-start' wrap='wrap'>
           <Icon as={ImQuotesLeft}/>
-          <Heading fontSize='md' flex='1' noOfLines={3}>
+          <Heading fontSize='md' flex='1'>
             {expression.word}
           </Heading>
         </HStack>

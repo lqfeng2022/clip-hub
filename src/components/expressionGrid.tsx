@@ -12,7 +12,8 @@ const ExpressionGrid = () => {
     hasNextPage,
   } = useExpressions()
   const fetchExpressionsCount = data?.pages.reduce(
-    (total, page) => total + page.results.length, 0) || 0
+    (total, page) => total + page.results.length, 0
+  ) || 0
 
   if (error) return <Text>{error.message}</Text>
   return (

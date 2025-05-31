@@ -7,7 +7,9 @@ const ClipHeading = () => {
   const genreId = useClipQueryStore((s) => s.clipQuery.genreId)
   const genre = useGenre(genreId)
 
-  const languageId = useClipQueryStore((s) => s.clipQuery.languageId)
+  const languageId = useClipQueryStore(
+    (s) => s.clipQuery.languageId
+  )
   const language = useLanguage(languageId)
 
   // Clips

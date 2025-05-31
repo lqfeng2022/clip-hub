@@ -27,6 +27,7 @@ const ClipWords = ({ data }: Props) => (
           <Thead>
             <Tr>
               <Th>No.</Th>
+              <Th>Timeline</Th>
               <Th isNumeric>word</Th>
             </Tr>
           </Thead>
@@ -34,6 +35,7 @@ const ClipWords = ({ data }: Props) => (
             {data?.map((exp, index) => (
               <Tr key={index}>
                 <Td>{index + 1}</Td>
+                <Td>{exp.timeline}</Td>
                 <Td whiteSpace='normal'>
                   <Highlight 
                     query={exp.title}

@@ -5,7 +5,7 @@ import { CiFries } from 'react-icons/ci'
 import { GiBrickWall } from 'react-icons/gi'
 import useLanguages from '../hooks/useLanguages'
 import useExpressionQueryStore from '../expressionStore'
-import { IconType } from "react-icons";
+import { IconType } from 'react-icons'
 
 const LangTags = () => {
   const { data, error } = useLanguages()

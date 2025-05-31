@@ -1,30 +1,24 @@
 import {
-  Circle, Drawer, DrawerBody, DrawerCloseButton, DrawerContent,
-  DrawerHeader, DrawerOverlay, Icon, useDisclosure
+  Circle, Drawer, DrawerBody, DrawerCloseButton, 
+  DrawerContent, DrawerHeader, DrawerOverlay, 
+  Icon, useDisclosure
 } from '@chakra-ui/react'
-import React from 'react'
 import { BsSearch } from 'react-icons/bs'
 import SearchInput from './SearchInput'
 
 const SearchDrawer = () => {
-  const [size, setSize] = React.useState('')
   const { isOpen, onOpen, onClose } = useDisclosure()
-
-  const handleClick = (newSize: string) => {
-    setSize(newSize)
-    onOpen()
-  }
 
   return (
     <>
       <Circle 
         size={10}
         _hover={{ bg: 'gray.500' }}
-        onClick={() => handleClick('xs')}
+        onClick={() => onOpen()}
       >
         <Icon as={BsSearch} boxSize={5}/>
       </Circle>
-      <Drawer onClose={onClose} isOpen={isOpen} size={size}>
+      <Drawer onClose={onClose} isOpen={isOpen} size='xs'>
         <DrawerOverlay />
         <DrawerContent>
           <DrawerCloseButton />

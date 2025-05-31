@@ -2,13 +2,14 @@ import { HStack, Tag } from '@chakra-ui/react'
 import Tags from '../../entities/Tag'
 
 interface Props {
-  tags: Tags[]
+  tags: Tags[],
+  color: string,
 }
-const TagList = ({ tags }: Props) => {
+const TagList = ({ tags, color }: Props) => {
   return (
     <HStack pt={2} spacing={2}>
       {tags.map((tag) => (
-        <Tag colorScheme='cyan' key={tag.id}>
+        <Tag colorScheme={color} key={tag.id}>
           {tag.title}
         </Tag>
       ))}
