@@ -15,11 +15,11 @@ const large = defineStyle({
 
 const small = defineStyle({
   container: {
-    width: '38px',
-    height: '38px',
+    width: '30px',
+    height: '30px',
   },
   label: {
-    fontSize: 'xl',
+    fontSize: 'lg',
   },
 })
 

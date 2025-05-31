@@ -16,7 +16,7 @@ const NavBar = () => {
   return (
     <Flex align='center' p='16px 10px' justifyContent='space-between'>
       {/* Left section */}
-      <Flex align='center' gap={{ base: 3, md: 5, xl: 10 }}>
+      <Flex align='center' gap={{ base: 5, xl: 10 }}>
         <Link to='/'>
           <Logo/>
         </Link>
@@ -38,13 +38,11 @@ const NavBar = () => {
         </Link>
       </Flex>
       {/* Center: Search bar */}
-      <Box flex='1' px={4} display='flex' justifyContent='center' >
-        <Box maxW='800px' w='100%'>
-          <Show above='sm'><SearchInput /></Show>
-          <Show below='sm'><SearchDrawer /></Show>
-        </Box>
+      <Box flex='1' px={5} display='flex' justifyContent='center'>
+        <Show above='sm'><SearchInput /></Show>
+        <Show below='sm'><SearchDrawer /></Show>
       </Box>
-      {/* Right: Avatar */}
+      {/* Right-end: Avatar */}
       {user ? 
         <Link to='/profile'>
           <Avatar

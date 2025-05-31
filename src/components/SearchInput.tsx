@@ -1,5 +1,9 @@
 import { 
-  Badge, Input, InputGroup, InputLeftElement, InputRightElement 
+  Badge, 
+  Input, 
+  InputGroup, 
+  InputLeftElement, 
+  InputRightElement 
 } from '@chakra-ui/react'
 import { useRef, useState } from 'react'
 import { BsSearch } from 'react-icons/bs'
@@ -22,7 +26,7 @@ const SearchInput = () => {
         navigate('/')
       }}
     >
-      <InputGroup>
+      <InputGroup size={{ base: 'sm', lg: 'md'}}>
         <InputLeftElement children={<BsSearch />} />
         <Input
           ref={ref}

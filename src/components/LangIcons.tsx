@@ -7,7 +7,7 @@ import useLanguages from '../hooks/useLanguages'
 import useExpressionQueryStore from '../expressionStore'
 import { IconType } from 'react-icons'
 
-const LangTags = () => {
+const LangIcons = () => {
   const { data, error } = useLanguages()
   const selectedLangId = useExpressionQueryStore(
     (s) => s.expressionQuery.languageId)
@@ -28,6 +28,7 @@ const LangTags = () => {
       p={2}
       display='flex' // Horizontal layout
       overflowX='auto' // Enables scrolling when content overflows
+      width='90vw'
       whiteSpace='nowrap' // Prevents tag wrapping
       scrollBehavior='smooth'
       sx={{ '&::-webkit-scrollbar': { display: 'none' }}}
@@ -59,4 +60,4 @@ const LangTags = () => {
   )
 }
 
-export default LangTags
+export default LangIcons

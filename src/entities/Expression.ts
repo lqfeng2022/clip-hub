@@ -1,4 +1,4 @@
-import Tags from "./Tag";
+import Tags from './Tag'
 
 export default interface Expression {
   id: number,
@@ -6,6 +6,7 @@ export default interface Expression {
   title: string,
   image: string,
   level: string,
+  language: string,
   langtags: Tags[],
   word: string,
   explain: string,
