@@ -7,6 +7,7 @@ import {
   Text
 } from '@chakra-ui/react'
 import { ImQuotesLeft } from 'react-icons/im'
+import { Link, useLocation } from 'react-router-dom'
 import Expression from '../entities/Expression'
 import CollapseText from './CollapseText'
 import TagList from './clip/TagList'
@@ -15,6 +16,9 @@ interface Props {
   expression: Expression
 }
 const ExpressionCard = ({ expression }: Props) => {
+  const location = useLocation()
+  const isExpressionPage = location.pathname.startsWith('/expression')
+
   return (
     <Card gap={2} my={1} overflow='hidden' variant=''>
       <Image
@@ -33,6 +37,18 @@ const ExpressionCard = ({ expression }: Props) => {
             {expression.word}
           </Heading>
         </HStack>
+        { isExpressionPage && 
+          <HStack justifyContent='end' pt={2}>
+            <Link to={`/clips/${expression.video}`}>
+              <Text
+                fontWeight='light'
+                _hover={{ fontWeight: 'bold', color: 'yellow', cursor: 'pointer' }}
+              >
+                {`-- Original Video`}
+              </Text>
+            </Link>
+          </HStack>
+        }
         <Text color='gray.300' py={3}>
           <CollapseText limit={72}>
             {expression.explain}

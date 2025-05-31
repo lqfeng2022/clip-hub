@@ -9,4 +9,5 @@ export default interface Expression {
   langtags: Tags[],
   word: string,
   explain: string,
+  video: string,
 }
