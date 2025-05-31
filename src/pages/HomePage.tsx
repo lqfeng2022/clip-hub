@@ -24,10 +24,10 @@ function HomePage() {
         </GridItem>
       </Show>
       <GridItem area='main'>
-        <Box padding={2}>
+        <Box px={2}>
           <ClipHeading/>
           <Show below='md'><GenreTags/></Show>
-          <HStack spacing={5} mb={2}>
+          <HStack spacing={4} mb={1}>
             <LangSelector/>
             <SortSelector/>
           </HStack>

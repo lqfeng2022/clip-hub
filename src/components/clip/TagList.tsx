@@ -9,7 +9,7 @@ const TagList = ({ tags, color }: Props) => {
   return (
     <HStack pt={2} spacing={2}>
       {tags.map((tag) => (
-        <Tag colorScheme={color} key={tag.id}>
+        <Tag colorScheme={color} key={tag.id} size='sm'>
           {tag.title}
         </Tag>
       ))}

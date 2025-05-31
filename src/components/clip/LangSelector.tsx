@@ -19,7 +19,7 @@ const LangSelector = () => {
   if (error) return null
   return (
     <Menu>
-      <MenuButton as={Button} rightIcon={<BsChevronDown />}>
+      <MenuButton size='sm' as={Button} rightIcon={<BsChevronDown />}>
         {selectedLanguage?.title || 'Language'}
       </MenuButton>
       <MenuList>

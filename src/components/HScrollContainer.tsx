@@ -9,7 +9,7 @@ const HScrollContainer = ({ width, children }: Props) => {
   return (
     <Box
       gap={4}
-      p={2}
+      py={2}
       display='flex' // Horizontal layout
       overflowX='auto' // Enables scrolling when content overflows
       width={width} // It should be '100vw' by default

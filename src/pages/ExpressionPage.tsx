@@ -4,14 +4,20 @@ import LangIcons from '../components/LangIcons'
 import useExpressionQueryStore from '../expressionStore'
 import useLanguage from '../hooks/useLanguage'
 import ExpressionGrid from '../components/ExpressionGrid'
+import { useLangtag } from '../hooks/useLangtag'
 
 function ExpressionPage() {
   const languageId = useExpressionQueryStore(
     (s) => s.expressionQuery.languageId
   )
-  const language = useLanguage(languageId)
+  const langtagId = useExpressionQueryStore(
+    (s) => s.expressionQuery.tagId
+  )
 
-  const heading = `${language?.title || ''} Expressions`
+  const language = useLanguage(languageId)
+  const langtag = useLangtag(langtagId)
+
+  const heading = `${language?.title || ''} ${langtag?.title || ''} Expressions`
   
   return (
     <Grid
@@ -31,7 +37,7 @@ function ExpressionPage() {
       </Show>
       <GridItem area='main'>
         <Box>
-          <Heading px={2} my={4} fontSize='3xl'>
+          <Heading my={4} fontSize='3xl'>
             {heading}
           </Heading>
           <Show below='lg'>

@@ -19,7 +19,7 @@ const ClipHeading = () => {
   const heading = `${language?.title || ''} ${genre?.title || ''} Clips `
 
   return (
-    <Heading my={4} fontSize='4xl'>
+    <Heading my={4} fontSize='3xl'>
       {heading}
     </Heading>
   )
