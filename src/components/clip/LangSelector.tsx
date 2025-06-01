@@ -23,6 +23,9 @@ const LangSelector = () => {
         {selectedLanguage?.title || 'Language'}
       </MenuButton>
       <MenuList>
+        <MenuItem onClick={() => setSelectLanguageId(undefined)}>
+          All
+        </MenuItem>
         {data?.results.map((language) => (
           <MenuItem 
             key={language.id}

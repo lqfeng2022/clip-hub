@@ -11,7 +11,7 @@ const ProfileLayout = () => {
       }}
       templateColumns={{
         base: '1fr',
-        lg: '170px 1fr',
+        lg: '250px 1fr',
       }}
     >
       <Show above='lg'>

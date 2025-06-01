@@ -1,16 +1,16 @@
 import { 
   Box, Divider, HStack, Icon, List, ListItem, Text 
-} from '@chakra-ui/react';
-import { CiBookmark, CiClock2, CiHeart, CiUser } from 'react-icons/ci';
-import { HiLanguage } from 'react-icons/hi2';
-import { Link } from 'react-router-dom';
+} from '@chakra-ui/react'
+import { CiBookmark, CiClock2, CiHeart, CiUser } from 'react-icons/ci'
+import { HiLanguage } from 'react-icons/hi2'
+import { Link } from 'react-router-dom'
 
 const ProfileList = () => {
   const list = [
-    { name: 'Expression', icon: HiLanguage, link: '/profile/expression' },
-    { name: 'Like', icon: CiHeart, link: '/profile/like' },
-    { name: 'Bookmark', icon: CiBookmark, link: '/profile/bookmark' },
-    { name: 'History', icon: CiClock2, link: '/profile/history' },
+    { name: 'View history', icon: CiClock2, link: '/profile/history' },
+    { name: 'Liked clips', icon: CiHeart, link: '/profile/like' },
+    { name: 'Saved clips', icon: CiBookmark, link: '/profile/bookmark' },
+    { name: 'Your Expressions', icon: HiLanguage, link: '/profile/expression' },
     { name: 'Profile', icon: CiUser, link: '/profile/me' },
   ]
 
@@ -21,9 +21,9 @@ const ProfileList = () => {
         {list.map((p) => (
           <ListItem py='20px' key={p.name}>
             <HStack spacing={3}>
-              <Icon as={p.icon} boxSize={7}/>
+              <Icon as={p.icon} boxSize={8}/>
               <Link to={p.link}>
-                <Text fontSize='sm'>{p.name}</Text>
+                <Text fontSize='lg'>{p.name}</Text>
               </Link>
             </HStack>
           </ListItem>
