@@ -1,6 +1,6 @@
 import { Box, Button, Heading, HStack, SimpleGrid, Text } from '@chakra-ui/react'
 import useClips from '../../hooks/useClips'
-import CardContainer from '../CardContainer'
+import ClipCardContainer from '../ClipCardContainer'
 import ClipCardSkeleton from '../ClipCardSkeleton'
 import SimpleClipCard from '../SimpleClipCard'
 
@@ -26,14 +26,14 @@ const ProfileHistory = () => {
         {isLoading &&
           skeletons.map(
             (skeleton) => (
-              <CardContainer key={skeleton}>
+              <ClipCardContainer key={skeleton}>
                 <ClipCardSkeleton/>
-              </CardContainer>
+              </ClipCardContainer>
         ))}
           {data?.pages[0].results.map((clip) => (
-              <CardContainer key={clip.id} >
+              <ClipCardContainer key={clip.id} >
                 <SimpleClipCard clip={clip} />
-              </CardContainer>
+              </ClipCardContainer>
           ))}
       </SimpleGrid>
     </Box>

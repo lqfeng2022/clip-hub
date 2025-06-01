@@ -4,7 +4,8 @@ import useClipQueryStore from '../../clipStore'
 import HScrollContainer from '../HScrollContainer'
 
 const GenreTags = () => {
-  const {data, error, isLoading} = useGenres()
+  const { data, error, isLoading } = useGenres()
+  
   const selectedGenreId = useClipQueryStore((s) => s.clipQuery.genreId)
   const setSelectedGenreId = useClipQueryStore((s) => s.setGenreId)
 
@@ -22,8 +23,8 @@ const GenreTags = () => {
             flexShrink={0}
             className='tag-hover'
             key={genre.title}
-            fontWeight={
-              genre.id === selectedGenreId ? 'bold' : 'normal'
+            fontWeight={ genre.id === selectedGenreId 
+              ? 'bold' : 'normal'
             }
             onClick={() => setSelectedGenreId(genre.id)}
           >

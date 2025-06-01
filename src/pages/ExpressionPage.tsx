@@ -1,6 +1,6 @@
 import { Box, Grid, GridItem, Heading, Show } from '@chakra-ui/react'
-import ExpressionTags from '../components/ExpressionTags'
-import LangIcons from '../components/LangIcons'
+import ExpressionTagsList from '../components/ExpressionTagsList'
+import LanguageHList from '../components/LanguageHList'
 import useExpressionQueryStore from '../expressionStore'
 import useLanguage from '../hooks/useLanguage'
 import ExpressionGrid from '../components/ExpressionGrid'
@@ -17,7 +17,11 @@ function ExpressionPage() {
   const language = useLanguage(languageId)
   const langtag = useLangtag(langtagId)
 
-  const heading = `${language?.title || ''} ${langtag?.title || ''} Expressions`
+  const heading = `
+    ${language?.title || ''} 
+    ${langtag?.title || ''} 
+    Expressions
+  `
   
   return (
     <Grid
@@ -32,7 +36,7 @@ function ExpressionPage() {
     >
       <Show above='lg'>
         <GridItem area='aside' px={5}>
-          <ExpressionTags />
+          <ExpressionTagsList />
         </GridItem>
       </Show>
       <GridItem area='main'>
@@ -41,7 +45,7 @@ function ExpressionPage() {
             {heading}
           </Heading>
           <Show below='lg'>
-            <LangIcons />
+            <LanguageHList />
           </Show>
         </Box>
         <ExpressionGrid/>

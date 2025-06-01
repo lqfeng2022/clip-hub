@@ -8,12 +8,15 @@ import useExpressionQueryStore from '../expressionStore'
 import useLanguages from '../hooks/useLanguages'
 import HScrollContainer from './HScrollContainer'
 
-const LangIcons = () => {
+const LanguageHList = () => {
   const { data, error } = useLanguages()
+
   const selectedLangId = useExpressionQueryStore(
-    (s) => s.expressionQuery.languageId)
+    (s) => s.expressionQuery.languageId
+  )
   const setSelectLangId = useExpressionQueryStore(
-    (s) => s.setLanguageId)
+    (s) => s.setLanguageId
+  )
 
   const iconMap: { [key: string]: IconType } = {
     english: RxLetterCaseCapitalize,
@@ -50,4 +53,4 @@ const LangIcons = () => {
   )
 }
 
-export default LangIcons
+export default LanguageHList

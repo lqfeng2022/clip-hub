@@ -4,7 +4,7 @@ import { ReactNode } from 'react'
 interface Props {
   children: ReactNode
 }
-const CardContainer = ({ children }: Props) => {
+const ClipCardContainer = ({ children }: Props) => {
   return (
     <Box 
       borderRadius={10} 
@@ -19,4 +19,4 @@ const CardContainer = ({ children }: Props) => {
   )
 }
 
-export default CardContainer
+export default ClipCardContainer

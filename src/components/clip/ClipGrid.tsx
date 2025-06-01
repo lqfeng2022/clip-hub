@@ -2,7 +2,7 @@ import { SimpleGrid, Spinner, Text } from '@chakra-ui/react'
 import React from 'react'
 import InfiniteScroll from 'react-infinite-scroll-component'
 import useClips from '../../hooks/useClips'
-import CardContainer from '../CardContainer'
+import ClipCardContainer from '../ClipCardContainer'
 import ClipCard from './ClipCard'
 import ClipCardSkeleton from '../ClipCardSkeleton'
 
@@ -36,16 +36,16 @@ const ClipGrid = () => {
         {isLoading &&
           skeletons.map(
             (skeleton) => (
-              <CardContainer key={skeleton}>
+              <ClipCardContainer key={skeleton}>
                 <ClipCardSkeleton/>
-              </CardContainer>
+              </ClipCardContainer>
           ))}
         {data?.pages.map((page, index) => (
           <React.Fragment key={index}>
             {page?.results.map((clip) => (
-                <CardContainer key={clip.id} >
+                <ClipCardContainer key={clip.id} >
                   <ClipCard clip={clip} />
-                </CardContainer>
+                </ClipCardContainer>
             ))}
           </React.Fragment>
         ))}
