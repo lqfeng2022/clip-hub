@@ -1,4 +1,4 @@
-import { Avatar, Badge, Box, Flex, Icon, Show } from '@chakra-ui/react'
+import { Avatar, Badge, HStack, Icon, Show } from '@chakra-ui/react'
 import { TbLanguageKatakana } from 'react-icons/tb'
 import { Link } from 'react-router-dom'
 import { useAuth } from '../AuthContext'
@@ -14,34 +14,30 @@ const NavBar = () => {
       : user?.username;
   
   return (
-    <Flex align='center' p='16px 10px' justifyContent='space-between'>
+    <HStack p='16px 10px' gap={5} justifyContent='space-between'>
       {/* Left section */}
-      <Flex align='center' gap={{ base: 5, xl: 10 }}>
-        <Link to='/'>
-          <Logo/>
-        </Link>
-        <Link to='/expression'>
-          <Badge
-            variant='subtle'
-            fontSize='1em'
-            fontWeight='thin'
-            colorScheme='gray'
-            className='tag-hover'
-          >
-            <Icon
-              as={TbLanguageKatakana}
-              boxSize={5}
-              color='green.300'
-              verticalAlign='bottom'
-            /> expression
-          </Badge>
-        </Link>
-      </Flex>
+      <Link to='/'>
+        <Logo/>
+      </Link>
+      <Link to='/expression'>
+        <Badge
+          variant='subtle'
+          fontSize='1em'
+          fontWeight='thin'
+          colorScheme='gray'
+          className='tag-hover'
+        >
+          <Icon
+            as={TbLanguageKatakana}
+            boxSize={5}
+            color='green.300'
+            verticalAlign='bottom'
+          /> expression
+        </Badge>
+      </Link>
       {/* Center: Search bar */}
-      <Box flex='1' px={5} display='flex' justifyContent='center'>
-        <Show above='sm'><SearchInput /></Show>
-        <Show below='sm'><SearchDrawer /></Show>
-      </Box>
+      <Show above='sm'><SearchInput /></Show>
+      <Show below='sm'><SearchDrawer /></Show>
       {/* Right-end: Avatar */}
       {user ? 
         <Link to='/profile'>
@@ -57,7 +53,7 @@ const NavBar = () => {
           <Avatar bg='teal.500' size='sm' />
         </Link>
       }
-    </Flex>
+    </HStack>
   )
 }
 
