@@ -19,7 +19,7 @@ function HomePage() {
       }}
     >
       <Show above='lg'>
-        <GridItem area='aside' px={5}>
+        <GridItem area='aside' px={2.5}>
           <GenreList />
         </GridItem>
       </Show>

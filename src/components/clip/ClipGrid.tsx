@@ -30,7 +30,7 @@ const ClipGrid = () => {
     >
       <SimpleGrid
         columns={{ sm: 1, lg: 2, xl: 3 }}
-        padding='10px'
+        p='10px'
         spacing={3}
       >
         {isLoading &&

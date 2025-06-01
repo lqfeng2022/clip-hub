@@ -15,7 +15,7 @@ const ProfileLayout = () => {
       }}
     >
       <Show above='lg'>
-        <GridItem area='aside' px={5}>
+        <GridItem area='aside' px={2.5}>
           <ProfileList />
         </GridItem>
       </Show>

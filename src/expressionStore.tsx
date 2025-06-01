@@ -9,9 +9,12 @@ interface ExpressionQuery {
 
 interface ExpressionQueryStore {
   expressionQuery: ExpressionQuery,
+
   setSearchText: (searchText: string) => void,
+
   setLanguageId: (platformId: number) => void,
   setTagId: (tagId: number) => void,
+  
   setSortOrder: (sortOrder: string) => void,
 }
 

@@ -25,7 +25,7 @@ const ExpressionGrid = () => {
     >
       <SimpleGrid
         columns={{ sm: 2, lg: 3, xl: 4 }}
-        py='10px'
+        p='10px'
         spacing={3}
       >
         {data?.pages.map((page, index) => (
