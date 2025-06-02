@@ -10,10 +10,11 @@ interface Props {
 const InteractBookmark = ({ clip }: Props) => {
   const [marked, setMarked] = useState(clip.bookmark_state)
   const toggleMarked = () => setMarked(prev => !prev)
-  const { mutate } = useInteract(clip.id, 'bookmark')
-
+  
   const lastState = useRef(clip.bookmark_state)
   const timer = useRef<number | null>(null)
+  
+  const { mutate } = useInteract(clip.id, 'bookmark')
 
   useEffect(() => {
     if (marked !== lastState.current) {

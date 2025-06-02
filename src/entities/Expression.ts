@@ -11,4 +11,5 @@ export default interface Expression {
   word: string,
   explain: string,
   video: string,
+  bookmark_state: boolean,
 }

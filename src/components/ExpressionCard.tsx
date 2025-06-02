@@ -1,4 +1,5 @@
 import {
+  Box,
   Card, CardBody,
   Heading,
   HStack,
@@ -11,6 +12,7 @@ import { Link, useLocation } from 'react-router-dom'
 import Expression from '../entities/Expression'
 import CollapseText from './CollapseText'
 import TagList from './clip/TagList'
+import ExpressionBookmark from './ExpressionBookmark'
 
 interface Props {
   expression: Expression
@@ -21,11 +23,14 @@ const ExpressionCard = ({ expression }: Props) => {
 
   return (
     <Card gap={2} my={1} overflow='hidden' variant=''>
-      <Image
-        maxH='xs'
-        objectFit='cover'
-        src={expression.image}
-      />
+      <Box position='relative'>
+        <Image
+          w='100%'
+          objectFit='cover'
+          src={expression.image}
+        />
+        <ExpressionBookmark expression={expression} />
+      </Box>
       <TagList tags={expression.langtags} color={'teal'}/>
       <CardBody p='5px 8px'>
         <Heading pb={2} fontSize='xl' color='yellow.200'>
@@ -42,7 +47,7 @@ const ExpressionCard = ({ expression }: Props) => {
             <Link to={`/clips/${expression.video}`}>
               <Text
                 fontWeight='light'
-                _hover={{ fontWeight: 'bold', color: 'yellow', cursor: 'pointer' }}
+                _hover={{ color: 'yellow', cursor: 'pointer' }}
               >
                 {`-- Original Video`}
               </Text>
@@ -50,7 +55,7 @@ const ExpressionCard = ({ expression }: Props) => {
           </HStack>
         }
         <Text color='gray.300' py={3}>
-          <CollapseText limit={72}>
+          <CollapseText limit={60}>
             {expression.explain}
           </CollapseText>
         </Text>

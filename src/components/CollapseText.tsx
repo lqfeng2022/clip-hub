@@ -22,7 +22,7 @@ const CollapseText = ({ limit, children }: Props) => {
   return (
     <>
       <Collapse startingHeight={limit} in={show}>
-        <Box ref={contentRef}>{children}</Box>
+        <Box ref={contentRef} lineHeight='shorter'>{children}</Box>
       </Collapse>
       {isExpandable && (
         <Button 
