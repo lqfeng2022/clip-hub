@@ -1,9 +1,4 @@
-import {
-  Box,
-  Card, CardBody,
-  Heading,
-  Image
-} from '@chakra-ui/react'
+import { Box, Card, CardBody, Heading, Image } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
 import Expression from '../entities/Expression'
 import ExpressionBookmark from './ExpressionBookmark'
@@ -28,7 +23,12 @@ const ExpressionCard = ({ expression, onUnmark }: Props) => {
       </Box>
       <CardBody p='5px 8px'>
         <Link to={'/expressions/' + expression.slug}>
-          <Heading pb={2} fontSize='xl' color='yellow.200'>
+          <Heading 
+            pb={2} 
+            fontSize='xl' 
+            color='yellow.200' 
+            _hover={{ color: 'white'}}
+          >
             {expression.title}
           </Heading>
         </Link>

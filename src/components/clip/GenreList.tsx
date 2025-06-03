@@ -6,10 +6,10 @@ import useClipQueryStore from '../../clipStore'
 import useGenres from '../../hooks/useGenres'
 
 const GenreList = () => {
-  const { data, error, isLoading } = useGenres()
-
   const selectedGenreId = useClipQueryStore((s) => s.clipQuery.genreId)
   const setSelectedGenreId = useClipQueryStore((s) => s.setGenreId)
+
+  const { data, error, isLoading } = useGenres()
 
   if (error) return null
   if (isLoading) return <Spinner />

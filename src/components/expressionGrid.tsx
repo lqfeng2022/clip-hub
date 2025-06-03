@@ -5,12 +5,7 @@ import useExpressions from '../hooks/useExpressions'
 import ExpressionCard from './ExpressionCard'
 
 const ExpressionGrid = () => {
-  const {
-    data, 
-    error, 
-    fetchNextPage, 
-    hasNextPage,
-  } = useExpressions()
+  const { data, error, fetchNextPage, hasNextPage } = useExpressions()
   const fetchExpressionsCount = data?.pages.reduce(
     (total, page) => total + page.results.length, 0
   ) || 0
