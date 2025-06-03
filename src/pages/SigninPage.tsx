@@ -28,7 +28,7 @@ const SigninPage = () => {
   const handleSignin = () => {
     mutate({ username, password }, {
       onSuccess: () => {
-        apiClient.getProfile({ withCredentials: true }).then(setUser);
+        apiClient.getProfile({ withCredentials: true }).then(setUser)
         navigate('/profile')
         window.location.reload() // clear auth context
       }

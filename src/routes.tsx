@@ -6,14 +6,14 @@ import HomePage from './pages/HomePage'
 import Layout from './pages/Layout'
 import ProfileLayout from './pages/ProfileLayout'
 import ProfilePage from './pages/ProfilePage'
-import ProfileUser from './pages/ProfileUser'
+import ProfileUserPage from './pages/ProfileUserPage'
 import SigninPage from './pages/SigninPage'
 import SignupPage from './pages/SignupPage'
-import ProfileExpressions from './pages/ProfileExpressions'
-import ProfileHistories from './pages/ProfileHistories'
-import ProfileLikes from './pages/ProfileLikes'
-import ProfileBookmarks from './pages/ProfileBookmarks'
+import ProfileHistoryPage from './pages/ProfileHistoryPage'
+import ProfileLikePage from './pages/ProfileLikePage'
+import ProfileBookmarkPage from './pages/ProfileBookmarkPage'
 import ExpressionDetailPage from './pages/ExpressionDetailPage'
+import ProfileEpbookPage from './pages/ProfileEpbookPage'
 
 const router = createBrowserRouter([
   {
@@ -30,11 +30,11 @@ const router = createBrowserRouter([
         element: <ProfileLayout/>,
         children: [
           { index: true, element: <ProfilePage /> },
-          { path: 'me', element: <ProfileUser /> },
-          { path: 'expression', element: <ProfileExpressions /> },
-          { path: 'history', element: <ProfileHistories /> },
-          { path: 'like', element: <ProfileLikes /> },
-          { path: 'bookmark', element: <ProfileBookmarks /> },
+          { path: 'me', element: <ProfileUserPage /> },
+          { path: 'expression', element: <ProfileEpbookPage /> },
+          { path: 'history', element: <ProfileHistoryPage /> },
+          { path: 'like', element: <ProfileLikePage /> },
+          { path: 'bookmark', element: <ProfileBookmarkPage /> },
         ],
       },
       { path: 'user/signin', element: <SigninPage/> },

@@ -3,7 +3,7 @@ import ProfileCover from '../components/profile/ProfileCover'
 import ProfileForms from '../components/profile/ProfileForms'
 import ProfilePortrait from '../components/profile/ProfilePortrait'
 
-const ProfileUser = () => {
+const ProfileUserPage = () => {
   return (
     <>
       <Stack px={2.5} maxW='800px'>
@@ -19,4 +19,4 @@ const ProfileUser = () => {
   )
 }
 
-export default ProfileUser
+export default ProfileUserPage

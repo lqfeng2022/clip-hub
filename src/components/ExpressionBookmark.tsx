@@ -3,11 +3,13 @@ import { useEffect, useRef, useState } from 'react'
 import { IoBookmark, IoBookmarkOutline } from 'react-icons/io5'
 import Expression from '../entities/Expression'
 import useEpInteract from '../hooks/useEpInteract'
+import useEpbooks from '../hooks/useEpbooks'
 
 interface Props {
-  expression: Expression
+  expression: Expression,
+  onUnmark?: () => void, // optional callback
 }
-const ExpressionBookmark = ({ expression }: Props) => {
+const ExpressionBookmark = ({ expression, onUnmark }: Props) => {
   const [marked, setMarked] = useState(expression.bookmark_state)
   const toggleMarked = () => setMarked(prev => !prev)
 
@@ -15,21 +17,26 @@ const ExpressionBookmark = ({ expression }: Props) => {
   const timer = useRef<number | null>(null)
 
   const { mutate } = useEpInteract(expression.id, 'epbook')
+  const { refetch } = useEpbooks()
 
   useEffect(() => {
-      if (marked !== lastState.current) {
-        if (timer.current) clearTimeout(timer.current)
-        timer.current = setTimeout(() => {
-          mutate({visible: marked})
-          lastState.current = marked
-        }, 1000)
-      } 
-  
-      // React expects the cleanup function to be returned from useEffect
-      return () => {
-        if (timer.current) clearTimeout(timer.current)
-      }
-    }, [marked, mutate])
+    if (marked !== lastState.current) {
+      if (timer.current) clearTimeout(timer.current)
+      timer.current = setTimeout(() => {
+        mutate({visible: marked}, {
+          onSuccess: () => refetch()
+        })
+        lastState.current = marked
+        // Use to triggle refetch, toast, or redirect
+        if (!marked && onUnmark) onUnmark()
+      }, 1000)
+    } 
+
+    // React expects the cleanup function to be returned from useEffect
+    return () => {
+      if (timer.current) clearTimeout(timer.current)
+    }
+  }, [marked, mutate])
 
   return (
     <Icon

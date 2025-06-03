@@ -9,9 +9,10 @@ import Expression from '../entities/Expression'
 import ExpressionBookmark from './ExpressionBookmark'
 
 interface Props {
-  expression: Expression
+  expression: Expression,
+  onUnmark?: () => void, // optional callback
 }
-const ExpressionCard = ({ expression }: Props) => {
+const ExpressionCard = ({ expression, onUnmark }: Props) => {
   return (
     <Card gap={2} my={1} overflow='hidden' variant=''>
       <Box position='relative'>
@@ -20,7 +21,10 @@ const ExpressionCard = ({ expression }: Props) => {
           objectFit='cover'
           src={expression.image}
         />
-        <ExpressionBookmark expression={expression} />
+        <ExpressionBookmark 
+          expression={expression} 
+          onUnmark={onUnmark}
+        />
       </Box>
       <CardBody p='5px 8px'>
         <Link to={'/expressions/' + expression.slug}>
