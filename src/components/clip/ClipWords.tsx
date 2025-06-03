@@ -21,7 +21,7 @@ const ClipWords = ({ data }: Props) => (
     <Heading size='sm' pb={2} color='gray.500'>
       Words
     </Heading>
-    <CollapseText limit={190}>
+    <CollapseText limit={250}>
       <TableContainer pb={2}>
         <Table colorScheme='teal' size='custom'>
           <Thead>
