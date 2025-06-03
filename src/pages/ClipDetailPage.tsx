@@ -9,7 +9,6 @@ import { useParams } from 'react-router-dom'
 import ClipAttributes from '../components/clip/ClipAttributes'
 import ClipMovie from '../components/clip/ClipMovie'
 import ClipWords from '../components/clip/ClipWords'
-import ExpressionList from '../components/clip/ExpressionList'
 import InteractIconList from '../components/clip/InteractIconList'
 import CollapseText from '../components/CollapseText'
 import useClip from '../hooks/useClip'
@@ -48,7 +47,6 @@ const ClipDetailPage = () => {
           <InteractIconList clip={clip}/>
         </GridItem>
       </SimpleGrid>
-      <ExpressionList data={clip.expressions}/>
     </>
   )
 }

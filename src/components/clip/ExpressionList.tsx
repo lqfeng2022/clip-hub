@@ -8,7 +8,9 @@ interface Props {
 const ExpressionList = ({ data }: Props) => {
   return (
     <Box p='15px 10px'>
-      <Heading size='md' mb={5}>Expressions</Heading>
+      <Heading size='md' mb={3} color='gray'>
+        Other Expressions
+      </Heading>
       <Box 
         sx={{ columnCount: {base: 1, md: 2, lg: 3, xl: 4} }}
         columnGap={6}

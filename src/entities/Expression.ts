@@ -1,3 +1,4 @@
+import Clip from './Clip'
 import Tags from './Tag'
 
 export default interface Expression {
@@ -11,6 +12,6 @@ export default interface Expression {
   langtags: Tags[],
   word: string,
   explain: string,
-  video: string,
+  video: Clip,
   bookmark_state: boolean,
 }

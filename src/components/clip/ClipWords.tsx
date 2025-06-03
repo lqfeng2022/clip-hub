@@ -8,9 +8,11 @@ import {
   Th, 
   Thead, 
   Tr,
+  Text,
 } from '@chakra-ui/react'
 import Expression from '../../entities/Expression'
 import CollapseText from '../CollapseText'
+import { Link } from 'react-router-dom'
 
 interface Props {
   data: Expression[]
@@ -35,8 +37,15 @@ const ClipWords = ({ data }: Props) => (
               <Tr key={index}>
                 <Td color='gray'>{index + 1}</Td>
                 <Td color='gray.400'>{exp.timeline}</Td>
-                <Td whiteSpace='normal' fontWeight='bold' color='gray.200'>
-                  {exp.title}
+                <Td
+                  fontWeight='bold'
+                  color='gray.200'
+                >
+                  <Link to={`/expressions/${exp.slug}`}>
+                    <Text _hover={{ color: 'yellow' }}>
+                      {exp.title}
+                    </Text>
+                  </Link>
                 </Td>
               </Tr>
             ))}

@@ -2,13 +2,17 @@ import { useQuery } from '@tanstack/react-query'
 import APIClient from '../services/api-store'
 import Expression from '../entities/Expression'
 
-const useExpression = (clipId: number) => {
-  const apiClient = new APIClient<Expression>(`/videos/${clipId}/expression/`)
+// clipId -> clipId?, cus it might be undefined
+const useClipExpressions = (clipId?: number) => {
+  const apiClient = new APIClient<Expression>(`/videos/${clipId}/expressions/`)
 
   return useQuery({
-    queryKey: ['expression', clipId],
+    queryKey: ['expressions', clipId],
     queryFn: () => apiClient.getAll(),
+    // and enable it only when clipId is truthy, 
+    // prevent the request from being fired until clipId exists
+    enabled: !!clipId,
   })
 }
 
-export default useExpression
+export default useClipExpressions
