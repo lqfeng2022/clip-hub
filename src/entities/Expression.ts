@@ -4,6 +4,7 @@ export default interface Expression {
   id: number,
   timeline: string,
   title: string,
+  slug: string,
   image: string,
   level: string,
   language: string,

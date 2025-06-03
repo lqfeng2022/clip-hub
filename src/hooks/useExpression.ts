@@ -2,13 +2,12 @@ import { useQuery } from '@tanstack/react-query'
 import APIClient from '../services/api-store'
 import Expression from '../entities/Expression'
 
-const useExpression = (clipId: number) => {
-  const apiClient = new APIClient<Expression>(`/videos/${clipId}/expression/`)
+const apiClient = new APIClient<Expression>('expressions')
 
-  return useQuery({
-    queryKey: ['expression', clipId],
-    queryFn: () => apiClient.getAll(),
+const useExpression = (slug: string) => 
+  useQuery({
+    queryKey: ['expressions', slug],
+    queryFn: () => apiClient.get(slug),
   })
-}
 
 export default useExpression

@@ -13,6 +13,7 @@ import ProfileExpressions from './pages/ProfileExpressions'
 import ProfileHistories from './pages/ProfileHistories'
 import ProfileLikes from './pages/ProfileLikes'
 import ProfileBookmarks from './pages/ProfileBookmarks'
+import ExpressionDetailPage from './pages/ExpressionDetailPage'
 
 const router = createBrowserRouter([
   {
@@ -22,7 +23,8 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <HomePage/> },
       { path: 'clips/:slug', element: <ClipDetailPage/> },
-      { path: 'expression', element: <ExpressionPage/> },
+      { path: 'expressions', element: <ExpressionPage/> },
+      { path: 'expressions/:slug', element: <ExpressionDetailPage/> },
       { 
         path: 'profile', 
         element: <ProfileLayout/>,

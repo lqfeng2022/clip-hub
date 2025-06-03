@@ -19,7 +19,7 @@ const NavBar = () => {
       <Link to='/'>
         <Logo/>
       </Link>
-      <Link to='/expression'>
+      <Link to='/expressions'>
         <Badge
           variant='subtle'
           fontSize='1em'

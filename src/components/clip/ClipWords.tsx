@@ -8,7 +8,6 @@ import {
   Th, 
   Thead, 
   Tr,
-  Highlight,
 } from '@chakra-ui/react'
 import Expression from '../../entities/Expression'
 import CollapseText from '../CollapseText'
@@ -27,22 +26,17 @@ const ClipWords = ({ data }: Props) => (
           <Thead>
             <Tr>
               <Th>No.</Th>
-              <Th>Timeline</Th>
+              <Th>Time</Th>
               <Th isNumeric>word</Th>
             </Tr>
           </Thead>
           <Tbody>
             {data?.map((exp, index) => (
               <Tr key={index}>
-                <Td>{index + 1}</Td>
-                <Td>{exp.timeline}</Td>
-                <Td whiteSpace='normal'>
-                  <Highlight 
-                    query={exp.title}
-                    styles={{ px: '1', py: '0.3', bg: 'gray.300', fontWeight: 'light' }}
-                  >
-                    {exp.word}
-                  </Highlight>
+                <Td color='gray'>{index + 1}</Td>
+                <Td color='gray.400'>{exp.timeline}</Td>
+                <Td whiteSpace='normal' fontWeight='bold' color='gray.200'>
+                  {exp.title}
                 </Td>
               </Tr>
             ))}

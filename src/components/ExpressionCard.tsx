@@ -33,9 +33,11 @@ const ExpressionCard = ({ expression }: Props) => {
       </Box>
       <TagList tags={expression.langtags} color={'teal'}/>
       <CardBody p='5px 8px'>
-        <Heading pb={2} fontSize='xl' color='yellow.200'>
-          {expression.title}
-        </Heading>
+        <Link to={'/expressions/' + expression.slug}>
+          <Heading pb={2} fontSize='xl' color='yellow.200'>
+            {expression.title}
+          </Heading>
+        </Link>
         <HStack align='flex-start' wrap='wrap'>
           <Icon as={ImQuotesLeft}/>
           <Heading fontSize='md' flex='1'>
