@@ -7,7 +7,7 @@ interface Props {
 }
 const SimpleClipCard = ({ clip }: Props) => {
   return (
-    <Card bg='gray.800'>
+    <Card bg='gray.800' borderRadius={10} overflow='hidden'>
       <Link to={'/clips/' + clip.slug}>
         <Image src={clip.cover} className='img-hover'/>
       </Link>

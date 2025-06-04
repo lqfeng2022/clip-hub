@@ -10,7 +10,7 @@ interface Props {
 }
 const ClipCard = ({ clip }: Props) => {
   return (
-    <Card bg='gray.800'>
+    <Card bg='gray.800' borderRadius={10} overflow='hidden'>
       <Image src={clip.cover} className='img-hover' />
       <CardBody p='12px 4px'>
         <HStack align='flex-start' wrap='wrap' spacing={4}>
