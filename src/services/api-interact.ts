@@ -26,6 +26,12 @@ class InteractAPIClient<T> {
       .then((res) => res.data) //extract data from response
   }
 
+  get = (id: number | string, config?: AxiosRequestConfig) => {
+    return axiosInstance
+      .get<T>(this.endpoint + `/slug/${id}/`, config)
+      .then((res) => res.data)
+  }
+
 }
 
 export default InteractAPIClient

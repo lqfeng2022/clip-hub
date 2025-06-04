@@ -5,13 +5,15 @@ import { CiBookmark, CiHeart, CiUser } from 'react-icons/ci'
 import { HiLanguage } from 'react-icons/hi2'
 import { Link } from 'react-router-dom'
 import { FiClock } from 'react-icons/fi'
+import { RiFileList2Line } from "react-icons/ri";
 
 const ProfileList = () => {
   const list = [
+    { name: 'Your Words', icon: HiLanguage, link: '/profile/expression' },
     { name: 'View history', icon: FiClock, link: '/profile/history' },
     { name: 'Liked clips', icon: CiHeart, link: '/profile/like' },
     { name: 'Saved clips', icon: CiBookmark, link: '/profile/bookmark' },
-    { name: 'Your Expressions', icon: HiLanguage, link: '/profile/expression' },
+    { name: 'Play Lists', icon: RiFileList2Line, link: '/profile/playlist' },
     { name: 'Profile', icon: CiUser, link: '/profile/me' },
   ]
 

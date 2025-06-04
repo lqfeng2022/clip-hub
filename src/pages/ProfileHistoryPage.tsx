@@ -19,7 +19,7 @@ const ProfileHistoryPage = () => {
       loader={<Spinner/>}
     >
       <SimpleGrid
-        columns={{ sm: 2, lg: 3, xl: 4 }}
+        columns={{ base: 2, lg: 3, xl: 4 }}
         p='10px'
         spacing={3}
       >

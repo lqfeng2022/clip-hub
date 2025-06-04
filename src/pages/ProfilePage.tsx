@@ -16,9 +16,9 @@ const Profile = () => {
         <Image src='https://bit.ly/naruto-sage'/>
       </Box>
       <ProfileUser/>
+      <ProfileEpbook/>
       <ProfileHistory/>
       <ProfileLike/>
-      <ProfileEpbook/>
     </Box>
   )
 }

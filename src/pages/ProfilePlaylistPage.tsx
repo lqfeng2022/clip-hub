@@ -1,11 +1,11 @@
 import { SimpleGrid, Spinner, Text } from '@chakra-ui/react'
 import React from 'react'
 import InfiniteScroll from 'react-infinite-scroll-component'
-import SimpleClipCard from '../components/SimpleClipCard'
-import useClipLikes from '../hooks/useClipLikes'
+import useLists from '../hooks/useLists'
+import ListCard from '../components/ListCard'
 
-const ProfileLikePage = () => {
-  const { data, error, fetchNextPage,  hasNextPage } = useClipLikes()
+const ProfilePlaylistPage = () => {
+  const { data, error, fetchNextPage,  hasNextPage } = useLists()
   const fetchExpressionsCount = data?.pages.reduce(
     (total, page) => total + page.results.length, 0
   ) || 0
@@ -26,9 +26,8 @@ const ProfileLikePage = () => {
         {data?.pages.map((page, index) => (
           <React.Fragment key={index}>
             {page?.results
-              .filter((like) => like.visible)
-              .map((like) => (
-                <SimpleClipCard clip={like.video} key={like.id}/>
+              .map((list) => (
+                <ListCard list={list} key={list.id}/>
             ))}
           </React.Fragment>
         ))}
@@ -37,4 +36,4 @@ const ProfileLikePage = () => {
   )
 }
 
-export default ProfileLikePage
+export default ProfilePlaylistPage

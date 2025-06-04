@@ -17,9 +17,9 @@ const SimpleClipCard = ({ clip }: Props) => {
             {clip.title}
           </Link>
         </Heading>
-        <Text as='b' py={1} fontSize='sm' color='yellow.200'>
+        {/* <Text as='b' py={1} fontSize='sm' color='yellow.200'>
           {clip.genre.title}
-        </Text>
+        </Text> */}
       </CardBody>
     </Card>
   )
