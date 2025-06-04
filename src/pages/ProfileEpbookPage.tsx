@@ -1,4 +1,4 @@
-import { Box, SimpleGrid, Spinner, Text } from '@chakra-ui/react'
+import { SimpleGrid, Spinner, Text } from '@chakra-ui/react'
 import React from 'react'
 import InfiniteScroll from 'react-infinite-scroll-component'
 import ExpressionCard from '../components/ExpressionCard'
@@ -28,12 +28,11 @@ const ProfileEpbookPage = () => {
             {page?.results
               .filter((epbook) => epbook.visible)
               .map((epbook) => (
-                <Box key={epbook.id}>
-                  <ExpressionCard 
-                    expression={epbook.expression} 
-                    onUnmark={() => refetch()}
-                  />
-                </Box>
+                <ExpressionCard 
+                  expression={epbook.expression} 
+                  onUnmark={() => refetch()}
+                  key={epbook.id}
+                />
             ))}
           </React.Fragment>
         ))}

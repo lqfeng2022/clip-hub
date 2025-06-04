@@ -11,7 +11,7 @@ interface Props {
 const ClipCard = ({ clip }: Props) => {
   return (
     <Card bg='gray.800'>
-      <Image src={clip.cover} />
+      <Image src={clip.cover} className='img-hover' />
       <CardBody p='12px 4px'>
         <HStack align='flex-start' wrap='wrap' spacing={4}>
           <Avatar
@@ -21,7 +21,7 @@ const ClipCard = ({ clip }: Props) => {
             flexShrink={0}
           />
           <Box flex='1' minW={0}>
-            <Heading fontSize='lg' noOfLines={2}>
+            <Heading fontSize='lg' noOfLines={2} _hover={{color: 'yellow'}}>
               <Link to={'/clips/' + clip.slug}>
                 {clip.title}
               </Link>

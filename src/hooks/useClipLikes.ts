@@ -3,11 +3,11 @@ import InteractAPIClient from '../services/api-interact'
 import { FetchResponse } from '../services/api-store'
 import ClipInteract from '../entities/History'
 
-const apiClient = new InteractAPIClient<ClipInteract>('/histories/')
+const apiClient = new InteractAPIClient<ClipInteract>('/likes/')
 
-const useClipHistories = () => {
+const useClipLikes = () => {
   return useInfiniteQuery<FetchResponse<ClipInteract>, Error>({
-    queryKey: ['clipHistories'],
+    queryKey: ['clipLikes'],
     queryFn: ({pageParam = 1}) => apiClient.getAll({
       params: {
         withCredentials: true,
@@ -21,4 +21,4 @@ const useClipHistories = () => {
   })
 }
 
-export default useClipHistories
+export default useClipLikes

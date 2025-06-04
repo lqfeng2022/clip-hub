@@ -15,7 +15,9 @@ const ProfileEpbook = () => {
   return (
     <Box mt={8} px={2}>
       <HStack justifyContent='space-between' my={5}>
-        <Heading fontSize='2xl'>Saved Expressions</Heading>
+        <Heading fontSize='2xl'>
+          Saved Expressions
+        </Heading>
         <Link to='expression'>
           <Button colorScheme='gray' size='sm' variant='outline'>
             View All

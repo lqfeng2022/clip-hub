@@ -2,6 +2,7 @@ import { Box, Image } from '@chakra-ui/react'
 import ProfileHistory from '../components/profile/ProfileHistory'
 import ProfileUser from '../components/profile/ProfileUser'
 import ProfileEpbook from '../components/profile/ProfileEpbook'
+import ProfileLike from '../components/profile/ProfileLike'
 
 const Profile = () => {  
   return (
@@ -16,6 +17,7 @@ const Profile = () => {
       </Box>
       <ProfileUser/>
       <ProfileHistory/>
+      <ProfileLike/>
       <ProfileEpbook/>
     </Box>
   )

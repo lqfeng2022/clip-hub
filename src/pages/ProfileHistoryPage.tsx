@@ -1,8 +1,8 @@
-import { Box, SimpleGrid, Spinner, Text } from '@chakra-ui/react'
+import { SimpleGrid, Spinner, Text } from '@chakra-ui/react'
 import React from 'react'
 import InfiniteScroll from 'react-infinite-scroll-component'
-import useClipHistories from '../hooks/useClipHistories'
 import SimpleClipCard from '../components/SimpleClipCard'
+import useClipHistories from '../hooks/useClipHistories'
 
 const ProfileHistoryPage = () => {
   const { data, error, fetchNextPage,  hasNextPage } = useClipHistories()
@@ -28,11 +28,7 @@ const ProfileHistoryPage = () => {
             {page?.results
               .filter((history) => history.visible)
               .map((history) => (
-                <Box key={history.id}>
-                  <SimpleClipCard 
-                    clip={history.video}
-                  />
-                </Box>
+                <SimpleClipCard key={history.id} clip={history.video}/>
             ))}
           </React.Fragment>
         ))}

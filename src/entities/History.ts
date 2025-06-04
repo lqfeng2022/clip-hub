@@ -1,6 +1,6 @@
 import Clip from './Clip'
 
-export default interface Epbook {
+export default interface ClipInteract {
   id: number,
   video: Clip,
   visible: boolean,

@@ -1,11 +1,11 @@
 import { Box, Button, Heading, HStack, SimpleGrid, Text } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
-import useClipHistories from '../../hooks/useClipHistories'
+import useClipLikes from '../../hooks/useClipLikes'
 import SimpleClipCard from '../SimpleClipCard'
 
-const ProfileHistory = () => {
-  const { data, error } = useClipHistories()
-  const views = data?.pages[0].results
+const ProfileLike = () => {
+  const { data, error } = useClipLikes()
+  const likes = data?.pages[0].results
     .filter((view) => view.visible)
     .slice(0, 4)
 
@@ -14,7 +14,7 @@ const ProfileHistory = () => {
     <Box mt={8} px={2}>
       <HStack justifyContent='space-between' my={5}>
         <Heading fontSize='2xl'>
-          History
+          Liked clips
         </Heading>
         <Link to='history'>
           <Button colorScheme='gray' size='sm' variant='outline'>
@@ -26,9 +26,9 @@ const ProfileHistory = () => {
         columns={{ base: 2, lg: 3, xl: 4 }}
         spacing={3}
       >
-        {views?.map((view) => (
-            <Box key={view.id} >
-              <SimpleClipCard clip={view.video} />
+        {likes?.map((like) => (
+            <Box key={like.id} >
+              <SimpleClipCard clip={like.video} />
             </Box>
         ))}
       </SimpleGrid>
@@ -36,4 +36,4 @@ const ProfileHistory = () => {
   )
 }
 
-export default ProfileHistory
+export default ProfileLike

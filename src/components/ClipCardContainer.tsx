@@ -9,7 +9,6 @@ const ClipCardContainer = ({ children }: Props) => {
     <Box 
       borderRadius={10} 
       overflow='hidden'
-      className='img-hover'
     >
       {children}
     </Box>
