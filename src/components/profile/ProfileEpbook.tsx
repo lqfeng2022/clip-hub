@@ -16,7 +16,7 @@ const ProfileEpbook = () => {
     <Box mt={8} px={2}>
       <HStack justifyContent='space-between' my={5}>
         <Heading fontSize='2xl'>Saved Expressions</Heading>
-        <Link to={'expression'}>
+        <Link to='expression'>
           <Button colorScheme='gray' size='sm' variant='outline'>
             View All
           </Button>
@@ -29,17 +29,16 @@ const ProfileEpbook = () => {
       >
         {epbooks?.map((epbook) => (
           <Box key={epbook.id}>
-            <Card gap={2} my={1} overflow='hidden' variant=''>
+            <Card overflow='hidden' variant=''>
               <Image
                 w='100%'
                 objectFit='cover'
-                aspectRatio={ 16 / 9}
+                aspectRatio={ 20 / 9}
                 src={epbook.expression.image}
               />
               <CardBody p='5px 8px'>
                 <Link to={'/expressions/' + epbook.expression.slug}>
                   <Heading 
-                    pb={2} 
                     fontSize='xl' 
                     color='yellow.200'
                     _hover={{ color: 'white' }}

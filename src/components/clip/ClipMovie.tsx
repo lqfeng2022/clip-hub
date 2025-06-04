@@ -1,5 +1,5 @@
 import Movie from '../../entities/Movie'
-import useInteract from '../../hooks/useInteract'
+import useInteract from '../../hooks/useClipInteract'
 
 interface Props {
   movie: Movie

@@ -20,7 +20,7 @@ class InteractAPIClient<T> {
       .then((res) => res.data)
   }
 
-  getEpbook = (config?: AxiosRequestConfig) => {
+  getAll = (config?: AxiosRequestConfig) => {
     return axiosInstance
       .get<FetchResponse<T>>(this.endpoint, config)
       .then((res) => res.data) //extract data from response

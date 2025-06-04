@@ -1,13 +1,13 @@
 import { useInfiniteQuery } from '@tanstack/react-query'
-import Epbook from '../entities/Epbook'
 import InteractAPIClient from '../services/api-interact'
 import { FetchResponse } from '../services/api-store'
+import History from '../entities/History'
 
-const apiClient = new InteractAPIClient<Epbook>('/epbooks/')
+const apiClient = new InteractAPIClient<History>('/histories/')
 
-const useEpbooks = () => {
-  return useInfiniteQuery<FetchResponse<Epbook>, Error>({
-    queryKey: ['epbooks'],
+const useClipHistories = () => {
+  return useInfiniteQuery<FetchResponse<History>, Error>({
+    queryKey: ['clipHistories'],
     queryFn: ({pageParam = 1}) => apiClient.getAll({
       params: {
         withCredentials: true,
@@ -21,4 +21,4 @@ const useEpbooks = () => {
   })
 }
 
-export default useEpbooks
+export default useClipHistories

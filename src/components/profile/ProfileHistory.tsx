@@ -3,6 +3,7 @@ import useClips from '../../hooks/useClips'
 import ClipCardContainer from '../ClipCardContainer'
 import ClipCardSkeleton from '../ClipCardSkeleton'
 import SimpleClipCard from '../SimpleClipCard'
+import { Link } from 'react-router-dom'
 
 const ProfileHistory = () => {
   const { data, error, isLoading } = useClips()
@@ -15,9 +16,11 @@ const ProfileHistory = () => {
         <Heading fontSize='2xl'>
           History
         </Heading>
-        <Button colorScheme='gray' size='sm' variant='outline'>
-          View All
-        </Button>
+        <Link to='history'>
+          <Button colorScheme='gray' size='sm' variant='outline'>
+            View All
+          </Button>
+        </Link>
       </HStack>
       <SimpleGrid
         columns={{ base: 2, lg: 3, xl: 4 }}

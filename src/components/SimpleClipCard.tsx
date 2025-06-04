@@ -8,9 +8,9 @@ interface Props {
 const SimpleClipCard = ({ clip }: Props) => {
   return (
     <Card bg='gray.800'>
-      <Image src={clip.cover} />
+      <Image src={clip.cover} className='img-hover'/>
       <CardBody p='8px 4px'>
-        <Heading fontSize='md' noOfLines={2}>
+        <Heading fontSize='md' noOfLines={2}  _hover={{ color: 'gray.200' }}>
           <Link to={'/clips/' + clip.slug}>
             {clip.title}
           </Link>

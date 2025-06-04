@@ -1,7 +1,7 @@
 import { Icon } from '@chakra-ui/react'
 import { useEffect, useRef, useState } from 'react'
 import { IoBookmark, IoBookmarkOutline } from 'react-icons/io5'
-import useInteract from '../../hooks/useInteract'
+import useInteract from '../../hooks/useClipInteract'
 import Clip from '../../entities/Clip'
 
 interface Props {
