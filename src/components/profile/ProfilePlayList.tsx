@@ -4,7 +4,7 @@ import useLists from '../../hooks/useLists'
 import PlaylistCard from '../PlaylistCard'
 
 const ProfilePlayList = () => {
-const { data, error } = useLists()
+  const { data, error } = useLists()
   const lists = data?.pages[0].results.slice(0, 4)
 
   if (error) return <Text>{error.message}</Text>
@@ -25,9 +25,9 @@ const { data, error } = useLists()
         spacing={3}
       >
         {lists?.map((list) => (
-            <Box key={list.id} >
-              <PlaylistCard list={list} />
-            </Box>
+          <Box key={list.id} >
+            <PlaylistCard list={list} />
+          </Box>
         ))}
       </SimpleGrid>
     </Box>

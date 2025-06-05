@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query'
-import List from '../entities/List'
 import InteractAPIClient from '../services/api-interact'
+import List from '../entities/List'
 
 const apiClient = new InteractAPIClient<List>('lists')
 

@@ -1,17 +1,17 @@
 import { Card, CardBody, Heading, Image } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
 import nocontent from '../assets/no-content.png'
-import List from '../entities/List'
+import Playlist from '../entities/Playlist'
 
 interface Props {
-  list: List
+  list: Playlist
 }
 const PlaylistCard = ({ list }: Props) => {
   const cover = list.items[0]?.video.cover
   const hasItems = list.items && list.items.length > 0
 
   const cardContent = (
-    <Card bg='gray.800' borderRadius={10} overflow='hidden'>
+    <Card bg='gray.800' borderRadius={10} overflow='hidden' variant='unstyled'>
       <Image 
         aspectRatio={ 16/9}
         src={cover ? cover : nocontent} 
@@ -22,7 +22,7 @@ const PlaylistCard = ({ list }: Props) => {
         <Heading 
           fontSize='md' 
           noOfLines={2}  
-          _hover={{ color: 'gray.200' }}
+          _hover={{ color: 'yellow.500' }}
         >
           {list.title}
         </Heading>

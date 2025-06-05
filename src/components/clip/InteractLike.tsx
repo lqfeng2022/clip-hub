@@ -52,6 +52,7 @@ const InteractLike = ({clip}: Props) => {
         as={liked ? IoHeart : IoHeartOutline} 
         boxSize={6}
         onClick={toggleLike}
+        _hover={{ cursor: 'pointer' }}
       />
       <Text>{likesCount}</Text>
     </HStack>
