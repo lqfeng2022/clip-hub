@@ -1,4 +1,4 @@
-import { SimpleGrid, Spinner, Text } from '@chakra-ui/react'
+import { Heading, SimpleGrid, Spinner, Text } from '@chakra-ui/react'
 import React from 'react'
 import InfiniteScroll from 'react-infinite-scroll-component'
 import SimpleClipCard from '../components/SimpleClipCard'
@@ -12,28 +12,33 @@ const ProfileHistoryPage = () => {
 
   if (error) return <Text>{error.message}</Text>
   return (
-    <InfiniteScroll 
-      dataLength={fetchExpressionsCount} 
-      hasMore={!!hasNextPage}
-      next={() => fetchNextPage()}
-      loader={<Spinner/>}
-    >
-      <SimpleGrid
-        columns={{ base: 2, lg: 3, xl: 4 }}
-        p='10px'
-        spacing={3}
+    <>
+      <Heading m={4} fontSize='3xl'>
+        Your view history
+      </Heading>
+      <InfiniteScroll
+        dataLength={fetchExpressionsCount}
+        hasMore={!!hasNextPage}
+        next={() => fetchNextPage()}
+        loader={<Spinner/>}
       >
-        {data?.pages.map((page, index) => (
-          <React.Fragment key={index}>
-            {page?.results
-              .filter((history) => history.visible)
-              .map((history) => (
-                <SimpleClipCard key={history.id} clip={history.video}/>
-            ))}
-          </React.Fragment>
-        ))}
-      </SimpleGrid>
-    </InfiniteScroll>
+        <SimpleGrid
+          columns={{ base: 2, lg: 3, xl: 4 }}
+          p='10px'
+          spacing={3}
+        >
+          {data?.pages.map((page, index) => (
+            <React.Fragment key={index}>
+              {page?.results
+                .filter((history) => history.visible)
+                .map((history) => (
+                  <SimpleClipCard key={history.id} clip={history.video}/>
+              ))}
+            </React.Fragment>
+          ))}
+        </SimpleGrid>
+      </InfiniteScroll>
+    </>
   )
 }
 

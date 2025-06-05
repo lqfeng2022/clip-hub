@@ -16,7 +16,7 @@ const ProfileLike = () => {
         <Heading fontSize='2xl'>
           Liked clips
         </Heading>
-        <Link to='history'>
+        <Link to='like'>
           <Button colorScheme='gray' size='sm' variant='outline'>
             View All
           </Button>

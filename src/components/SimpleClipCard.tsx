@@ -1,4 +1,4 @@
-import { Card, CardBody, Heading, Image, Text } from '@chakra-ui/react'
+import { Card, CardBody, Heading, Image } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
 import Clip from '../entities/Clip'
 
@@ -12,14 +12,15 @@ const SimpleClipCard = ({ clip }: Props) => {
         <Image src={clip.cover} className='img-hover'/>
       </Link>
       <CardBody p='8px 4px'>
-        <Heading fontSize='md' noOfLines={2}  _hover={{ color: 'gray.200' }}>
-          <Link to={'/clips/' + clip.slug}>
+        <Link to={'/clips/' + clip.slug}>
+          <Heading 
+            fontSize='md' 
+            noOfLines={2}  
+            _hover={{ color: 'yellow.200' }}
+          >
             {clip.title}
-          </Link>
-        </Heading>
-        {/* <Text as='b' py={1} fontSize='sm' color='yellow.200'>
-          {clip.genre.title}
-        </Text> */}
+          </Heading>
+        </Link>
       </CardBody>
     </Card>
   )

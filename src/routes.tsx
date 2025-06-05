@@ -11,7 +11,6 @@ import SigninPage from './pages/SigninPage'
 import SignupPage from './pages/SignupPage'
 import ProfileHistoryPage from './pages/ProfileHistoryPage'
 import ProfileLikePage from './pages/ProfileLikePage'
-import ProfileBookmarkPage from './pages/ProfileBookmarkPage'
 import ExpressionDetailPage from './pages/ExpressionDetailPage'
 import ProfileEpbookPage from './pages/ProfileEpbookPage'
 import ProfilePlaylistPage from './pages/ProfilePlaylistPage'
@@ -36,7 +35,6 @@ const router = createBrowserRouter([
           { path: 'expression', element: <ProfileEpbookPage /> },
           { path: 'history', element: <ProfileHistoryPage /> },
           { path: 'like', element: <ProfileLikePage /> },
-          { path: 'bookmark', element: <ProfileBookmarkPage /> },
           { path: 'playlist', element: <ProfilePlaylistPage /> },
           { path: 'playlist/:slug', element: <ProfilePlaylistDetailPage /> },
         ],

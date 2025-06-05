@@ -6,7 +6,7 @@ import List from '../entities/List'
 interface Props {
   list: List
 }
-const ListCard = ({ list }: Props) => {
+const PlaylistCard = ({ list }: Props) => {
   const cover = list.items[0]?.video.cover
   const hasItems = list.items && list.items.length > 0
 
@@ -37,4 +37,4 @@ const ListCard = ({ list }: Props) => {
   ) : cardContent
 }
 
-export default ListCard
+export default PlaylistCard

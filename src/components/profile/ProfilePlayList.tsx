@@ -1,22 +1,20 @@
 import { Box, Button, HStack, Heading, SimpleGrid, Text } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
-import useEpbooks from '../../hooks/useEpbooks'
-import SimpleExpressionCard from '../SimpleExpressionCard'
+import useLists from '../../hooks/useLists'
+import PlaylistCard from '../PlaylistCard'
 
-const ProfileEpbook = () => {
-  const { data, error } = useEpbooks()
-  const epbooks = data?.pages[0].results
-    .filter((epbook) => epbook.visible)
-    .slice(0, 4)
+const ProfilePlayList = () => {
+const { data, error } = useLists()
+  const lists = data?.pages[0].results.slice(0, 4)
 
   if (error) return <Text>{error.message}</Text>
   return (
     <Box mt={8} px={2}>
       <HStack justifyContent='space-between' my={5}>
         <Heading fontSize='2xl'>
-          Expressions
+          Playlist
         </Heading>
-        <Link to='expression'>
+        <Link to='playlist'>
           <Button colorScheme='gray' size='sm' variant='outline'>
             View All
           </Button>
@@ -24,18 +22,16 @@ const ProfileEpbook = () => {
       </HStack>
       <SimpleGrid
         columns={{ base: 2, lg: 3, xl: 4 }}
-        py='10px'
         spacing={3}
       >
-        {epbooks?.map((epbook) => (
-          <SimpleExpressionCard 
-            epbook={epbook} 
-            key={epbook.id}
-          />
+        {lists?.map((list) => (
+            <Box key={list.id} >
+              <PlaylistCard list={list} />
+            </Box>
         ))}
       </SimpleGrid>
     </Box>
   )
 }
 
-export default ProfileEpbook
+export default ProfilePlayList

@@ -3,6 +3,7 @@ import ProfileHistory from '../components/profile/ProfileHistory'
 import ProfileUser from '../components/profile/ProfileUser'
 import ProfileEpbook from '../components/profile/ProfileEpbook'
 import ProfileLike from '../components/profile/ProfileLike'
+import ProfilePlayList from '../components/profile/ProfilePlayList'
 
 const Profile = () => {  
   return (
@@ -17,8 +18,9 @@ const Profile = () => {
       </Box>
       <ProfileUser/>
       <ProfileEpbook/>
-      <ProfileHistory/>
       <ProfileLike/>
+      <ProfilePlayList/>
+      <ProfileHistory/>
     </Box>
   )
 }
