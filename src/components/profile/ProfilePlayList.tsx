@@ -2,6 +2,7 @@ import { Box, Button, HStack, Heading, SimpleGrid, Text } from '@chakra-ui/react
 import { Link } from 'react-router-dom'
 import useLists from '../../hooks/useLists'
 import SimplePlaylistCard from '../PlaylistCardSimple'
+import EmptyCard from '../EmptyCard'
 
 const ProfilePlayList = () => {
   const { data, error } = useLists()
@@ -15,7 +16,12 @@ const ProfilePlayList = () => {
           Playlist
         </Heading>
         <Link to='playlist'>
-          <Button colorScheme='gray' size='sm' variant='outline'>
+          <Button 
+            colorScheme='gray' 
+            size='sm' 
+            variant='outline'
+            disabled={lists?.length === 0}
+          >
             View All
           </Button>
         </Link>
@@ -24,6 +30,7 @@ const ProfilePlayList = () => {
         columns={{ base: 2, lg: 3, xl: 4 }}
         spacing={3}
       >
+        {lists?.length === 0 && <EmptyCard/>}
         {lists?.map((list) => (
           <Box key={list.id} >
             <SimplePlaylistCard list={list}/>

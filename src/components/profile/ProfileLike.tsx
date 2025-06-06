@@ -2,6 +2,7 @@ import { Box, Button, Heading, HStack, SimpleGrid, Text } from '@chakra-ui/react
 import { Link } from 'react-router-dom'
 import useClipLikes from '../../hooks/useClipLikes'
 import SimpleClipCard from '../SimpleClipCard'
+import EmptyCard from '../EmptyCard'
 
 const ProfileLike = () => {
   const { data, error } = useClipLikes()
@@ -17,7 +18,12 @@ const ProfileLike = () => {
           Liked clips
         </Heading>
         <Link to='like'>
-          <Button colorScheme='gray' size='sm' variant='outline'>
+          <Button 
+            colorScheme='gray' 
+            size='sm' 
+            variant='outline'
+            disabled={likes?.length === 0}
+          >
             View All
           </Button>
         </Link>
@@ -26,6 +32,7 @@ const ProfileLike = () => {
         columns={{ base: 2, lg: 3, xl: 4 }}
         spacing={3}
       >
+        {likes?.length === 0 && <EmptyCard/>}
         {likes?.map((like) => (
             <Box key={like.id} >
               <SimpleClipCard clip={like.video} />

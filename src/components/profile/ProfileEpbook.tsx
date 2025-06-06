@@ -2,6 +2,7 @@ import { Box, Button, HStack, Heading, SimpleGrid, Text } from '@chakra-ui/react
 import { Link } from 'react-router-dom'
 import useEpbooks from '../../hooks/useEpbooks'
 import SimpleExpressionCard from '../SimpleExpressionCard'
+import EmptyCard from '../EmptyCard'
 
 const ProfileEpbook = () => {
   const { data, error } = useEpbooks()
@@ -17,7 +18,12 @@ const ProfileEpbook = () => {
           Expressions
         </Heading>
         <Link to='expression'>
-          <Button colorScheme='gray' size='sm' variant='outline'>
+          <Button 
+            colorScheme='gray' 
+            size='sm' 
+            variant='outline'
+            disabled={epbooks?.length === 0}
+          >
             View All
           </Button>
         </Link>
@@ -27,6 +33,7 @@ const ProfileEpbook = () => {
         py='10px'
         spacing={3}
       >
+        {epbooks?.length === 0 && <EmptyCard/>}
         {epbooks?.map((epbook) => (
           <SimpleExpressionCard 
             epbook={epbook} 

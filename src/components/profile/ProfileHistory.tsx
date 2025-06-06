@@ -2,6 +2,7 @@ import { Box, Button, Heading, HStack, SimpleGrid, Text } from '@chakra-ui/react
 import { Link } from 'react-router-dom'
 import useClipHistories from '../../hooks/useClipHistories'
 import SimpleClipCard from '../SimpleClipCard'
+import EmptyCard from '../EmptyCard'
 
 const ProfileHistory = () => {
   const { data, error } = useClipHistories()
@@ -17,7 +18,12 @@ const ProfileHistory = () => {
           History
         </Heading>
         <Link to='history'>
-          <Button colorScheme='gray' size='sm' variant='outline'>
+          <Button 
+            colorScheme='gray' 
+            size='sm' 
+            variant='outline'
+            disabled={views?.length === 0}
+          >
             View All
           </Button>
         </Link>
@@ -26,6 +32,7 @@ const ProfileHistory = () => {
         columns={{ base: 2, lg: 3, xl: 4 }}
         spacing={3}
       >
+        {views?.length === 0 && <EmptyCard/>}
         {views?.map((view) => (
             <Box key={view.id} >
               <SimpleClipCard clip={view.video} />
