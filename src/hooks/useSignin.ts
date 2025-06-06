@@ -1,16 +1,13 @@
 import { useMutation } from '@tanstack/react-query'
-import AuthAPIClient from '../services/api-auth'
+import CoreAPIClient from '../services/api-core'
+import AuthResponse from '../entities/AuthResponse'
 
 interface Signin {
   username: string,
   password: string,
 }
 
-interface AuthResponse {
-  message: string;
-}
-
-const apiClient = new AuthAPIClient('/login/')
+const apiClient = new CoreAPIClient('login')
 
 const useSignin = () => {
   return useMutation<AuthResponse, Error, Signin>({

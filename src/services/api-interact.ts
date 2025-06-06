@@ -14,13 +14,6 @@ class InteractAPIClient<T> {
     this.endpoint = endpoint
   }
 
-  // get user profile
-  getProfile = (config?: AxiosRequestConfig) => {
-    return axiosInstance
-      .get(this.endpoint, config)
-      .then((res) => res.data)
-  }
-
   // get all epbooks/view_histories/likes/playlists..
   getAll = (config?: AxiosRequestConfig) => {
     return axiosInstance

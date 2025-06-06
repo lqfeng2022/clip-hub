@@ -1,15 +1,11 @@
-import {
-  Box, Button, FormControl, FormHelperText,
-  FormLabel, Heading,
-  HStack, Input, SimpleGrid, Text
-} from '@chakra-ui/react'
+import { Box, Button, FormControl, FormHelperText, FormLabel, Heading, HStack, Input, SimpleGrid, Text } from '@chakra-ui/react'
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../AuthContext'
 import PasswordInput from '../components/PasswordInput'
 import SignContainer from '../components/SignContainer'
 import useSignin from '../hooks/useSignin'
-import InteractAPIClient from '../services/api-interact'
+import ProfileAPIClient from '../services/api-profile'
 
 const SigninPage = () => {
   const [username, setUsername]= useState('')
@@ -23,7 +19,7 @@ const SigninPage = () => {
     : "We'll never share your info."
 
   const { setUser } = useAuth()
-  const apiClient = new InteractAPIClient('/profiles/me/')
+  const apiClient = new ProfileAPIClient('me')
 
   const handleSignin = () => {
     mutate({ username, password }, {

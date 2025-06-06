@@ -1,6 +1,6 @@
 import { createContext, useContext, useState, useEffect, ReactNode } from 'react'
-import InteractAPIClient from './services/api-interact'
 import User from './entities/User'
+import ProfileAPIClient from './services/api-profile'
 
 interface AuthContextType {
   user: User | null,
@@ -14,13 +14,10 @@ const AuthContext = createContext<AuthContextType>({
   isAuthenticated: false,
 })
 
-const apiClient = new InteractAPIClient('/profiles/me/')
+const apiClient = new ProfileAPIClient('me')
 
 // Wrap useProfile() in a context-based AuthProvider
-interface Props {
-  children: ReactNode
-}
-export const AuthProvider = ({ children }: Props) => {
+export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [user, setUser] = useState<User | null>(null)
 
   useEffect(() => {
@@ -31,9 +28,7 @@ export const AuthProvider = ({ children }: Props) => {
   }, [])
 
   return (
-    <AuthContext.Provider
-      value={{ user, setUser, isAuthenticated: !!user }}
-    >
+    <AuthContext.Provider value={{ user, setUser, isAuthenticated: !!user }}>
       {children}
     </AuthContext.Provider>
   )

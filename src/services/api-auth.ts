@@ -1,8 +1,7 @@
-import axios, { AxiosRequestConfig } from 'axios'
+import axios from 'axios'
 
 const axiosInstance = axios.create({
-  baseURL: 'http://localhost:8000/core',
-  withCredentials: true, // send cookie to backend
+  baseURL: 'http://localhost:8000/auth',
   params: {}
 })
 
@@ -13,9 +12,9 @@ class AuthAPIClient {
     this.endpoint = endpoint
   }
 
-  post = (data: any, config?: AxiosRequestConfig) => {
+  post = (data: any) => {
     return axiosInstance
-      .post(this.endpoint, data, config)
+      .post(`/${this.endpoint}/`, data)
       .then((res) => res.data)
   }
 }
