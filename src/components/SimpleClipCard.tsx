@@ -1,16 +1,20 @@
-import { Card, CardBody, Heading, Image } from '@chakra-ui/react'
-import { Link } from 'react-router-dom'
-import Clip from '../entities/Clip'
+import { Card, CardBody, Heading, Image } from '@chakra-ui/react';
+import { Link } from 'react-router-dom';
+import Clip from '../entities/Clip';
 
-interface Props {
-  clip: Clip
-}
-const SimpleClipCard = ({ clip }: Props) => {
+const SimpleClipCard = ({ clip }: { clip: Clip }) => {
   return (
-    <Card bg='gray.800' borderRadius={10} overflow='hidden' variant='unstyled'>
-      <Link to={'/clips/' + clip.slug}>
-        <Image src={clip.cover} className='img-hover'/>
-      </Link>
+    <Card 
+      bg='gray.800' 
+      borderRadius={10} 
+      overflow='hidden' 
+      variant='unstyled'
+    >
+      <Image
+        w='100%'
+        objectFit='cover'
+        src={clip.cover}
+      />
       <CardBody p='8px 4px'>
         <Link to={'/clips/' + clip.slug}>
           <Heading 

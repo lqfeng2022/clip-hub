@@ -35,6 +35,13 @@ class InteractAPIClient<T> {
       .then((res) => res.data)
   }
 
+  // update a given id clip from liked/viewed
+  put = (id: number | string, data: any, config?: AxiosRequestConfig) => {
+    return axiosInstance
+      .put(`/${this.endpoint}/${id}/`, data, config)
+      .then((res) => res.data)
+  }
+
   // create a playlist
   postList = (data: any, config?: AxiosRequestConfig) => {
     return axiosInstance
@@ -71,6 +78,16 @@ class InteractAPIClient<T> {
   ) => {
     return axiosInstance
       .delete(`/${this.endpoint}/${id}/`, config)
+  }
+
+  // delete playlist item
+  deleteListItem = (
+    ListId: number,
+    listItemId: number,
+    config?: AxiosRequestConfig
+  ) => {
+    return axiosInstance
+      .delete(`/${this.endpoint}/${ListId}/items/${listItemId}/`, config)
   }
 }
 

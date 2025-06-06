@@ -1,14 +1,23 @@
-import { Heading, SimpleGrid, Spinner, Text } from '@chakra-ui/react'
+import { Box, Heading, SimpleGrid, Spinner, Text } from '@chakra-ui/react'
 import React from 'react'
 import InfiniteScroll from 'react-infinite-scroll-component'
-import SimpleClipCard from '../components/SimpleClipCard'
+import SimpleClipCardWithMark from '../components/SimpleClipCardWithMark'
 import useClipHistories from '../hooks/useClipHistories'
+import useClipHistory from '../hooks/useClipHistory'
 
 const ProfileHistoryPage = () => {
-  const { data, error, fetchNextPage,  hasNextPage } = useClipHistories()
+  const { data, refetch, error, fetchNextPage,  hasNextPage } = useClipHistories()
   const fetchExpressionsCount = data?.pages.reduce(
     (total, page) => total + page.results.length, 0
   ) || 0
+
+  const { mutate: updateLike } = useClipHistory()
+  const handleUpdate = (id: number, visible: boolean) => {
+    updateLike(
+      { id, visible }, 
+      { onSuccess: () => refetch() }
+    )
+  }
 
   if (error) return <Text>{error.message}</Text>
   return (
@@ -32,7 +41,14 @@ const ProfileHistoryPage = () => {
               {page?.results
                 .filter((history) => history.visible)
                 .map((history) => (
-                  <SimpleClipCard key={history.id} clip={history.video}/>
+                  <Box key={history.id}>
+                    <SimpleClipCardWithMark
+                      clip={history.video}
+                      handleClick={() => handleUpdate(
+                        history.id, !history.visible
+                      )}
+                    />
+                  </Box>
               ))}
             </React.Fragment>
           ))}

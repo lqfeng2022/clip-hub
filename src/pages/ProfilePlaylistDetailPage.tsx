@@ -1,11 +1,20 @@
-import { Heading, SimpleGrid } from '@chakra-ui/react'
+import { Box, Heading, SimpleGrid } from '@chakra-ui/react'
 import { useParams } from 'react-router-dom'
-import SimpleClipCard from '../components/SimpleClipCard'
+import SimpleClipCardWithMark from '../components/SimpleClipCardWithMark'
 import useList from '../hooks/useList'
+import useListItemDelete from '../hooks/useListItemDelete'
 
 const ProfilePlaylistDetailPage = () => {
   const { slug } = useParams()
-  const { data } = useList(slug!)
+  const { data, refetch } = useList(slug!)
+
+  const { mutate: listItemDelete } = useListItemDelete()
+  const handleDelteList = (listId: number, listItemId: number) => { 
+    listItemDelete(
+      { listId, listItemId }, 
+      { onSuccess: () => refetch() }
+    )
+  }
 
   return (
     <div>
@@ -18,7 +27,14 @@ const ProfilePlaylistDetailPage = () => {
         spacing={3}
       >
         {data?.items.map((item) => (
-          <SimpleClipCard key={item.id} clip={item.video}/>
+          <Box key={item.id}>
+            <SimpleClipCardWithMark 
+              clip={item.video}
+              handleClick={() => handleDelteList(
+                data.id, item.id
+              )}
+            />
+          </Box>
         ))}
       </SimpleGrid>
     </div>
