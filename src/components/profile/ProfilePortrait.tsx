@@ -1,9 +1,8 @@
-import {
-  Box, Button, Center, Heading, HStack,
-  Image, Stack, Text
-} from '@chakra-ui/react'
+import { Box, Button, Center, Heading, HStack, Image, Stack, Text } from '@chakra-ui/react'
+import User from '../../entities/User'
+import nocontent from '../../assets/no-content.png'
 
-const ProfilePortrait = () => {
+const ProfilePortrait = ({ user }: { user: User }) => {
   return (
     <Box mb={5}>
       <Heading fontSize='lg'>Portrait</Heading>
@@ -19,9 +18,10 @@ const ProfilePortrait = () => {
         >
           <Image
             borderRadius='full'
+            objectFit='cover'
+            width='100%'
             boxSize='160px'
-            src='https://bit.ly/dan-abramov'
-            alt='Dan Abramov'
+            src={user.portrait ?? nocontent}
           />
           </Center>
         <Stack gap={4} alignSelf='flex-start'>
