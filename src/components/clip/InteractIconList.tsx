@@ -1,14 +1,12 @@
 import { HStack, Icon, Stack, Text } from '@chakra-ui/react'
-import { FaRegComment, FaShare } from 'react-icons/fa'
+import { BiShare } from 'react-icons/bi'
+import { FaRegComment } from 'react-icons/fa'
 import { IoEyeOutline } from 'react-icons/io5'
 import Clip from '../../entities/Clip'
 import InteractBookmark from './InteractBookmark'
 import InteractLike from './InteractLike'
 
-interface Props {
-  clip: Clip
-}
-const InteractIconList = ({ clip }: Props) => {
+const InteractIconList = ({ clip }: { clip: Clip }) => {
   return (
     <Stack spacing={4} m='12px 10px'>
       <HStack justifyContent='space-between'>
@@ -19,7 +17,7 @@ const InteractIconList = ({ clip }: Props) => {
           <Text>{clip.views}</Text>
         </HStack>
         <InteractBookmark clip={clip}/>
-        <Icon as={FaShare} boxSize={6}/>
+        <Icon as={BiShare} boxSize={6}/>
       </HStack>
     </Stack>
   )

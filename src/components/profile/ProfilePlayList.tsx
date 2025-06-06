@@ -1,7 +1,7 @@
 import { Box, Button, HStack, Heading, SimpleGrid, Text } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
 import useLists from '../../hooks/useLists'
-import PlaylistCard from '../PlaylistCard'
+import SimplePlaylistCard from '../PlaylistCardSimple'
 
 const ProfilePlayList = () => {
   const { data, error } = useLists()
@@ -26,7 +26,7 @@ const ProfilePlayList = () => {
       >
         {lists?.map((list) => (
           <Box key={list.id} >
-            <PlaylistCard list={list} />
+            <SimplePlaylistCard list={list}/>
           </Box>
         ))}
       </SimpleGrid>

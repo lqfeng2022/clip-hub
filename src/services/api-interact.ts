@@ -21,7 +21,7 @@ class InteractAPIClient<T> {
       .then((res) => res.data)
   }
 
-  // get all epbooks/history/likes/playlists
+  // get all epbooks/view_histories/likes/playlists..
   getAll = (config?: AxiosRequestConfig) => {
     return axiosInstance
       .get<FetchResponse<T>>(this.endpoint, config)
@@ -38,7 +38,7 @@ class InteractAPIClient<T> {
   // create a playlist
   postList = (data: any, config?: AxiosRequestConfig) => {
     return axiosInstance
-      .post(this.endpoint, data, config)
+      .post(`/${this.endpoint}/`, data, config)
       .then((res) => res.data)
   }
 
@@ -53,6 +53,25 @@ class InteractAPIClient<T> {
       .then((res) => res.data)
   }
 
+  // update playlist title
+  putList = (
+    id: number | string, 
+    data: any, 
+    config?: AxiosRequestConfig
+  ) => {
+    return axiosInstance
+      .put(`/${this.endpoint}/${id}/`, data, config)
+      .then((res) => res.data)
+  }
+
+  // delete playlist
+  deleteList = (
+    id: number | string, 
+    config?: AxiosRequestConfig
+  ) => {
+    return axiosInstance
+      .delete(`/${this.endpoint}/${id}/`, config)
+  }
 }
 
 export default InteractAPIClient
