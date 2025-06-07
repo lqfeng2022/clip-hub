@@ -11,7 +11,9 @@ const NavBar = () => {
   // ??: only return right-hand value only if the left side is null or undefined
   const fullName = user?.first_name || user?.last_name
       ? `${user?.first_name ?? ''} ${user?.last_name ?? ''}`.trim()
-      : user?.username;
+      : user?.username
+
+  const portrait = `http://localhost:8000/${user?.portrait}`
   
   return (
     <HStack p='16px 10px' gap={5} justifyContent='space-between'>
@@ -45,7 +47,7 @@ const NavBar = () => {
             size='small'
             fontWeight='bold'
             name={fullName}
-            src={user?.portrait}
+            src={user?.portrait ? portrait : ''}
           />
         </Link>
         : 

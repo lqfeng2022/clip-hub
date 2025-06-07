@@ -9,9 +9,10 @@ interface UpdatePayload {
 }
 const useListUpdate = () => {
   return useMutation({
-    // React Query expects mutationFn to take a single argument 
     mutationFn: ({ listId, title }: UpdatePayload) => 
-      apiClient.putList(listId, { title }, { withCredentials: true })
+      apiClient.putList(
+        listId, { title }, { withCredentials: true }
+      )
   })
 }
 

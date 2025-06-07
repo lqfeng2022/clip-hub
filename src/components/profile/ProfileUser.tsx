@@ -1,7 +1,7 @@
 import { Avatar, Box, Button, Heading, HStack, Text } from '@chakra-ui/react'
 import { useQueryClient } from '@tanstack/react-query'
 import { FaBloggerB } from 'react-icons/fa'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useAuth } from '../../AuthContext'
 import useSignout from '../../hooks/useSignout'
 
@@ -28,20 +28,32 @@ const ProfileUser = () => {
     })
   }
 
+  const portraitUrl = `http://localhost:8000/${user?.portrait}`
+
+  const location = useLocation()
+  const isProfileMePage = location.pathname.startsWith('/profile/me')
+
   return (
     <Box mt={8} px={2}>
       <HStack align='flex-start' wrap='wrap' spacing={4}>
-        <Avatar size='large' fontWeight='bold' name={fullName} src={user?.portrait}/>
+        <Avatar 
+          size='large' 
+          fontWeight='bold' 
+          name={fullName} 
+          src={user?.portrait ? portraitUrl : ''}
+        />
         <Box flex='1'>
           <Heading fontSize='4xl'>
             {`${user?.first_name} ${user?.last_name}`}
           </Heading>
-          <Link to='me'>
+          <Link to='/profile/me'>
             <Text 
               fontSize='lg' 
               color='gray.300' 
               py={1} 
-              _hover={{ color: 'yellow.200', fontWeight: 'bold'}}
+              _hover={isProfileMePage 
+                ? {} : { color: 'yellow.200', fontWeight: 'bold'}
+              }
             >
               {`@${user?.username}`}
             </Text>

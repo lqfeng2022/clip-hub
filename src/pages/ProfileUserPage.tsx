@@ -1,24 +1,23 @@
-import { Button, Heading, Stack } from '@chakra-ui/react'
-import ProfileCover from '../components/profile/ProfileCover'
+import { Box, Heading, Image, Stack } from '@chakra-ui/react'
 import ProfileForms from '../components/profile/ProfileForms'
-import ProfilePortrait from '../components/profile/ProfilePortrait'
-import { useAuth } from '../AuthContext'
+import ProfileUser from '../components/profile/ProfileUser'
 
 const ProfileUserPage = () => {
-  const { user } = useAuth()
-
-  if (!user) return null
   return (
     <>
-      <Stack px={2.5} maxW='800px'>
+      <Stack px={2}>
+        <Box
+          height='160px'
+          borderRadius={5}
+          overflow='hidden'
+          bg='gray.500'
+        >
+          <Image src='https://bit.ly/naruto-sage'/>
+        </Box>
+        <ProfileUser/>
         <Heading py={4}>Profile Settings</Heading>
-        <ProfileCover user={user}/>
-        <ProfilePortrait user={user}/>
-        <ProfileForms user={user}/>
+        <ProfileForms />
       </Stack>
-      <Button m='20px 10px 80px' size='md' fontSize='lg'>
-        Publish
-      </Button>
     </>
   )
 }
