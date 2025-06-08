@@ -46,23 +46,27 @@ const ProfileUser = () => {
           <Heading fontSize='4xl'>
             {`${user?.first_name} ${user?.last_name}`}
           </Heading>
-          <Link to='/profile/me'>
-            <Text 
-              fontSize='lg' 
-              color='gray.300' 
-              py={1} 
-              _hover={isProfileMePage 
-                ? {} : { color: 'yellow.200', fontWeight: 'bold'}
-              }
-            >
+          <HStack gap={5}>
+            <Text fontSize='lg' color='gray.300' py={1}>
               {`@${user?.username}`}
             </Text>
-          </Link>
+            <Link to='/profile/me'>
+              {!isProfileMePage && 
+                <Button size='sm' variant='ghost'>
+                  Edit profile
+                </Button>
+              }
+            </Link>
+          </HStack>
           <HStack py={2} justifyContent='space-between'>
             <Button leftIcon={<FaBloggerB/>} size='sm' disabled>
               Be a Bro
             </Button>
-            <Button size='sm' variant='outline' onClick={handleLogout}>
+            <Button 
+              size='sm' 
+              variant='outline' 
+              onClick={handleLogout}
+            >
               Log out
             </Button>
           </HStack>

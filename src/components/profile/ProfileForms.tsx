@@ -11,7 +11,7 @@ const ProfileForms = () => {
   })
 
   // Sync user data once loaded
-  const { user } = useAuth()
+  const { user, fetchUser } = useAuth()
   useEffect(() => {
     if (!user) return
     const { first_name, last_name, email, phone, birth_date } = user
@@ -32,7 +32,10 @@ const ProfileForms = () => {
   const toast = useToast()
   const handleSubmit = () => {
     mutate(formData, {
-      onSuccess: () => toast({ title: 'Success!', status: 'success', duration: 2000 }),
+      onSuccess: () => {
+        toast({ title: 'Success!', status: 'success', duration: 2000 }),
+        fetchUser()
+      },
       onError: () => toast({ title: 'Upload failed', status: 'error', duration: 2000 })
     })
   }
