@@ -82,6 +82,27 @@ class InteractAPIClient<T> {
     return axiosInstance
       .delete(`/${this.endpoint}/${ListId}/items/${listItemId}/`, config)
   }
+
+  // create search
+    // create interaction actions (history/like/epbook/..)
+  postSearch = (
+    data: any,
+    config?: AxiosRequestConfig
+  ) => {
+    return axiosInstance
+      .post(`/${this.endpoint}/`, data, config)
+      .then((res) => res.data)
+  }
+
+  // update search item
+  putSearch = (
+    id: number,
+    data: any,
+    config?: AxiosRequestConfig
+  ) => {
+    return axiosInstance
+      .put(`/${this.endpoint}/${id}/`, data, config)
+  }
 }
 
 export default InteractAPIClient
