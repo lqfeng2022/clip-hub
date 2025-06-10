@@ -4,12 +4,14 @@ import { IoBookmark, IoBookmarkOutline } from 'react-icons/io5'
 import Expression from '../entities/Expression'
 import useEpInteract from '../hooks/useEpInteract'
 import useEpbooks from '../hooks/useEpbooks'
+import { useAuth } from '../AuthContext'
 
 interface Props {
   expression: Expression,
   onUnmark?: () => void, // optional callback
 }
 const ExpressionBookmark = ({ expression, onUnmark }: Props) => {
+  const { user } = useAuth()
   const [marked, setMarked] = useState(expression.bookmark_state)
   const toggleMarked = () => setMarked(prev => !prev)
 
@@ -23,9 +25,8 @@ const ExpressionBookmark = ({ expression, onUnmark }: Props) => {
     if (marked !== lastState.current) {
       if (timer.current) clearTimeout(timer.current)
       timer.current = setTimeout(() => {
-        mutate({visible: marked}, {
-          onSuccess: () => refetch()
-        })
+        if (user) 
+          mutate({visible: marked}, {onSuccess: () => refetch()})
         lastState.current = marked
         // Use to triggle refetch, toast, or redirect
         if (!marked && onUnmark) onUnmark()
@@ -38,6 +39,7 @@ const ExpressionBookmark = ({ expression, onUnmark }: Props) => {
     }
   }, [marked, mutate])
 
+  if (!user) return null
   return (
     <Icon
       as={marked ? IoBookmark : IoBookmarkOutline} // or IoBookmark

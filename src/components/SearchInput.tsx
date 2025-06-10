@@ -6,8 +6,10 @@ import useClipQueryStore from '../clipStore'
 import useExpressionQueryStore from '../expressionStore'
 import SearchBox from './SearchBox'
 import useSearchPost from '../hooks/useSearchPost'
+import { useAuth } from '../AuthContext'
 
 const SearchInput = () => {
+  const { user } = useAuth()
   const location = useLocation()
   const isExpressionPage = location.pathname.startsWith('/expression')
 
@@ -36,7 +38,7 @@ const SearchInput = () => {
     setSearchText(content) // Update local search state
 
     // Post new search record to backend
-    mutate({
+    if (user) mutate({
       content,
       type: isExpressionPage ? 'WORDS' : 'CLIP',
       visible: true,

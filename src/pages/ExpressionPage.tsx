@@ -31,6 +31,7 @@ function ExpressionPage() {
         lg: '320px 1fr',
       }}
     >
+      {/* Aside list (languages/langtags) */}
       <Show above='lg'>
         <GridItem area='aside' px={2.5}>
           <Box mt={8}>
@@ -40,6 +41,7 @@ function ExpressionPage() {
           </Box>
         </GridItem>
       </Show>
+      {/* Main for Expressions */}
       <GridItem area='main'>
         <Box px={2}>
           <Heading my={4} fontSize='3xl'>
@@ -55,6 +57,7 @@ function ExpressionPage() {
             <ExpressionSortSelector/>
           </HStack>
         </Box>
+        {/* Expression grid cards */}
         <ExpressionGrid/>
       </GridItem>
     </Grid>

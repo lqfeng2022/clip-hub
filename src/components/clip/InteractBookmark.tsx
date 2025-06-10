@@ -10,38 +10,38 @@ import ClipCreateList from './ClipCreateList'
 import ClipSaveList from './ClipSaveList'
 import useListItemPost from '../../hooks/useListItemPost'
 import useListPost from '../../hooks/useListPost'
+import { useAuth } from '../../AuthContext'
 
-interface Props {
-  clip: Clip
-}
-const InteractBookmark = ({ clip }: Props) => {
+
+const InteractBookmark = ({ clip }: { clip: Clip }) => {
   const { isOpen: isMainOpen, onOpen: onMainOpen, onClose: onMainClose } = useDisclosure()
   const { isOpen: isAddOpen, onOpen: onAddOpen, onClose: onAddClose } = useDisclosure()
   
+  const { user } = useAuth()
   const { data, refetch } = useLists() // get playlists
-
   const { mutate: addList } = useListPost()
-  const handleCreateList = (title: string) => {
-    // console.log('Create new playlist:', title)
-    // send to backend
+
+  const handleAddList = (title: string) => {
     addList({ title }, { onSuccess: () => refetch() })
   }
   
   const [selectedListIds, setSelectedListIds] = useState<number[]>([])
   const { mutate: addListItem } = useListItemPost()
-  const handleCreateListItem = (video_id: number, selectedListIds: number[]) => {
-    // send to backend
+  const handleAddListItem = (video_id: number, selectedListIds: number[]) => {
     addListItem({ video_id, listIds: selectedListIds })
     onMainClose()
   }
-
+  
+  if (!user) return null
   return (
     <>
       {/* Click to open the Modal A */}
       <Icon
         as={IoBookmarkOutline}
         boxSize={6}
-        onClick={onMainOpen}
+        onClick={user ? onMainOpen : undefined}
+        _hover={{ cursor: 'pointer' }}
+        opacity={user ? 1 : 0.5}
       />
       {/* Model A */}
       <Modal isOpen={isMainOpen} onClose={onMainClose}>
@@ -65,7 +65,7 @@ const InteractBookmark = ({ clip }: Props) => {
               colorScheme='gray' 
               mr={3} 
               onClick={() => {
-                handleCreateListItem(clip.id, selectedListIds)
+                handleAddListItem(clip.id, selectedListIds)
               }}
             >
               Save
@@ -81,7 +81,7 @@ const InteractBookmark = ({ clip }: Props) => {
       <ClipCreateList 
         isOpen={isAddOpen} 
         onClose={onAddClose} 
-        onCreate={handleCreateList}
+        onCreate={handleAddList}
       />
     </>
   )

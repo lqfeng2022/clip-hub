@@ -3,12 +3,11 @@ import { useEffect, useRef, useState } from 'react'
 import { IoHeartOutline, IoHeart } from 'react-icons/io5'
 import Clip from '../../entities/Clip'
 import useInteract from '../../hooks/useClipInteract'
+import { useAuth } from '../../AuthContext'
 
 
-interface Props {
-  clip: Clip
-}
-const InteractLike = ({clip}: Props) => {
+const InteractLike = ({ clip }: { clip: Clip }) => {
+    const { user } = useAuth()
     const [liked, setLiked] = useState(clip.like_state)
     const [likesCount, setLikesCount] = useState(clip.likes_count)
     const toggleLike = () => {
@@ -36,7 +35,7 @@ const InteractLike = ({clip}: Props) => {
         // debounce for 10s before sending
         // `setTimeout()`: Delays the POST request until user stops clicking
         debounceTimer.current = setTimeout(() => {
-          mutate({ visible: liked }) // send like/unlike
+          if (user) mutate({ visible: liked }) // send like/unlike
           lastSentState.current = liked
         }, 10000)
       }

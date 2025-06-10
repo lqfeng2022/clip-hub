@@ -1,10 +1,4 @@
-import {
-  Box,
-  GridItem,
-  Heading,
-  SimpleGrid,
-  Spinner
-} from '@chakra-ui/react'
+import { Box, GridItem, Heading, SimpleGrid, Spinner } from '@chakra-ui/react'
 import { useParams } from 'react-router-dom'
 import ClipAttributes from '../components/clip/ClipAttributes'
 import ClipMovie from '../components/clip/ClipMovie'

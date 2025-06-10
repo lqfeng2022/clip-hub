@@ -21,7 +21,7 @@ export default interface Clip {
   release_year: number,
   movies: Movie[],
   likes_count: number,
-  views: number,
+  views_count: number,
   like_state: boolean,
   bookmark_state: boolean,
   expressions: Expression[],

@@ -14,7 +14,7 @@ const InteractIconList = ({ clip }: { clip: Clip }) => {
         <InteractLike clip={clip}/>
         <HStack>
           <Icon as={IoEyeOutline} boxSize={6}/>
-          <Text>{clip.views}</Text>
+          <Text>{clip.views_count}</Text>
         </HStack>
         <InteractBookmark clip={clip}/>
         <Icon as={BiShare} boxSize={6}/>
