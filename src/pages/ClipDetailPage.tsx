@@ -5,7 +5,7 @@ import ClipMovie from '../components/clip/ClipMovie'
 import ClipExpressionList from '../components/clip/ClipExpressionList'
 import ClipInteractIcons from '../components/clip/ClipInteractIcons'
 import CollapseText from '../components/CollapseText'
-import useClip from '../hooks/useClip'
+import useClip from '../hooks/store/useClip'
 
 const ClipDetailPage = () => {
   const { slug } = useParams() // get `slug` from url

@@ -2,9 +2,9 @@ import { Box, Heading, SimpleGrid, Spinner, Text } from '@chakra-ui/react'
 import React from 'react'
 import InfiniteScroll from 'react-infinite-scroll-component'
 import PlaylistCard from '../components/profile/PlaylistCard'
-import useListDelete from '../hooks/useListDelete'
-import useLists from '../hooks/useLists'
-import useListUpdate from '../hooks/useListUpdate'
+import useListDelete from '../hooks/interact/useListDelete'
+import useLists from '../hooks/interact/useLists'
+import useListUpdate from '../hooks/interact/useListUpdate'
 
 const ProfilePlaylistPage = () => {
   const { data, refetch, error, fetchNextPage,  hasNextPage } = useLists()

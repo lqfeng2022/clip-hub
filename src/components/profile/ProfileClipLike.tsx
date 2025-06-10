@@ -1,6 +1,6 @@
 import { Box, Button, Heading, HStack, SimpleGrid, Text } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
-import useClipLikes from '../../hooks/useClipLikes'
+import useClipLikes from '../../hooks/interact/useClipLikes'
 import SimpleClipCard from './SimpleClipCard'
 import EmptyCard from '../EmptyCard'
 

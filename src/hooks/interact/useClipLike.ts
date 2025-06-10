@@ -1,9 +1,9 @@
 import { useMutation } from '@tanstack/react-query'
-import InteractAPIClient from '../services/api-interact'
+import InteractAPIClient from '../../services/api-interact'
 
-const apiClient = new InteractAPIClient('histories')
+const apiClient = new InteractAPIClient('likes')
 
-const useClipHistory = () => {
+const useClipLike = () => {
   return useMutation({
     mutationFn: (
       { id, visible } : { id: number, visible: boolean }
@@ -13,4 +13,4 @@ const useClipHistory = () => {
   })
 }
 
-export default useClipHistory
+export default useClipLike

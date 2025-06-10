@@ -2,8 +2,8 @@ import { Box, Heading, SimpleGrid, Spinner, Text } from '@chakra-ui/react'
 import React from 'react'
 import InfiniteScroll from 'react-infinite-scroll-component'
 import SimpleClipCardMark from '../components/profile/SimpleClipCardMark'
-import useClipLike from '../hooks/useClipLike'
-import useClipLikes from '../hooks/useClipLikes'
+import useClipLike from '../hooks/interact/useClipLike'
+import useClipLikes from '../hooks/interact/useClipLikes'
 
 const ProfileLikePage = () => {
   const { data, refetch, error, fetchNextPage,  hasNextPage } = useClipLikes()

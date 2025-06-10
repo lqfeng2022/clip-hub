@@ -3,7 +3,7 @@ import {
   ListItem, Spinner 
 } from '@chakra-ui/react'
 import useClipQueryStore from '../../clipStore'
-import useGenres from '../../hooks/useGenres'
+import useGenres from '../../hooks/store/useGenres'
 
 const GenreList = () => {
   const selectedGenreId = useClipQueryStore((s) => s.clipQuery.genreId)

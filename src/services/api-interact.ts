@@ -17,7 +17,7 @@ class InteractAPIClient<T> {
   // get all epbooks/view_histories/likes/playlists..
   getAll = (config?: AxiosRequestConfig) => {
     return axiosInstance
-      .get<FetchResponse<T>>(this.endpoint, config)
+      .get<FetchResponse<T>>(`/${this.endpoint}/`, config)
       .then((res) => res.data) //extract data from response
   }
 

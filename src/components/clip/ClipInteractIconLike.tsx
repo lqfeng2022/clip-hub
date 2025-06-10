@@ -2,7 +2,7 @@ import { HStack, Icon, Text } from '@chakra-ui/react'
 import { useEffect, useRef, useState } from 'react'
 import { IoHeartOutline, IoHeart } from 'react-icons/io5'
 import Clip from '../../entities/Clip'
-import useInteract from '../../hooks/useClipInteract'
+import useInteract from '../../hooks/store/useClipInteract'
 import { useAuth } from '../../AuthContext'
 
 const ClipInteractIconLike = ({ clip }: { clip: Clip }) => {

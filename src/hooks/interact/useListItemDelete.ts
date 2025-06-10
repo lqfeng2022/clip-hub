@@ -1,5 +1,5 @@
 import { useMutation } from '@tanstack/react-query'
-import InteractAPIClient from '../services/api-interact'
+import InteractAPIClient from '../../services/api-interact'
 
 const apiClient = new InteractAPIClient('lists') // main endpoint
 

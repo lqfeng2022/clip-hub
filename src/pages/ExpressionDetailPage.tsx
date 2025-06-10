@@ -1,11 +1,11 @@
 import { Box, Image, GridItem, Heading, HStack, Icon, SimpleGrid, Spinner, Text, Stack, Center } from '@chakra-ui/react'
 import { Link, useParams } from 'react-router-dom'
-import useExpression from '../hooks/useExpression'
+import useExpression from '../hooks/store/useExpression'
 import { ImQuotesLeft } from 'react-icons/im'
 import ExpressionBookmark from '../components/expression/ExpressionBookmark'
 import ClipTags from '../components/clip/ClipTags'
 import ClipExpressionCards from '../components/ClipExpressionCards'
-import useClipExpressions from '../hooks/useClipExpressions'
+import useClipExpressions from '../hooks/store/useClipExpressions'
 
 const ExpressionDetailPage = () => {
   const { slug } = useParams() // get `slug` from url

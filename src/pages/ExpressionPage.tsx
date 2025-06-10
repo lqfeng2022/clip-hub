@@ -4,8 +4,8 @@ import ExpressionSortSelector from '../components/expression/ExpressionSortSelec
 import LangtagsSelector from '../components/expression/LangtagsSelector'
 import LanguageHList from '../components/expression/LanguageHList'
 import useExpressionQueryStore from '../expressionStore'
-import { useLangtag } from '../hooks/useLangtag'
-import useLanguage from '../hooks/useLanguage'
+import { useLangtag } from '../hooks/store/useLangtag'
+import useLanguage from '../hooks/store/useLanguage'
 import LangtagsList from '../components/expression/LangtagsList'
 import LanguageList from '../components/expression/LanguageList'
 

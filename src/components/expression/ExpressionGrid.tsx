@@ -1,7 +1,7 @@
 import { Box, SimpleGrid, Spinner, Text } from '@chakra-ui/react'
 import React from 'react'
 import InfiniteScroll from 'react-infinite-scroll-component'
-import useExpressions from '../../hooks/useExpressions'
+import useExpressions from '../../hooks/store/useExpressions'
 import ExpressionCard from './ExpressionCard'
 
 const ExpressionGrid = () => {

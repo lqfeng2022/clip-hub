@@ -1,15 +1,15 @@
 import { useInfiniteQuery } from '@tanstack/react-query'
-import InteractAPIClient from '../services/api-interact'
-import { FetchResponse } from '../services/api-store'
-import ClipInteract from '../entities/History'
-import { useAuth } from '../AuthContext'
+import Epbook from '../../entities/Epbook'
+import InteractAPIClient from '../../services/api-interact'
+import { FetchResponse } from '../../services/api-store'
+import { useAuth } from '../../AuthContext'
 
-const apiClient = new InteractAPIClient<ClipInteract>('/likes/')
+const apiClient = new InteractAPIClient<Epbook>('epbooks')
 
-const useClipLikes = () => {
+const useEpbooks = () => {
   const { user } = useAuth()
-  return useInfiniteQuery<FetchResponse<ClipInteract>, Error>({
-    queryKey: ['clipLikes'],
+  return useInfiniteQuery<FetchResponse<Epbook>, Error>({
+    queryKey: ['epbooks'],
     queryFn: ({pageParam = 1}) => apiClient.getAll({
       params: {
         withCredentials: true,
@@ -25,4 +25,4 @@ const useClipLikes = () => {
   })
 }
 
-export default useClipLikes
+export default useEpbooks

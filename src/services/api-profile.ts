@@ -14,7 +14,7 @@ class ProfileAPIClient {
   }
 
   // get user profile
-  getProfile = (config?: AxiosRequestConfig) => {
+  get = (config?: AxiosRequestConfig) => {
     return axiosInstance
       .get(`/${this.endpoint}/`, config)
       .then((res) => res.data)

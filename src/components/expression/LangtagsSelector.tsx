@@ -4,7 +4,7 @@ import {
 } from '@chakra-ui/react'
 import LangtagsList from './LangtagsList'
 import useExpressionQueryStore from '../../expressionStore'
-import { useLangtag } from '../../hooks/useLangtag'
+import { useLangtag } from '../../hooks/store/useLangtag'
 
 const LangtsgsSelector = () => {
   const { isOpen, onOpen, onClose } = useDisclosure()

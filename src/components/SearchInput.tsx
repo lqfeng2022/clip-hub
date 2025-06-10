@@ -4,7 +4,7 @@ import { BsSearch } from 'react-icons/bs'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../AuthContext'
 import useSearchContext from '../hooks/useSearchContex'
-import useSearchPost from '../hooks/useSearchPost'
+import useSearchPost from '../hooks/interact/useSearchPost'
 import SearchBox from './SearchBox'
 
 

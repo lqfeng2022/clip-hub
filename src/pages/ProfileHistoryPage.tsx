@@ -2,8 +2,8 @@ import { Box, Heading, SimpleGrid, Spinner, Text } from '@chakra-ui/react'
 import React from 'react'
 import InfiniteScroll from 'react-infinite-scroll-component'
 import SimpleClipCardMark from '../components/profile/SimpleClipCardMark'
-import useClipHistories from '../hooks/useClipHistories'
-import useClipHistory from '../hooks/useClipHistory'
+import useClipHistories from '../hooks/interact/useClipHistories'
+import useClipHistory from '../hooks/interact/useClipHistory'
 
 const ProfileHistoryPage = () => {
   const { data, refetch, error, fetchNextPage,  hasNextPage } = useClipHistories()

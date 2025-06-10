@@ -1,10 +1,10 @@
 import { useQuery } from '@tanstack/react-query'
-import APIClient from '../services/api-store'
-import Expression from '../entities/Expression'
+import APIClient from '../../services/api-store'
+import Expression from '../../entities/Expression'
 
 // clipId -> clipId?, cus it might be undefined
 const useClipExpressions = (clipId?: number) => {
-  const apiClient = new APIClient<Expression>(`/videos/${clipId}/expressions/`)
+  const apiClient = new APIClient<Expression>(`videos/${clipId}/expressions/`)
 
   return useQuery({
     queryKey: ['expressions', clipId],

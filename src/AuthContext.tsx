@@ -24,7 +24,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
   const fetchUser = async () => {
     await apiClient
-      .getProfile({ withCredentials: true })
+      .get({ withCredentials: true })
       .then(setUser)
       .catch((error: any) => {
         if (error?.response?.status === 401) 
