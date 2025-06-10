@@ -1,11 +1,8 @@
 import { Box, Heading } from '@chakra-ui/react'
-import ExpressionCard from '../ExpressionCard'
-import Expression from '../../entities/Expression'
+import ExpressionCard from './expression/ExpressionCard'
+import Expression from '../entities/Expression'
 
-interface Props {
-  data: Expression[]
-}
-const ExpressionList = ({ data }: Props) => {
+const ClipExpressionCards = ({ data }: { data: Expression[] }) => {
   return (
     <Box p='15px 10px'>
       <Heading size='md' mb={3} color='gray'>
@@ -29,4 +26,4 @@ const ExpressionList = ({ data }: Props) => {
   )
 }
 
-export default ExpressionList
+export default ClipExpressionCards

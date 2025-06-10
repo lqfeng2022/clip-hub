@@ -1,15 +1,10 @@
 import {
-  Button,
-  Modal,
-  ModalBody,
-  ModalCloseButton,
-  ModalContent,
-  ModalOverlay,
-  useDisclosure
+  Button, Modal, ModalBody, ModalCloseButton, ModalContent, 
+  ModalOverlay, useDisclosure
 } from '@chakra-ui/react'
 import LangtagsList from './LangtagsList'
-import useExpressionQueryStore from '../expressionStore'
-import { useLangtag } from '../hooks/useLangtag'
+import useExpressionQueryStore from '../../expressionStore'
+import { useLangtag } from '../../hooks/useLangtag'
 
 const LangtsgsSelector = () => {
   const { isOpen, onOpen, onClose } = useDisclosure()

@@ -4,13 +4,12 @@ import {
 } from '@chakra-ui/react'
 import { useState } from 'react'
 
-
 interface Props {
   isOpen: boolean
   onClose: () => void
   onCreate: (title: string) => void
 }
-const ClipCreateList = ({ isOpen, onClose, onCreate }: Props) => {
+const ClipPlayistAdd = ({ isOpen, onClose, onCreate }: Props) => {
   const [title, setTitle] = useState('')
   const handleCreate = () => {
     onCreate(title), setTitle(''), onClose()
@@ -49,4 +48,4 @@ const ClipCreateList = ({ isOpen, onClose, onCreate }: Props) => {
   )
 }
 
-export default ClipCreateList
+export default ClipPlayistAdd

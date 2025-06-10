@@ -1,10 +1,10 @@
 import { Icon } from '@chakra-ui/react'
 import { useEffect, useRef, useState } from 'react'
 import { IoBookmark, IoBookmarkOutline } from 'react-icons/io5'
-import Expression from '../entities/Expression'
-import useEpInteract from '../hooks/useEpInteract'
-import useEpbooks from '../hooks/useEpbooks'
-import { useAuth } from '../AuthContext'
+import Expression from '../../entities/Expression'
+import useEpInteract from '../../hooks/useEpInteract'
+import useEpbooks from '../../hooks/useEpbooks'
+import { useAuth } from '../../AuthContext'
 
 interface Props {
   expression: Expression,
@@ -34,9 +34,7 @@ const ExpressionBookmark = ({ expression, onUnmark }: Props) => {
     } 
 
     // React expects the cleanup function to be returned from useEffect
-    return () => {
-      if (timer.current) clearTimeout(timer.current)
-    }
+    return () => { if (timer.current) clearTimeout(timer.current)}
   }, [marked, mutate])
 
   if (!user) return null

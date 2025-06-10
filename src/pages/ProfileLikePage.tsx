@@ -1,7 +1,7 @@
 import { Box, Heading, SimpleGrid, Spinner, Text } from '@chakra-ui/react'
 import React from 'react'
 import InfiniteScroll from 'react-infinite-scroll-component'
-import SimpleClipCardWithMark from '../components/SimpleClipCardWithMark'
+import SimpleClipCardMark from '../components/profile/SimpleClipCardMark'
 import useClipLike from '../hooks/useClipLike'
 import useClipLikes from '../hooks/useClipLikes'
 
@@ -42,7 +42,7 @@ const ProfileLikePage = () => {
                 .filter((like) => like.visible)
                 .map((like) => (
                   <Box key={like.id}>
-                    <SimpleClipCardWithMark 
+                    <SimpleClipCardMark 
                       clip={like.video}
                       handleClick={() => handleUpdate(
                         like.id, !like.visible

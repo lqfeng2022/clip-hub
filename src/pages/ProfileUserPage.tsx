@@ -1,5 +1,5 @@
 import { Box, Heading, Image, Stack } from '@chakra-ui/react'
-import ProfileForms from '../components/profile/ProfileForms'
+import ProfileUserForms from '../components/profile/ProfileUserForms'
 import ProfileUser from '../components/profile/ProfileUser'
 
 const ProfileUserPage = () => {
@@ -15,7 +15,7 @@ const ProfileUserPage = () => {
       </Box>
       <ProfileUser/>
       <Heading py={4}>Profile Settings</Heading>
-      <ProfileForms />
+      <ProfileUserForms />
     </Stack>
   )
 }

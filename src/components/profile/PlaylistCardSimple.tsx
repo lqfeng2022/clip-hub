@@ -1,7 +1,7 @@
 import { Card, CardBody, Heading, HStack, Image } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
-import nocontent from '../assets/no-content.png'
-import List from '../entities/List'
+import nocontent from '../../assets/no-content.png'
+import List from '../../entities/List'
 
 const SimplePlaylistCard = ({ list }: { list: List }) => {
   const cover = list.items[0]?.video.cover

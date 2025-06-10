@@ -2,9 +2,9 @@ import { Box, Image, GridItem, Heading, HStack, Icon, SimpleGrid, Spinner, Text,
 import { Link, useParams } from 'react-router-dom'
 import useExpression from '../hooks/useExpression'
 import { ImQuotesLeft } from 'react-icons/im'
-import ExpressionBookmark from '../components/ExpressionBookmark'
-import TagList from '../components/clip/TagList'
-import ExpressionList from '../components/clip/ExpressionList'
+import ExpressionBookmark from '../components/expression/ExpressionBookmark'
+import ClipTags from '../components/clip/ClipTags'
+import ClipExpressionCards from '../components/ClipExpressionCards'
 import useClipExpressions from '../hooks/useClipExpressions'
 
 const ExpressionDetailPage = () => {
@@ -47,7 +47,7 @@ const ExpressionDetailPage = () => {
               <Heading size='md' color='gray.500'>
                 Tags
               </Heading>
-              <TagList tags={exp.langtags} color='teal'/>
+              <ClipTags tags={exp.langtags} color='teal'/>
             </Box>
             {/* clip link */}
             <Stack>
@@ -90,7 +90,7 @@ const ExpressionDetailPage = () => {
           </GridItem>
       </SimpleGrid>
       {/* pass `[]` until it's ready, avoid runtime crashes */}
-      <ExpressionList data={clipexp?.results ?? []}/>
+      <ClipExpressionCards data={clipexp?.results ?? []}/>
     </div>
   )
 }

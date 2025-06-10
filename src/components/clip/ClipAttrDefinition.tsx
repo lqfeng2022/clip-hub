@@ -5,7 +5,7 @@ interface Props {
   term: string
   children: ReactNode | ReactNode[]
 }
-const DefinitionItem = ({ term, children }: Props) => {
+const ClipAttrDefinition = ({ term, children }: Props) => {
   return (
     <Box my={2}>
       <Heading pb={1} fontSize='md' color='gray.500'>
@@ -16,4 +16,4 @@ const DefinitionItem = ({ term, children }: Props) => {
   )
 }
 
-export default DefinitionItem
+export default ClipAttrDefinition

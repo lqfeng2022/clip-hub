@@ -1,6 +1,6 @@
 import { Grid, GridItem, Show } from '@chakra-ui/react';
 import { Outlet } from 'react-router-dom';
-import ProfileList from '../components/profile/ProfileList';
+import ProfileListLink from '../components/profile/ProfileListLink';
 
 const ProfileLayout = () => {
   return (
@@ -16,7 +16,7 @@ const ProfileLayout = () => {
     >
       <Show above='lg'>
         <GridItem area='aside' px={2.5}>
-          <ProfileList />
+          <ProfileListLink />
         </GridItem>
       </Show>
       <GridItem area='main'>

@@ -5,8 +5,7 @@ import Clip from '../../entities/Clip'
 import useInteract from '../../hooks/useClipInteract'
 import { useAuth } from '../../AuthContext'
 
-
-const InteractLike = ({ clip }: { clip: Clip }) => {
+const ClipInteractIconLike = ({ clip }: { clip: Clip }) => {
     const { user } = useAuth()
     const [liked, setLiked] = useState(clip.like_state)
     const [likesCount, setLikesCount] = useState(clip.likes_count)
@@ -19,10 +18,9 @@ const InteractLike = ({ clip }: { clip: Clip }) => {
     // •	You start a 10s timer to send the request
 	  // •	But the user clicks again before 10s is up
 	  // •	You want to cancel the old timer and start a new one
-
     const { mutate } = useInteract(clip.id, 'like')
 
-    // `useRef()`: Stores a value between renders
+    // `useRef()`: store value between renders
     const lastSentState = useRef(clip.like_state)
     const debounceTimer = useRef<number | null>(null)
 
@@ -39,7 +37,6 @@ const InteractLike = ({ clip }: { clip: Clip }) => {
           lastSentState.current = liked
         }, 10000)
       }
-
       return () => {
         if (debounceTimer.current) clearTimeout(debounceTimer.current)
       }
@@ -58,4 +55,4 @@ const InteractLike = ({ clip }: { clip: Clip }) => {
   )
 }
 
-export default InteractLike
+export default ClipInteractIconLike

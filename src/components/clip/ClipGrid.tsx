@@ -3,22 +3,14 @@ import React from 'react'
 import InfiniteScroll from 'react-infinite-scroll-component'
 import useClips from '../../hooks/useClips'
 import ClipCard from './ClipCard'
-import ClipCardSkeleton from '../ClipCardSkeleton'
+import ClipCardSkeleton from './ClipCardSkeleton'
 
 const ClipGrid = () => {
-  const {
-    data, 
-    error, 
-    isLoading, 
-    isFetchingNextPage, 
-    fetchNextPage, 
-    hasNextPage,
-  } = useClips()
+  const { data, error, isLoading, fetchNextPage, hasNextPage } = useClips()
   const skeletons = [1, 2, 3, 4, 5, 6]
   const fetchClipsCount = data?.pages.reduce(
     (total, page) => total + page.results.length, 0) || 0
 
-  // `error` -> `error.message`
   if (error) return <Text>{error.message}</Text>
   return (
     <InfiniteScroll 

@@ -1,10 +1,10 @@
 import { Box, Button, HStack, Heading, SimpleGrid, Text } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
 import useLists from '../../hooks/useLists'
-import SimplePlaylistCard from '../PlaylistCardSimple'
+import SimplePlaylistCard from './PlaylistCardSimple'
 import EmptyCard from '../EmptyCard'
 
-const ProfilePlayList = () => {
+const ProfilePlaylist = () => {
   const { data, error } = useLists()
   const lists = data?.pages[0].results.slice(0, 4)
 
@@ -41,4 +41,4 @@ const ProfilePlayList = () => {
   )
 }
 
-export default ProfilePlayList
+export default ProfilePlaylist

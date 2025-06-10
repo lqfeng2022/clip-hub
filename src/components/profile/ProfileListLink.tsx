@@ -6,8 +6,7 @@ import { Link } from 'react-router-dom'
 import { IoMdHeartEmpty } from 'react-icons/io'
 import { HiOutlineUser } from 'react-icons/hi2'
 
-
-const ProfileList = () => {
+const ProfileListLink = () => {
   const list = [
     { name: 'Profile', icon: HiOutlineUser, link: '/profile' },
     { name: 'Your words', icon: IoLanguageOutline, link: '/profile/expression' },
@@ -35,4 +34,4 @@ const ProfileList = () => {
   )
 }
 
-export default ProfileList
+export default ProfileListLink

@@ -1,6 +1,6 @@
 import {
-  AspectRatio, Box, Button, Divider, Heading,
-  HStack, Image, List, ListItem, Spinner
+  AspectRatio, Box, Button, Divider, Heading, HStack, Image, List, 
+  ListItem, Spinner 
 } from '@chakra-ui/react'
 import useClipQueryStore from '../../clipStore'
 import useGenres from '../../hooks/useGenres'

@@ -2,8 +2,8 @@ import { Box, GridItem, Heading, SimpleGrid, Spinner } from '@chakra-ui/react'
 import { useParams } from 'react-router-dom'
 import ClipAttributes from '../components/clip/ClipAttributes'
 import ClipMovie from '../components/clip/ClipMovie'
-import ClipWords from '../components/clip/ClipWords'
-import InteractIconList from '../components/clip/InteractIconList'
+import ClipExpressionList from '../components/clip/ClipExpressionList'
+import ClipInteractIcons from '../components/clip/ClipInteractIcons'
 import CollapseText from '../components/CollapseText'
 import useClip from '../hooks/useClip'
 
@@ -31,14 +31,14 @@ const ClipDetailPage = () => {
             </CollapseText>
           </Box>
           <ClipAttributes clip={clip}/>
-          <ClipWords data={clip.expressions}/>
+          <ClipExpressionList data={clip.expressions}/>
         </GridItem>
         <GridItem order={{ base: 1, lg: 2 }}>
           <ClipMovie 
             movie={clip.movies[0]} 
             videoId={clip.id}
           />
-          <InteractIconList clip={clip}/>
+          <ClipInteractIcons clip={clip}/>
         </GridItem>
       </SimpleGrid>
     </>

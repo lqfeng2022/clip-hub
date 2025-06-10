@@ -1,12 +1,11 @@
 import { Button, Input, InputGroup, InputRightElement } from '@chakra-ui/react'
 import { useState } from 'react'
 
-interface PasswordInputProps {
+interface Props {
   value: string
   onChange: (value: string) => void
 }
-
-const PasswordInput = ({ value, onChange }: PasswordInputProps) => {
+const PasswordInput = ({ value, onChange }: Props) => {
   const [show, setShow] = useState(false)
   const handleClick = () => setShow(!show)
     

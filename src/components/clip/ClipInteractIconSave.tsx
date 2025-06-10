@@ -6,14 +6,13 @@ import { useState } from 'react'
 import { IoBookmarkOutline } from 'react-icons/io5'
 import Clip from '../../entities/Clip'
 import useLists from '../../hooks/useLists'
-import ClipCreateList from './ClipCreateList'
-import ClipSaveList from './ClipSaveList'
+import ClipPlayistAdd from './ClipPlaylistAdd'
+import ClipPlaylistItemAdd from './ClipPlaylistItemAdd'
 import useListItemPost from '../../hooks/useListItemPost'
 import useListPost from '../../hooks/useListPost'
 import { useAuth } from '../../AuthContext'
 
-
-const InteractBookmark = ({ clip }: { clip: Clip }) => {
+const ClipInteractIconSave = ({ clip }: { clip: Clip }) => {
   const { isOpen: isMainOpen, onOpen: onMainOpen, onClose: onMainClose } = useDisclosure()
   const { isOpen: isAddOpen, onOpen: onAddOpen, onClose: onAddClose } = useDisclosure()
   
@@ -27,7 +26,7 @@ const InteractBookmark = ({ clip }: { clip: Clip }) => {
   
   const [selectedListIds, setSelectedListIds] = useState<number[]>([])
   const { mutate: addListItem } = useListItemPost()
-  const handleAddListItem = (video_id: number, selectedListIds: number[]) => {
+  const handleListItemAdd = (video_id: number, selectedListIds: number[]) => {
     addListItem({ video_id, listIds: selectedListIds })
     onMainClose()
   }
@@ -52,7 +51,7 @@ const InteractBookmark = ({ clip }: { clip: Clip }) => {
           <ModalCloseButton />
           <ModalBody>
             {/* A list of playlists or a 'add playlist' message */}
-            <ClipSaveList 
+            <ClipPlaylistItemAdd 
               lists={data?.pages[0]?.results ?? []} // safe fallback
               selectedListIds={selectedListIds}
               onChange={setSelectedListIds}
@@ -65,7 +64,7 @@ const InteractBookmark = ({ clip }: { clip: Clip }) => {
               colorScheme='gray' 
               mr={3} 
               onClick={() => {
-                handleAddListItem(clip.id, selectedListIds)
+                handleListItemAdd(clip.id, selectedListIds)
               }}
             >
               Save
@@ -78,7 +77,7 @@ const InteractBookmark = ({ clip }: { clip: Clip }) => {
         </ModalContent>
       </Modal>
       {/* Model B */}
-      <ClipCreateList 
+      <ClipPlayistAdd 
         isOpen={isAddOpen} 
         onClose={onAddClose} 
         onCreate={handleAddList}
@@ -87,4 +86,4 @@ const InteractBookmark = ({ clip }: { clip: Clip }) => {
   )
 }
 
-export default InteractBookmark
+export default ClipInteractIconSave

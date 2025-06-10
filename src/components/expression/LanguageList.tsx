@@ -1,6 +1,6 @@
 import { Heading, Spinner, Tag, Wrap, WrapItem } from '@chakra-ui/react'
-import useExpressionQueryStore from '../expressionStore'
-import useLanguages from '../hooks/useLanguages'
+import useExpressionQueryStore from '../../expressionStore'
+import useLanguages from '../../hooks/useLanguages'
 
 const LanguageList = () => {
   const selectedLangId = useExpressionQueryStore(

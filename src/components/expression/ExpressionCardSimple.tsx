@@ -1,11 +1,8 @@
 import { Card, CardBody, Heading, Image } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
-import Epbook from '../entities/Epbook'
+import Epbook from '../../entities/Epbook'
 
-interface Props {
-  epbook: Epbook
-}
-const SimpleExpressionCard = ({ epbook }: Props) => {
+const ExpressionCardSimple = ({ epbook }: { epbook: Epbook }) => {
   return (
     <Card overflow='hidden' variant=''>
       <Image
@@ -29,4 +26,4 @@ const SimpleExpressionCard = ({ epbook }: Props) => {
   )
 }
 
-export default SimpleExpressionCard
+export default ExpressionCardSimple

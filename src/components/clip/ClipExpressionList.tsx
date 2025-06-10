@@ -1,23 +1,9 @@
-import { 
-  Box, 
-  Heading, 
-  Table, 
-  TableContainer, 
-  Tbody, 
-  Td, 
-  Th, 
-  Thead, 
-  Tr,
-  Text,
-} from '@chakra-ui/react'
+import { Box, Heading, Table, TableContainer, Tbody, Td, Th, Thead, Tr, Text } from '@chakra-ui/react'
 import Expression from '../../entities/Expression'
 import CollapseText from '../CollapseText'
 import { Link } from 'react-router-dom'
 
-interface Props {
-  data: Expression[]
-}
-const ClipWords = ({ data }: Props) => (
+const ClipExpressionList = ({ data }: { data: Expression[] }) => (
   <Box py={3}>
     <Heading size='sm' pb={2} color='gray.500'>
       Words
@@ -56,4 +42,4 @@ const ClipWords = ({ data }: Props) => (
   </Box>
 )
 
-export default ClipWords
+export default ClipExpressionList

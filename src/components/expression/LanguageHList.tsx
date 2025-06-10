@@ -4,9 +4,9 @@ import { CiFries } from 'react-icons/ci'
 import { GiBrickWall } from 'react-icons/gi'
 import { RxLetterCaseCapitalize } from 'react-icons/rx'
 import { TbLanguageHiragana } from 'react-icons/tb'
-import useExpressionQueryStore from '../expressionStore'
-import useLanguages from '../hooks/useLanguages'
-import HScrollContainer from './HScrollContainer'
+import useExpressionQueryStore from '../../expressionStore'
+import useLanguages from '../../hooks/useLanguages'
+import HScrollContainer from '../HScrollContainer'
 
 const LanguageHList = () => {
   const { data, error } = useLanguages()

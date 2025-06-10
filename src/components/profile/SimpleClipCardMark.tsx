@@ -1,13 +1,13 @@
 import { Box, Card, CardBody, Heading, Icon, Image } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
-import Clip from '../entities/Clip'
+import Clip from '../../entities/Clip'
 import { IoCloseOutline } from "react-icons/io5";
 
 interface Props {
   clip: Clip,
   handleClick: () => void
 }
-const SimpleClipCardWithMark = ({ clip, handleClick }: Props) => {
+const SimpleClipCardMark = ({ clip, handleClick }: Props) => {
   return (
     <Card 
       bg='gray.800' 
@@ -47,4 +47,4 @@ const SimpleClipCardWithMark = ({ clip, handleClick }: Props) => {
   )
 }
 
-export default SimpleClipCardWithMark
+export default SimpleClipCardMark

@@ -6,11 +6,9 @@ interface Props {
   selectedListIds: number[],
   onChange: (ids: number[]) => void
 }
-const ClipSaveList = ({ lists, selectedListIds, onChange }: Props) => {
-
+const ClipPlaylistItemAdd = ({ lists, selectedListIds, onChange }: Props) => {
   if (lists.length === 0)
     return <Text>No playlists yet. Create one to save clips.</Text>
-    
   return (
     <CheckboxGroup 
       colorScheme='green' 
@@ -29,4 +27,4 @@ const ClipSaveList = ({ lists, selectedListIds, onChange }: Props) => {
   )
 }
 
-export default ClipSaveList
+export default ClipPlaylistItemAdd

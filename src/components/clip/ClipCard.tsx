@@ -2,10 +2,7 @@ import { Image, CardBody, Heading, Text, HStack, Avatar, Box, Card } from '@chak
 import { Link } from 'react-router-dom'
 import Clip from '../../entities/Clip'
 
-interface Props {
-  clip: Clip
-}
-const ClipCard = ({ clip }: Props) => {
+const ClipCard = ({ clip }: { clip: Clip }) => {
   return (
     <Card bg='gray.800' borderRadius={10} overflow='hidden' variant='unstyled'>
       <Image src={clip.cover} className='img-hover' />

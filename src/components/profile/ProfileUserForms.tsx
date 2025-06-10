@@ -5,7 +5,7 @@ import { useAuth } from '../../AuthContext'
 import useProfileUpdate from '../../hooks/useProfileUpdate'
 import { useEffect, useState } from 'react'
 
-const ProfileForms = () => {
+const ProfileUserForms = () => {
   const [formData, setFormData] = useState({
     first_name: '', last_name: '', email: '', phone: '', birth_date: ''
   })
@@ -138,4 +138,4 @@ const ProfileForms = () => {
   )
 }
 
-export default ProfileForms
+export default ProfileUserForms

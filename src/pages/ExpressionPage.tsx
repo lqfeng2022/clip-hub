@@ -1,13 +1,13 @@
 import { Box, Divider, Grid, GridItem, Heading, HStack, Show } from '@chakra-ui/react'
-import ExpressionGrid from '../components/ExpressionGrid'
-import ExpressionSortSelector from '../components/ExpressionSortSelector'
-import LangtagsSelector from '../components/LangtagsSelector'
-import LanguageHList from '../components/LanguageHList'
+import ExpressionGrid from '../components/expression/ExpressionGrid'
+import ExpressionSortSelector from '../components/expression/ExpressionSortSelector'
+import LangtagsSelector from '../components/expression/LangtagsSelector'
+import LanguageHList from '../components/expression/LanguageHList'
 import useExpressionQueryStore from '../expressionStore'
 import { useLangtag } from '../hooks/useLangtag'
 import useLanguage from '../hooks/useLanguage'
-import LangtagsList from '../components/LangtagsList'
-import LanguageList from '../components/LanguageList'
+import LangtagsList from '../components/expression/LangtagsList'
+import LanguageList from '../components/expression/LanguageList'
 
 function ExpressionPage() {
   const languageId = useExpressionQueryStore(

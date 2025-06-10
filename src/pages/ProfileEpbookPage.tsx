@@ -1,7 +1,7 @@
 import { Heading, SimpleGrid, Spinner, Text } from '@chakra-ui/react'
 import React from 'react'
 import InfiniteScroll from 'react-infinite-scroll-component'
-import ExpressionCard from '../components/ExpressionCard'
+import ExpressionCard from '../components/expression/ExpressionCard'
 import useEpbooks from '../hooks/useEpbooks'
 
 const ProfileEpbookPage = () => {

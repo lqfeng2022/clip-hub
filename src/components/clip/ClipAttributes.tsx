@@ -1,39 +1,36 @@
 import { Box, Heading, SimpleGrid } from '@chakra-ui/react'
 import Clip from '../../entities/Clip'
-import DefinitionItem from './DefinitionItem'
-import TagList from './TagList'
+import ClipAttrDefinition from './ClipAttrDefinition'
+import ClipTags from './ClipTags'
 
-interface Props {
-  clip: Clip
-}
-const ClipAttributes = ({ clip }: Props) => {
+const ClipAttributes = ({ clip }: { clip: Clip }) => {
   return (
     <>
       <SimpleGrid columns={2}>
-        <DefinitionItem term='Original'>
+        <ClipAttrDefinition term='Original'>
           {clip.original}
-        </DefinitionItem>
-        <DefinitionItem term='Released year'>
+        </ClipAttrDefinition>
+        <ClipAttrDefinition term='Released year'>
           {clip.release_year}
-        </DefinitionItem>
-        <DefinitionItem term='Platform'>
+        </ClipAttrDefinition>
+        <ClipAttrDefinition term='Platform'>
           {clip.platform.title}
-        </DefinitionItem>
-        <DefinitionItem term='Creator'>
+        </ClipAttrDefinition>
+        <ClipAttrDefinition term='Creator'>
           {clip.creator.name}
-        </DefinitionItem>
-        <DefinitionItem term='Language'>
+        </ClipAttrDefinition>
+        <ClipAttrDefinition term='Language'>
           {clip.language.title}
-        </DefinitionItem>
-        <DefinitionItem term='Genre'>
+        </ClipAttrDefinition>
+        <ClipAttrDefinition term='Genre'>
           {clip.genre.title}
-        </DefinitionItem>
+        </ClipAttrDefinition>
       </SimpleGrid>
       <Box my={2}>
         <Heading fontSize='md' color='gray.500'>
           Tags
         </Heading>
-        <TagList tags={clip.tags} color={'cyan'}/>
+        <ClipTags tags={clip.tags} color={'cyan'}/>
       </Box>
     </>
   )

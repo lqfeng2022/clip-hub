@@ -1,14 +1,16 @@
 import { Heading, Spinner, Tag, Wrap, WrapItem } from '@chakra-ui/react'
-import useExpressionQueryStore from '../expressionStore'
-import useLangtags from '../hooks/useLangtags_shabi'
+import useExpressionQueryStore from '../../expressionStore'
+import useLangtags from '../../hooks/useLangtags_shabi'
 
 const LangtagsList = () => {
   const { data, error, isLoading } = useLangtags()
 
   const selectedTagId = useExpressionQueryStore(
-    (s) => s.expressionQuery.tagId)
+    (s) => s.expressionQuery.tagId
+  )
   const setSelectTagId = useExpressionQueryStore(
-    (s) => s.setTagId)
+    (s) => s.setTagId
+  )
 
   if (error) return null
   if (isLoading) return <Spinner />

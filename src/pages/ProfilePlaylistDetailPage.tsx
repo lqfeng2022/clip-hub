@@ -1,6 +1,6 @@
 import { Box, Heading, SimpleGrid } from '@chakra-ui/react'
 import { useParams } from 'react-router-dom'
-import SimpleClipCardWithMark from '../components/SimpleClipCardWithMark'
+import SimpleClipCardMark from '../components/profile/SimpleClipCardMark'
 import useList from '../hooks/useList'
 import useListItemDelete from '../hooks/useListItemDelete'
 
@@ -28,7 +28,7 @@ const ProfilePlaylistDetailPage = () => {
       >
         {data?.items.map((item) => (
           <Box key={item.id}>
-            <SimpleClipCardWithMark 
+            <SimpleClipCardMark 
               clip={item.video}
               handleClick={() => handleDelteList(
                 data.id, item.id
