@@ -1,10 +1,7 @@
-import {
-  Circle, Drawer, DrawerBody, DrawerCloseButton, 
-  DrawerContent, DrawerHeader, DrawerOverlay, 
-  Icon, useDisclosure
-} from '@chakra-ui/react'
+import { Circle, Drawer, DrawerBody, DrawerCloseButton, DrawerContent, DrawerHeader, DrawerOverlay, Icon, useDisclosure } from '@chakra-ui/react'
 import { BsSearch } from 'react-icons/bs'
 import SearchInput from './SearchInput'
+
 
 const SearchDrawer = () => {
   const { isOpen, onOpen, onClose } = useDisclosure()
@@ -24,7 +21,7 @@ const SearchDrawer = () => {
           <DrawerCloseButton />
           <DrawerHeader>Search what you like..</DrawerHeader>
           <DrawerBody>
-            <SearchInput />
+            <SearchInput onClose={onClose}/>
           </DrawerBody>
         </DrawerContent>
       </Drawer>
