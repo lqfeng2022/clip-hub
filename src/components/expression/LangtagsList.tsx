@@ -1,6 +1,6 @@
 import { Heading, Spinner, Tag, Wrap, WrapItem } from '@chakra-ui/react'
-import useExpressionQueryStore from '../../expressionStore'
-import useLangtags from '../../hooks/store/useLangtags_shabi'
+import useExpressionQueryStore from '@/expressionStore'
+import useLangtags from '@/hooks/store/useLangtags_shabi'
 
 const LangtagsList = () => {
   const { data, error, isLoading } = useLangtags()

@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query'
-import Tags from '../../entities/Tag'
-import APIClient from '../../services/api-store'
+import Tags from '@/entities/Tag'
+import APIClient from '@/services/api-store'
 
 const apiClient = new APIClient<Tags>('langtags')
 

@@ -1,6 +1,6 @@
 import { Card, CardBody, Heading, Image } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
-import Epbook from '../../entities/Epbook'
+import Epbook from '@/entities/Epbook'
 
 const ExpressionCardSimple = ({ epbook }: { epbook: Epbook }) => {
   return (

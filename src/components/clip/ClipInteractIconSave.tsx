@@ -4,13 +4,13 @@ import {
 } from '@chakra-ui/react'
 import { useState } from 'react'
 import { IoBookmarkOutline } from 'react-icons/io5'
-import Clip from '../../entities/Clip'
-import useLists from '../../hooks/interact/useLists'
+import Clip from '@/entities/Clip'
+import useLists from '@/hooks/interact/useLists'
 import ClipPlayistAdd from './ClipPlaylistAdd'
 import ClipPlaylistItemAdd from './ClipPlaylistItemAdd'
-import useListItemPost from '../../hooks/interact/useListItemPost'
-import useListPost from '../../hooks/interact/useListPost'
-import { useAuth } from '../../AuthContext'
+import useListItemPost from '@/hooks/interact/useListItemPost'
+import useListPost from '@/hooks/interact/useListPost'
+import { useAuth } from '@/AuthContext'
 
 const ClipInteractIconSave = ({ clip }: { clip: Clip }) => {
   const { isOpen: isMainOpen, onOpen: onMainOpen, onClose: onMainClose } = useDisclosure()

@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query'
-import APIClient from '../../services/api-store'
-import Expression from '../../entities/Expression'
+import APIClient from '@/services/api-store'
+import Expression from '@/entities/Expression'
 
 const apiClient = new APIClient<Expression>('expressions')
 

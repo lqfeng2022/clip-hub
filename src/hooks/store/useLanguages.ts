@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query'
-import languages from '../../data/languages'
-import APIClient from '../../services/api-store'
-import Language from '../../entities/Language'
+import languages from '@/data/languages'
+import APIClient from '@/services/api-store'
+import Language from '@/entities/Language'
 
 const apiClient = new APIClient<Language>('languages')
 

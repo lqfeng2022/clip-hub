@@ -1,6 +1,6 @@
 import { Box, Spinner, Tag, TagLabel } from '@chakra-ui/react'
-import useGenres from '../../hooks/store/useGenres'
-import useClipQueryStore from '../../clipStore'
+import useGenres from '@/hooks/store/useGenres'
+import useClipQueryStore from '@/clipStore'
 import HScrollContainer from '../HScrollContainer'
 
 const GenreTags = () => {

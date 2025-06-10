@@ -1,6 +1,6 @@
 import { Box, Card, CardBody, Heading, Image } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
-import Expression from '../../entities/Expression'
+import Expression from '@/entities/Expression'
 import ExpressionBookmark from './ExpressionBookmark'
 
 interface Props {

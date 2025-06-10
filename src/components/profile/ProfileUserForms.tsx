@@ -1,8 +1,8 @@
 import { Box, Button, FormControl, Heading, HStack, Icon, Input, InputGroup, InputLeftElement, Text, useToast } from '@chakra-ui/react'
 import { CiPhone } from 'react-icons/ci'
 import { MdAlternateEmail } from 'react-icons/md'
-import { useAuth } from '../../AuthContext'
-import useProfileUpdate from '../../hooks/useProfileUpdate'
+import { useAuth } from '@/AuthContext'
+import useProfileUpdate from '@/hooks/useProfileUpdate'
 import { useEffect, useState } from 'react'
 
 const ProfileUserForms = () => {

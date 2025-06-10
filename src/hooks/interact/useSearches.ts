@@ -1,8 +1,8 @@
 import { useInfiniteQuery } from '@tanstack/react-query'
-import InteractAPIClient from '../../services/api-interact'
-import { FetchResponse } from '../../services/api-store'
-import Search from '../../entities/Search'
-import { useAuth } from '../../AuthContext'
+import InteractAPIClient from '@/services/api-interact'
+import { FetchResponse } from '@/services/api-store'
+import Search from '@/entities/Search'
+import { useAuth } from '@/AuthContext'
 
 const apiClient = new InteractAPIClient<Search>('searches')
 

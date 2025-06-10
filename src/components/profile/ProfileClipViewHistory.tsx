@@ -1,6 +1,6 @@
 import { Box, Button, Heading, HStack, SimpleGrid, Text } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
-import useClipHistories from '../../hooks/interact/useClipHistories'
+import useClipHistories from '@/hooks/interact/useClipHistories'
 import SimpleClipCard from './SimpleClipCard'
 import EmptyCard from '../EmptyCard'
 

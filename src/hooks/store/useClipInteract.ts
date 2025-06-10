@@ -1,6 +1,6 @@
 import { useMutation } from '@tanstack/react-query'
-import Clip from '../../entities/Clip'
-import APIClient from '../../services/api-store'
+import Clip from '@/entities/Clip'
+import APIClient from '@/services/api-store'
 
 const apiClient = new APIClient<Clip>('videos')
 

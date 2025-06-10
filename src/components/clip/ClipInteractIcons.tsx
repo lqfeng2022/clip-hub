@@ -2,7 +2,7 @@ import { HStack, Icon, Stack, Text } from '@chakra-ui/react'
 import { BiShare } from 'react-icons/bi'
 import { FaRegComment } from 'react-icons/fa'
 import { IoEyeOutline } from 'react-icons/io5'
-import Clip from '../../entities/Clip'
+import Clip from '@/entities/Clip'
 import ClipInteractIconSave from './ClipInteractIconSave'
 import ClipInteractIconLike from './ClipInteractIconLike'
 

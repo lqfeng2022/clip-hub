@@ -1,6 +1,6 @@
 import { Image, CardBody, Heading, Text, HStack, Avatar, Box, Card } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
-import Clip from '../../entities/Clip'
+import Clip from '@/entities/Clip'
 
 const ClipCard = ({ clip }: { clip: Clip }) => {
   return (

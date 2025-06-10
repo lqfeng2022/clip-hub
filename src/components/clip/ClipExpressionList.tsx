@@ -1,5 +1,5 @@
 import { Box, Heading, Table, TableContainer, Tbody, Td, Th, Thead, Tr, Text } from '@chakra-ui/react'
-import Expression from '../../entities/Expression'
+import Expression from '@/entities/Expression'
 import CollapseText from '../CollapseText'
 import { Link } from 'react-router-dom'
 

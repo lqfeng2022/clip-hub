@@ -1,7 +1,7 @@
 import { SimpleGrid, Spinner, Text } from '@chakra-ui/react'
 import React from 'react'
 import InfiniteScroll from 'react-infinite-scroll-component'
-import useClips from '../../hooks/store/useClips'
+import useClips from '@/hooks/store/useClips'
 import ClipCard from './ClipCard'
 import ClipCardSkeleton from './ClipCardSkeleton'
 

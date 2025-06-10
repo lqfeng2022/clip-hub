@@ -2,8 +2,8 @@ import { Avatar, Box, Button, Heading, HStack, Text } from '@chakra-ui/react'
 import { useQueryClient } from '@tanstack/react-query'
 import { FaBloggerB } from 'react-icons/fa'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
-import { useAuth } from '../../AuthContext'
-import useSignout from '../../hooks/useSignout'
+import { useAuth } from '@/AuthContext'
+import useSignout from '@/hooks/useSignout'
 
 const ProfileUser = () => {
   const { user, setUser } = useAuth()

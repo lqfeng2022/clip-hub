@@ -1,5 +1,5 @@
 import { Box, Heading, SimpleGrid } from '@chakra-ui/react'
-import Clip from '../../entities/Clip'
+import Clip from '@/entities/Clip'
 import ClipAttrDefinition from './ClipAttrDefinition'
 import ClipTags from './ClipTags'
 

@@ -1,7 +1,7 @@
 import { useInfiniteQuery } from '@tanstack/react-query'
-import APIClient, { FetchResponse } from '../../services/api-store'
-import useExpressionQueryStore from '../../expressionStore'
-import Expression from '../../entities/Expression'
+import APIClient, { FetchResponse } from '@/services/api-store'
+import useExpressionQueryStore from '@/expressionStore'
+import Expression from '@/entities/Expression'
 
 const apiClient = new APIClient<Expression>('expressions')
 

@@ -1,5 +1,5 @@
 import { Checkbox, CheckboxGroup, Stack, Text } from '@chakra-ui/react'
-import List from '../../entities/List'
+import List from '@/entities/List'
 
 interface Props {
   lists: List[],

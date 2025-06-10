@@ -1,7 +1,7 @@
 import { Heading } from '@chakra-ui/react'
-import useGenre from '../../hooks/store/useGenre'
-import useLanguage from '../../hooks/store/useLanguage'
-import useClipQueryStore from '../../clipStore'
+import useGenre from '@/hooks/store/useGenre'
+import useLanguage from '@/hooks/store/useLanguage'
+import useClipQueryStore from '@/clipStore'
 
 const ClipHeading = () => {
   const genreId = useClipQueryStore((s) => s.clipQuery.genreId)

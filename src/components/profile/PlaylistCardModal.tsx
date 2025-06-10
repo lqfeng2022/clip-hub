@@ -3,7 +3,7 @@ import {
   ModalContent, ModalFooter, ModalHeader, ModalOverlay, 
 } from '@chakra-ui/react'
 import { useEffect, useState } from 'react'
-import List from '../../entities/List'
+import List from '@/entities/List'
 
 interface Props {
   list: List

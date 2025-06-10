@@ -6,8 +6,8 @@ import { CgMoreVertical } from 'react-icons/cg'
 import { FaRegEdit } from 'react-icons/fa'
 import { RiDeleteBin6Line } from 'react-icons/ri'
 import { Link } from 'react-router-dom'
-import nocontent from '../../assets/no-content.png'
-import List from '../../entities/List'
+import nocontent from '@/assets/no-content.png'
+import List from '@/entities/List'
 import PlaylistCardModal from './PlaylistCardModal'
 
 interface Props {
