@@ -22,7 +22,7 @@ const ProfileListLink = () => {
         {list.map((p) => (
           <ListItem py='20px' key={p.name}>
             <HStack spacing={3}>
-              <Icon as={p.icon} boxSize={8} />
+              <Icon as={p.icon} boxSize={7} />
               <Link to={p.link}>
                 <Text fontSize='lg'>{p.name}</Text>
               </Link>

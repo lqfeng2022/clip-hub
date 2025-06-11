@@ -20,18 +20,30 @@ const LangtagsList = () => {
       <Wrap spacing={4} p={2}>
       {data?.results.map((tag) => (
         <WrapItem key={tag.id}>
-          <Tag 
-            size='md' 
-            variant='outline' 
-            colorScheme='gray'
-            fontWeight={tag.id === selectedTagId 
-              ? 'bold' : 'normal'
-            }
-            onClick={() => setSelectTagId(tag.id)}
-            className='tag-hover'
-          >
-            {tag.title}
-          </Tag>
+          {tag.id === selectedTagId ? (
+            <Tag 
+              size='md' 
+              variant='outline' 
+              colorScheme='yellow'
+              backgroundColor='#4A5568'
+              color='white'
+              fontWeight='normal'
+              onClick={() => setSelectTagId(tag.id)}
+              className='tag-hover'
+            >
+              {tag.title}
+            </Tag> ) : (
+            <Tag 
+              size='md' 
+              variant='outline' 
+              colorScheme='yellow' 
+              fontWeight='normal'
+              onClick={() => setSelectTagId(tag.id)}
+              className='tag-hover'
+            >
+              {tag.title}
+            </Tag>
+          )}
         </WrapItem>
       ))}
       </Wrap>

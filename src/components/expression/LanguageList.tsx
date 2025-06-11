@@ -18,18 +18,30 @@ const LanguageList = () => {
       <Wrap spacing={4} p={2}>
       {lang?.results.map((tag) => (
         <WrapItem key={tag.id}>
-          <Tag 
-            size='md' 
-            variant='outline' 
-            colorScheme='yellow' 
-            fontWeight={tag.id === selectedLangId 
-              ? 'bold' : 'normal'
-            }
-            onClick={() => setSelectLangId(tag.id)}
-            className='tag-hover'
-          >
-            {tag.title}
-          </Tag>
+          {tag.id === selectedLangId ? (
+            <Tag 
+              size='md' 
+              variant='outline' 
+              colorScheme='yellow'
+              backgroundColor='#4A5568'
+              color='white'
+              fontWeight='bold'
+              onClick={() => setSelectLangId(tag.id)}
+              className='tag-hover'
+            >
+              {tag.title}
+            </Tag> ) : (
+            <Tag 
+              size='md' 
+              variant='outline' 
+              colorScheme='yellow' 
+              fontWeight='normal'
+              onClick={() => setSelectLangId(tag.id)}
+              className='tag-hover'
+            >
+              {tag.title}
+            </Tag>
+          )}
         </WrapItem>
       ))}
       </Wrap>

@@ -1,6 +1,6 @@
 import { Text } from '@chakra-ui/react'
 
-const Logo = () => {
+const ClipLogo = () => {
   return (
     <Text
       as='b'
@@ -13,4 +13,4 @@ const Logo = () => {
   )
 }
 
-export default Logo
+export default ClipLogo

@@ -1,14 +1,14 @@
-import { Avatar, Badge, HStack, Icon, Show } from '@chakra-ui/react'
-import { TbLanguageKatakana } from 'react-icons/tb'
+import { Avatar, HStack, Show } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
 import { useAuth } from '../AuthContext'
-import Logo from './Logo'
+import ClipLogo from './ClipLogo'
+import EpLogo from './EpLogo'
 import SearchDrawer from './SearchDrawer'
 import SearchInput from './SearchInput'
 
 const NavBar = () => {
   const { user } = useAuth()
-  // ??: only return right-hand value only if the left side is null or undefined
+  // ??: a simple way of ternary operator, if it's true, return the left..
   const fullName = user?.first_name || user?.last_name
       ? `${user?.first_name ?? ''} ${user?.last_name ?? ''}`.trim()
       : user?.username
@@ -19,29 +19,16 @@ const NavBar = () => {
     <HStack p='16px 10px' gap={5} justifyContent='space-between'>
       {/* Left section */}
       <Link to='/'>
-        <Logo/>
+        <ClipLogo/>
       </Link>
       <Link to='/expressions'>
-        <Badge
-          variant='subtle'
-          fontSize='1em'
-          fontWeight='thin'
-          colorScheme='gray'
-          className='tag-hover'
-        >
-          <Icon
-            as={TbLanguageKatakana}
-            boxSize={5}
-            color='green.300'
-            verticalAlign='bottom'
-          /> expression
-        </Badge>
+        <EpLogo />
       </Link>
       {/* Center: Search bar */}
       <Show above='sm'><SearchInput /></Show>
       <Show below='sm'><SearchDrawer /></Show>
       {/* Right-end: Avatar */}
-      {user ? 
+      {user ? (
         <Link to='/profile'>
           <Avatar
             size='small'
@@ -50,11 +37,11 @@ const NavBar = () => {
             src={user?.portrait ? portrait : ''}
           />
         </Link>
-        : 
+      ) : (
         <Link to='/user/signin'>
           <Avatar bg='teal.500' size='sm' />
         </Link>
-      }
+      )}
     </HStack>
   )
 }

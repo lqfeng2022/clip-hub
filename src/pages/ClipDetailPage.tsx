@@ -1,4 +1,4 @@
-import { Box, GridItem, Heading, SimpleGrid, Spinner } from '@chakra-ui/react'
+import { Box, Grid, GridItem, Heading, Spinner } from '@chakra-ui/react'
 import { useParams } from 'react-router-dom'
 import ClipAttributes from '../components/clip/ClipAttributes'
 import ClipMovie from '../components/clip/ClipMovie'
@@ -15,10 +15,16 @@ const ClipDetailPage = () => {
   if (error || !clip) throw error 
   return (
     <>
-      <SimpleGrid 
-        p='15px 10px' 
-        columns={{ base: 1, lg: 2 }} 
-        spacing={5}
+      <Grid 
+        templateAreas={{
+          base: `'main'`,
+          lg: `'left right'`,
+        }}
+        templateColumns={{
+          base: '1fr',
+          lg: '1fr 2fr', // Left 1/3, Right 2/3
+        }}
+        gap={5}
       >
         <GridItem order={{ base: 2, lg: 1 }}>
           <Heading>{clip.title}</Heading>
@@ -40,7 +46,7 @@ const ClipDetailPage = () => {
           />
           <ClipInteractIcons clip={clip}/>
         </GridItem>
-      </SimpleGrid>
+      </Grid>
     </>
   )
 }
