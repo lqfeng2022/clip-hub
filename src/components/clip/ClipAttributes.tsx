@@ -1,7 +1,7 @@
 import { Box, Heading, SimpleGrid } from '@chakra-ui/react'
 import Clip from '@/entities/Clip'
 import ClipAttrDefinition from './ClipAttrDefinition'
-import ClipTags from './ClipTags'
+import TagHList from '../TagHList'
 
 const ClipAttributes = ({ clip }: { clip: Clip }) => {
   return (
@@ -30,7 +30,7 @@ const ClipAttributes = ({ clip }: { clip: Clip }) => {
         <Heading fontSize='md' color='gray.500'>
           Tags
         </Heading>
-        <ClipTags tags={clip.tags} color={'cyan'}/>
+        <TagHList tags={clip.tags} color={'cyan'}/>
       </Box>
     </>
   )

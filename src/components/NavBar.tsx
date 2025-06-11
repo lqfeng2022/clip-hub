@@ -1,10 +1,9 @@
-import { Avatar, HStack, Show } from '@chakra-ui/react'
+import { Avatar, HStack } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
 import { useAuth } from '../AuthContext'
 import ClipLogo from './ClipLogo'
 import EpLogo from './EpLogo'
-import SearchDrawer from './SearchDrawer'
-import SearchInput from './SearchInput'
+import SearchInputDrawer from './SearchInputDrawer'
 
 const NavBar = () => {
   const { user } = useAuth()
@@ -17,17 +16,13 @@ const NavBar = () => {
   
   return (
     <HStack p='16px 10px' gap={5} justifyContent='space-between'>
-      {/* Left section */}
       <Link to='/'>
         <ClipLogo/>
       </Link>
       <Link to='/expressions'>
         <EpLogo />
       </Link>
-      {/* Center: Search bar */}
-      <Show above='sm'><SearchInput /></Show>
-      <Show below='sm'><SearchDrawer /></Show>
-      {/* Right-end: Avatar */}
+      <SearchInputDrawer />
       {user ? (
         <Link to='/profile'>
           <Avatar

@@ -5,7 +5,7 @@ interface Props {
   tags: Tags[],
   color: string,
 }
-const ClipTags = ({ tags, color }: Props) => {
+const TagHList = ({ tags, color }: Props) => {
   return (
     <HStack py={3} spacing={3}>
       {tags.map((tag) => (
@@ -17,4 +17,4 @@ const ClipTags = ({ tags, color }: Props) => {
   )
 }
 
-export default ClipTags
+export default TagHList

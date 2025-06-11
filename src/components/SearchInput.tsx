@@ -7,7 +7,6 @@ import useSearchContext from '../hooks/useSearchContex'
 import useSearchPost from '../hooks/interact/useSearchPost'
 import SearchBox from './SearchBox'
 
-
 const SearchInput = ({ onClose }: { onClose?: () => void }) => {
   const { user } = useAuth()
   // get search context type from searchContext hook

@@ -3,7 +3,6 @@ import useSearches from '../hooks/interact/useSearches'
 import useSearchPut from '../hooks/interact/useSearchPut'
 import { useAuth } from '../AuthContext'
 
-
 const SearchBox = ({ type }: { type: 'CLIP' | 'WORDS' }) => {
   const { user } = useAuth()
   const { data, refetch, error } = useSearches()

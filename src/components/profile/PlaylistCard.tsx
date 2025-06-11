@@ -1,7 +1,4 @@
-import {
-  Card, CardBody, Heading, HStack, IconButton, Image,
-  Menu, MenuButton, MenuItem, MenuList, useDisclosure
-} from '@chakra-ui/react'
+import { Card, CardBody, Heading, HStack, IconButton, Image, Menu, MenuButton, MenuItem, MenuList, useDisclosure } from '@chakra-ui/react'
 import { CgMoreVertical } from 'react-icons/cg'
 import { FaRegEdit } from 'react-icons/fa'
 import { RiDeleteBin6Line } from 'react-icons/ri'
@@ -60,11 +57,11 @@ const PlaylistCard = ({ list, onUpdate, onDelete }: Props) => {
           )}
           <Menu>
             <MenuButton  
-            as={IconButton}
-            aria-label='Options'
-            icon={<CgMoreVertical />}
-            variant='ghost'
-            size='sm'
+              as={IconButton}
+              aria-label='Options'
+              icon={<CgMoreVertical />}
+              variant='ghost'
+              size='sm'
             />
             <MenuList>
               <MenuItem icon={<RiDeleteBin6Line/>} onClick={onDelete}>

@@ -1,7 +1,4 @@
-import { 
-  Button, FormControl, Input, Modal, ModalBody, ModalCloseButton, 
-  ModalContent, ModalFooter, ModalHeader, ModalOverlay, 
-} from '@chakra-ui/react'
+import { Button, FormControl, Input, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay } from '@chakra-ui/react'
 import { useEffect, useState } from 'react'
 import List from '@/entities/List'
 

@@ -3,10 +3,7 @@ import { ReactNode } from 'react'
 import ClipLogo from './ClipLogo'
 import { Link } from 'react-router-dom'
 
-interface Props {
-  children: ReactNode
-}
-const SignContainer = ({ children }: Props) => {
+const SignContainer = ({ children }: { children: ReactNode }) => {
   return (
     <Flex 
       justifyContent='center' 

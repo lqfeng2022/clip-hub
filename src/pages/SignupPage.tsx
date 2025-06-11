@@ -1,7 +1,4 @@
-import {
-  Box, Button, FormControl, FormHelperText, FormLabel, Heading,
-  HStack, Input, SimpleGrid, Stack, Text
-} from '@chakra-ui/react'
+import { Box, Button, FormControl, FormHelperText, FormLabel, Heading, HStack, Input, SimpleGrid, Stack, Text } from '@chakra-ui/react'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import PasswordInput from '../components/PasswordInput'
@@ -12,7 +9,6 @@ const SignupPage = () => {
   const [username, setUsername]= useState('')
   const [password, setPassword] = useState('')
   const [password2, setPassword2] = useState('')
-
   const [email, setEmail] = useState('')
   const [first_name, setFirstname] = useState('')
   const [last_name, setLastname] = useState('')
