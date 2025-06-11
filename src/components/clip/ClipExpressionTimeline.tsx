@@ -2,7 +2,7 @@ import Expression from '@/entities/Expression'
 import { parseTimeline, sortExpressionsByTimeline } from '@/helperfunction'
 import { Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel, Box, Heading, SimpleGrid } from '@chakra-ui/react'
 import { RefObject } from 'react'
-import ExpressionCardTimeline from './components/expression/ExpressionCardTimeline'
+import ExpressionCardTimeline from '../expression/ExpressionCardTimeline'
 
 interface Props {
   data: Expression[],
@@ -19,23 +19,22 @@ const ClipExpressionTimeline = ({ data, videoRef }: Props) => {
   const sortedData = sortExpressionsByTimeline(data)
 
   return (
-    <Box py={2}>
+    <Box pt={2} pb={0}>
       <Accordion defaultIndex={[0]} allowMultiple>
-        <AccordionItem>
-          <h2>
-            <AccordionButton>
-              <Box as='span' flex='1' textAlign='left'>
-                <Heading size='md' color='gray'>
-                  Video Timeline
-                </Heading>
-              </Box>
-              <AccordionIcon />
-            </AccordionButton>
-          </h2>
-          <AccordionPanel pb={4}>
+        <AccordionItem border='none'>
+          <AccordionButton px='0'>
+            <Box as='span' flex='1' textAlign='left'>
+              <Heading size='md' color='gray'>
+                Video Timeline
+              </Heading>
+            </Box>
+            <AccordionIcon />
+          </AccordionButton>
+          <AccordionPanel p={2} pb={0}>
             <SimpleGrid
               columns={{ base: 2, lg: 3, xl: 4 }}
-              py='10px'
+              pt='10px'
+              pb={0}
               spacing={3}
             >
               {sortedData?.map((e) => (

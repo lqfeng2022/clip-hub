@@ -29,7 +29,6 @@ const ExpressionGrid = () => {
                 <Box key={expression.id}>
                   <ExpressionCard 
                     expression={expression} 
-                    key={expression.id} 
                   />
                 </Box>
             ))}

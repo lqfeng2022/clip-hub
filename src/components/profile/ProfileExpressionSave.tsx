@@ -36,8 +36,8 @@ const ProfileExpressionSave = () => {
         {epbooks?.length === 0 && <EmptyCard/>}
         {epbooks?.map((epbook) => (
           <ExpressionCardSimple 
-            epbook={epbook} 
-            key={epbook.id}
+            expression={epbook.expression} 
+            key={epbook.expression.id}
           />
         ))}
       </SimpleGrid>

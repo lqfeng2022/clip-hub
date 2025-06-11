@@ -2,17 +2,23 @@ import { Box, Heading } from '@chakra-ui/react'
 import ExpressionCard from './expression/ExpressionCard'
 import Expression from '../entities/Expression'
 
-const ClipExpressionCards = ({ data }: { data: Expression[] }) => {
+interface Props {
+  data: Expression[],
+  ep: Expression
+}
+const ExpressionRecommend = ({ data, ep }: Props) => {
+  const filtered = data?.filter((exp) => exp.id !== ep.id)
+
   return (
     <Box p='15px 10px'>
       <Heading size='md' mb={3} color='gray'>
-        Other Expressions
+        Other expressions
       </Heading>
       <Box 
         sx={{ columnCount: {base: 1, md: 2, lg: 3, xl: 4} }}
         columnGap={6}
       >
-        {data?.map((exp) =>
+        {filtered?.map((exp) =>
           <Box 
             key={exp.id} 
             sx={{ breakInside: 'avoid' }} 
@@ -26,4 +32,4 @@ const ClipExpressionCards = ({ data }: { data: Expression[] }) => {
   )
 }
 
-export default ClipExpressionCards
+export default ExpressionRecommend

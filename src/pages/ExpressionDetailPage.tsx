@@ -4,12 +4,11 @@ import useExpression from '../hooks/store/useExpression'
 import { ImQuotesLeft } from 'react-icons/im'
 import ExpressionBookmark from '../components/expression/ExpressionBookmark'
 import ClipTags from '../components/clip/ClipTags'
-import ClipExpressionCards from '../components/ClipExpressionCards'
+import ExpressionRecommend from '../components/ExpressionRecommend'
 import useClipExpressions from '../hooks/store/useClipExpressions'
 
 const ExpressionDetailPage = () => {
   const { slug } = useParams() // get `slug` from url
-  
   const { data: exp, isLoading, error } = useExpression(slug!)
 
   const videoId = exp?.video?.id
@@ -90,7 +89,10 @@ const ExpressionDetailPage = () => {
           </GridItem>
       </SimpleGrid>
       {/* pass `[]` until it's ready, avoid runtime crashes */}
-      <ClipExpressionCards data={clipexp?.results ?? []}/>
+      <ExpressionRecommend 
+        data={clipexp?.results ?? []} 
+        ep={exp}
+      />
     </div>
   )
 }
