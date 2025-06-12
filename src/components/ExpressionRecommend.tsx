@@ -1,6 +1,6 @@
 import { Box, Heading } from '@chakra-ui/react'
-import ExpressionCard from './expression/ExpressionCard'
 import Expression from '../entities/Expression'
+import ExpressionCard from './expression/ExpressionCard'
 
 interface Props {
   data: Expression[],

@@ -1,8 +1,8 @@
-import TagHList from '@/components/TagHList'
-import Expression from '@/entities/Expression'
 import { Box, Heading, HStack, Icon, Image, Stack, Text } from '@chakra-ui/react'
 import { ImQuotesLeft } from 'react-icons/im'
 import { Link } from 'react-router-dom'
+import Expression from '@/entities/Expression'
+import TagHList from '@/components/TagHList'
 
 const ExpressionAttributes = ({ expression } : { expression: Expression }) => {
   return (

@@ -1,6 +1,6 @@
 import { createContext, useContext, useState, useEffect, ReactNode } from 'react'
-import User from './entities/User'
 import ProfileAPIClient from './services/api-profile'
+import User from './entities/User'
 
 interface AuthContextType {
   user: User | null,

@@ -1,9 +1,9 @@
 import Clip from '@/entities/Clip'
 import { useMemo, useState } from 'react'
-import useListItemMultDelete from './useListItemMultDelete'
-import useListItemPost from './useListItemPost'
-import useListPost from './useListPost'
-import useLists from './useLists'
+import useListItemMultDelete from './interact/useListItemMultDelete'
+import useListItemPost from './interact/useListItemPost'
+import useListPost from './interact/useListPost'
+import useLists from './interact/useLists'
 
 const useClipPlaylistManager = (clip: Clip, onClose: () => void) => {
   const { data, refetch } = useLists() 

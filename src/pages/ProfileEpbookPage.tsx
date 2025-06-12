@@ -1,14 +1,13 @@
 import { Heading, SimpleGrid, Spinner, Text } from '@chakra-ui/react'
 import React from 'react'
 import InfiniteScroll from 'react-infinite-scroll-component'
-import ExpressionCard from '../components/expression/ExpressionCard'
 import useEpbooks from '../hooks/interact/useEpbooks'
+import ExpressionCard from '../components/expression/ExpressionCard'
 
 const ProfileEpbookPage = () => {
   const { data, refetch, error, fetchNextPage,  hasNextPage } = useEpbooks()
   const fetchExpressionsCount = data?.pages.reduce(
-    (total, page) => total + page.results.length, 0
-  ) || 0
+    (total, page) => total + page.results.length, 0) || 0
 
   if (error) return <Text>{error.message}</Text>
   return (

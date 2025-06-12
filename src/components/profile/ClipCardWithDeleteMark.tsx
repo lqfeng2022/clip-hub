@@ -1,7 +1,7 @@
 import { Box, Card, CardBody, Heading, Icon, Image } from '@chakra-ui/react'
+import { IoCloseOutline } from 'react-icons/io5'
 import { Link } from 'react-router-dom'
 import Clip from '@/entities/Clip'
-import { IoCloseOutline } from "react-icons/io5";
 
 interface Props {
   clip: Clip,

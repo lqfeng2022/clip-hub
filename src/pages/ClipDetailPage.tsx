@@ -1,12 +1,12 @@
-import ClipExpressionTimeline from '@/components/clip/ClipExpressionTimeline'
 import { Box, Grid, GridItem, Heading, Spinner } from '@chakra-ui/react'
 import { useRef } from 'react'
 import { useParams } from 'react-router-dom'
+import useClip from '../hooks/store/useClip'
+import ClipExpressionTimeline from '@/components/clip/ClipExpressionTimeline'
 import ClipAttributes from '../components/clip/ClipAttributes'
 import ClipInteractIcons from '../components/clip/ClipInteractIcons'
 import ClipMovie from '../components/clip/ClipMovie'
 import CollapseText from '../components/CollapseText'
-import useClip from '../hooks/store/useClip'
 
 const ClipDetailPage = () => {
   const { slug } = useParams() // get `slug` from url
@@ -40,7 +40,6 @@ const ClipDetailPage = () => {
           </CollapseText>
         </Box>
         <ClipAttributes clip={clip}/>
-        {/* <ClipExpressionList data={clip.expressions}/> */}
       </GridItem>
       <GridItem order={{ base: 1, lg: 2 }}>
         <ClipMovie 

@@ -1,8 +1,8 @@
 import { Box, Heading, SimpleGrid } from '@chakra-ui/react'
 import { useParams } from 'react-router-dom'
-import ClipCardWithDeleteMark from '../components/profile/ClipCardWithDeleteMark'
 import useList from '../hooks/useList'
 import useListItemDelete from '../hooks/interact/useListItemDelete'
+import ClipCardWithDeleteMark from '../components/profile/ClipCardWithDeleteMark'
 
 const ProfilePlaylistDetailPage = () => {
   const { slug } = useParams()

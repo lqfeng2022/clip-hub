@@ -2,7 +2,7 @@ import { Button, Icon, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFo
 import { IoBookmarkOutline } from 'react-icons/io5'
 import { useAuth } from '@/AuthContext'
 import Clip from '@/entities/Clip'
-import useClipPlaylistManager from '@/hooks/interact/useClipPlaylistManager'
+import useClipPlaylistManager from '@/hooks/useClipPlaylistManager'
 import ClipPlaylistAdd from './ClipPlaylistAdd'
 import ClipPlaylistItemAdd from './ClipPlaylistItemAdd'
 

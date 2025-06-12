@@ -1,15 +1,14 @@
 import { Box, Heading, SimpleGrid, Spinner, Text } from '@chakra-ui/react'
 import React from 'react'
 import InfiniteScroll from 'react-infinite-scroll-component'
-import ClipCardWithDeleteMark from '../components/profile/ClipCardWithDeleteMark'
 import useClipHistories from '../hooks/interact/useClipHistories'
 import useClipHistory from '../hooks/interact/useClipHistory'
+import ClipCardWithDeleteMark from '../components/profile/ClipCardWithDeleteMark'
 
 const ProfileHistoryPage = () => {
   const { data, refetch, error, fetchNextPage,  hasNextPage } = useClipHistories()
   const fetchExpressionsCount = data?.pages.reduce(
-    (total, page) => total + page.results.length, 0
-  ) || 0
+    (total, page) => total + page.results.length, 0) || 0
 
   const { mutate: updateLike } = useClipHistory()
   const handleUpdate = (id: number, visible: boolean) => {

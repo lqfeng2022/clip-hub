@@ -1,6 +1,6 @@
+import { RefObject } from 'react'
 import Movie from '@/entities/Movie'
 import useInteract from '@/hooks/store/useClipInteract'
-import { RefObject } from 'react'
 
 interface Props {
   movie: Movie

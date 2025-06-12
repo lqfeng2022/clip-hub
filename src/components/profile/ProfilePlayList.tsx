@@ -1,8 +1,8 @@
 import { Box, Button, HStack, Heading, SimpleGrid, Text } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
 import useLists from '@/hooks/interact/useLists'
-import PlaylistCardSimple from './PlaylistCardSimple'
 import EmptyCard from '../EmptyCard'
+import PlaylistCardSimple from './PlaylistCardSimple'
 
 const ProfilePlaylist = () => {
   const { data, error } = useLists()

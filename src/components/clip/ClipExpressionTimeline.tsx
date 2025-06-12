@@ -1,7 +1,7 @@
-import Expression from '@/entities/Expression'
-import { parseTimeline, sortExpressionsByTimeline } from '@/helperfunction'
 import { Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel, Box, Heading, SimpleGrid } from '@chakra-ui/react'
 import { RefObject } from 'react'
+import { parseTimeline, sortExpressionsByTimeline } from '@/helperfunction'
+import Expression from '@/entities/Expression'
 import ExpressionCardTimeline from '../expression/ExpressionCardTimeline'
 
 interface Props {

@@ -1,9 +1,9 @@
 import { Box, Image } from '@chakra-ui/react'
-import ProfileClipViewHistory from '../components/profile/ProfileClipViewHistory'
 import ProfileUser from '../components/profile/ProfileUser'
 import ProfileExpressionSave from '../components/profile/ProfileExpressionSave'
 import ProfileClipLike from '../components/profile/ProfileClipLike'
 import ProfilePlaylist from '../components/profile/ProfilePlaylist'
+import ProfileClipViewHistory from '../components/profile/ProfileClipViewHistory'
 
 const Profile = () => {  
   return (

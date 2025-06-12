@@ -18,11 +18,10 @@ const PlaylistCardModal = ({ list, isOpen, onClose, onUpdate }: Props) => {
   )
 
   const handleUpdate = () => {
-    // ignoring the unchaned title sending..
+    // ignoring the unchanged title sending..
     const trimmed = title.trim()
-    if (trimmed && trimmed !== list.title) {
+    if (trimmed && trimmed !== list.title) 
       onUpdate(trimmed)
-    }
     onClose()
     setTitle('')
   }

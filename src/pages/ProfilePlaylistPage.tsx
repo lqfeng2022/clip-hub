@@ -1,16 +1,15 @@
 import { Box, Heading, SimpleGrid, Spinner, Text } from '@chakra-ui/react'
 import React from 'react'
 import InfiniteScroll from 'react-infinite-scroll-component'
-import PlaylistCard from '../components/profile/PlaylistCard'
 import useListDelete from '../hooks/interact/useListDelete'
 import useLists from '../hooks/interact/useLists'
 import useListUpdate from '../hooks/interact/useListUpdate'
+import PlaylistCard from '../components/profile/PlaylistCard'
 
 const ProfilePlaylistPage = () => {
   const { data, refetch, error, fetchNextPage,  hasNextPage } = useLists()
   const fetchExpressionsCount = data?.pages.reduce(
-    (total, page) => total + page.results.length, 0
-  ) || 0
+    (total, page) => total + page.results.length, 0) || 0
 
   const { mutate: updateList } = useListUpdate()
   const handleUpdateList = (listId: number, title: string) => {

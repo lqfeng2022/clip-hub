@@ -1,9 +1,9 @@
 import { Box, Center, GridItem, Heading, Image, SimpleGrid, Spinner, Text } from '@chakra-ui/react'
 import { useParams } from 'react-router-dom'
+import useExpression from '../hooks/store/useExpression'
+import useClipExpressions from '../hooks/store/useClipExpressions'
 import ExpressionBookmark from '../components/expression/ExpressionBookmark'
 import ExpressionRecommend from '../components/ExpressionRecommend'
-import useClipExpressions from '../hooks/store/useClipExpressions'
-import useExpression from '../hooks/store/useExpression'
 import ExpressionAttributes from './ExpressionAttributes'
 
 const ExpressionDetailPage = () => {

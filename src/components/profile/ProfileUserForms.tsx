@@ -1,17 +1,20 @@
 import { Box, Button, FormControl, Heading, HStack, Icon, Input, InputGroup, InputLeftElement, Text, useToast } from '@chakra-ui/react'
+import { useEffect, useState } from 'react'
 import { CiPhone } from 'react-icons/ci'
 import { MdAlternateEmail } from 'react-icons/md'
 import { useAuth } from '@/AuthContext'
 import useProfileUpdate from '@/hooks/useProfileUpdate'
-import { useEffect, useState } from 'react'
 
 const ProfileUserForms = () => {
+  // Sync user data once loaded
+  const { user, fetchUser } = useAuth()
+  const { mutate } = useProfileUpdate()
+  const toast = useToast()
+
   const [formData, setFormData] = useState({
     first_name: '', last_name: '', email: '', phone: '', birth_date: ''
   })
 
-  // Sync user data once loaded
-  const { user, fetchUser } = useAuth()
   useEffect(() => {
     if (!user) return
     const { first_name, last_name, email, phone, birth_date } = user
@@ -28,8 +31,6 @@ const ProfileUserForms = () => {
     setFormData((prev) => ({ ...prev, [field]: value }))
   }
 
-  const { mutate } = useProfileUpdate()
-  const toast = useToast()
   const handleSubmit = () => {
     mutate(formData, {
       onSuccess: () => {
@@ -41,7 +42,6 @@ const ProfileUserForms = () => {
   }
 
   if (!user) return null
-
   return (
     <>
       {/* 0)username */}

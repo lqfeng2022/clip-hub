@@ -1,8 +1,8 @@
 import { Box, Divider, HStack, Icon, List, ListItem, Text } from '@chakra-ui/react'
+import { Link } from 'react-router-dom'
 import { IoLanguageOutline } from 'react-icons/io5'
 import { IoIosList } from 'react-icons/io'
 import { VscHistory } from 'react-icons/vsc'
-import { Link } from 'react-router-dom'
 import { IoMdHeartEmpty } from 'react-icons/io'
 import { HiOutlineUser } from 'react-icons/hi2'
 

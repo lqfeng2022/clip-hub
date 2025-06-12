@@ -1,13 +1,14 @@
 import { Box, Button, Heading, HStack, SimpleGrid, Text } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
 import useClipHistories from '@/hooks/interact/useClipHistories'
-import ClipCardSimple from './ClipCardSimple'
 import EmptyCard from '../EmptyCard'
+import ClipCardSimple from './ClipCardSimple'
 
 const ProfileClipViewHistory = () => {
   const { data, error } = useClipHistories()
   const views = data?.pages[0].results
-    .filter((view) => view.visible).slice(0, 4)
+    .filter((view) => view.visible)
+    .slice(0, 4)
 
   if (error) return <Text>{error.message}</Text>
   return (

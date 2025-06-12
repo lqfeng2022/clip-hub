@@ -1,13 +1,14 @@
 import { Box, Button, Heading, HStack, SimpleGrid, Text } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
 import useClipLikes from '@/hooks/interact/useClipLikes'
-import ClipCardSimple from './ClipCardSimple'
 import EmptyCard from '../EmptyCard'
+import ClipCardSimple from './ClipCardSimple'
 
 const ProfileClipLike = () => {
   const { data, error } = useClipLikes()
   const likes = data?.pages[0].results
-    .filter((view) => view.visible).slice(0, 4)
+    .filter((view) => view.visible)
+    .slice(0, 4)
 
   if (error) return <Text>{error.message}</Text>
   return (
