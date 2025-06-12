@@ -10,7 +10,7 @@ const PlaylistCardSimple = ({ list }: { list: List }) => {
 
   return (
     <Card bg='gray.800' variant='unstyled'>
-      {hasItems ? (
+      {hasItems && (
         <Link to={contentLink}>
           <Image 
             aspectRatio={16/9}
@@ -20,7 +20,8 @@ const PlaylistCardSimple = ({ list }: { list: List }) => {
             className='img-hover' 
           />
         </Link>
-      ) : (
+      )} 
+      {!hasItems && (
         <Image 
           aspectRatio={16/9} 
           src={nocontent} 
@@ -30,7 +31,7 @@ const PlaylistCardSimple = ({ list }: { list: List }) => {
       )}
       <CardBody p='8px 4px'>
         <HStack justifyContent='space-between'>
-          {hasItems ? (
+          {hasItems && (
             <Link to={contentLink}>
               <Heading
                 fontSize='md'
@@ -40,7 +41,8 @@ const PlaylistCardSimple = ({ list }: { list: List }) => {
                 {list.title}
               </Heading>
             </Link>
-          ) : (
+          )} 
+          {!hasItems && (
             <Heading fontSize='md' noOfLines={2}>
               {list.title}
             </Heading>

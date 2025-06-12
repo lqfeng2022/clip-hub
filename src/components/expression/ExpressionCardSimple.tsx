@@ -4,14 +4,14 @@ import Expression from '@/entities/Expression'
 
 const ExpressionCardSimple = ({ expression }: { expression: Expression }) => {
   return (
-    <Card overflow='hidden' variant=''>
+    <Card gap={1} overflow='hidden' variant=''>
       <Image
         w='100%'
         objectFit='cover'
         aspectRatio={ 20 / 9}
         src={expression.image}
       />
-      <CardBody p='5px 8px'>
+      <CardBody p='5px'>
         <Link to={'/expressions/' + expression.slug}>
           <Heading 
             fontSize='md' 

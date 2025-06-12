@@ -20,7 +20,12 @@ const PlaylistCard = ({ list, onUpdate, onDelete }: Props) => {
   const { isOpen, onOpen, onClose } = useDisclosure()
 
   return (
-    <Card bg='gray.800' overflow='hidden' variant='unstyled'>
+    <Card 
+      bg='gray.800' 
+      overflow='hidden' 
+      variant='unstyled' 
+      borderRadius={8}
+    >
       {/* 1)Card Image */}
       {hasItems && (
         <Link to={contentLink}>

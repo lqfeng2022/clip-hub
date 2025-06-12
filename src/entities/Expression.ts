@@ -10,7 +10,7 @@ export default interface Expression {
   level: string,
   language: string,
   langtags: Tags[],
-  word: string,
+  sentence: string,
   explain: string,
   video: Clip,
   bookmark_state: boolean,
