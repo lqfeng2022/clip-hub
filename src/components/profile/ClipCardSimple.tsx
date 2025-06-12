@@ -2,7 +2,7 @@ import { Card, CardBody, Heading, Image } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
 import Clip from '@/entities/Clip';
 
-const SimpleClipCard = ({ clip }: { clip: Clip }) => {
+const ClipCardSimple = ({ clip }: { clip: Clip }) => {
   return (
     <Card 
       bg='gray.800' 
@@ -30,4 +30,4 @@ const SimpleClipCard = ({ clip }: { clip: Clip }) => {
   )
 }
 
-export default SimpleClipCard
+export default ClipCardSimple

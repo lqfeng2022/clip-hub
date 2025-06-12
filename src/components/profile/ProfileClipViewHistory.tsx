@@ -1,7 +1,7 @@
 import { Box, Button, Heading, HStack, SimpleGrid, Text } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
 import useClipHistories from '@/hooks/interact/useClipHistories'
-import SimpleClipCard from './SimpleClipCard'
+import ClipCardSimple from './ClipCardSimple'
 import EmptyCard from '../EmptyCard'
 
 const ProfileClipViewHistory = () => {
@@ -34,7 +34,7 @@ const ProfileClipViewHistory = () => {
         {views?.length === 0 && <EmptyCard/>}
         {views?.map((view) => (
             <Box key={view.id} >
-              <SimpleClipCard clip={view.video} />
+              <ClipCardSimple clip={view.video} />
             </Box>
         ))}
       </SimpleGrid>

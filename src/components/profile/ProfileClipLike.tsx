@@ -1,7 +1,7 @@
 import { Box, Button, Heading, HStack, SimpleGrid, Text } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
 import useClipLikes from '@/hooks/interact/useClipLikes'
-import SimpleClipCard from './SimpleClipCard'
+import ClipCardSimple from './ClipCardSimple'
 import EmptyCard from '../EmptyCard'
 
 const ProfileClipLike = () => {
@@ -34,7 +34,7 @@ const ProfileClipLike = () => {
         {likes?.length === 0 && <EmptyCard/>}
         {likes?.map((like) => (
             <Box key={like.id} >
-              <SimpleClipCard clip={like.video} />
+              <ClipCardSimple clip={like.video} />
             </Box>
         ))}
       </SimpleGrid>

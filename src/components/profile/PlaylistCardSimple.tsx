@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import nocontent from '@/assets/no-content.png'
 import List from '@/entities/List'
 
-const SimplePlaylistCard = ({ list }: { list: List }) => {
+const PlaylistCardSimple = ({ list }: { list: List }) => {
   const cover = list.items[0]?.video.cover
   const hasItems = list.items && list.items.length > 0
   const contentLink = `/profile/playlist/${list.slug}`
@@ -28,7 +28,7 @@ const SimplePlaylistCard = ({ list }: { list: List }) => {
           opacity={0.5} 
         />
       )}
-      <CardBody p='4px'>
+      <CardBody p='8px 4px'>
         <HStack justifyContent='space-between'>
           {hasItems ? (
             <Link to={contentLink}>
@@ -51,4 +51,4 @@ const SimplePlaylistCard = ({ list }: { list: List }) => {
   )
 }
 
-export default SimplePlaylistCard
+export default PlaylistCardSimple

@@ -7,7 +7,7 @@ interface Props {
   clip: Clip,
   handleClick: () => void
 }
-const SimpleClipCardMark = ({ clip, handleClick }: Props) => {
+const ClipCardWithDeleteMark = ({ clip, handleClick }: Props) => {
   return (
     <Card 
       bg='gray.800' 
@@ -47,4 +47,4 @@ const SimpleClipCardMark = ({ clip, handleClick }: Props) => {
   )
 }
 
-export default SimpleClipCardMark
+export default ClipCardWithDeleteMark

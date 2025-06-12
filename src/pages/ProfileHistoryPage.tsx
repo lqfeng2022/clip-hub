@@ -1,7 +1,7 @@
 import { Box, Heading, SimpleGrid, Spinner, Text } from '@chakra-ui/react'
 import React from 'react'
 import InfiniteScroll from 'react-infinite-scroll-component'
-import SimpleClipCardMark from '../components/profile/SimpleClipCardMark'
+import ClipCardWithDeleteMark from '../components/profile/ClipCardWithDeleteMark'
 import useClipHistories from '../hooks/interact/useClipHistories'
 import useClipHistory from '../hooks/interact/useClipHistory'
 
@@ -42,7 +42,7 @@ const ProfileHistoryPage = () => {
                 .filter((history) => history.visible)
                 .map((history) => (
                   <Box key={history.id}>
-                    <SimpleClipCardMark
+                    <ClipCardWithDeleteMark
                       clip={history.video}
                       handleClick={() => handleUpdate(
                         history.id, !history.visible

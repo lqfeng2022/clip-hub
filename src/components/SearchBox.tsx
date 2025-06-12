@@ -39,22 +39,22 @@ const SearchBox = ({ type }: { type: 'CLIP' | 'WORDS' }) => {
       borderRadius='md'
       shadow='md'
     >
-    <UnorderedList styleType="'- '">
-      {searches?.map((search) => 
-        <HStack key={search.id} justifyContent='space-between'>
-          <ListItem>{search.content}</ListItem>
-          <Badge 
-            variant='' 
-            fontWeight='light' 
-            mr={10}
-            _hover={{cursor: 'pointer'}}
-            onMouseDown={() => handleUpdate(search)}
-          >
-            remove
-          </Badge>
-        </HStack>
-      )}
-    </UnorderedList>
+      <UnorderedList styleType="'- '">
+        {searches?.map((search) => 
+          <HStack key={search.id} justifyContent='space-between'>
+            <ListItem>{search.content}</ListItem>
+            <Badge 
+              variant='' 
+              fontWeight='light' 
+              mr={10}
+              _hover={{cursor: 'pointer'}}
+              onMouseDown={() => handleUpdate(search)}
+            >
+              remove
+            </Badge>
+          </HStack>
+        )}
+      </UnorderedList>
     </Box>
 )}
 

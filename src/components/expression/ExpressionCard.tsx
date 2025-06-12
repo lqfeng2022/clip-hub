@@ -9,7 +9,7 @@ interface Props {
 }
 const ExpressionCard = ({ expression, onUnmark }: Props) => {
   return (
-    <Card gap={2} my={1} overflow='hidden' variant=''>
+    <Card gap={1} my={1} overflow='hidden' variant=''>
       <Box position='relative'>
         <Image
           w='100%'
@@ -21,7 +21,7 @@ const ExpressionCard = ({ expression, onUnmark }: Props) => {
           onUnmark={onUnmark}
         />
       </Box>
-      <CardBody p='5px 8px'>
+      <CardBody p='5px'>
         <Link to={'/expressions/' + expression.slug}>
           <Heading
             pb={2}

@@ -21,7 +21,8 @@ const PlaylistCard = ({ list, onUpdate, onDelete }: Props) => {
 
   return (
     <Card bg='gray.800' overflow='hidden' variant='unstyled'>
-      {hasItems ? (
+      {/* 1)Card Image */}
+      {hasItems && (
         <Link to={contentLink}>
           <Image 
             aspectRatio={16/9}
@@ -30,7 +31,8 @@ const PlaylistCard = ({ list, onUpdate, onDelete }: Props) => {
             className='img-hover' 
           />
         </Link>
-      ) : (
+      )}
+      {!hasItems && (
         <Image 
           aspectRatio={16/9} 
           src={nocontent} 
@@ -38,9 +40,11 @@ const PlaylistCard = ({ list, onUpdate, onDelete }: Props) => {
           objectFit='cover'
         />
       )}
+      {/* 2)Card body */}
       <CardBody p='4px'>
         <HStack justifyContent='space-between'>
-          {hasItems ? (
+          {/* 2.1)Card Heading */}
+          {hasItems && (
             <Link to={contentLink}>
               <Heading
                 fontSize='md'
@@ -50,11 +54,13 @@ const PlaylistCard = ({ list, onUpdate, onDelete }: Props) => {
                 {list.title}
               </Heading>
             </Link>
-          ) : (
+            )} 
+          {!hasItems && (
             <Heading fontSize='md' noOfLines={2}>
               {list.title}
             </Heading>
           )}
+          {/* 2.2)Card Menu of `delete` or `edit` buttons */}
           <Menu>
             <MenuButton  
               as={IconButton}
@@ -73,6 +79,7 @@ const PlaylistCard = ({ list, onUpdate, onDelete }: Props) => {
             </MenuList>
           </Menu>
         </HStack>
+        {/* 2.3)Card modal for `edit` button */}
         <PlaylistCardModal 
           list={list} 
           isOpen={isOpen} 
