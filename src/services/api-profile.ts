@@ -21,7 +21,7 @@ class ProfileAPIClient {
   }
 
   // `any`: The put() method acts as a generic wrapper around axios 
-  // — it’s meant to support various data types (FormData, plain JSON, etc.).
+  //  so it’s meant to support various data types (FormData, plain JSON, etc.).
   put = (data: any, config?: AxiosRequestConfig) => {
     return axiosInstance
       .put(`/${this.endpoint}/`, data, config)

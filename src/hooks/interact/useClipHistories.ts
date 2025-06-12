@@ -1,7 +1,7 @@
 import { useInfiniteQuery } from '@tanstack/react-query'
 import InteractAPIClient from '@/services/api-interact'
-import { FetchResponse } from '@/services/api-store'
 import ClipInteract from '@/entities/History'
+import FetchResponse from '@/entities/FetchResponse'
 
 const apiClient = new InteractAPIClient<ClipInteract>('histories')
 

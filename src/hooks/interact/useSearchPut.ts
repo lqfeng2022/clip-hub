@@ -5,11 +5,12 @@ const apiClient = new InteractAPIClient('searches')
 
 const useSearchPut = () => {
   return useMutation({
-    mutationFn: (
-      { id, visible } : { id: number, visible: boolean }
-    ) => apiClient.putSearch(
-      id, { visible }, { withCredentials: true }
-    )
+    mutationFn: ({ id, visible } : { id: number, visible: boolean }) => 
+      apiClient.putSearch(
+        id, 
+        { visible }, 
+        { withCredentials: true }
+      )
   })
 }
 

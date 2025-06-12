@@ -1,6 +1,6 @@
 import { useInfiniteQuery } from '@tanstack/react-query'
 import InteractAPIClient from '@/services/api-interact'
-import { FetchResponse } from '@/services/api-store'
+import FetchResponse from '@/entities/FetchResponse'
 import List from '@/entities/List'
 import { useAuth } from '@/AuthContext'
 

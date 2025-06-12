@@ -2,7 +2,6 @@ import { useLocation } from 'react-router-dom'
 import useClipQueryStore from '../clipStore'
 import useExpressionQueryStore from '../expressionStore'
 
-
 const useSearchContext = () => {
   const location = useLocation()
   const isExpression = location.pathname.startsWith('/expression')

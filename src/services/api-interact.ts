@@ -1,5 +1,5 @@
+import FetchResponse from '@/entities/FetchResponse'
 import axios, { AxiosRequestConfig } from 'axios'
-import { FetchResponse } from './api-store'
 
 const axiosInstance = axios.create({
   baseURL: 'http://localhost:8000/interact',
@@ -84,7 +84,7 @@ class InteractAPIClient<T> {
   }
 
   // create search
-    // create interaction actions (history/like/epbook/..)
+  // create interaction actions (history/like/epbook/..)
   postSearch = (
     data: any,
     config?: AxiosRequestConfig

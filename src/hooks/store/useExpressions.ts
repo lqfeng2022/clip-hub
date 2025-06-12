@@ -1,14 +1,14 @@
 import { useInfiniteQuery } from '@tanstack/react-query'
-import APIClient, { FetchResponse } from '@/services/api-store'
+import APIClient from '@/services/api-store'
 import useExpressionQueryStore from '@/expressionStore'
 import Expression from '@/entities/Expression'
+import FetchResponse from '@/entities/FetchResponse'
 
 const apiClient = new APIClient<Expression>('expressions')
 
 const useExpressions = () => {
   const expressionQuery = useExpressionQueryStore(
-    (s) => s.expressionQuery
-  )
+    (s) => s.expressionQuery)
 
   return useInfiniteQuery<FetchResponse<Expression>, Error>({
     queryKey: ['expressions', expressionQuery], // issues fixed: <- 'videos'

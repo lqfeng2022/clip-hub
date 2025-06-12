@@ -1,8 +1,8 @@
 import { useInfiniteQuery } from '@tanstack/react-query'
-import Epbook from '@/entities/Epbook'
 import InteractAPIClient from '@/services/api-interact'
-import { FetchResponse } from '@/services/api-store'
 import { useAuth } from '@/AuthContext'
+import Epbook from '@/entities/Epbook'
+import FetchResponse from '@/entities/FetchResponse'
 
 const apiClient = new InteractAPIClient<Epbook>('epbooks')
 

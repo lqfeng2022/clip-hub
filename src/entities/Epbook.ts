@@ -1,4 +1,4 @@
-import Expression from "./Expression";
+import Expression from './Expression'
 
 export default interface Epbook {
   id: number,
