@@ -17,7 +17,7 @@ const ClipPlaylistItemAdd = ({ lists, selectedListIds, onChange }: Props) => {
       onChange={(selected) => onChange(selected.map(Number))} 
     >
       <Stack spacing={[1, 5]}>
-        {lists?.map((list) => 
+        {lists.map((list) => 
           <Checkbox key={list.id} value={list.id.toString()}>
             {list.title}
           </Checkbox>

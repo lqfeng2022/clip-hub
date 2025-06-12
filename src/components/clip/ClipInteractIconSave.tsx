@@ -1,46 +1,33 @@
-import {
-  Button,Icon, Modal, ModalBody, ModalCloseButton, ModalContent,
-  ModalFooter, ModalHeader, ModalOverlay, useDisclosure
-} from '@chakra-ui/react'
-import { useState } from 'react'
+import { Button, Icon, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, useDisclosure } from '@chakra-ui/react'
 import { IoBookmarkOutline } from 'react-icons/io5'
-import Clip from '@/entities/Clip'
-import useLists from '@/hooks/interact/useLists'
-import ClipPlayistAdd from './ClipPlaylistAdd'
-import ClipPlaylistItemAdd from './ClipPlaylistItemAdd'
-import useListItemPost from '@/hooks/interact/useListItemPost'
-import useListPost from '@/hooks/interact/useListPost'
 import { useAuth } from '@/AuthContext'
+import Clip from '@/entities/Clip'
+import useClipPlaylistManager from '@/hooks/interact/useClipPlaylistManager'
+import ClipPlaylistAdd from './ClipPlaylistAdd'
+import ClipPlaylistItemAdd from './ClipPlaylistItemAdd'
 
 const ClipInteractIconSave = ({ clip }: { clip: Clip }) => {
+  const { user } = useAuth()
   const { isOpen: isMainOpen, onOpen: onMainOpen, onClose: onMainClose } = useDisclosure()
   const { isOpen: isAddOpen, onOpen: onAddOpen, onClose: onAddClose } = useDisclosure()
   
-  const { user } = useAuth()
-  const { data, refetch } = useLists() // get playlists
-  const { mutate: addList } = useListPost()
-
-  const handleAddList = (title: string) => {
-    addList({ title }, { onSuccess: () => refetch() })
-  }
+  const {
+    lists,
+    selectedListIds,
+    setSelectedListIds,
+    handleListAdd,
+    handleListItemUpdate,
+  } = useClipPlaylistManager(clip, onMainClose)
   
-  const [selectedListIds, setSelectedListIds] = useState<number[]>([])
-  const { mutate: addListItem } = useListItemPost()
-  const handleListItemAdd = (video_id: number, selectedListIds: number[]) => {
-    addListItem({ video_id, listIds: selectedListIds })
-    onMainClose()
-  }
-  
-  if (!user) return null
+  if (!user) return <Icon as={IoBookmarkOutline} boxSize={6} opacity={0.5}/>
   return (
     <>
       {/* Click to open the Modal A */}
       <Icon
         as={IoBookmarkOutline}
         boxSize={6}
-        onClick={user ? onMainOpen : undefined}
+        onClick={onMainOpen}
         _hover={{ cursor: 'pointer' }}
-        opacity={user ? 1 : 0.5}
       />
       {/* Model A */}
       <Modal isOpen={isMainOpen} onClose={onMainClose}>
@@ -52,7 +39,7 @@ const ClipInteractIconSave = ({ clip }: { clip: Clip }) => {
           <ModalBody>
             {/* A list of playlists or a 'add playlist' message */}
             <ClipPlaylistItemAdd 
-              lists={data?.pages[0]?.results ?? []} // safe fallback
+              lists={lists} 
               selectedListIds={selectedListIds}
               onChange={setSelectedListIds}
             />
@@ -64,7 +51,7 @@ const ClipInteractIconSave = ({ clip }: { clip: Clip }) => {
               colorScheme='gray' 
               mr={3} 
               onClick={() => {
-                handleListItemAdd(clip.id, selectedListIds)
+                handleListItemUpdate()
               }}
             >
               Save
@@ -77,10 +64,10 @@ const ClipInteractIconSave = ({ clip }: { clip: Clip }) => {
         </ModalContent>
       </Modal>
       {/* Model B */}
-      <ClipPlayistAdd 
+      <ClipPlaylistAdd 
         isOpen={isAddOpen} 
         onClose={onAddClose} 
-        onCreate={handleAddList}
+        onCreate={handleListAdd}
       />
     </>
   )
