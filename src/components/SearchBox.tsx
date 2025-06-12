@@ -1,4 +1,4 @@
-import { Badge, Box, HStack, ListItem, UnorderedList, useToast } from '@chakra-ui/react'
+import { Badge, Box, HStack, ListItem, UnorderedList } from '@chakra-ui/react'
 import useSearches from '../hooks/interact/useSearches'
 import useSearchPut from '../hooks/interact/useSearchPut'
 import { useAuth } from '../AuthContext'
@@ -7,7 +7,6 @@ const SearchBox = ({ type }: { type: 'CLIP' | 'WORDS' }) => {
   const { user } = useAuth()
   const { data, refetch, error } = useSearches()
   const { mutate } = useSearchPut()
-  const toast = useToast()
 
   const searches = data?.pages[0].results
     .filter((view) => view.visible && view.type === type)
@@ -18,12 +17,8 @@ const SearchBox = ({ type }: { type: 'CLIP' | 'WORDS' }) => {
       onSuccess: () => refetch()
     })
   }
-  
-  if (!user) return null
-  if (error) 
-    return toast({ 
-      title: 'Oops, error happend', status: 'error',  duration: 2000 
-    })
+
+  if (!user || error) return null
   return (
     <Box
       position='absolute'
