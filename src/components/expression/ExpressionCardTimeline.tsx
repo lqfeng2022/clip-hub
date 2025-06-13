@@ -1,6 +1,7 @@
+import Expression from '@/entities/Expression'
 import { Box, Card, CardBody, Heading, Image } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
-import Expression from '@/entities/Expression'
+import ExpressionBookmark from './ExpressionBookmark'
 
 interface Props {
   expression: Expression,
@@ -31,10 +32,11 @@ const ExpressionCardTimeline = ({ expression, handleJump }: Props) => {
           {expression.timeline}
         </Box>
       </Box>
-      <CardBody p='5px 8px'>
+      <CardBody py='8px' px={0}>
+        <ExpressionBookmark expression={expression}/>
         <Link to={'/expressions/' + expression.slug}>
-          <Heading 
-            fontSize='md' 
+          <Heading
+            fontSize='md'
             color='yellow.200'
             _hover={{ color: 'white' }}
           >

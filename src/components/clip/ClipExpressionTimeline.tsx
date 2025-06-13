@@ -1,14 +1,22 @@
 import { Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel, Box, Heading, SimpleGrid } from '@chakra-ui/react'
 import { RefObject } from 'react'
 import { parseTimeline, sortExpressionsByTimeline } from '@/helperfunction'
-import Expression from '@/entities/Expression'
 import ExpressionCardTimeline from '../expression/ExpressionCardTimeline'
+import useClipExpressions from '@/hooks/store/useClipExpressions'
 
 interface Props {
-  data: Expression[],
+  clipId: number,
   videoRef: RefObject<HTMLVideoElement>
 }
-const ClipExpressionTimeline = ({ data, videoRef }: Props) => {
+const ClipExpressionTimeline = ({ clipId, videoRef }: Props) => {
+  const { data: clipEp } = useClipExpressions(clipId)
+  // throw runtime error issue: 'data is not iterable'
+  // even we use `!` fo force TS to trust you that it's not-null, but it won't prevent actual runtime error...
+  // cus clipEp could be undefined before the fetching
+  const sortedData = clipEp?.results 
+    ? sortExpressionsByTimeline(clipEp.results) 
+    : []
+
   const handleSeek = (timeline: string) => {
     const seconds = parseTimeline(timeline)
     if (videoRef.current) {
@@ -16,7 +24,6 @@ const ClipExpressionTimeline = ({ data, videoRef }: Props) => {
       videoRef.current.play()
     }
   }
-  const sortedData = sortExpressionsByTimeline(data)
 
   return (
     <Box pt={2} pb={0}>

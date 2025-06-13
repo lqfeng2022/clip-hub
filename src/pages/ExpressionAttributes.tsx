@@ -26,7 +26,14 @@ const ExpressionAttributes = ({ expression } : { expression: Expression }) => {
         <Heading size='md' color='gray.500'>
           Tags
         </Heading>
-        <TagHList tags={expression.langtags} color='teal'/>
+        <TagHList items={expression.langtags} color='teal'/>
+      </Box>
+      {/* language words */}
+      <Box pb={1}>
+        <Heading size='md' color='gray.500'>
+          Words
+        </Heading>
+        <TagHList items={expression.words} color='gray'/>
       </Box>
       {/* clip link */}
       <Stack>

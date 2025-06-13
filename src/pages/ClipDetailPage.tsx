@@ -49,7 +49,7 @@ const ClipDetailPage = () => {
           />
         <ClipInteractIcons clip={clip}/>
         <ClipExpressionTimeline 
-          data={clip.expressions}
+          clipId={clip.id}
           videoRef={videoRef}
         />
       </GridItem>

@@ -1,5 +1,6 @@
 import Clip from './Clip'
 import Tags from './Tag'
+import Word from './word'
 
 export default interface Expression {
   id: number,
@@ -7,9 +8,9 @@ export default interface Expression {
   title: string,
   slug: string,
   image: string,
-  level: string,
   language: string,
   langtags: Tags[],
+  words: Word[],
   sentence: string,
   explain: string,
   video: Clip,
