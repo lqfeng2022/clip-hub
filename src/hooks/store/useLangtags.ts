@@ -1,14 +1,13 @@
 import { useQuery } from '@tanstack/react-query'
-import Tags from '@/entities/Tag'
+import Tag from '@/entities/Tag'
 import APIClient from '@/services/api-store'
 
-const apiClient = new APIClient<Tags>('langtags')
+const apiClient = new APIClient<Tag>('langtags')
 
-const useGenres = () => useQuery({
+const useLangtags = () => useQuery({
   queryKey: ['langtags'],
   queryFn: () => apiClient.getAll(),
   staleTime: 24 * 60 * 60 * 1000, //24h
-  // initialData: genres, // copy code from `useGenres.ts`
 })
 
-export default useGenres
+export default useLangtags

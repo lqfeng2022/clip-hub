@@ -5,6 +5,7 @@ import useClipExpressions from '../hooks/store/useClipExpressions'
 import ExpressionBookmark from '../components/expression/ExpressionBookmark'
 import ExpressionRecommend from '../components/ExpressionRecommend'
 import ExpressionAttributes from './ExpressionAttributes'
+import noImage from '@/assets/no-image.jpg'
 
 const ExpressionDetailPage = () => {
   const { slug } = useParams() // get `slug` from url
@@ -30,7 +31,12 @@ const ExpressionDetailPage = () => {
           <GridItem order={{ base: 1, lg: 2 }}>
             <Center>
               <Box position='relative'>
-                <Image w='100%' maxH='600px' objectFit='cover' src={exp.image} />
+                <Image 
+                  w='100%' 
+                  maxH='600px' 
+                  objectFit='cover' 
+                  src={exp.image || noImage} 
+                />
                 <ExpressionBookmark expression={exp} />
               </Box>
             </Center>

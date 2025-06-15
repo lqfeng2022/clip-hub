@@ -4,7 +4,7 @@ import Genre from './Genre'
 import Language from './Language'
 import Movie from './Movie'
 import Platform from './Platform'
-import Tags from './Tag'
+import Tag from './Tag'
 
 export default interface Clip {
   id: number,
@@ -14,7 +14,7 @@ export default interface Clip {
   cover: string,
   language: Language,
   genre: Genre,
-  tags: Tags[],
+  tags: Tag[],
   original: string,
   creator: Creator,
   platform: Platform,

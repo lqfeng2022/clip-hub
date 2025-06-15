@@ -1,4 +1,4 @@
-export default interface Tags {
+export default interface Tag {
   id: number,
   title: string,
   slug: string,

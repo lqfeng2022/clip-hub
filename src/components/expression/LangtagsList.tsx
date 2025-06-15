@@ -1,5 +1,5 @@
 import { Heading, Spinner, Tag, Wrap, WrapItem } from '@chakra-ui/react'
-import useLangtags from '@/hooks/store/useLangtags_shabi'
+import useLangtags from '@/hooks/store/useLangtags'
 import useExpressionQueryStore from '@/expressionStore'
 
 const LangtagsList = () => {

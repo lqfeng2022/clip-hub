@@ -2,6 +2,7 @@ import { Box, Card, CardBody, Heading, Image } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
 import Expression from '@/entities/Expression'
 import ExpressionBookmark from './ExpressionBookmark'
+import noImage from '@/assets/no-image.jpg'
 
 interface Props {
   expression: Expression,
@@ -14,7 +15,7 @@ const ExpressionCard = ({ expression, onUnmark }: Props) => {
         <Image
           w='100%'
           objectFit='cover'
-          src={expression.image}
+          src={expression.image || noImage}
         />
         <ExpressionBookmark 
           expression={expression} 

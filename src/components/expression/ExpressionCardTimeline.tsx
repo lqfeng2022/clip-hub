@@ -2,6 +2,7 @@ import Expression from '@/entities/Expression'
 import { Box, Card, CardBody, Heading, Image } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
 import ExpressionBookmark from './ExpressionBookmark'
+import noImage from '@/assets/no-image.jpg'
 
 interface Props {
   expression: Expression,
@@ -17,7 +18,7 @@ const ExpressionCardTimeline = ({ expression, handleJump }: Props) => {
           w='100%'
           objectFit='cover'
           aspectRatio={ 20 / 9}
-          src={expression.image}
+          src={expression.image || noImage}
           cursor='pointer'
           className='img-hover'
           onClick={() => handleJump(expression.timeline)}

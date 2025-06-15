@@ -1,4 +1,4 @@
-import useLangtags from './useLangtags_shabi'
+import useLangtags from './useLangtags'
 
 export const useLangtag = (id? : number) => {
   const { data: langtags } = useLangtags()
