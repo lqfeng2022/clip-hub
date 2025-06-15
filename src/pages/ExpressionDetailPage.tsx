@@ -29,8 +29,8 @@ const ExpressionDetailPage = () => {
           </GridItem>
           <GridItem order={{ base: 1, lg: 2 }}>
             <Center>
-              <Box position='relative' maxW='500px'>
-                <Image w='100%' objectFit='cover' src={exp.image} />
+              <Box position='relative'>
+                <Image w='100%' maxH='600px' objectFit='cover' src={exp.image} />
                 <ExpressionBookmark expression={exp} />
               </Box>
             </Center>

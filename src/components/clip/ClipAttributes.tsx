@@ -30,7 +30,7 @@ const ClipAttributes = ({ clip }: { clip: Clip }) => {
         <Heading fontSize='md' color='gray.500'>
           Tags
         </Heading>
-        <TagHList tags={clip.tags} color={'cyan'}/>
+        <TagHList items={clip.tags} color={'cyan'}/>
       </Box>
     </>
   )

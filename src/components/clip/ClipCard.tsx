@@ -1,11 +1,13 @@
-import { Image, CardBody, Heading, Text, HStack, Avatar, Box, Card } from '@chakra-ui/react'
+import { Image, CardBody, Heading, Text, HStack, Avatar, Box, Card, AspectRatio } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
 import Clip from '@/entities/Clip'
 
 const ClipCard = ({ clip }: { clip: Clip }) => {
   return (
     <Card bg='gray.800' borderRadius={10} overflow='hidden' variant='unstyled'>
-      <Image src={clip.cover} className='img-hover' />
+      <AspectRatio ratio={16/9}>
+        <Image src={clip.cover} className='img-hover' />
+      </AspectRatio>
       <CardBody p='12px 4px'>
         <HStack align='flex-start' wrap='wrap' spacing={4}>
           <Avatar

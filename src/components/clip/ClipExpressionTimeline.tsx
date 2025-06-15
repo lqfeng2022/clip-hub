@@ -26,20 +26,20 @@ const ClipExpressionTimeline = ({ clipId, videoRef }: Props) => {
   }
 
   return (
-    <Box pt={2} pb={0}>
+    <Box py={0}>
       <Accordion defaultIndex={[0]} allowMultiple>
         <AccordionItem border='none'>
           <AccordionButton px='0'>
             <Box as='span' flex='1' textAlign='left'>
               <Heading size='md' color='gray'>
-                Video Timeline
+                Clip expressions
               </Heading>
             </Box>
             <AccordionIcon />
           </AccordionButton>
           <AccordionPanel p={2} pb={0}>
             <SimpleGrid
-              columns={{ base: 2, lg: 3, xl: 4 }}
+              columns={2}
               pt='10px'
               pb={0}
               spacing={3}
