@@ -15,7 +15,7 @@ const ClipMovie = ({ videoId, movies, preview, videoRef }: Props) => {
   const cloudMovie = movies.find(m => m.stored_at === 'cloud') 
   const cloudSrc = cloudMovie?.clip
 
-  const ytMovie = movies.find(y => y.stored_at === 'yt')
+  const ytMovie = movies.find(y => y.stored_at === 'YT')
   const ytSrc = ytMovie?.clip
   // Only parse YouTube ID if ytSrc exists and is a valid URL
   let youtubeId: string | null = null
