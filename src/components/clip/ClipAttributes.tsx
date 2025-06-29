@@ -19,9 +19,6 @@ const ClipAttributes = ({ clip }: { clip: Clip }) => {
         <ClipAttrDefinition term='Creator'>
           {clip.creator.name}
         </ClipAttrDefinition>
-        <ClipAttrDefinition term='Language'>
-          {clip.language.title}
-        </ClipAttrDefinition>
         <ClipAttrDefinition term='Genre'>
           {clip.genre.title}
         </ClipAttrDefinition>
