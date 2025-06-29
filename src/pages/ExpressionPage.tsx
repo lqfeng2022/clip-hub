@@ -1,24 +1,16 @@
 import { Box, Divider, Grid, GridItem, Heading, HStack, Show } from '@chakra-ui/react'
 import { useLangtag } from '../hooks/store/useLangtag'
-import useLanguage from '../hooks/store/useLanguage'
 import useExpressionQueryStore from '../expressionStore'
 import ExpressionSortSelector from '../components/expression/ExpressionSortSelector'
 import ExpressionGrid from '../components/expression/ExpressionGrid'
 import LangtagsSelector from '../components/expression/LangtagsSelector'
-import LanguageHList from '../components/expression/LanguageHList'
 import LangtagsList from '../components/expression/LangtagsList'
-import LanguageList from '../components/expression/LanguageList'
 
 function ExpressionPage() {
-  const languageId = useExpressionQueryStore(
-    (s) => s.expressionQuery.languageId)
   const langtagId = useExpressionQueryStore(
     (s) => s.expressionQuery.tagId)
-
-  const language = useLanguage(languageId)
   const langtag = useLangtag(langtagId)
-
-  const heading = `${language?.title || ''} ${langtag?.title || ''} Expressions`
+  const heading = `${langtag?.title || ''} Expressions`
   
   return (
     <Grid
@@ -31,12 +23,11 @@ function ExpressionPage() {
         lg: '320px 1fr',
       }}
     >
-      {/* Aside list (languages/langtags) */}
+      {/* Aside for langtags */}
       <Show above='lg'>
         <GridItem area='aside' px={2.5}>
           <Box mt={8}>
             <Divider my={3} borderColor='white'/>
-            <LanguageList/>
             <LangtagsList/>
           </Box>
         </GridItem>
@@ -47,9 +38,6 @@ function ExpressionPage() {
           <Heading my={4} fontSize='3xl'>
             {heading}
           </Heading>
-          <Show below='lg'>
-            <LanguageHList />
-          </Show>
           <HStack spacing={4} mt={2}>
             <Show below='lg'>
               <LangtagsSelector/>
