@@ -59,8 +59,8 @@ export default {
         },
         {
             "id": 10,
-            "title": "Vlog",
-            "image": "https://ik.imagekit.io/miqwyhcir/clip-hub/vlog.jpg?updatedAt=1747713698196",
+            "title": "Interview",
+            "image": "https://ik.imagekit.io/miqwyhcir/clip-genres/interview.webp?updatedAt=1750396318276",
             "videos_count": 0
         },
         {

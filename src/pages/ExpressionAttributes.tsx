@@ -43,7 +43,6 @@ const ExpressionAttributes = ({ expression } : { expression: Expression }) => {
         <Link to={`/clips/${expression.video.slug}`}>
           <Box position='relative'>
             <Text
-              color='gray.200'
               fontWeight='bold'
               position='absolute'
               left={1}

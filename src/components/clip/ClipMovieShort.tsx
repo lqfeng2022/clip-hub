@@ -1,7 +1,7 @@
 import { RefObject } from 'react'
 import Movie from '@/entities/Movie'
 import useInteract from '@/hooks/store/useClipInteract'
-import { AspectRatio } from '@chakra-ui/react'
+import { AspectRatio, Box } from '@chakra-ui/react'
 
 interface Props {
   videoId: number
@@ -9,7 +9,7 @@ interface Props {
   preview: string
   videoRef: RefObject<HTMLVideoElement>
 }
-const ClipMovie = ({ videoId, movies, preview, videoRef }: Props) => {
+const ClipMovieShort = ({ videoId, movies, preview, videoRef }: Props) => {
   const { mutate } = useInteract(videoId, 'history')
 
   const cloudMovie = movies.find(m => m.stored_at === 'cloud') 
@@ -39,25 +39,30 @@ const ClipMovie = ({ videoId, movies, preview, videoRef }: Props) => {
   return (
     <>
       {!youtubeId && 
-        <video
-          ref={videoRef}
-          src={cloudSrc}
-          poster={preview}
-          controls
-          onPlay={() => mutate({ visible: true })}
-        />
-      }
-      {youtubeId && 
-        <AspectRatio ratio={16/9}>
+      <Box maxW='420px' mx='auto'>
+        <AspectRatio ratio={9/16}>
+          <video
+            ref={videoRef}
+            src={cloudSrc}
+            poster={preview}
+            controls
+            onPlay={() => mutate({ visible: true })}
+            /> 
+        </AspectRatio>
+      </Box>
+      } {youtubeId && 
+      <Box maxW='420px' mx='auto'>
+        <AspectRatio ratio={9/16}>
           <iframe 
             src={`https://www.youtube.com/embed/${youtubeId}`}
             title='YouTube player'
             allowFullScreen
-          />
+            />
         </AspectRatio>
+      </Box>
       }
     </>
   )
 }
 
-export default ClipMovie
+export default ClipMovieShort

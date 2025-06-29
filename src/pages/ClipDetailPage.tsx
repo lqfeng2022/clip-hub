@@ -7,6 +7,7 @@ import ClipAttributes from '../components/clip/ClipAttributes'
 import ClipInteractIcons from '../components/clip/ClipInteractIcons'
 import ClipMovie from '../components/clip/ClipMovie'
 import useClip from '../hooks/store/useClip'
+import ClipMovieShort from '@/components/clip/ClipMovieShort'
 
 const ClipDetailPage = () => {
   const { slug } = useParams() // get `slug` from url
@@ -30,12 +31,19 @@ const ClipDetailPage = () => {
         />
       </GridItem>
       <GridItem order={{ base: 1, lg: 2 }}>
-        <ClipMovie 
+        {clip.type === 'NORMAL' && <ClipMovie 
           movies={clip.movies} 
           preview={clip.cover}
           videoId={clip.id}
           videoRef={videoRef}
           />
+        } {clip.type === 'SHORT' && <ClipMovieShort
+          movies={clip.movies}
+          preview={clip.cover}
+          videoId={clip.id}
+          videoRef={videoRef}
+          />
+        }
         <Heading py={3}>{clip.title}</Heading>
         <Grid 
           templateAreas={{ base: `'main'`, md: `'left right'` }}

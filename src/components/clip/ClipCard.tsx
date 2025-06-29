@@ -11,7 +11,7 @@ const ClipCard = ({ clip }: { clip: Clip }) => {
       <CardBody p='12px 4px'>
         <HStack align='flex-start' wrap='wrap' spacing={4}>
           <Avatar
-            size='md'
+            size='sm'
             src={clip.genre.image}
             alignSelf='flex-start'
             flexShrink={0}

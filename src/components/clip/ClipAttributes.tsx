@@ -13,7 +13,7 @@ const ClipAttributes = ({ clip }: { clip: Clip }) => {
         <ClipAttrDefinition term='Released year'>
           {clip.release_year}
         </ClipAttrDefinition>
-        <ClipAttrDefinition term='Platform'>
+        <ClipAttrDefinition term='Platform / Publisher'>
           {clip.platform.title}
         </ClipAttrDefinition>
         <ClipAttrDefinition term='Creator'>
