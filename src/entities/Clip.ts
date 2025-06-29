@@ -3,7 +3,6 @@ import Expression from './Expression'
 import Genre from './Genre'
 import Movie from './Movie'
 import Platform from './Platform'
-import Tag from './Tag'
 
 export default interface Clip {
   id: number,
@@ -12,7 +11,6 @@ export default interface Clip {
   description: string,
   cover: string,
   genre: Genre,
-  tags: Tag[],
   original: string,
   creator: Creator,
   platform: Platform,
