@@ -13,6 +13,7 @@ export default interface Expression {
   words: Word[],
   sentence: string,
   explain: string,
+  explain_ch: string,
   video: Clip,
   bookmark_state: boolean,
 }

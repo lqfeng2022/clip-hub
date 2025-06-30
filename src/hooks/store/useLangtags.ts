@@ -1,8 +1,8 @@
 import { useQuery } from '@tanstack/react-query'
-import Tag from '@/entities/Tag'
+import Langtag from '@/entities/Langtag'
 import APIClient from '@/services/api-store'
 
-const apiClient = new APIClient<Tag>('langtags')
+const apiClient = new APIClient<Langtag>('langtags')
 
 const useLangtags = () => useQuery({
   queryKey: ['langtags'],

@@ -3,8 +3,18 @@ import { ImQuotesLeft } from 'react-icons/im'
 import { Link } from 'react-router-dom'
 import Expression from '@/entities/Expression'
 import TagHList from '@/components/TagHList'
+import useLanguageStore from '@/languageStore'
 
 const ExpressionAttributes = ({ expression } : { expression: Expression }) => {
+  const lang = useLanguageStore(s => s.language)
+
+  const explain_header = lang === 'en' ? 'Explain' : '解释'
+  const tags_header = lang === 'en' ? 'Tags' : '语言标签'
+  const words_header = lang === 'en' ? 'Words' : '单词'
+  const clip_header = lang === 'en' ? 'Related Clip' : '表达式所在的视频'
+
+  const explain = lang === 'ch' && expression.explain_ch ? expression.explain_ch : expression.explain
+
   return (
     <>
       {/* word */}
@@ -17,28 +27,28 @@ const ExpressionAttributes = ({ expression } : { expression: Expression }) => {
       {/* explaining */}
       <Box py={3}>
         <Heading size='md' pb={1} color='gray.500'>
-          Explain
+          {explain_header}
         </Heading>
-        <Text>{expression.explain}</Text>
+        <Text>{explain}</Text>
       </Box>
       {/* language tags */}
       <Box pb={1}>
         <Heading size='md' color='gray.500'>
-          Tags
+          {tags_header}
         </Heading>
         <TagHList items={expression.langtags} color='teal'/>
       </Box>
       {/* language words */}
       <Box pb={1}>
         <Heading size='md' color='gray.500'>
-          Words
+          {words_header}
         </Heading>
         <TagHList items={expression.words} color='gray'/>
       </Box>
       {/* clip link */}
       <Stack>
         <Heading size='md' pb={1} color='gray.500'>
-          Related Clip
+          {clip_header}
         </Heading>
         <Link to={`/clips/${expression.video.slug}`}>
           <Box position='relative'>

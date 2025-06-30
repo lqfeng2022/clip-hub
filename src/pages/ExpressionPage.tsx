@@ -5,12 +5,17 @@ import ExpressionSortSelector from '../components/expression/ExpressionSortSelec
 import ExpressionGrid from '../components/expression/ExpressionGrid'
 import LangtagsSelector from '../components/expression/LangtagsSelector'
 import LangtagsList from '../components/expression/LangtagsList'
+import useLanguageStore from '@/languageStore'
 
 function ExpressionPage() {
+  const lang = useLanguageStore(s => s.language)
+
   const langtagId = useExpressionQueryStore(
     (s) => s.expressionQuery.tagId)
   const langtag = useLangtag(langtagId)
-  const heading = `${langtag?.title || ''} Expressions`
+
+  const header = `${langtag?.title || ''} Expressions`
+  const header_ch = `${langtag?.title_ch || ''} 表达式`
   
   return (
     <Grid
@@ -36,7 +41,7 @@ function ExpressionPage() {
       <GridItem area='main'>
         <Box px={2}>
           <Heading my={4} fontSize='3xl'>
-            {heading}
+            {lang === 'en' ? header : header_ch}
           </Heading>
           <HStack spacing={4} mt={2}>
             <Show below='lg'>

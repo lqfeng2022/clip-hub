@@ -1,8 +1,11 @@
 import { Heading, Spinner, Tag, Wrap, WrapItem } from '@chakra-ui/react'
 import useLangtags from '@/hooks/store/useLangtags'
 import useExpressionQueryStore from '@/expressionStore'
+import useLanguageStore from '@/languageStore'
 
 const LangtagsList = () => {
+  const lang = useLanguageStore(s => s.language)
+
   const { data, error, isLoading } = useLangtags()
 
   const selectedTagId = useExpressionQueryStore(
@@ -16,7 +19,9 @@ const LangtagsList = () => {
   if (isLoading) return <Spinner />
   return (
     <>
-      <Heading fontSize='3xl' py={3}>Tags</Heading>
+      <Heading fontSize='3xl' py={3}>
+        {lang === 'en' ? 'Tags' : '语言标签'}
+      </Heading>
       <Wrap spacing={4} p={2}>
       {data?.results.map((tag) => (
         <WrapItem key={tag.id}>
@@ -31,7 +36,7 @@ const LangtagsList = () => {
               onClick={() => setSelectTagId(tag.id)}
               className='tag-hover'
             >
-              {tag.title}
+              {lang === 'en' ? tag.title : tag.title_ch}
             </Tag> ) : (
             <Tag 
               size='md' 
@@ -41,7 +46,7 @@ const LangtagsList = () => {
               onClick={() => setSelectTagId(tag.id)}
               className='tag-hover'
             >
-              {tag.title}
+              {lang === 'en' ? tag.title : tag.title_ch}
             </Tag>
           )}
         </WrapItem>

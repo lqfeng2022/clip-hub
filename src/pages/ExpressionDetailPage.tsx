@@ -25,7 +25,9 @@ const ExpressionDetailPage = () => {
         spacing={5}
         >
           <GridItem order={{ base: 2, lg: 1 }}>
-            <Heading pb={5} fontSize='5xl' lineHeight={1}>{exp.title}</Heading>
+            <Heading pb={5} fontSize='5xl' lineHeight={1}>
+              {exp.title}
+            </Heading>
             <ExpressionAttributes expression={exp}/>
           </GridItem>
           <GridItem order={{ base: 1, lg: 2 }}>
