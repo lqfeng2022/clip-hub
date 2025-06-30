@@ -41,7 +41,6 @@ const SearchBox = ({ type }: { type: 'CLIP' | 'WORDS' }) => {
             <Badge 
               variant='' 
               fontWeight='light' 
-              mr={10}
               _hover={{cursor: 'pointer'}}
               onMouseDown={() => handleUpdate(search)}
             >

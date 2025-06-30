@@ -1,6 +1,6 @@
 import useSearchContext from '@/hooks/useSearchContex'
 import { Badge, Icon } from '@chakra-ui/react'
-import { TbLanguageKatakana } from 'react-icons/tb'
+import { HiLanguage } from 'react-icons/hi2'
 
 const EpLogo = () => {
   const { isExpression } = useSearchContext()
@@ -16,7 +16,7 @@ const EpLogo = () => {
       background={isExpression ? '#4A5568' : '#3f3f3f'}
       >
       <Icon
-        as={TbLanguageKatakana}
+        as={HiLanguage}
         boxSize={5}
         color='green.300'
         verticalAlign='bottom'
