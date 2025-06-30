@@ -14,7 +14,7 @@ interface ClipQueryStore {
   //   cus logic for updating 'searchText' is different from other props
   setSearchText: (searchText: string) => void,
 
-  setGenreId: (genreId: number) => void,
+  setGenreId: (genreId: number | undefined) => void,
   setLanguageId: (languageId: number | undefined) => void,
   setSortOrder: (sortOrder: string) => void,
 }

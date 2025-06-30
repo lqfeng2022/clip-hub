@@ -1,9 +1,9 @@
-import { Box, Grid, GridItem, Show } from '@chakra-ui/react'
+import { Box, Grid, GridItem, HStack, Show } from '@chakra-ui/react'
 import ClipGrid from '../components/clip/ClipGrid'
 import ClipHeading from '../components/clip/ClipHeading'
 import ClipSortSelector from '../components/clip/ClipSortSelector'
 import GenreList from '../components/clip/GenreList'
-import GenreHList from '../components/clip/GenreTagList'
+import GenreSelector from '@/components/clip/GenreSelector'
 
 function HomePage() {
   return (
@@ -25,10 +25,12 @@ function HomePage() {
       <GridItem area='main'>
         <Box px={2}>
           <ClipHeading/>
-          <Show below='md'>
-            <GenreHList/>
-          </Show>
-          <ClipSortSelector/>
+          <HStack spacing={4} mb={1}>
+            <Show below='md'>
+              <GenreSelector/>
+            </Show>
+            <ClipSortSelector/>
+          </HStack>
         </Box>
         <ClipGrid/>
       </GridItem>
