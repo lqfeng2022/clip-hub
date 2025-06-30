@@ -3,7 +3,6 @@ import { create } from 'zustand'
 interface ClipQuery {
   genreId?: number,
   // 2.1)SOLUTION: make these properties are optional too (undefined)
-  languageId?: number,
   sortOrder?: string,
   searchText?: string,
 }
@@ -15,7 +14,6 @@ interface ClipQueryStore {
   setSearchText: (searchText: string) => void,
 
   setGenreId: (genreId: number | undefined) => void,
-  setLanguageId: (languageId: number | undefined) => void,
   setSortOrder: (sortOrder: string) => void,
 }
 
@@ -31,9 +29,6 @@ const useClipQueryStore = create<ClipQueryStore>((set) => ({
   })),
   setGenreId: (genreId) => set((store) => ({ 
     clipQuery: { ...store.clipQuery, genreId }
-  })),
-  setLanguageId: (languageId) => set((store) => ({ 
-    clipQuery: { ...store.clipQuery, languageId } 
   })),
   setSortOrder: (sortOrder) => set((store) => ({ 
     clipQuery: { ...store.clipQuery, sortOrder } 

@@ -5,6 +5,7 @@ import ClipLogo from './ClipLogo'
 import EpLogo from './EpLogo'
 import SearchInputDrawer from './SearchInputDrawer'
 import { HiLanguage } from 'react-icons/hi2'
+import useLanguageStore from '@/languageStore'
 
 const NavBar = () => {
   const { user } = useAuth()
@@ -12,9 +13,11 @@ const NavBar = () => {
   const fullName = user?.first_name || user?.last_name
     ? `${user?.first_name ?? ''} ${user?.last_name ?? ''}`.trim()
     : user?.username
-
   const portrait = `http://localhost:8000/${user?.portrait}`
   
+  const language = useLanguageStore((s) => s.language)
+  const setLanguage = useLanguageStore((s) => s.setLanguage)
+
   return (
     <HStack p='16px 10px' gap={5} justifyContent='space-between'>
       <Link to='/'>
@@ -27,6 +30,7 @@ const NavBar = () => {
       <Button
         colorScheme='gray'
         variant='link'
+        onClick={() => setLanguage(language === 'ch' ? 'en' : 'ch')}
       >
         <Icon as={HiLanguage} boxSize='25px' />
       </Button>
