@@ -3,19 +3,23 @@ import { BsChevronDown } from 'react-icons/bs'
 import useGenres from '@/hooks/store/useGenres'
 import useClipQueryStore from '@/clipStore'
 import useGenre from '@/hooks/store/useGenre'
+import useLanguageStore from '@/languageStore'
 
 const GenreSelector = () => {
-  const { data, error } = useGenres()
-
   const selectedGenreId = useClipQueryStore((s) => s.clipQuery.genreId)
   const setSelectedGenreId = useClipQueryStore((s) => s.setGenreId)
   const selectedGenre = useGenre(selectedGenreId)
 
+  const lang = useLanguageStore(s => s.language)
+  const title = selectedGenre?.title || 'Genre'
+  const title_ch = selectedGenre?.title_ch || '类别'
+  
+  const { data, error } = useGenres()
   if (error) return null
   return (
     <Menu>
       <MenuButton size='sm' as={Button} rightIcon={<BsChevronDown />}>
-        {selectedGenre?.title || 'Genre'}
+        {lang === 'en' ? title : title_ch}
       </MenuButton>
       <MenuList>
         <MenuItem onClick={() => setSelectedGenreId(undefined)}>
@@ -26,7 +30,7 @@ const GenreSelector = () => {
             key={genre.id}
             onClick={() => setSelectedGenreId(genre.id)}
           >
-            {genre.title}
+            {lang === 'en' ? genre.title : genre.title_ch}
           </MenuItem>
         ))}
       </MenuList>

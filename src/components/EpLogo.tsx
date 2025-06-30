@@ -5,7 +5,9 @@ import { HiLanguage } from 'react-icons/hi2'
 
 const EpLogo = () => {
   const { isExpression } = useSearchContext()
-  const language = useLanguageStore((s) => s.language)
+
+  const lang = useLanguageStore((s) => s.language)
+  const expression = lang === 'en' ? 'expression' : '英文表达式'
 
   return (
     <Badge
@@ -23,7 +25,7 @@ const EpLogo = () => {
         color='green.300'
         verticalAlign='bottom'
       /> 
-      {language === 'en' ? 'expression' : '英文表达式'}
+      {expression}
     </Badge>
   )
 }

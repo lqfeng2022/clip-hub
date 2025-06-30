@@ -1,15 +1,16 @@
 import { Button, Menu, MenuButton, MenuItem, MenuList } from '@chakra-ui/react'
 import { BsChevronDown } from 'react-icons/bs'
 import useClipQueryStore from '@/clipStore'
+import useLanguageStore from '@/languageStore'
 
 const ClipSortSelector = () => {
   const sortOrders = [
-    { value: '', label: 'Relevance' },
-    { value: '-last_update', label: 'Date added' },
-    { value: '-release_year', label: 'Release date' },
-    { value: 'title', label: 'Name' },
-    { value: 'original', label: 'Original' },
-    { value: 'platform', label: 'Platform' },
+    { value: '', label: 'Relevance', label_ch: '默认序列' },
+    { value: '-last_update', label: 'Date added', label_ch: '更新时间' },
+    { value: '-release_year', label: 'Release date', label_ch: '发布日期' },
+    { value: 'title', label: 'Name', label_ch: '视频名称' },
+    { value: 'original', label: 'Original', label_ch: '视频原名' },
+    { value: 'platform', label: 'Platform', label_ch: '视频出处' },
   ]
 
   const sortOrder = useClipQueryStore((s) => s.clipQuery.sortOrder)
@@ -19,10 +20,14 @@ const ClipSortSelector = () => {
     (order) => order.value === sortOrder
   )
 
+  const lang = useLanguageStore(s => s.language)
+  const title = currentSortOrder?.label || 'Relevance'
+  const title_ch = currentSortOrder?.label_ch || '默认序列'
+
   return (
     <Menu>
       <MenuButton size='sm' as={Button} rightIcon={<BsChevronDown />}>
-        Order by: {currentSortOrder?.label || 'Relevance'}
+        Order by: {lang === 'en' ? title : title_ch}
       </MenuButton>
       <MenuList>
         {sortOrders.map((order) => (
@@ -31,7 +36,7 @@ const ClipSortSelector = () => {
             key={order.value}
             value={order.value}
           >
-            {order.label}
+            {lang === 'en' ? order.label : order.label_ch}
           </MenuItem>
         ))}
       </MenuList>

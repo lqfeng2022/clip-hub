@@ -1,20 +1,23 @@
 import { AspectRatio, Box, Button, Divider, Heading, HStack, Image, List, ListItem, Spinner } from '@chakra-ui/react'
 import useGenres from '@/hooks/store/useGenres'
 import useClipQueryStore from '@/clipStore'
+import useLanguageStore from '@/languageStore'
 
 const GenreList = () => {
   const selectedGenreId = useClipQueryStore((s) => s.clipQuery.genreId)
   const setSelectedGenreId = useClipQueryStore((s) => s.setGenreId)
-
+  
+  const lang = useLanguageStore((s) => s.language)
+  const title = lang === 'en' ? 'Clip genres' : '视频类别'
+  
   const { data, error, isLoading } = useGenres()
-
   if (error) return null
   if (isLoading) return <Spinner />
   return (
     <Box mt={8}>
       <Divider my={3} borderColor='white'/>
       <Heading fontSize='3xl' pb={3}>
-        Clip genres
+        {title}
       </Heading>
       <List>
         {data?.results.map((genre) => (
@@ -25,7 +28,6 @@ const GenreList = () => {
                   objectFit='cover'
                   borderRadius={5}
                   src={genre.image}
-                  alt={genre.title}
                 />
               </AspectRatio>
               <Button
@@ -39,7 +41,7 @@ const GenreList = () => {
                 variant='link'
                 _hover={{textDecoration: 'none'}}
               >
-                {genre.title}
+                {lang === 'en' ? genre.title : genre.title_ch}
               </Button>
             </HStack>
           </ListItem>
