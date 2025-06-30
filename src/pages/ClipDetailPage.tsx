@@ -8,13 +8,19 @@ import ClipInteractIcons from '../components/clip/ClipInteractIcons'
 import ClipMovie from '../components/clip/ClipMovie'
 import useClip from '../hooks/store/useClip'
 import ClipMovieShort from '@/components/clip/ClipMovieShort'
+import useLanguageStore from '@/languageStore'
 
 const ClipDetailPage = () => {
   const { slug } = useParams() // get `slug` from url
   const { data: clip, isLoading, error } = useClip(slug!)
+  
+  const lang = useLanguageStore(s => s.language)
+  const about = lang === 'en' ? 'About' : '简要'
+  const header = lang === 'ch' && clip?.title_ch ? clip?.title_ch : clip?.title
+  const about_content = lang === 'ch' && clip?.description_ch ? clip.description_ch : clip?.description
 
   const videoRef = useRef<HTMLVideoElement>(null)
-
+  
   if (isLoading) return <Spinner/>
   if (error || !clip) throw error 
   return (
@@ -44,21 +50,21 @@ const ClipDetailPage = () => {
           videoRef={videoRef}
           />
         }
-        <Heading py={3}>{clip.title}</Heading>
+        <Heading py={3}>{header}</Heading>
         <Grid 
           templateAreas={{ base: `'main'`, md: `'left right'` }}
           templateColumns={{ base: '1fr', md: '1fr 1fr' }}
           gap={2}
         >
-          <ClipGenreAvatar clip={clip}/>
+          <ClipGenreAvatar genre={clip.genre}/>
           <ClipInteractIcons clip={clip}/>
         </Grid>
         <Box py={3}>
           <Heading size='md' pb={1} color='gray.500'>
-            About
+            {about}
           </Heading>
           <Text>
-            {clip.description}
+            {about_content}
           </Text>
         </Box>
         <ClipAttributes clip={clip}/>

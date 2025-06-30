@@ -3,6 +3,7 @@ import { RefObject } from 'react'
 import { parseTimeline, sortExpressionsByTimeline } from '@/helperfunction'
 import ExpressionCardTimeline from '../expression/ExpressionCardTimeline'
 import useClipExpressions from '@/hooks/store/useClipExpressions'
+import useLanguageStore from '@/languageStore'
 
 interface Props {
   clipId: number,
@@ -25,6 +26,9 @@ const ClipExpressionTimeline = ({ clipId, videoRef }: Props) => {
     }
   }
 
+  const lang = useLanguageStore(s => s.language)
+  const heading = lang === 'en' ? 'Clip expressions' : '视频中的表达式'
+
   return (
     <Box py={0}>
       <Accordion defaultIndex={[0]} allowMultiple>
@@ -32,7 +36,7 @@ const ClipExpressionTimeline = ({ clipId, videoRef }: Props) => {
           <AccordionButton px='0'>
             <Box as='span' flex='1' textAlign='left'>
               <Heading size='md' color='gray'>
-                Clip expressions
+                {heading}
               </Heading>
             </Box>
             <AccordionIcon />

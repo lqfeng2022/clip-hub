@@ -25,8 +25,8 @@ const ClipGrid = () => {
         spacing={3}
       >
         {isLoading && skeletons.map(
-            (skeleton) => (
-              <ClipCardSkeleton key={skeleton}/>
+          (skeleton) => (
+            <ClipCardSkeleton key={skeleton}/>
         ))}
         {data?.pages.map((page, index) => (
           <React.Fragment key={index}>
