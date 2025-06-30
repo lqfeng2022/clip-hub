@@ -3,8 +3,11 @@ import React from 'react'
 import InfiniteScroll from 'react-infinite-scroll-component'
 import useEpbooks from '../hooks/interact/useEpbooks'
 import ExpressionCard from '../components/expression/ExpressionCard'
+import useLanguageStore from '@/languageStore'
 
 const ProfileEpbookPage = () => {
+  const lange = useLanguageStore(s => s.language)
+
   const { data, refetch, error, fetchNextPage,  hasNextPage } = useEpbooks()
   const fetchExpressionsCount = data?.pages.reduce(
     (total, page) => total + page.results.length, 0) || 0
@@ -13,7 +16,7 @@ const ProfileEpbookPage = () => {
   return (
     <>
       <Heading m={4} fontSize='3xl'>
-        Your expressions
+        {lange === 'en' ? 'Your expressions' : '你的表达式'}
       </Heading>
       <InfiniteScroll
         dataLength={fetchExpressionsCount}

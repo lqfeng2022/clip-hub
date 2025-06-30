@@ -5,6 +5,7 @@ import { useAuth } from '../AuthContext'
 import useSignin from '../hooks/useSignin'
 import PasswordInput from '../components/PasswordInput'
 import SignContainer from '../components/SignContainer'
+import useLanguageStore from '@/languageStore'
 
 const SigninPage = () => {
   const { mutate, error } = useSignin()
@@ -20,9 +21,6 @@ const SigninPage = () => {
     setSignin(prev => ({ ...prev, password: value }))
   }
 
-  const message = error 
-    ? 'Oops, something wrong..' : 'Protect your personal info..'
-
   const handleSignin = () => {
     mutate(signin, {
       onSuccess: () => {
@@ -32,22 +30,46 @@ const SigninPage = () => {
       }
     })
   }
+
+  const lang = useLanguageStore(s => s.language)
+  const content = lang === 'en' ? {
+    header: "Sign in", 
+    note: "to continue to CLIPs",
+    username: "User name",
+    password: "Enter your password",
+    message_error: "Oops, something wrong..",
+    message_note: "Protect your personal info..",
+    login_lang: "Log In",
+    signup_lang: "Sign Up",
+    signup_message: "Don't have an account?",
+  } : {
+    header: "登陆", 
+    note: "为了更好的的个性化服务",
+    username: "用户名",
+    password: "输入你的密码",
+    message_error: "喔～ 哪里出问题了..",
+    message_note: "请保护好你的个人信息..",
+    login_lang: "进入",
+    signup_lang: "注册",
+    signup_message: "还没有帐号？",
+  }
+  const message = error ? content.message_error : content.message_note
   
   return (
     <SignContainer>
       <SimpleGrid columns={{sm: 1, md: 2}}>
         {/* SIGNIN header */}
         <Box mb={5}>
-          <Heading fontSize='4xl'>Sign in</Heading>
-          <Text pt={2}>to continue to CLIPs</Text>
+          <Heading fontSize='4xl'>{content.header}</Heading>
+          <Text pt={2}>{content.note}</Text>
         </Box>
         <Box>
           {/* INPUT username */}
           <FormControl>
-            <FormLabel>User name :</FormLabel>
+            <FormLabel>{content.username} :</FormLabel>
             <Input 
               type='text' 
-              placeholder='User name..'
+              placeholder={`${content.username}..`}
               value={signin.username}
               onChange={handleUsernameChange}
             />
@@ -57,7 +79,7 @@ const SigninPage = () => {
           </FormControl>
           {/* ENTER password */}
           <FormControl py={8}>
-            <FormLabel>Enter your password :</FormLabel>
+            <FormLabel>{content.password} :</FormLabel>
             <PasswordInput 
               value={signin.password} 
               onChange={handlePasswordChange}
@@ -68,14 +90,14 @@ const SigninPage = () => {
           </FormControl>
           {/* LOGIN button */}
           <Button mb={5} size='md' fontSize='lg' onClick={handleSignin}>
-            Log In
+            {content.login_lang}
           </Button>
           {/* SIGN UP if you haven't an account */}
           <HStack justifyContent='end' gap={5}>
-            <Text>Don't have an account?</Text>
+            <Text>{content.signup_message}</Text>
             <Link to='/user/signup'>
               <Button size='sm' variant='outline' colorScheme='yellow'>
-                Sign up
+                {content.signup_lang}
               </Button>
             </Link>
           </HStack>

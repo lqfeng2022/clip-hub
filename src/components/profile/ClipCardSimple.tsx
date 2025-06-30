@@ -1,8 +1,12 @@
-import { Card, CardBody, Heading, Image } from '@chakra-ui/react';
+import { AspectRatio, Card, CardBody, Heading, Image } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
 import Clip from '@/entities/Clip';
+import useLanguageStore from '@/languageStore';
 
 const ClipCardSimple = ({ clip }: { clip: Clip }) => {
+  const lange = useLanguageStore(s => s.language)
+  const header =  lange === 'en' && clip.title_ch ? clip.title_ch : clip.title
+
   return (
     <Card 
       bg='gray.800' 
@@ -10,11 +14,13 @@ const ClipCardSimple = ({ clip }: { clip: Clip }) => {
       overflow='hidden' 
       variant='unstyled'
     >
-      <Image
-        w='100%'
-        objectFit='cover'
-        src={clip.cover}
-      />
+      <AspectRatio ratio={16/9}>
+        <Image
+          objectFit='cover'
+          src={clip.cover}
+          className='img-hover'
+        />
+      </AspectRatio>
       <CardBody p='8px 4px'>
         <Link to={'/clips/' + clip.slug}>
           <Heading 
@@ -22,7 +28,7 @@ const ClipCardSimple = ({ clip }: { clip: Clip }) => {
             noOfLines={2}  
             _hover={{ color: 'yellow.200' }}
           >
-            {clip.title}
+            {header}
           </Heading>
         </Link>
       </CardBody>

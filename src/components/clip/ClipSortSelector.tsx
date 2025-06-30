@@ -21,13 +21,13 @@ const ClipSortSelector = () => {
   )
 
   const lang = useLanguageStore(s => s.language)
-  const title = currentSortOrder?.label || 'Relevance'
-  const title_ch = currentSortOrder?.label_ch || '默认序列'
+  const header = `Order by: ${currentSortOrder?.label || 'Relevance'}`
+  const header_ch = `排序: ${currentSortOrder?.label_ch || '默认序列'}`
 
   return (
     <Menu>
       <MenuButton size='sm' as={Button} rightIcon={<BsChevronDown />}>
-        Order by: {lang === 'en' ? title : title_ch}
+        {lang === 'en' ? header : header_ch}
       </MenuButton>
       <MenuList>
         {sortOrders.map((order) => (

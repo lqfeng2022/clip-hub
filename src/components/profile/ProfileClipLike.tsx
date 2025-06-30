@@ -3,8 +3,11 @@ import { Link } from 'react-router-dom'
 import useClipLikes from '@/hooks/interact/useClipLikes'
 import EmptyCard from '../EmptyCard'
 import ClipCardSimple from './ClipCardSimple'
+import useLanguageStore from '@/languageStore'
 
 const ProfileClipLike = () => {
+  const lang = useLanguageStore(s => s.language)
+
   const { data, error } = useClipLikes()
   const likes = data?.pages[0].results
     .filter((view) => view.visible)
@@ -15,7 +18,7 @@ const ProfileClipLike = () => {
     <Box mt={8} px={2}>
       <HStack justifyContent='space-between' my={5}>
         <Heading fontSize='2xl'>
-          Liked clips
+          {lang === 'en' ? 'Liked clips' : '喜欢的视频'}
         </Heading>
         <Link to='like'>
           <Button 
@@ -24,7 +27,7 @@ const ProfileClipLike = () => {
             variant='outline'
             disabled={likes?.length === 0}
           >
-            View All
+            {lang === 'en' ? 'View All' : '查看所有'}
           </Button>
         </Link>
       </HStack>

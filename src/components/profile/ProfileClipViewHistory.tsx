@@ -3,8 +3,11 @@ import { Link } from 'react-router-dom'
 import useClipHistories from '@/hooks/interact/useClipHistories'
 import EmptyCard from '../EmptyCard'
 import ClipCardSimple from './ClipCardSimple'
+import useLanguageStore from '@/languageStore'
 
 const ProfileClipViewHistory = () => {
+  const lang = useLanguageStore(s => s.language)
+
   const { data, error } = useClipHistories()
   const views = data?.pages[0].results
     .filter((view) => view.visible)
@@ -15,7 +18,7 @@ const ProfileClipViewHistory = () => {
     <Box mt={8} px={2}>
       <HStack justifyContent='space-between' my={5}>
         <Heading fontSize='2xl'>
-          History
+          {lang === 'en' ? 'History' : '浏览历史'}
         </Heading>
         <Link to='history'>
           <Button 
@@ -24,7 +27,7 @@ const ProfileClipViewHistory = () => {
             variant='outline'
             disabled={views?.length === 0}
           >
-            View All
+            {lang === 'en' ? 'View All' : '查看所有'}
           </Button>
         </Link>
       </HStack>

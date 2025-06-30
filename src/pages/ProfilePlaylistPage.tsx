@@ -5,8 +5,11 @@ import useListDelete from '../hooks/interact/useListDelete'
 import useLists from '../hooks/interact/useLists'
 import useListUpdate from '../hooks/interact/useListUpdate'
 import PlaylistCard from '../components/profile/PlaylistCard'
+import useLanguageStore from '@/languageStore'
 
 const ProfilePlaylistPage = () => {
+  const lang = useLanguageStore(s => s.language)
+
   const { data, refetch, error, fetchNextPage,  hasNextPage } = useLists()
   const fetchExpressionsCount = data?.pages.reduce(
     (total, page) => total + page.results.length, 0) || 0
@@ -25,7 +28,7 @@ const ProfilePlaylistPage = () => {
   return (
     <>
       <Heading m={4} fontSize='3xl'>
-        Your playlists
+        {lang === 'en' ? 'Your playlists' : '你的播放列表'}
       </Heading>
       <InfiniteScroll
         dataLength={fetchExpressionsCount}

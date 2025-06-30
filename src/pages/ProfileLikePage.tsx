@@ -4,8 +4,11 @@ import InfiniteScroll from 'react-infinite-scroll-component'
 import useClipLike from '../hooks/interact/useClipLike'
 import useClipLikes from '../hooks/interact/useClipLikes'
 import ClipCardWithDeleteMark from '../components/profile/ClipCardWithDeleteMark'
+import useLanguageStore from '@/languageStore'
 
 const ProfileLikePage = () => {
+  const lang = useLanguageStore(s => s.language)
+
   const { data, refetch, error, fetchNextPage,  hasNextPage } = useClipLikes()
   const fetchExpressionsCount = data?.pages.reduce(
     (total, page) => total + page.results.length, 0) || 0
@@ -22,7 +25,7 @@ const ProfileLikePage = () => {
   return (
     <>
       <Heading m={4} fontSize='3xl'>
-        Your liked clips
+        {lang === 'en' ? 'Your liked clips' : '你喜欢的视频'}
       </Heading>
       <InfiniteScroll
         dataLength={fetchExpressionsCount}

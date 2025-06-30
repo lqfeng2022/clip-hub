@@ -4,8 +4,11 @@ import InfiniteScroll from 'react-infinite-scroll-component'
 import useClipHistories from '../hooks/interact/useClipHistories'
 import useClipHistory from '../hooks/interact/useClipHistory'
 import ClipCardWithDeleteMark from '../components/profile/ClipCardWithDeleteMark'
+import useLanguageStore from '@/languageStore'
 
 const ProfileHistoryPage = () => {
+  const lang = useLanguageStore(s => s.language)
+
   const { data, refetch, error, fetchNextPage,  hasNextPage } = useClipHistories()
   const fetchExpressionsCount = data?.pages.reduce(
     (total, page) => total + page.results.length, 0) || 0
@@ -22,7 +25,7 @@ const ProfileHistoryPage = () => {
   return (
     <>
       <Heading m={4} fontSize='3xl'>
-        Your view history
+        {lang === 'en' ? 'Your view history' : '你的浏览记录'}
       </Heading>
       <InfiniteScroll
         dataLength={fetchExpressionsCount}

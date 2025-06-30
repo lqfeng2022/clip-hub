@@ -3,8 +3,11 @@ import { Link } from 'react-router-dom'
 import useLists from '@/hooks/interact/useLists'
 import EmptyCard from '../EmptyCard'
 import PlaylistCardSimple from './PlaylistCardSimple'
+import useLanguageStore from '@/languageStore'
 
 const ProfilePlaylist = () => {
+  const lang = useLanguageStore(s => s.language)
+  
   const { data, error } = useLists()
   const lists = data?.pages[0].results.slice(0, 4)
 
@@ -13,7 +16,7 @@ const ProfilePlaylist = () => {
     <Box mt={8} px={2}>
       <HStack justifyContent='space-between' my={5}>
         <Heading fontSize='2xl'>
-          Playlist
+          {lang === 'en' ? 'Playlist' : '播放列表'}
         </Heading>
         <Link to='playlist'>
           <Button 
@@ -22,7 +25,7 @@ const ProfilePlaylist = () => {
             variant='outline'
             disabled={lists?.length === 0}
           >
-            View All
+            {lang === 'en' ? 'View All' : '查看所有'}
           </Button>
         </Link>
       </HStack>

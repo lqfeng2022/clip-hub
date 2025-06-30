@@ -4,8 +4,11 @@ import { FaBloggerB } from 'react-icons/fa'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import useSignout from '@/hooks/useSignout'
 import { useAuth } from '@/AuthContext'
+import useLanguageStore from '@/languageStore'
 
 const ProfileUser = () => {
+  const lang = useLanguageStore(s => s.language)
+
   const { user, setUser } = useAuth()
   const { mutate } = useSignout()
   const navigate = useNavigate()
@@ -53,7 +56,7 @@ const ProfileUser = () => {
             <Link to='/profile/me'>
               {!isProfileMePage && 
                 <Button size='sm' variant='ghost'>
-                  Edit profile
+                  {lang === 'en' ? 'Edit profile' : '编辑个人资料'}
                 </Button>
               }
             </Link>
@@ -67,7 +70,7 @@ const ProfileUser = () => {
               variant='outline' 
               onClick={handleLogout}
             >
-              Log out
+              {lang === 'en' ? 'Log out' : '退出登陆'}
             </Button>
           </HStack>
         </Box>
