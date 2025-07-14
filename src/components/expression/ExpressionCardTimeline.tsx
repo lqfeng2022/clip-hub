@@ -11,9 +11,7 @@ interface Props {
 const ExpressionCardTimeline = ({ expression, handleJump }: Props) => {
   return (
     <Card overflow='hidden' variant=''>
-      <Box 
-        position='relative' 
-        >
+      <Box position='relative'>
         <Image
           w='100%'
           objectFit='cover'

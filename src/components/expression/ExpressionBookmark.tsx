@@ -1,10 +1,10 @@
+import { useAuth } from '@/AuthContext'
+import Expression from '@/entities/Expression'
+import useEpbooks from '@/hooks/interact/useEpbooks'
+import useEpInteract from '@/hooks/store/useEpInteract'
 import { Icon } from '@chakra-ui/react'
 import { useEffect, useRef, useState } from 'react'
-import { IoBookmark, IoBookmarkOutline } from 'react-icons/io5'
-import Expression from '@/entities/Expression'
-import useEpInteract from '@/hooks/store/useEpInteract'
-import useEpbooks from '@/hooks/interact/useEpbooks'
-import { useAuth } from '@/AuthContext'
+import { IoHeart, IoHeartOutline } from 'react-icons/io5'
 
 interface Props {
   expression: Expression,
@@ -40,7 +40,7 @@ const ExpressionBookmark = ({ expression, onUnmark }: Props) => {
   if (!user) return null
   return (
     <Icon
-      as={marked ? IoBookmark : IoBookmarkOutline} // or IoBookmark
+      as={marked ? IoHeart : IoHeartOutline} // or IoBookmark
       boxSize={7}
       color={marked ? 'yellow' : ''}
       position='absolute'

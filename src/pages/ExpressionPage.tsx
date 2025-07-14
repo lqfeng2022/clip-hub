@@ -8,6 +8,7 @@ import LangtagsList from '../components/expression/LangtagsList'
 import useLanguageStore from '@/languageStore'
 import FormalityList from '@/components/expression/FormalityList'
 import FormalityTags from '@/components/expression/FormalityTags'
+import { formality } from '@/helperfunction'
 
 function ExpressionPage() {
   const lang = useLanguageStore(s => s.language)
@@ -15,8 +16,11 @@ function ExpressionPage() {
   const langtagId = useExpressionQueryStore((s) => s.expressionQuery.tagId)
   const langtag = useLangtag(langtagId)
 
-  const header = `${langtag?.title || ''} Expressions`
-  const header_ch = `${langtag?.title_ch || ''} 表达式`
+  const formal = useExpressionQueryStore((s) => s.expressionQuery.formal)
+  const formal_target = formality.find(tag => tag.name === formal)
+
+  const header = `${formal_target?.title || ''} ${langtag?.title || ''} Expressions`
+  const header_ch = `${formal_target?.title_ch || ''} ${langtag?.title_ch || ''} 表达式`
   
   return (
     <Grid

@@ -14,12 +14,12 @@ const ExpressionRecommend = ({ data, ep }: Props) => {
   const filtered = data?.filter((exp) => exp.id !== ep.id)
 
   return (
-    <Box p='15px 10px'>
+    <Box py='20px'>
       <Heading size='md' mb={3} color='gray'>
         {header}
       </Heading>
       <Box 
-        sx={{ columnCount: {base: 1, md: 2, lg: 3, xl: 4} }}
+        sx={{ columnCount: {base: 1, md: 2} }}
         columnGap={6}
       >
         {filtered?.map((exp) =>

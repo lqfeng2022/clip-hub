@@ -1,4 +1,4 @@
-import { Badge, Box, Input, InputGroup, InputLeftElement, InputRightElement, useOutsideClick } from '@chakra-ui/react'
+import { Badge, Box, Input, InputGroup, InputLeftElement, InputRightElement, Show, useOutsideClick } from '@chakra-ui/react'
 import { FormEvent, useRef, useState } from 'react'
 import { BsSearch } from 'react-icons/bs'
 import { useNavigate } from 'react-router-dom'
@@ -53,10 +53,12 @@ const SearchInput = ({ onClose }: { onClose?: () => void }) => {
             onFocus={() => setIsFocused(true)}
             onBlur={() => setIsFocused(false)}
           />
-         {!isFocused && <InputRightElement>
-            <Badge variant='outline' mr={10}>enter</Badge>
-          </InputRightElement>
-          }
+         <Show above='md'>
+           {!isFocused && <InputRightElement>
+              <Badge variant='outline' mr={10}>enter</Badge>
+            </InputRightElement>
+            }
+         </Show>
         </InputGroup>
         {isFocused && <SearchBox type={type}/>}
       </form>

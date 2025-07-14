@@ -1,9 +1,9 @@
-import { Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel, Box, Heading, SimpleGrid } from '@chakra-ui/react'
-import { RefObject } from 'react'
 import { parseTimeline, sortExpressionsByTimeline } from '@/helperfunction'
-import ExpressionCardTimeline from '../expression/ExpressionCardTimeline'
 import useClipExpressions from '@/hooks/store/useClipExpressions'
 import useLanguageStore from '@/languageStore'
+import { Box, Heading, SimpleGrid } from '@chakra-ui/react'
+import { RefObject } from 'react'
+import ExpressionCardTimeline from '../expression/ExpressionCardTimeline'
 
 interface Props {
   clipId: number,
@@ -30,36 +30,26 @@ const ClipExpressionTimeline = ({ clipId, videoRef }: Props) => {
   const heading = lang === 'en' ? 'Clip expressions' : '视频中的表达式'
 
   return (
-    <Box py={0}>
-      <Accordion defaultIndex={[0]} allowMultiple>
-        <AccordionItem border='none'>
-          <AccordionButton px='0'>
-            <Box as='span' flex='1' textAlign='left'>
-              <Heading size='md' color='gray'>
-                {heading}
-              </Heading>
-            </Box>
-            <AccordionIcon />
-          </AccordionButton>
-          <AccordionPanel p={2} pb={0}>
-            <SimpleGrid
-              columns={2}
-              pt='10px'
-              pb={0}
-              spacing={3}
-            >
-              {sortedData?.map((e) => (
-                <ExpressionCardTimeline
-                  key={e.id}
-                  expression={e}
-                  handleJump={() => handleSeek(e.timeline)}
-                />
-              ))}
-            </SimpleGrid>
-          </AccordionPanel>
-        </AccordionItem>
-      </Accordion>
-    </Box>
+    <>
+      <Box as='span' flex='1' textAlign='left'>
+        <Heading size='md' color='gray'>
+          {heading}
+        </Heading>
+      </Box>
+      <SimpleGrid
+        columns={2}
+        pt='15px'
+        spacing={3}
+      >
+        {sortedData?.map((e) => (
+          <ExpressionCardTimeline
+            key={e.id}
+            expression={e}
+            handleJump={() => handleSeek(e.timeline)}
+          />
+        ))}
+      </SimpleGrid>
+    </>
   )
 }
 

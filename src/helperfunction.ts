@@ -15,3 +15,11 @@ export const sortExpressionsByTimeline = (data: Expression[]) => {
    parseTimeline(a.timeline) - parseTimeline(b.timeline))
 
 }
+
+// expression formality tags
+export const formality = [
+  { id: 0, name: '', title: 'All', title_ch: 'All' },
+  { id: 1, name: 'FORMAL', title: 'Formal', title_ch: '正式的' },
+  { id: 2, name: 'NEUTRAL', title: 'Neutral', title_ch: '中性的' },
+  { id: 3, name: 'CASUAL', title: 'Casual', title_ch: '随意的' },
+]

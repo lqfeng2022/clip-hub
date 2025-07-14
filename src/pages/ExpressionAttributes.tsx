@@ -17,7 +17,7 @@ const ExpressionAttributes = ({ expression } : { expression: Expression }) => {
 
   return (
     <>
-      {/* word */}
+      {/* clip quotes */}
       <HStack align='flex-start' wrap='wrap'>
         <Icon as={ImQuotesLeft}/>
         <Heading fontSize='2xl' flex='1'>
@@ -25,21 +25,21 @@ const ExpressionAttributes = ({ expression } : { expression: Expression }) => {
         </Heading>
       </HStack>
       {/* explaining */}
-      <Box py={3}>
+      <Box py={5}>
         <Heading size='md' pb={1} color='gray.500'>
           {explain_header}
         </Heading>
         <Text>{explain}</Text>
       </Box>
       {/* language tags */}
-      <Box pb={1}>
+      <Box>
         <Heading size='md' color='gray.500'>
           {tags_header}
         </Heading>
         <TagHList items={expression.langtags} color='teal'/>
       </Box>
       {/* language words */}
-      <Box pb={1}>
+      <Box py={3}>
         <Heading size='md' color='gray.500'>
           {words_header}
         </Heading>
@@ -47,7 +47,7 @@ const ExpressionAttributes = ({ expression } : { expression: Expression }) => {
       </Box>
       {/* clip link */}
       <Stack>
-        <Heading size='md' pb={1} color='gray.500'>
+        <Heading size='md' py={1} color='gray.500'>
           {clip_header}
         </Heading>
         <Link to={`/clips/${expression.video.slug}`}>

@@ -5,7 +5,7 @@ import useLanguageStore from '@/languageStore';
 
 const ClipCardSimple = ({ clip }: { clip: Clip }) => {
   const lange = useLanguageStore(s => s.language)
-  const header =  lange === 'en' && clip.title_ch ? clip.title_ch : clip.title
+  const header =  lange === 'en' && clip.title_ch ? clip.title : clip.title_ch
 
   return (
     <Card 

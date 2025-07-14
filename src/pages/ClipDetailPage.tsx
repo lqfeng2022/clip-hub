@@ -1,5 +1,4 @@
 import ClipExpressionTimeline from '@/components/clip/ClipExpressionTimeline'
-import ClipGenreAvatar from '@/components/clip/ClipGenreAvatar'
 import { Box, Grid, GridItem, Heading, Spinner, Text } from '@chakra-ui/react'
 import { useRef } from 'react'
 import { useParams } from 'react-router-dom'
@@ -51,15 +50,8 @@ const ClipDetailPage = () => {
           />
         }
         <Heading py={3}>{header}</Heading>
-        <Grid 
-          templateAreas={{ base: `'main'`, md: `'left right'` }}
-          templateColumns={{ base: '1fr', md: '1fr 1fr' }}
-          gap={2}
-        >
-          <ClipGenreAvatar genre={clip.genre}/>
-          <ClipInteractIcons clip={clip}/>
-        </Grid>
-        <Box py={3}>
+        {/* <ClipInteractIcons clip={clip}/> */}
+        <Box py={2}>
           <Heading size='md' pb={1} color='gray.500'>
             {about}
           </Heading>

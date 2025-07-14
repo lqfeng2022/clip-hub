@@ -14,7 +14,7 @@ const ClipAttributes = ({ clip }: { clip: Clip }) => {
   const genre = lang === 'en' ? 'Genre' : '视频类别'
 
   return (
-    <>
+    <div>
       <SimpleGrid columns={2}>
         <ClipAttrDefinition term={original}>
           {lang === 'ch' && clip.original_ch ? clip.original_ch : clip.original}
@@ -38,7 +38,7 @@ const ClipAttributes = ({ clip }: { clip: Clip }) => {
         </Heading>
         <TagHList items={clip.tags} color={'cyan'}/>
       </Box>
-    </>
+    </div>
   )
 }
 
