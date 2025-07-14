@@ -4,9 +4,9 @@ import useExpressionQueryStore from '@/expressionStore'
 import useLanguageStore from '@/languageStore'
 
 const LangtagsList = () => {
-  const lang = useLanguageStore(s => s.language)
-
   const { data, error, isLoading } = useLangtags()
+
+  const lang = useLanguageStore(s => s.language)
 
   const selectedTagId = useExpressionQueryStore(
     (s) => s.expressionQuery.tagId
@@ -19,10 +19,10 @@ const LangtagsList = () => {
   if (isLoading) return <Spinner />
   return (
     <>
-      <Heading fontSize='3xl' py={3}>
+      <Heading fontSize='3xl' pt={5} pb={3}>
         {lang === 'en' ? 'Tags' : '语言标签'}
       </Heading>
-      <Wrap spacing={4} p={2}>
+      <Wrap spacing={4} py={2}>
       {data?.results.map((tag) => (
         <WrapItem key={tag.id}>
           {tag.id === selectedTagId ? (

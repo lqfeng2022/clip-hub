@@ -4,7 +4,7 @@ import useExpressionQueryStore from '@/expressionStore'
 import Expression from '@/entities/Expression'
 import FetchResponse from '@/entities/FetchResponse'
 
-const apiClient = new APIClient<Expression>('expressions')
+const apiClient = new APIClient<Expression>('expressions/')
 
 const useExpressions = () => {
   const expressionQuery = useExpressionQueryStore(
@@ -14,8 +14,8 @@ const useExpressions = () => {
     queryKey: ['expressions', expressionQuery], // issues fixed: <- 'videos'
     queryFn: ({pageParam = 1}) => apiClient.getAll({
       params: {
-        language: expressionQuery.languageId,
         langtags__id: expressionQuery.tagId,
+        formal: expressionQuery.formal,
         ordering: expressionQuery.sortOrder,
         search: expressionQuery.searchText,
         page: pageParam,

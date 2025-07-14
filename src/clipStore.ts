@@ -12,7 +12,6 @@ interface ClipQueryStore {
   // 1)WHY we don't have a single f like 'setClipQuery'??
   //   cus logic for updating 'searchText' is different from other props
   setSearchText: (searchText: string) => void,
-
   setGenreId: (genreId: number | undefined) => void,
   setSortOrder: (sortOrder: string) => void,
 }

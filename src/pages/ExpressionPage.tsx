@@ -6,12 +6,13 @@ import ExpressionGrid from '../components/expression/ExpressionGrid'
 import LangtagsSelector from '../components/expression/LangtagsSelector'
 import LangtagsList from '../components/expression/LangtagsList'
 import useLanguageStore from '@/languageStore'
+import FormalityList from '@/components/expression/FormalityList'
+import FormalityTags from '@/components/expression/FormalityTags'
 
 function ExpressionPage() {
   const lang = useLanguageStore(s => s.language)
 
-  const langtagId = useExpressionQueryStore(
-    (s) => s.expressionQuery.tagId)
+  const langtagId = useExpressionQueryStore((s) => s.expressionQuery.tagId)
   const langtag = useLangtag(langtagId)
 
   const header = `${langtag?.title || ''} Expressions`
@@ -33,6 +34,7 @@ function ExpressionPage() {
         <GridItem area='aside' px={2.5}>
           <Box mt={8}>
             <Divider my={3} borderColor='white'/>
+            <FormalityList/>
             <LangtagsList/>
           </Box>
         </GridItem>
@@ -43,6 +45,9 @@ function ExpressionPage() {
           <Heading my={4} fontSize='3xl'>
             {lang === 'en' ? header : header_ch}
           </Heading>
+          <Show below='lg'>
+            <FormalityTags/>
+          </Show>
           <HStack spacing={4} mt={2}>
             <Show below='lg'>
               <LangtagsSelector/>

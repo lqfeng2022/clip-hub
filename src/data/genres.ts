@@ -46,13 +46,6 @@ export default {
       "videos_count": 1
     },
     {
-      "id": 7,
-      "title": "Music",
-      "title_ch": "音乐",
-      "image": "https://ik.imagekit.io/miqwyhcir/clip-hub/music.jpg?updatedAt=1747713698401",
-      "videos_count": 1
-    },
-    {
       "id": 8,
       "title": "Short Films",
       "title_ch": "短剧",

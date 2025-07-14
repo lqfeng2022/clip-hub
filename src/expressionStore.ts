@@ -3,6 +3,7 @@ import { create } from 'zustand'
 interface ExpressionQuery {
   searchText?: string,
   tagId?: number,
+  formal?: string,
   sortOrder?: string,
 }
 
@@ -11,6 +12,7 @@ interface ExpressionQueryStore {
 
   setSearchText: (searchText: string) => void,
   setTagId: (tagId: number) => void,
+  setFormal: (formal: string) => void,
   setSortOrder: (sortOrder: string) => void,
 }
 
@@ -23,6 +25,10 @@ const useExpressionQueryStore = create<ExpressionQueryStore>((set) => ({
 
   setTagId: (tagId) => set((store) => ({
     expressionQuery: { ...store.expressionQuery, tagId } 
+  })),
+
+  setFormal: (formal) => set((store) => ({
+    expressionQuery: { ...store.expressionQuery, formal }
   })),
   
   setSortOrder: (sortOrder) => set((store) => ({ 
