@@ -1,21 +1,21 @@
 import { Box, Heading, SimpleGrid, Spinner, Text } from '@chakra-ui/react'
 import React from 'react'
 import InfiniteScroll from 'react-infinite-scroll-component'
-import useClipHistories from '../hooks/interact/useClipHistories'
-import useClipHistory from '../hooks/interact/useClipHistory'
-import ClipCardWithDeleteMark from '../components/profile/ClipCardWithDeleteMark'
+import useEpHistories from '../hooks/interact/useEpHistories'
+import useViewHistory from '../hooks/interact/useViewHistory'
 import useLanguageStore from '@/languageStore'
+import ExpressionCardWithDeleteMark from '@/components/profile/ExpressionCardWithDeleteMark'
 
 const ProfileHistoryPage = () => {
   const lang = useLanguageStore(s => s.language)
 
-  const { data, refetch, error, fetchNextPage,  hasNextPage } = useClipHistories()
+  const { data, refetch, error, fetchNextPage,  hasNextPage } = useEpHistories()
   const fetchExpressionsCount = data?.pages.reduce(
     (total, page) => total + page.results.length, 0) || 0
 
-  const { mutate: updateLike } = useClipHistory()
+  const { mutate: updateViewHistory } = useViewHistory()
   const handleUpdate = (id: number, visible: boolean) => {
-    updateLike(
+    updateViewHistory(
       { id, visible }, 
       { onSuccess: () => refetch() }
     )
@@ -44,8 +44,8 @@ const ProfileHistoryPage = () => {
                 .filter((history) => history.visible)
                 .map((history) => (
                   <Box key={history.id}>
-                    <ClipCardWithDeleteMark
-                      clip={history.video}
+                    <ExpressionCardWithDeleteMark
+                      expression={history.expression}
                       handleClick={() => handleUpdate(
                         history.id, !history.visible
                       )}

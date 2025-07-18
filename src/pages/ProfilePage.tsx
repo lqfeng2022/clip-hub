@@ -1,9 +1,8 @@
 import { Box, Image } from '@chakra-ui/react'
 import ProfileUser from '../components/profile/ProfileUser'
-import ProfileExpressionSave from '../components/profile/ProfileExpressionSave'
-import ProfileClipLike from '../components/profile/ProfileClipLike'
+import ProfileEpbook from '../components/profile/ProfileEpbook'
 import ProfilePlaylist from '../components/profile/ProfilePlaylist'
-import ProfileClipViewHistory from '../components/profile/ProfileClipViewHistory'
+import ProfileViewHistory from '../components/profile/ProfileViewHistory'
 
 const Profile = () => {  
   return (
@@ -16,10 +15,9 @@ const Profile = () => {
         <Image src='https://bit.ly/naruto-sage'/>
       </Box>
       <ProfileUser/>
-      <ProfileExpressionSave/>
-      <ProfileClipLike/>
-      <ProfilePlaylist/>
-      <ProfileClipViewHistory/>
+      <ProfileViewHistory/>
+      <ProfileEpbook/>
+      {/* <ProfilePlaylist/> */}
     </Box>
   )
 }

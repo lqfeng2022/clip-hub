@@ -16,4 +16,6 @@ export default interface Expression {
   explain_ch: string,
   video: Clip,
   bookmark_state: boolean,
+  views_count: number,
+  likes_count: number,
 }

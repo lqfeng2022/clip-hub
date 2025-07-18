@@ -2,14 +2,13 @@ import { useInfiniteQuery } from '@tanstack/react-query'
 import InteractAPIClient from '@/services/api-interact'
 import ClipInteract from '@/entities/History'
 import FetchResponse from '@/entities/FetchResponse'
-import { useAuth } from '@/AuthContext'
+import Epbook from '@/entities/Epbook'
 
-const apiClient = new InteractAPIClient<ClipInteract>('likes')
+const apiClient = new InteractAPIClient<Epbook>('views')
 
-const useClipLikes = () => {
-  const { user } = useAuth()
-  return useInfiniteQuery<FetchResponse<ClipInteract>, Error>({
-    queryKey: ['clipLikes'],
+const useEpHistories = () => {
+  return useInfiniteQuery<FetchResponse<Epbook>, Error>({
+    queryKey: ['EpHistories'],
     queryFn: ({pageParam = 1}) => apiClient.getAll({
       params: {
         withCredentials: true,
@@ -19,10 +18,8 @@ const useClipLikes = () => {
     getNextPageParam: (lastPage, allPages) => {
       return lastPage.next ? allPages.length + 1 : undefined
     },
-    staleTime: 24 * 60 * 60 * 1000, // 24h
-    enabled: !!user,
-    retry: false,
+    staleTime: 24 * 60 * 60 * 1000 // 24h
   })
 }
 
-export default useClipLikes
+export default useEpHistories

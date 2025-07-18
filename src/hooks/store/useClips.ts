@@ -15,7 +15,6 @@ const useClips = () => {
     queryFn: ({pageParam = 1}) => apiClient.getAll({
       params: {
         genre_id: clipQuery.genreId,
-        language: clipQuery.languageId,
         ordering: clipQuery.sortOrder,
         search: clipQuery.searchText,
         page: pageParam,
