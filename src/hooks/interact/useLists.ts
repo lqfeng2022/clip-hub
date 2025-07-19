@@ -4,13 +4,13 @@ import FetchResponse from '@/entities/FetchResponse'
 import List from '@/entities/List'
 import { useAuth } from '@/AuthContext'
 
-const apiClient = new InteractAPIClient<List>('lists')
+const apiClient = new InteractAPIClient<List>('collections')
 
 const useLists = () => {
   const { user } = useAuth()
 
   return useInfiniteQuery<FetchResponse<List>, Error>({
-    queryKey: ['lists'],
+    queryKey: ['collections'],
     queryFn: ({pageParam = 1}) => apiClient.getAll({
       params: {
         withCredentials: true,

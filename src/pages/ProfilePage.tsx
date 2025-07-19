@@ -17,7 +17,7 @@ const Profile = () => {
       <ProfileUser/>
       <ProfileViewHistory/>
       <ProfileEpbook/>
-      {/* <ProfilePlaylist/> */}
+      <ProfilePlaylist/>
     </Box>
   )
 }

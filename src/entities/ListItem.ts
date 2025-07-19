@@ -1,7 +1,7 @@
-import Clip from './Clip'
+import Expression from './Expression'
 
 export default interface ListItem {
   id: number,
-  video: Clip,
+  expression: Expression,
   added_at: string,
 }

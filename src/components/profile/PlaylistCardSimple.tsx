@@ -4,7 +4,7 @@ import nocontent from '@/assets/no-content.png'
 import List from '@/entities/List'
 
 const PlaylistCardSimple = ({ list }: { list: List }) => {
-  const cover = list.items[0]?.video.cover
+  const cover = list.items[0]?.expression.image
   const hasItems = list.items && list.items.length > 0
   const contentLink = `/profile/playlist/${list.slug}`
 

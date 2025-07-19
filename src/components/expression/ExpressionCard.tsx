@@ -9,6 +9,8 @@ interface Props {
   onUnmark?: () => void, // optional callback
 }
 const ExpressionCard = ({ expression, onUnmark }: Props) => {
+  const detail = false
+
   return (
     <Card gap={1} my={1} overflow='hidden' variant=''>
       <Box position='relative'>
@@ -17,7 +19,8 @@ const ExpressionCard = ({ expression, onUnmark }: Props) => {
           objectFit='cover'
           src={expression.image || noImage}
         />
-        <ExpressionBookmark 
+        <ExpressionBookmark
+          detail={detail}
           expression={expression} 
           onUnmark={onUnmark}
         />

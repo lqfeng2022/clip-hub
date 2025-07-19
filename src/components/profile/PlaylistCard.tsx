@@ -13,7 +13,7 @@ interface Props {
   onDelete: () => void
 }
 const PlaylistCard = ({ list, onUpdate, onDelete }: Props) => {
-  const cover = list.items[0]?.video.cover
+  const cover = list.items[0]?.expression.image
   const hasItems = list.items && list.items.length > 0
   const contentLink = `/profile/playlist/${list.slug}`
 

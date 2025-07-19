@@ -7,10 +7,11 @@ import { useEffect, useRef, useState } from 'react'
 import { IoHeart, IoHeartOutline } from 'react-icons/io5'
 
 interface Props {
+  detail: boolean,
   expression: Expression,
   onUnmark?: () => void, // optional callback
 }
-const ExpressionBookmark = ({ expression, onUnmark }: Props) => {
+const ExpressionBookmark = ({ detail, expression, onUnmark }: Props) => {
   const { user } = useAuth()
   const [marked, setMarked] = useState(expression.bookmark_state)
   const toggleMarked = () => setMarked(prev => !prev)
@@ -39,20 +40,32 @@ const ExpressionBookmark = ({ expression, onUnmark }: Props) => {
 
   if (!user) return null
   return (
-    <Icon
-      as={marked ? IoHeart : IoHeartOutline} // or IoBookmark
-      boxSize={7}
-      color={marked ? 'yellow' : ''}
-      position='absolute'
-      top={1}
-      right={1}
-      bg='rgba(0,0,0,0.4)'
-      borderRadius='full'
-      p={1}
-      cursor='pointer'
-      _hover={{ color: 'yellow.300' }}
-      onClick={toggleMarked}
-    />
+    <>
+      {detail === true ? (
+        <Icon
+          as={marked ? IoHeart : IoHeartOutline} // or IoBookmark
+          boxSize={6}
+          color={marked ? 'yellow' : ''}
+          cursor='pointer'
+          _hover={{ color: 'yellow.300' }}
+          onClick={toggleMarked}
+        />) : (
+        <Icon
+          as={marked ? IoHeart : IoHeartOutline} // or IoBookmark
+          boxSize={7}
+          color={marked ? 'yellow' : ''}
+          position='absolute'
+          top={1}
+          right={1}
+          bg='rgba(0,0,0,0.4)'
+          borderRadius='full'
+          p={1}
+          cursor='pointer'
+          _hover={{ color: 'yellow.300' }}
+          onClick={toggleMarked}
+        />)
+      }
+    </>
   )
 }
 
