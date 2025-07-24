@@ -6,7 +6,7 @@ interface Props {
   onClose: () => void
   onCreate: (title: string) => void
 }
-const ClipPlaylistAdd = ({ isOpen, onClose, onCreate }: Props) => {
+const ExpressionPlaylistAdd = ({ isOpen, onClose, onCreate }: Props) => {
   const [title, setTitle] = useState('')
   const handleCreate = () => {
     onCreate(title), setTitle(''), onClose()
@@ -45,4 +45,4 @@ const ClipPlaylistAdd = ({ isOpen, onClose, onCreate }: Props) => {
   )
 }
 
-export default ClipPlaylistAdd
+export default ExpressionPlaylistAdd

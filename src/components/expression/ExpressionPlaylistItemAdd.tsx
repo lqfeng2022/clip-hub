@@ -6,7 +6,7 @@ interface Props {
   selectedListIds: number[],
   onChange: (ids: number[]) => void
 }
-const ClipPlaylistItemAdd = ({ lists, selectedListIds, onChange }: Props) => {
+const ExpressionPlaylistItemAdd = ({ lists, selectedListIds, onChange }: Props) => {
   if (lists.length === 0)
     return <Text>No playlists yet. Create one to save clips.</Text>
   return (
@@ -27,4 +27,4 @@ const ClipPlaylistItemAdd = ({ lists, selectedListIds, onChange }: Props) => {
   )
 }
 
-export default ClipPlaylistItemAdd
+export default ExpressionPlaylistItemAdd

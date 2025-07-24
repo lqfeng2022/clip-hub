@@ -2,7 +2,7 @@ import { useMutation } from '@tanstack/react-query'
 import InteractAPIClient from '@/services/api-interact'
 import ListItemTuples from '@/entities/ListItemTuples'
 
-const apiClient = new InteractAPIClient('lists')
+const apiClient = new InteractAPIClient('collections')
 
 const useListItemMultDelete = () => {
   return useMutation({

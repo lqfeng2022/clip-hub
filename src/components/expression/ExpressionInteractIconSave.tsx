@@ -1,12 +1,12 @@
 import { Button, Icon, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, useDisclosure } from '@chakra-ui/react'
 import { IoBookmarkOutline } from 'react-icons/io5'
 import { useAuth } from '@/AuthContext'
-import Clip from '@/entities/Clip'
 import useClipPlaylistManager from '@/hooks/useClipPlaylistManager'
-import ClipPlaylistAdd from './ClipPlaylistAdd'
-import ClipPlaylistItemAdd from './ClipPlaylistItemAdd'
+import ExpressionPlaylistAdd from './ExpressionPlaylistAdd'
+import ExpressionPlaylistItemAdd from './ExpressionPlaylistItemAdd'
+import Expression from '@/entities/Expression'
 
-const ClipInteractIconSave = ({ clip }: { clip: Clip }) => {
+const ExpressionInteractIconSave = ({ exp }: { exp: Expression }) => {
   const { user } = useAuth()
   const { isOpen: isMainOpen, onOpen: onMainOpen, onClose: onMainClose } = useDisclosure()
   const { isOpen: isAddOpen, onOpen: onAddOpen, onClose: onAddClose } = useDisclosure()
@@ -17,7 +17,7 @@ const ClipInteractIconSave = ({ clip }: { clip: Clip }) => {
     setSelectedListIds,
     handleListAdd,
     handleListItemUpdate,
-  } = useClipPlaylistManager(clip, onMainClose)
+  } = useClipPlaylistManager(exp, onMainClose)
   
   if (!user) return <Icon as={IoBookmarkOutline} boxSize={6} opacity={0.5}/>
   return (
@@ -38,7 +38,7 @@ const ClipInteractIconSave = ({ clip }: { clip: Clip }) => {
           <ModalCloseButton />
           <ModalBody>
             {/* A list of playlists or a 'add playlist' message */}
-            <ClipPlaylistItemAdd 
+            <ExpressionPlaylistItemAdd 
               lists={lists} 
               selectedListIds={selectedListIds}
               onChange={setSelectedListIds}
@@ -64,7 +64,7 @@ const ClipInteractIconSave = ({ clip }: { clip: Clip }) => {
         </ModalContent>
       </Modal>
       {/* Model B */}
-      <ClipPlaylistAdd 
+      <ExpressionPlaylistAdd 
         isOpen={isAddOpen} 
         onClose={onAddClose} 
         onCreate={handleListAdd}
@@ -73,4 +73,4 @@ const ClipInteractIconSave = ({ clip }: { clip: Clip }) => {
   )
 }
 
-export default ClipInteractIconSave
+export default ExpressionInteractIconSave

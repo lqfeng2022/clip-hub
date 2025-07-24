@@ -1,7 +1,8 @@
 import { useMutation } from '@tanstack/react-query'
 import InteractAPIClient from '@/services/api-interact'
 
-const apiClient = new InteractAPIClient('lists') // main endpoint
+
+const apiClient = new InteractAPIClient('collections') // main endpoint
 
 const useListDelete = () => {
   return useMutation({

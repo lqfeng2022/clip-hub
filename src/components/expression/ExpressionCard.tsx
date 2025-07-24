@@ -1,16 +1,15 @@
 import { Box, Card, CardBody, Heading, Image } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
 import Expression from '@/entities/Expression'
-import ExpressionBookmark from './ExpressionBookmark'
+import ExpressionCardLike from './ExpressionCardLike'
 import noImage from '@/assets/no-image.jpg'
+
 
 interface Props {
   expression: Expression,
   onUnmark?: () => void, // optional callback
 }
 const ExpressionCard = ({ expression, onUnmark }: Props) => {
-  const detail = false
-
   return (
     <Card gap={1} my={1} overflow='hidden' variant=''>
       <Box position='relative'>
@@ -19,8 +18,7 @@ const ExpressionCard = ({ expression, onUnmark }: Props) => {
           objectFit='cover'
           src={expression.image || noImage}
         />
-        <ExpressionBookmark
-          detail={detail}
+        <ExpressionCardLike
           expression={expression} 
           onUnmark={onUnmark}
         />

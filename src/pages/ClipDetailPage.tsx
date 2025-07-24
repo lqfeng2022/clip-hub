@@ -3,7 +3,6 @@ import { Box, Grid, GridItem, Heading, Spinner, Text } from '@chakra-ui/react'
 import { useRef } from 'react'
 import { useParams } from 'react-router-dom'
 import ClipAttributes from '../components/clip/ClipAttributes'
-import ClipInteractIcons from '../components/clip/ClipInteractIcons'
 import ClipMovie from '../components/clip/ClipMovie'
 import useClip from '../hooks/store/useClip'
 import ClipMovieShort from '@/components/clip/ClipMovieShort'
@@ -50,7 +49,6 @@ const ClipDetailPage = () => {
           />
         }
         <Heading py={3}>{header}</Heading>
-        {/* <ClipInteractIcons clip={clip}/> */}
         <Box py={2}>
           <Heading size='md' pb={1} color='gray.500'>
             {about}

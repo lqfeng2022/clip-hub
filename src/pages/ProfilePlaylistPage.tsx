@@ -7,6 +7,7 @@ import useListUpdate from '../hooks/interact/useListUpdate'
 import PlaylistCard from '../components/profile/PlaylistCard'
 import useLanguageStore from '@/languageStore'
 
+
 const ProfilePlaylistPage = () => {
   const lang = useLanguageStore(s => s.language)
 

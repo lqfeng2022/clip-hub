@@ -2,29 +2,28 @@ import Expression from '@/entities/Expression'
 import { HStack, Icon, Stack, Text } from '@chakra-ui/react'
 import { BiShare } from 'react-icons/bi'
 import { FaRegComment } from 'react-icons/fa'
-import { IoBookmarkOutline, IoEyeOutline } from 'react-icons/io5'
-import ExpressionBookmark from './ExpressionBookmark'
+import { IoEyeOutline } from 'react-icons/io5'
+import ExpressionInteractIconSave from './ExpressionInteractIconSave'
+import ExpressionInteractLike from './ExpressionInteractLike'
 
-const ExpressionInteractIcons = ({ expression }: { expression: Expression }) => {
-  const detail = true
-  
+
+const ExpressionInteractIcons = ({ expression }: { expression: Expression }) => {  
   return (
     <Stack spacing={4} m='12px 10px'>
       <HStack justifyContent='space-between'>
         <Icon as={FaRegComment} boxSize={6} color='gray'/>
-        {/* expression likes count */}
+        {/* expression like */}
         <HStack>
-          {/* <Icon as={IoHeartOutline} boxSize={6}/> */}
-          <ExpressionBookmark detail={detail} expression={expression}/>
+          <ExpressionInteractLike expression={expression}/>
           <Text>{expression.likes_count}</Text>
         </HStack>
-        {/* expression views count */}
+        {/* expression view history */}
         <HStack>
           <Icon as={IoEyeOutline} boxSize={6}/>
           <Text>{expression.views_count}</Text>
         </HStack>
         {/* expression playlist */}
-        <Icon as={IoBookmarkOutline} boxSize={6}/>
+        <ExpressionInteractIconSave exp={expression}/>
         <Icon as={BiShare} boxSize={6}/>
       </HStack>
     </Stack>

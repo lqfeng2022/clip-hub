@@ -1,7 +1,7 @@
 import { useMutation } from '@tanstack/react-query'
 import InteractAPIClient from '@/services/api-interact'
 
-const apiClient = new InteractAPIClient('lists')
+const apiClient = new InteractAPIClient('collections')
 
 const useListPost = () => {
   return useMutation({
