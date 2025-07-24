@@ -13,7 +13,7 @@ const SearchInput = ({ onClose }: { onClose?: () => void }) => {
   const lang = useLanguageStore(s => s.language)
 
   // get search context type from searchContext hook
-  const { isExpression, placeholder, placeholder_ch, setSearchText, type } = useSearchContext()
+  const { isExpression, placeholder, placeholder_ch, setSearchText, kind } = useSearchContext()
   const { mutate } = useSearchPost()
   const navigate = useNavigate()
 
@@ -35,7 +35,7 @@ const SearchInput = ({ onClose }: { onClose?: () => void }) => {
     inputRef.current.blur() // This hides the keyboard on mobile and collapses UI
 
     // Post new search record to backend
-    if (user) mutate({ content, type, visible: true })
+    if (user) mutate({ content, kind, visible: true })
     if (onClose) onClose()
     if (!isExpression) navigate('/')  // Optional navigation
   }
@@ -60,7 +60,7 @@ const SearchInput = ({ onClose }: { onClose?: () => void }) => {
             }
          </Show>
         </InputGroup>
-        {isFocused && <SearchBox type={type}/>}
+        {isFocused && <SearchBox kind={kind}/>}
       </form>
     </Box>
   )

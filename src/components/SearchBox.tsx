@@ -3,13 +3,13 @@ import useSearches from '../hooks/interact/useSearches'
 import useSearchPut from '../hooks/interact/useSearchPut'
 import { useAuth } from '../AuthContext'
 
-const SearchBox = ({ type }: { type: 'CLIP' | 'WORDS' }) => {
+const SearchBox = ({ kind }: { kind: 'CLIP' | 'WORDS' }) => {
   const { user } = useAuth()
   const { data, refetch, error } = useSearches()
   const { mutate } = useSearchPut()
 
   const searches = data?.pages[0].results
-    .filter((view) => view.visible && view.type === type)
+    .filter((view) => view.visible && view.kind === kind)
     .slice(0, 9)
   
   const handleUpdate = (search: {id: number}) => {

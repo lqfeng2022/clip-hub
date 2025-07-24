@@ -20,7 +20,7 @@ export default interface Clip {
   creator: Creator,
   platform: Platform,
   release_year: number,
-  type: 'SHORT' | 'NORMAL',
+  kind: 'SHORT' | 'NORMAL',
   movies: Movie[],
   likes_count: number,
   views_count: number,

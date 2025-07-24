@@ -5,10 +5,10 @@ const apiClient = new InteractAPIClient('searches')
 
 const useSearchPost = () => {
   return useMutation({
-    mutationFn: ({ content, type, visible } : { 
-      content: string, type: string, visible: boolean }) => 
+    mutationFn: ({ content, kind, visible } : { 
+      content: string, kind: string, visible: boolean }) => 
         apiClient.postSearch(
-          { content, type, visible }, 
+          { content, kind, visible }, 
           { withCredentials: true }
     )
   })

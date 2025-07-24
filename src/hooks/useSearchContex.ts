@@ -12,9 +12,9 @@ const useSearchContext = () => {
 
   const placeholder = `Search ${isExpression ? 'expressions' : 'clips'}...`
   const placeholder_ch = `搜索${isExpression ? '表达式' : '视频'}...`
-  const type: 'CLIP' | 'WORDS' = isExpression ? 'WORDS' : 'CLIP'
+  const kind: 'CLIP' | 'WORDS' = isExpression ? 'WORDS' : 'CLIP'
 
-  return { isExpression, setSearchText, placeholder, placeholder_ch, type }
+  return { isExpression, setSearchText, placeholder, placeholder_ch, kind }
 }
 
 export default useSearchContext

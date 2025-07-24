@@ -35,13 +35,13 @@ const ClipDetailPage = () => {
         />
       </GridItem>
       <GridItem order={{ base: 1, lg: 2 }}>
-        {clip.type === 'NORMAL' && <ClipMovie 
+        {clip.kind === 'NORMAL' && <ClipMovie 
           movies={clip.movies} 
           preview={clip.cover}
           videoId={clip.id}
           videoRef={videoRef}
           />
-        } {clip.type === 'SHORT' && <ClipMovieShort
+        } {clip.kind === 'SHORT' && <ClipMovieShort
           movies={clip.movies}
           preview={clip.cover}
           videoId={clip.id}
