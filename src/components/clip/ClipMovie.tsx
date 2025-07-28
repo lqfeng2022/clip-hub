@@ -12,7 +12,7 @@ interface Props {
 const ClipMovie = ({ videoId, movies, preview, videoRef }: Props) => {
   const { mutate } = useInteract(videoId, 'history')
 
-  const cloudMovie = movies.find(m => m.stored_at === 'cloud') 
+  const cloudMovie = movies.find(m => m.stored_at === 'CLIP') 
   const cloudSrc = cloudMovie?.clip
 
   const ytMovie = movies.find(y => y.stored_at === 'YT')
@@ -38,23 +38,21 @@ const ClipMovie = ({ videoId, movies, preview, videoRef }: Props) => {
 
   return (
     <>
-      {!youtubeId && 
+      {cloudSrc ? ( 
         <video
           ref={videoRef}
           src={cloudSrc}
           poster={preview}
           controls
           onPlay={() => mutate({ visible: true })}
-        />
-      }
-      {youtubeId && 
+        />) : ( 
         <AspectRatio ratio={16/9}>
           <iframe 
             src={`https://www.youtube.com/embed/${youtubeId}`}
             title='YouTube player'
             allowFullScreen
           />
-        </AspectRatio>
+        </AspectRatio>)
       }
     </>
   )

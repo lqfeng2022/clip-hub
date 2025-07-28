@@ -12,7 +12,7 @@ interface Props {
 const ClipMovieShort = ({ videoId, movies, preview, videoRef }: Props) => {
   const { mutate } = useInteract(videoId, 'history')
 
-  const cloudMovie = movies.find(m => m.stored_at === 'cloud') 
+  const cloudMovie = movies.find(m => m.stored_at === 'CLIP') 
   const cloudSrc = cloudMovie?.clip
 
   const ytMovie = movies.find(y => y.stored_at === 'YT')
@@ -37,31 +37,26 @@ const ClipMovieShort = ({ videoId, movies, preview, videoRef }: Props) => {
   }
 
   return (
-    <>
-      {!youtubeId && 
-      <Box maxW='420px' mx='auto'>
-        <AspectRatio ratio={9/16}>
-          <video
-            ref={videoRef}
-            src={cloudSrc}
-            poster={preview}
-            controls
-            onPlay={() => mutate({ visible: true })}
-            /> 
-        </AspectRatio>
-      </Box>
-      } {youtubeId && 
-      <Box maxW='420px' mx='auto'>
-        <AspectRatio ratio={9/16}>
-          <iframe 
-            src={`https://www.youtube.com/embed/${youtubeId}`}
-            title='YouTube player'
-            allowFullScreen
-            />
-        </AspectRatio>
-      </Box>
-      }
-    </>
+    <Box maxW='420px' mx='auto'>
+    {cloudSrc ? ( 
+      <AspectRatio ratio={9/16}>
+        <video
+          ref={videoRef}
+          src={cloudSrc}
+          poster={preview}
+          controls
+          onPlay={() => mutate({ visible: true })}
+          /> 
+      </AspectRatio>) : (
+      <AspectRatio ratio={9/16}>
+        <iframe 
+          src={`https://www.youtube.com/embed/${youtubeId}`}
+          title='YouTube player'
+          allowFullScreen
+          />
+      </AspectRatio>)
+    }
+    </Box>
   )
 }
 
