@@ -3,6 +3,7 @@ import Expression from './Expression'
 import Genre from './Genre'
 import Movie from './Movie'
 import Platform from './Platform'
+import { Subtitle } from './Subtitle'
 import Tag from './Tag'
 
 export default interface Clip {
@@ -27,4 +28,5 @@ export default interface Clip {
   like_state: boolean,
   bookmark_state: boolean,
   expressions: Expression[],
+  subtitles: Subtitle[],
 }

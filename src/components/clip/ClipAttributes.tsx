@@ -32,7 +32,7 @@ const ClipAttributes = ({ clip }: { clip: Clip }) => {
           {clip.genre.title}
         </ClipAttrDefinition>
       </SimpleGrid>
-      <Box my={2}>
+      <Box mt={2}>
         <Heading fontSize='md' color='gray.500'>
           Tags
         </Heading>

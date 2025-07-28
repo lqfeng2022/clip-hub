@@ -1,56 +1,11 @@
-import Expression from '@/entities/Expression'
-import { parseTimeline, sortExpressionsByTimeline } from '@/helperfunction'
-import { Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel, Box, Heading, SimpleGrid } from '@chakra-ui/react'
-import { RefObject } from 'react'
-import ExpressionCardTimeline from './components/expression/ExpressionCardTimeline'
+import { Box } from '@chakra-ui/react'
 
-interface Props {
-  data: Expression[],
-  videoRef: RefObject<HTMLVideoElement>
-}
-const ClipExpressionTimeline = ({ data, videoRef }: Props) => {
-  const handleSeek = (timeline: string) => {
-    const seconds = parseTimeline(timeline)
-    if (videoRef.current) {
-      videoRef.current.currentTime = seconds
-      videoRef.current.play()
-    }
-  }
-  const sortedData = sortExpressionsByTimeline(data)
+
+const Playground = () => {
 
   return (
-    <Box py={2}>
-      <Accordion defaultIndex={[0]} allowMultiple>
-        <AccordionItem>
-          <h2>
-            <AccordionButton>
-              <Box as='span' flex='1' textAlign='left'>
-                <Heading size='md' color='gray'>
-                  Video Timeline
-                </Heading>
-              </Box>
-              <AccordionIcon />
-            </AccordionButton>
-          </h2>
-          <AccordionPanel pb={4}>
-            <SimpleGrid
-              columns={{ base: 2, lg: 3, xl: 4 }}
-              py='10px'
-              spacing={3}
-            >
-              {sortedData?.map((e) => (
-                <ExpressionCardTimeline
-                  key={e.id}
-                  expression={e}
-                  handleJump={() => handleSeek(e.timeline)}
-                />
-              ))}
-            </SimpleGrid>
-          </AccordionPanel>
-        </AccordionItem>
-      </Accordion>
-    </Box>
+    <Box py={2}>Playground</Box>
   )
 }
 
-export default ClipExpressionTimeline
+export default Playground

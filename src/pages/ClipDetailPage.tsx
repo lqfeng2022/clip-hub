@@ -1,12 +1,13 @@
-import ClipExpressionTimeline from '@/components/clip/ClipExpressionTimeline'
+import ClipMovieShort from '@/components/clip/ClipMovieShort'
+import ClipSubtitles from '@/components/clip/ClipSubtitles'
+import useLanguageStore from '@/languageStore'
 import { Box, Grid, GridItem, Heading, Spinner, Text } from '@chakra-ui/react'
 import { useRef } from 'react'
 import { useParams } from 'react-router-dom'
 import ClipAttributes from '../components/clip/ClipAttributes'
 import ClipMovie from '../components/clip/ClipMovie'
 import useClip from '../hooks/store/useClip'
-import ClipMovieShort from '@/components/clip/ClipMovieShort'
-import useLanguageStore from '@/languageStore'
+
 
 const ClipDetailPage = () => {
   const { slug } = useParams() // get `slug` from url
@@ -27,10 +28,11 @@ const ClipDetailPage = () => {
       templateColumns={{ base: '1fr', lg: '1fr 2fr' }}
       gap={5}
       px={2}
+      pb='50px'
     >
       <GridItem order={{ base: 2, lg: 1 }}>
-        <ClipExpressionTimeline 
-          clipId={clip.id}
+        <ClipSubtitles 
+          subtitles={clip.subtitles}
           videoRef={videoRef}
         />
       </GridItem>

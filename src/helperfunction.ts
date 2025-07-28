@@ -1,4 +1,4 @@
-import Expression from '@/entities/Expression'
+import { Subtitle } from './entities/Subtitle'
 
 export const parseTimeline = (timeline: string): number => {
     const [minStr, secStr] = timeline.split(':').map(s => s.trim())
@@ -10,11 +10,12 @@ export const parseTimeline = (timeline: string): number => {
 
 // `[...data]`: to avoid mutating the original array
 // `-`: is a simple way to tell TS how to order two items
-export const sortExpressionsByTimeline = (data: Expression[]) => {
+export const sortSubtitlesByTimeline = (data: Subtitle[]) => {
   return [...data].sort((a, b) => 
    parseTimeline(a.timeline) - parseTimeline(b.timeline))
 
 }
+
 
 // expression formality tags
 export const formality = [
