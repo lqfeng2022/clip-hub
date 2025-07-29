@@ -3,7 +3,6 @@ import useExpressionLikeManager from '@/hooks/useExpressionLikeManager'
 import { Icon } from '@chakra-ui/react'
 import { IoHeart, IoHeartOutline } from 'react-icons/io5'
 
-
 interface Props {
   expression: Expression,
   onUnmark?: () => void, // optional callback

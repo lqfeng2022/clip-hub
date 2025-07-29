@@ -4,7 +4,6 @@ import Expression from '@/entities/Expression'
 import ExpressionCardLike from './ExpressionCardLike'
 import noImage from '@/assets/no-image.jpg'
 
-
 interface Props {
   expression: Expression,
   onUnmark?: () => void, // optional callback

@@ -30,7 +30,7 @@ const ExprressionListCardModal = ({ list, isOpen, onClose, onUpdate }: Props) =>
   const badValue = !title.trim() || title.trim() === list.title
   
   return (
-    <Modal isOpen={isOpen} onClose={onClose}>
+    <Modal isOpen={isOpen} onClose={onClose} isCentered>
       <ModalOverlay />
       <ModalContent>
         <ModalHeader>Update your playlist</ModalHeader>

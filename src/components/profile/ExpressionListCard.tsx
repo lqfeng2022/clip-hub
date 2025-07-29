@@ -1,4 +1,4 @@
-import { Card, CardBody, Heading, HStack, IconButton, Image, Menu, MenuButton, MenuItem, MenuList, useDisclosure } from '@chakra-ui/react'
+import { Box, Card, CardBody, Heading, HStack, IconButton, Image, Menu, MenuButton, MenuItem, MenuList, useDisclosure } from '@chakra-ui/react'
 import { CgMoreVertical } from 'react-icons/cg'
 import { FaRegEdit } from 'react-icons/fa'
 import { RiDeleteBin6Line } from 'react-icons/ri'
@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom'
 import nocontent from '@/assets/no-content.png'
 import List from '@/entities/List'
 import ExprressionListCardModal from './ExprressionListCardModal'
+import ProfileListCardIcon from './ProfileListCardIcon'
 
 interface Props {
   list: List
@@ -20,30 +21,31 @@ const ExpressionListCard = ({ list, onUpdate, onDelete }: Props) => {
   const { isOpen, onOpen, onClose } = useDisclosure()
 
   return (
-    <Card 
-      bg='gray.800' 
-      overflow='hidden' 
-      variant='unstyled' 
-      borderRadius={8}
-    >
+    <Card bg='gray.800' overflow='hidden' variant='unstyled' borderRadius={8}>
       {/* 1)Card Image */}
       {hasItems && (
         <Link to={contentLink}>
-          <Image 
-            aspectRatio={16/9}
-            src={cover ?? nocontent}
-            objectFit='cover' 
-            className='img-hover' 
-          />
+          <Box position='relative'>
+            <Image
+              aspectRatio={16/9}
+              src={cover ?? nocontent}
+              objectFit='cover'
+              className='img-hover'
+            />
+            <ProfileListCardIcon/>
+          </Box>
         </Link>
       )}
       {!hasItems && (
-        <Image 
-          aspectRatio={16/9} 
-          src={nocontent} 
-          opacity={0.5} 
-          objectFit='cover'
-        />
+        <Box position='relative'>
+          <Image
+            aspectRatio={16/9}
+            src={nocontent}
+            opacity={0.5}
+            objectFit='cover'
+          />
+          <ProfileListCardIcon/>
+        </Box>
       )}
       {/* 2)Card body */}
       <CardBody p='4px'>
@@ -72,7 +74,7 @@ const ExpressionListCard = ({ list, onUpdate, onDelete }: Props) => {
               aria-label='Options'
               icon={<CgMoreVertical />}
               variant='ghost'
-              size='sm'
+              size='md'
             />
             <MenuList>
               <MenuItem icon={<RiDeleteBin6Line/>} onClick={onDelete}>
