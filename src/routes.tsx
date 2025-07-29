@@ -13,6 +13,7 @@ import ProfileHistoryPage from './pages/ProfileHistoryPage'
 import ExpressionDetailPage from './pages/ExpressionDetailPage'
 import ProfileEpbookPage from './pages/ProfileEpbookPage'
 import ProfileListDetailPage from './pages/ProfileListDetailPage'
+import ProfileListsPage from './pages/ProfileListsPage'
 
 const router = createBrowserRouter([
   {
@@ -32,6 +33,7 @@ const router = createBrowserRouter([
           { path: 'me', element: <ProfileUserPage /> },
           { path: 'history', element: <ProfileHistoryPage /> },
           { path: 'expression', element: <ProfileEpbookPage /> },
+          { path: 'list', element: <ProfileListsPage /> },
           { path: 'list/:slug', element: <ProfileListDetailPage /> },
         ],
       },

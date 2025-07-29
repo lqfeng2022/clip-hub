@@ -11,14 +11,14 @@ const ProfileListLink = () => {
 
   const list = [
     { name: 'Profile', name_ch: '个人资料', icon: HiOutlineUser, link: '/profile' },
-    { name: 'View history', name_ch: '浏览记录', icon: VscHistory, link: '/profile/history' },
-    { name: 'Liked expressions', name_ch: '喜欢的表达式', icon: IoMdHeartEmpty, link: '/profile/expression' },
-    { name: 'Lists', name_ch: '表达式列表', icon: IoIosList, link: '' },
+    { name: 'History', name_ch: '浏览记录', icon: VscHistory, link: '/profile/history' },
+    { name: 'Liked words', name_ch: '喜欢的表达式', icon: IoMdHeartEmpty, link: '/profile/expression' },
+    { name: 'Your Lists', name_ch: '表达式列表', icon: IoIosList, link: '/profile/list' },
   ]
 
   return (
     <Box mt={8}>
-      <Divider my={3} borderColor='white'/>
+      <Divider my={3} borderColor='gray'/>
       <List>
         {list.map((p) => (
           <ListItem py='20px' key={p.name}>

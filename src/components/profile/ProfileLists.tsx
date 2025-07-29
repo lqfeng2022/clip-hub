@@ -1,28 +1,14 @@
-import useListDelete from '@/hooks/interact/useListDelete'
 import useLists from '@/hooks/interact/useLists'
-import useListUpdate from '@/hooks/interact/useListUpdate'
 import useLanguageStore from '@/languageStore'
-import { Box, HStack, Heading, SimpleGrid, Spinner, Text } from '@chakra-ui/react'
-import React from 'react'
-import InfiniteScroll from 'react-infinite-scroll-component'
-import ExpressionListCard from './ExpressionListCard'
+import { Box, Button, HStack, Heading, SimpleGrid, Text } from '@chakra-ui/react'
+import ExpressionListCardSimple from './ExpressionListCardSimple'
+import { Link } from 'react-router-dom'
 
 const ProfileLists = () => {
   const lang = useLanguageStore(s => s.language)
 
-  const { data, refetch, error, fetchNextPage,  hasNextPage } = useLists()
-  const fetchExpressionsCount = data?.pages.reduce(
-    (total, page) => total + page.results.length, 0) || 0
-
-  const { mutate: updateList } = useListUpdate()
-  const handleUpdateList = (listId: number, title: string) => {
-    updateList({ listId, title }, { onSuccess: () => refetch() })
-  }
-
-  const { mutate: deleteList } = useListDelete()
-  const handleDelteList = (listId: number) => {
-    deleteList({listId}, { onSuccess: () => refetch() })
-  }
+  const { data, error } = useLists()
+  const lists = data?.pages[0].results.slice(0, 4)
 
   if (error) return <Text>{error.message}</Text>
   return (
@@ -31,35 +17,28 @@ const ProfileLists = () => {
         <Heading fontSize='2xl'>
           {lang === 'en' ? 'Lists' : '表达式列表'}
         </Heading>
+        <Link to='list'>
+          <Button 
+            colorScheme='gray' 
+            size='sm' 
+            variant='outline'
+            disabled={lists?.length === 0}
+          >
+            {lang === 'en' ? 'View All' : '查看所有'}
+          </Button>
+        </Link>
       </HStack>
-      <InfiniteScroll
-        dataLength={fetchExpressionsCount}
-        hasMore={!!hasNextPage}
-        next={() => fetchNextPage()}
-        loader={<Spinner/>}
+      <SimpleGrid
+        columns={{ base: 2, lg: 3, xl: 4 }}
+        p='10px'
+        spacing={3}
       >
-        <SimpleGrid
-          columns={{ sm: 2, lg: 3, xl: 4 }}
-          p='10px'
-          spacing={3}
-        >
-          {data?.pages.map((page, index) => (
-            <React.Fragment key={index}>
-              {page?.results.map((list) => (
-                <Box key={list.id}>
-                  <ExpressionListCard
-                    list={list}
-                    onDelete={() => handleDelteList(list.id)}
-                    onUpdate={(title) => { 
-                      handleUpdateList(list.id, title) 
-                    }}
-                  />
-                </Box>
-              ))}
-            </React.Fragment>
-          ))}
-        </SimpleGrid>
-      </InfiniteScroll>
+        {lists?.map((list) => (
+          <Box key={list.id}>
+            <ExpressionListCardSimple list={list}/>
+          </Box>
+        ))}
+      </SimpleGrid>
     </Box>
   )
 }
