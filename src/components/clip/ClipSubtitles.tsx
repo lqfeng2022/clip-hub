@@ -5,26 +5,24 @@ import { Box, Heading, SimpleGrid } from '@chakra-ui/react'
 import { RefObject } from 'react'
 import ClipSubtitleTimeline from './ClipSubtitleTimeline'
 
-
 interface Props {
   subtitles: Subtitle[],
-  videoRef: RefObject<HTMLVideoElement>
+  videoRef: RefObject<HTMLVideoElement>,
 }
 const ClipSubtitles = ({ subtitles, videoRef }: Props) => {
+  const lang = useLanguageStore(s => s.language)
+  const heading = lang === 'en' ? 'Subtitles' : '视频字幕'
+
   const sortedData = subtitles 
-    ? sortSubtitlesByTimeline(subtitles) 
-    : []
+    ? sortSubtitlesByTimeline(subtitles) : []
 
   const handleSeek = (timeline: string) => {
     const seconds = parseTimeline(timeline)
     if (videoRef.current) {
-      videoRef.current.currentTime = seconds
+      videoRef.current.currentTime = seconds // Jump to the target time
       videoRef.current.play()
     }
   }
-
-  const lang = useLanguageStore(s => s.language)
-  const heading = lang === 'en' ? 'Subtitles' : '视频字幕'
 
   return (
     <>

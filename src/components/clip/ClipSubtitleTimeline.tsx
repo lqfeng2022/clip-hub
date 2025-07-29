@@ -1,11 +1,10 @@
 import { Subtitle } from '@/entities/Subtitle'
-import { Avatar, AvatarGroup, Box, HStack, Tag, Text } from '@chakra-ui/react'
-import { Link } from 'react-router-dom'
-
+import { Avatar, AvatarGroup, Box, HStack, Tag } from '@chakra-ui/react'
+import ClipSubtitlePopover from './ClipSubtitlePopover'
 
 interface Props {
   subtitle: Subtitle,
-  handleJump: (tl: string) => void
+  handleJump: () => void
 }
 const ClipSubtitleTimeline = ({ subtitle, handleJump}: Props) => {
   const renderExpressions = () => {
@@ -19,21 +18,11 @@ const ClipSubtitleTimeline = ({ subtitle, handleJump}: Props) => {
     const parts = content.split(pattern)
 
     return parts.map((part, i) => {
-      const match = expressions.find(
-        e => e.title.toLowerCase() === part.toLowerCase())
-
+      const match = expressions.find(e => 
+        e.title.toLowerCase() === part.toLowerCase())
       return match 
-        ? <Link to={'/expressions/' + match.slug}>
-            <Text
-              as='strong'
-              key={i}
-              color='yellow.200'
-              fontSize='xl'
-              cursor='pointer'
-            >
-              {part}
-            </Text>
-          </Link> : part
+        ? <ClipSubtitlePopover key={i} part={part} expression={match}/> 
+        : part
     })
   }
   
@@ -48,6 +37,7 @@ const ClipSubtitleTimeline = ({ subtitle, handleJump}: Props) => {
           <AvatarGroup>
             {subtitle.characters.map((character) =>
               <Avatar
+                key={character.id}
                 size='small'
                 fontWeight='bold'
                 name={character.name}
@@ -56,14 +46,14 @@ const ClipSubtitleTimeline = ({ subtitle, handleJump}: Props) => {
             )}
           </AvatarGroup>
           {subtitle.characters.map((character) =>
-            <Tag>{character.name}</Tag>
+            <Tag key={character.id}>{character.name}</Tag>
           )}
         </HStack>
         <Tag 
           size='lg'
           cursor='pointer'
           fontWeight='bold'
-          onClick={() => handleJump(subtitle.timeline)}
+          onClick={handleJump}
         >
           {subtitle.timeline}
         </Tag>

@@ -7,7 +7,6 @@ export const parseTimeline = (timeline: string): number => {
     return minutes * 60 + seconds
   }
 
-
 // `[...data]`: to avoid mutating the original array
 // `-`: is a simple way to tell TS how to order two items
 export const sortSubtitlesByTimeline = (data: Subtitle[]) => {
@@ -15,7 +14,6 @@ export const sortSubtitlesByTimeline = (data: Subtitle[]) => {
    parseTimeline(a.timeline) - parseTimeline(b.timeline))
 
 }
-
 
 // expression formality tags
 export const formality = [
