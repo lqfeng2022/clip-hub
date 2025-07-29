@@ -7,7 +7,7 @@ interface Props {
   expression: Expression,
   handleClick: () => void
 }
-const ExpressionCardWithDeleteMark = ({ expression, handleClick }: Props) => {
+const ExpressionCardDeleteMark = ({ expression, handleClick }: Props) => {
   return (
     <Card 
       bg='gray.800' 
@@ -47,4 +47,4 @@ const ExpressionCardWithDeleteMark = ({ expression, handleClick }: Props) => {
   )
 }
 
-export default ExpressionCardWithDeleteMark
+export default ExpressionCardDeleteMark

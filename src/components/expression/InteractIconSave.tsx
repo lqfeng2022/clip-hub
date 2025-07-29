@@ -1,12 +1,12 @@
 import { Button, Icon, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, useDisclosure } from '@chakra-ui/react'
 import { IoBookmarkOutline } from 'react-icons/io5'
 import { useAuth } from '@/AuthContext'
-import useClipPlaylistManager from '@/hooks/useClipPlaylistManager'
-import ExpressionPlaylistAdd from './ExpressionPlaylistAdd'
-import ExpressionPlaylistItemAdd from './ExpressionPlaylistItemAdd'
+import useListsManager from '@/hooks/useListsManager'
+import ExpressionListAdd from './ExpressionListAdd'
+import ExpressionListItemAdd from './ExpressionListItemAdd'
 import Expression from '@/entities/Expression'
 
-const ExpressionInteractIconSave = ({ exp }: { exp: Expression }) => {
+const InteractIconSave = ({ exp }: { exp: Expression }) => {
   const { user } = useAuth()
   const { isOpen: isMainOpen, onOpen: onMainOpen, onClose: onMainClose } = useDisclosure()
   const { isOpen: isAddOpen, onOpen: onAddOpen, onClose: onAddClose } = useDisclosure()
@@ -17,7 +17,7 @@ const ExpressionInteractIconSave = ({ exp }: { exp: Expression }) => {
     setSelectedListIds,
     handleListAdd,
     handleListItemUpdate,
-  } = useClipPlaylistManager(exp, onMainClose)
+  } = useListsManager(exp, onMainClose)
   
   if (!user) return <Icon as={IoBookmarkOutline} boxSize={6} opacity={0.5}/>
   return (
@@ -37,8 +37,8 @@ const ExpressionInteractIconSave = ({ exp }: { exp: Expression }) => {
           <ModalHeader>Save video to...</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            {/* A list of playlists or a 'add playlist' message */}
-            <ExpressionPlaylistItemAdd 
+            {/* A list of expression lists or a 'add expression list' message */}
+            <ExpressionListItemAdd 
               lists={lists} 
               selectedListIds={selectedListIds}
               onChange={setSelectedListIds}
@@ -58,13 +58,13 @@ const ExpressionInteractIconSave = ({ exp }: { exp: Expression }) => {
             </Button>
             {/* Click to open the Model B */}
             <Button variant='outline' size='sm' onClick={onAddOpen}>
-              Add new playlist
+              Add new list
             </Button>
           </ModalFooter>
         </ModalContent>
       </Modal>
       {/* Model B */}
-      <ExpressionPlaylistAdd 
+      <ExpressionListAdd 
         isOpen={isAddOpen} 
         onClose={onAddClose} 
         onCreate={handleListAdd}
@@ -73,4 +73,4 @@ const ExpressionInteractIconSave = ({ exp }: { exp: Expression }) => {
   )
 }
 
-export default ExpressionInteractIconSave
+export default InteractIconSave

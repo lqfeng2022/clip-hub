@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import nocontent from '@/assets/no-content.png'
 import List from '@/entities/List'
 
-const PlaylistCardSimple = ({ list }: { list: List }) => {
+const ExpressionListCardSimple = ({ list }: { list: List }) => {
   const cover = list.items[0]?.expression.image
   const hasItems = list.items && list.items.length > 0
   const contentLink = `/profile/playlist/${list.slug}`
@@ -53,4 +53,4 @@ const PlaylistCardSimple = ({ list }: { list: List }) => {
   )
 }
 
-export default PlaylistCardSimple
+export default ExpressionListCardSimple

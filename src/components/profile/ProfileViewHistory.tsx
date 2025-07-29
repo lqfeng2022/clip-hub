@@ -5,7 +5,7 @@ import EmptyCard from '../EmptyCard'
 import useLanguageStore from '@/languageStore'
 import ExpressionCardSimple from '../expression/ExpressionCardSimple'
 
-const ProfileClipViewHistory = () => {
+const ProfileViewHistory = () => {
   const lang = useLanguageStore(s => s.language)
 
   const { data, error } = useEpHistories()
@@ -46,4 +46,4 @@ const ProfileClipViewHistory = () => {
   )
 }
 
-export default ProfileClipViewHistory
+export default ProfileViewHistory

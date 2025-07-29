@@ -4,7 +4,7 @@ import InfiniteScroll from 'react-infinite-scroll-component'
 import useEpHistories from '../hooks/interact/useEpHistories'
 import useViewHistory from '../hooks/interact/useViewHistory'
 import useLanguageStore from '@/languageStore'
-import ExpressionCardWithDeleteMark from '@/components/profile/ExpressionCardWithDeleteMark'
+import ExpressionCardDeleteMark from '@/components/profile/ExpressionCardDeleteMark'
 
 const ProfileHistoryPage = () => {
   const lang = useLanguageStore(s => s.language)
@@ -25,7 +25,7 @@ const ProfileHistoryPage = () => {
   return (
     <>
       <Heading m={4} fontSize='3xl'>
-        {lang === 'en' ? 'Your view history' : '你的浏览记录'}
+        {lang === 'en' ? 'View history' : '你的浏览记录'}
       </Heading>
       <InfiniteScroll
         dataLength={fetchExpressionsCount}
@@ -44,7 +44,7 @@ const ProfileHistoryPage = () => {
                 .filter((history) => history.visible)
                 .map((history) => (
                   <Box key={history.id}>
-                    <ExpressionCardWithDeleteMark
+                    <ExpressionCardDeleteMark
                       expression={history.expression}
                       handleClick={() => handleUpdate(
                         history.id, !history.visible

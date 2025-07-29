@@ -1,5 +1,5 @@
 import noImage from '@/assets/no-image.jpg'
-import ExpressionInteractIcons from '@/components/expression/ExpressionInteractIcons'
+import InteractIcons from '@/components/expression/InteractIcons'
 import Expression from '@/entities/Expression'
 import useExpressionInteract from '@/hooks/store/useExpressionInteract'
 import ExpressionAttributes from '@/pages/ExpressionAttributes'
@@ -35,7 +35,7 @@ const ExpressionDetailContent = ({ exp, clipexp }: Props) => {
           <Center>
             <Box>
               <Image w='100%' maxH='600px' src={exp.image || noImage} />
-              <ExpressionInteractIcons expression={exp}/>
+              <InteractIcons expression={exp}/>
             </Box>
           </Center>
         </GridItem>

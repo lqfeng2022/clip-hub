@@ -6,9 +6,9 @@ interface Props {
   selectedListIds: number[],
   onChange: (ids: number[]) => void
 }
-const ExpressionPlaylistItemAdd = ({ lists, selectedListIds, onChange }: Props) => {
+const ExpressionListItemAdd = ({ lists, selectedListIds, onChange }: Props) => {
   if (lists.length === 0)
-    return <Text>No playlists yet. Create one to save clips.</Text>
+    return <Text>No expression lists yet. Create one to save clips.</Text>
   return (
     <CheckboxGroup 
       colorScheme='green' 
@@ -27,4 +27,4 @@ const ExpressionPlaylistItemAdd = ({ lists, selectedListIds, onChange }: Props) 
   )
 }
 
-export default ExpressionPlaylistItemAdd
+export default ExpressionListItemAdd

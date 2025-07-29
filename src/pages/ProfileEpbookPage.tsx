@@ -16,7 +16,7 @@ const ProfileEpbookPage = () => {
   return (
     <>
       <Heading m={4} fontSize='3xl'>
-        {lange === 'en' ? 'Your expressions' : '你的表达式'}
+        {lange === 'en' ? 'Liked expressions' : '喜欢的表达式'}
       </Heading>
       <InfiniteScroll
         dataLength={fetchExpressionsCount}

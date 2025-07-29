@@ -18,7 +18,7 @@ const ProfileEpbook = () => {
     <Box mt={8} px={2}>
       <HStack justifyContent='space-between' my={5}>
         <Heading fontSize='2xl'>
-          {lang === 'en' ? 'Expressions' : '收藏的表达式'}
+          {lang === 'en' ? 'Liked' : '喜欢的表达式'}
         </Heading>
         <Link to='expression'>
           <Button 

@@ -5,17 +5,17 @@ import { RiDeleteBin6Line } from 'react-icons/ri'
 import { Link } from 'react-router-dom'
 import nocontent from '@/assets/no-content.png'
 import List from '@/entities/List'
-import PlaylistCardModal from './PlaylistCardModal'
+import ExprressionListCardModal from './ExprressionListCardModal'
 
 interface Props {
   list: List
   onUpdate: (title: string) => void
   onDelete: () => void
 }
-const PlaylistCard = ({ list, onUpdate, onDelete }: Props) => {
+const ExpressionListCard = ({ list, onUpdate, onDelete }: Props) => {
   const cover = list.items[0]?.expression.image
   const hasItems = list.items && list.items.length > 0
-  const contentLink = `/profile/playlist/${list.slug}`
+  const contentLink = `/profile/list/${list.slug}`
 
   const { isOpen, onOpen, onClose } = useDisclosure()
 
@@ -85,7 +85,7 @@ const PlaylistCard = ({ list, onUpdate, onDelete }: Props) => {
           </Menu>
         </HStack>
         {/* 2.3)Card modal for `edit` button */}
-        <PlaylistCardModal 
+        <ExprressionListCardModal 
           list={list} 
           isOpen={isOpen} 
           onClose={onClose} 
@@ -96,4 +96,4 @@ const PlaylistCard = ({ list, onUpdate, onDelete }: Props) => {
   )
 }
 
-export default PlaylistCard
+export default ExpressionListCard

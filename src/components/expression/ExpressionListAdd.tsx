@@ -6,7 +6,7 @@ interface Props {
   onClose: () => void
   onCreate: (title: string) => void
 }
-const ExpressionPlaylistAdd = ({ isOpen, onClose, onCreate }: Props) => {
+const ExpressionListAdd = ({ isOpen, onClose, onCreate }: Props) => {
   const [title, setTitle] = useState('')
   const handleCreate = () => {
     onCreate(title), setTitle(''), onClose()
@@ -16,12 +16,12 @@ const ExpressionPlaylistAdd = ({ isOpen, onClose, onCreate }: Props) => {
     <Modal isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />
       <ModalContent>
-        <ModalHeader>Create a new playlist</ModalHeader>
+        <ModalHeader>Create a new list</ModalHeader>
         <ModalCloseButton />
         <ModalBody>
           <FormControl>
             <Input
-              placeholder='Enter playlist name'
+              placeholder='Enter list name'
               value={title}
               onChange={(e) => setTitle(e.target.value)}
             />
@@ -45,4 +45,4 @@ const ExpressionPlaylistAdd = ({ isOpen, onClose, onCreate }: Props) => {
   )
 }
 
-export default ExpressionPlaylistAdd
+export default ExpressionListAdd

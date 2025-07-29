@@ -2,9 +2,9 @@ import { Box, Heading, SimpleGrid } from '@chakra-ui/react'
 import { useParams } from 'react-router-dom'
 import useList from '../hooks/interact/useList'
 import useListItemDelete from '../hooks/interact/useListItemDelete'
-import ExpressionCardWithDeleteMark from '@/components/profile/ExpressionCardWithDeleteMark'
+import ExpressionCardDeleteMark from '@/components/profile/ExpressionCardDeleteMark'
 
-const ProfilePlaylistDetailPage = () => {
+const ProfileListDetailPage = () => {
   const { slug } = useParams()
   const { data, refetch } = useList(slug!)
 
@@ -17,9 +17,9 @@ const ProfilePlaylistDetailPage = () => {
   }
 
   return (
-    <div>
+    <>
       <Heading m={4} fontSize='3xl'>
-        {`Playlist - ${data?.title}`}
+        List: {data?.title}
       </Heading>
       <SimpleGrid
         columns={{ base: 2, lg: 3, xl: 4 }}
@@ -28,7 +28,7 @@ const ProfilePlaylistDetailPage = () => {
       >
         {data?.items.map((item) => (
           <Box key={item.id}>
-            <ExpressionCardWithDeleteMark 
+            <ExpressionCardDeleteMark 
               expression={item.expression}
               handleClick={() => handleDelteList(
                 data.id, item.id
@@ -37,8 +37,8 @@ const ProfilePlaylistDetailPage = () => {
           </Box>
         ))}
       </SimpleGrid>
-    </div>
+    </>
   )
 }
 
-export default ProfilePlaylistDetailPage
+export default ProfileListDetailPage

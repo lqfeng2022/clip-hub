@@ -11,9 +11,9 @@ const ProfileListLink = () => {
 
   const list = [
     { name: 'Profile', name_ch: '个人资料', icon: HiOutlineUser, link: '/profile' },
-    { name: 'Clip history', name_ch: '视频历史', icon: VscHistory, link: '/profile/history' },
-    { name: 'Your words', name_ch: '你的表达式', icon: IoMdHeartEmpty, link: '/profile/expression' },
-    { name: 'Playlists', name_ch: '视频播放列表', icon: IoIosList, link: '/profile/playlist' },
+    { name: 'View history', name_ch: '浏览记录', icon: VscHistory, link: '/profile/history' },
+    { name: 'Liked expressions', name_ch: '喜欢的表达式', icon: IoMdHeartEmpty, link: '/profile/expression' },
+    { name: 'Lists', name_ch: '表达式列表', icon: IoIosList, link: '' },
   ]
 
   return (
@@ -25,7 +25,7 @@ const ProfileListLink = () => {
             <HStack spacing={3}>
               <Icon as={p.icon} boxSize={7} />
               <Link to={p.link}>
-                <Text fontSize='lg'>
+                <Text fontSize='lg' as='strong'>
                   {lang === 'en' ? p.name : p.name_ch}
                 </Text>
               </Link>

@@ -3,11 +3,10 @@ import { HStack, Icon, Stack, Text } from '@chakra-ui/react'
 import { BiShare } from 'react-icons/bi'
 import { FaRegComment } from 'react-icons/fa'
 import { IoEyeOutline } from 'react-icons/io5'
-import ExpressionInteractIconSave from './ExpressionInteractIconSave'
+import InteractIconSave from './InteractIconSave'
 import ExpressionInteractLike from './ExpressionInteractLike'
 
-
-const ExpressionInteractIcons = ({ expression }: { expression: Expression }) => {  
+const InteractIcons = ({ expression }: { expression: Expression }) => {  
   return (
     <Stack spacing={4} m='12px 10px'>
       <HStack justifyContent='space-between'>
@@ -22,12 +21,12 @@ const ExpressionInteractIcons = ({ expression }: { expression: Expression }) => 
           <Icon as={IoEyeOutline} boxSize={6}/>
           <Text>{expression.views_count}</Text>
         </HStack>
-        {/* expression playlist */}
-        <ExpressionInteractIconSave exp={expression}/>
+        {/* expression list */}
+        <InteractIconSave exp={expression}/>
         <Icon as={BiShare} boxSize={6}/>
       </HStack>
     </Stack>
   )
 }
 
-export default ExpressionInteractIcons
+export default InteractIcons

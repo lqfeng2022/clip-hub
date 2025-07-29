@@ -8,8 +8,10 @@ const ExpressionSortSelector = () => {
 
   const sortOrders = [
     { value: '', label: 'Relevance', label_ch: '默认序列' },
-    { value: '-last_update', label: 'Date added', label_ch: '更新顺序' },
     { value: 'title', label: 'Name', label_ch: '名称' },
+    { value: 'last_update', label: 'Date added', label_ch: '更新顺序' },
+    { value: 'views_count', label: 'Most viewed', label_ch: '最多浏览'},
+    { value: 'likes_count', label: 'Most liked', label_ch: '最多喜欢'}
   ]
 
   const sortOrder = useExpressionQueryStore((s) => s.expressionQuery.sortOrder)

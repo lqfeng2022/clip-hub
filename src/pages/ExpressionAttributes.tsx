@@ -21,7 +21,7 @@ const ExpressionAttributes = ({ expression } : { expression: Expression }) => {
       <HStack align='flex-start' wrap='wrap'>
         <Icon as={ImQuotesLeft}/>
         <Heading fontSize='2xl' flex='1'>
-          {expression.sentence}
+          {expression.subtitle.content}
         </Heading>
       </HStack>
       {/* explaining */}

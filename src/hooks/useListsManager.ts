@@ -5,7 +5,7 @@ import useListPost from './interact/useListPost'
 import useLists from './interact/useLists'
 import Expression from '@/entities/Expression'
 
-const useClipPlaylistManager = (exp: Expression, onClose: () => void) => {
+const useListsManager = (exp: Expression, onClose: () => void) => {
   const { data, refetch } = useLists() 
   const { mutate: addList } = useListPost()
   const { mutate: addListItem } = useListItemPost()
@@ -62,4 +62,4 @@ const useClipPlaylistManager = (exp: Expression, onClose: () => void) => {
   }
 }
 
-export default useClipPlaylistManager
+export default useListsManager

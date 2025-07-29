@@ -1,7 +1,7 @@
 import { Box, Image } from '@chakra-ui/react'
 import ProfileUser from '../components/profile/ProfileUser'
 import ProfileEpbook from '../components/profile/ProfileEpbook'
-import ProfilePlaylist from '../components/profile/ProfilePlaylist'
+import ProfileLists from '../components/profile/ProfileLists'
 import ProfileViewHistory from '../components/profile/ProfileViewHistory'
 
 const Profile = () => {  
@@ -17,7 +17,7 @@ const Profile = () => {
       <ProfileUser/>
       <ProfileViewHistory/>
       <ProfileEpbook/>
-      <ProfilePlaylist/>
+      <ProfileLists/>
     </Box>
   )
 }

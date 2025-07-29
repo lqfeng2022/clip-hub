@@ -1,14 +1,13 @@
-import { Box, Heading, SimpleGrid, Spinner, Text } from '@chakra-ui/react'
+import useListDelete from '@/hooks/interact/useListDelete'
+import useLists from '@/hooks/interact/useLists'
+import useListUpdate from '@/hooks/interact/useListUpdate'
+import useLanguageStore from '@/languageStore'
+import { Box, HStack, Heading, SimpleGrid, Spinner, Text } from '@chakra-ui/react'
 import React from 'react'
 import InfiniteScroll from 'react-infinite-scroll-component'
-import useListDelete from '../hooks/interact/useListDelete'
-import useLists from '../hooks/interact/useLists'
-import useListUpdate from '../hooks/interact/useListUpdate'
-import PlaylistCard from '../components/profile/PlaylistCard'
-import useLanguageStore from '@/languageStore'
+import ExpressionListCard from './ExpressionListCard'
 
-
-const ProfilePlaylistPage = () => {
+const ProfileLists = () => {
   const lang = useLanguageStore(s => s.language)
 
   const { data, refetch, error, fetchNextPage,  hasNextPage } = useLists()
@@ -27,10 +26,12 @@ const ProfilePlaylistPage = () => {
 
   if (error) return <Text>{error.message}</Text>
   return (
-    <>
-      <Heading m={4} fontSize='3xl'>
-        {lang === 'en' ? 'Your playlists' : '你的播放列表'}
-      </Heading>
+    <Box mt={8} px={2}>
+      <HStack justifyContent='space-between' my={5}>
+        <Heading fontSize='2xl'>
+          {lang === 'en' ? 'Lists' : '表达式列表'}
+        </Heading>
+      </HStack>
       <InfiniteScroll
         dataLength={fetchExpressionsCount}
         hasMore={!!hasNextPage}
@@ -46,7 +47,7 @@ const ProfilePlaylistPage = () => {
             <React.Fragment key={index}>
               {page?.results.map((list) => (
                 <Box key={list.id}>
-                  <PlaylistCard
+                  <ExpressionListCard
                     list={list}
                     onDelete={() => handleDelteList(list.id)}
                     onUpdate={(title) => { 
@@ -59,8 +60,8 @@ const ProfilePlaylistPage = () => {
           ))}
         </SimpleGrid>
       </InfiniteScroll>
-    </>
+    </Box>
   )
 }
 
-export default ProfilePlaylistPage
+export default ProfileLists

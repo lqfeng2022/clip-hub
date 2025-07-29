@@ -8,7 +8,7 @@ interface Props {
   onClose: () => void
   onUpdate: (title: string) => void
 }
-const PlaylistCardModal = ({ list, isOpen, onClose, onUpdate }: Props) => {
+const ExprressionListCardModal = ({ list, isOpen, onClose, onUpdate }: Props) => {
   const [title, setTitle] = useState('')
 
   // Set the title when modal opens
@@ -59,4 +59,4 @@ const PlaylistCardModal = ({ list, isOpen, onClose, onUpdate }: Props) => {
   )
 }
 
-export default PlaylistCardModal
+export default ExprressionListCardModal
