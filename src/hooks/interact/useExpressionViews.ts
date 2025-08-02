@@ -1,13 +1,12 @@
 import { useInfiniteQuery } from '@tanstack/react-query'
 import InteractAPIClient from '@/services/api-interact'
-import ClipInteract from '@/entities/History'
 import FetchResponse from '@/entities/FetchResponse'
-import Epbook from '@/entities/Epbook'
+import ExpressionLike from '@/entities/ExpressionLike'
 
-const apiClient = new InteractAPIClient<Epbook>('views')
+const apiClient = new InteractAPIClient<ExpressionLike>('views')
 
-const useEpHistories = () => {
-  return useInfiniteQuery<FetchResponse<Epbook>, Error>({
+const useExpressionViews = () => {
+  return useInfiniteQuery<FetchResponse<ExpressionLike>, Error>({
     queryKey: ['EpHistories'],
     queryFn: ({pageParam = 1}) => apiClient.getAll({
       params: {
@@ -22,4 +21,4 @@ const useEpHistories = () => {
   })
 }
 
-export default useEpHistories
+export default useExpressionViews

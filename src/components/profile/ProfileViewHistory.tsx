@@ -1,6 +1,6 @@
 import { Box, Button, Heading, HStack, SimpleGrid, Text } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
-import useEpHistories from '@/hooks/interact/useEpHistories'
+import useExpressionViews from '@/hooks/interact/useExpressionViews'
 import EmptyCard from '../EmptyCard'
 import useLanguageStore from '@/languageStore'
 import ExpressionCardSimple from '../expression/ExpressionCardSimple'
@@ -8,7 +8,7 @@ import ExpressionCardSimple from '../expression/ExpressionCardSimple'
 const ProfileViewHistory = () => {
   const lang = useLanguageStore(s => s.language)
 
-  const { data, error } = useEpHistories()
+  const { data, error } = useExpressionViews()
   const views = data?.pages[0].results
     .filter((view) => view.visible)
     .slice(0, 4)

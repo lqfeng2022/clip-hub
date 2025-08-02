@@ -1,5 +1,5 @@
 import Expression from '@/entities/Expression'
-import useExpressionLikeManager from '@/hooks/useExpressionLikeManager'
+import useExpressionLikeManager from '@/hooks/interact/useExpressionLikeManager'
 import { Icon } from '@chakra-ui/react'
 import { IoHeart, IoHeartOutline } from 'react-icons/io5'
 
@@ -9,7 +9,7 @@ interface Props {
 }
 const ExpressionCardLike = ({ expression, onUnmark }: Props) => {
   const { marked, toggleMarked, user } = useExpressionLikeManager(
-    expression.id, expression.bookmark_state, onUnmark
+    expression.id, expression.like_state, onUnmark
   )
 
   if (!user) return null

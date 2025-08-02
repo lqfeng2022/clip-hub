@@ -1,7 +1,7 @@
 import { Button, Icon, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, useDisclosure } from '@chakra-ui/react'
 import { IoBookmarkOutline } from 'react-icons/io5'
 import { useAuth } from '@/AuthContext'
-import useListsManager from '@/hooks/useListsManager'
+import useListsManager from '@/hooks/interact/useListsManager'
 import ExpressionListAdd from './ExpressionListAdd'
 import ExpressionListItemAdd from './ExpressionListItemAdd'
 import Expression from '@/entities/Expression'

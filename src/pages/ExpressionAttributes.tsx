@@ -10,8 +10,7 @@ const ExpressionAttributes = ({ expression } : { expression: Expression }) => {
 
   const explain_header = lang === 'en' ? 'Explain' : '解释'
   const tags_header = lang === 'en' ? 'Tags' : '语言标签'
-  const words_header = lang === 'en' ? 'Words' : '单词'
-  const clip_header = lang === 'en' ? 'Related Clip' : '表达式所在的视频'
+  const clip_header = lang === 'en' ? 'Clip' : '表达式所在的视频'
 
   const explain = lang === 'ch' && expression.explain_ch ? expression.explain_ch : expression.explain
 
@@ -37,13 +36,6 @@ const ExpressionAttributes = ({ expression } : { expression: Expression }) => {
           {tags_header}
         </Heading>
         <TagHList items={expression.langtags} color='teal'/>
-      </Box>
-      {/* language words */}
-      <Box py={3}>
-        <Heading size='md' color='gray.500'>
-          {words_header}
-        </Heading>
-        <TagHList items={expression.words} color='gray'/>
       </Box>
       {/* clip link */}
       <Stack>

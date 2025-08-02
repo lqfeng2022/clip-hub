@@ -1,4 +1,4 @@
-import useSearchContext from '@/hooks/useSearchContex'
+import useSearchContext from '@/hooks/interact/useSearchContex'
 import useLanguageStore from '@/languageStore'
 import { Badge, Icon } from '@chakra-ui/react'
 import { HiLanguage } from 'react-icons/hi2'

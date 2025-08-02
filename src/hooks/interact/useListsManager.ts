@@ -1,8 +1,8 @@
 import { useMemo, useState } from 'react'
-import useListItemMultDelete from './interact/useListItemMultDelete'
-import useListItemPost from './interact/useListItemPost'
-import useListPost from './interact/useListPost'
-import useLists from './interact/useLists'
+import useListItemMultDelete from './useListItemMultDelete'
+import useListItemPost from './useListItemPost'
+import useListPost from './useListPost'
+import useLists from './useLists'
 import Expression from '@/entities/Expression'
 
 const useListsManager = (exp: Expression, onClose: () => void) => {

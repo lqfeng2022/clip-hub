@@ -1,8 +1,7 @@
 import { useAuth } from '@/AuthContext'
 import { useEffect, useRef, useState } from 'react'
-import useEpbooks from './interact/useEpbooks'
-import useEpInteract from './store/useEpInteract'
-
+import useExpressionLikes from './useExpressionLikes'
+import useExpressionInteract from './useExpressionInteract'
 
 const useExpressionLikeManager = (
   expressionId: number, initialState: boolean, onUnmark?: () => void
@@ -14,8 +13,8 @@ const useExpressionLikeManager = (
   const lastState = useRef(initialState)
   const timer = useRef<number | null>(null)
 
-  const { mutate } = useEpInteract(expressionId, 'epbook')
-  const { refetch } = useEpbooks()
+  const { mutate } = useExpressionInteract(expressionId, 'eplike')
+  const { refetch } = useExpressionLikes()
 
   useEffect(() => {
     if (marked !== lastState.current) {

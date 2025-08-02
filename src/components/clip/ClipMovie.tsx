@@ -7,8 +7,7 @@ interface Props {
   videoRef: RefObject<HTMLVideoElement>
 }
 const ClipMovie = ({ video, videoRef }: Props) => {
-  const movie = video.movies.find(m => m.stored_at === 'CLIP') 
-  const movieSrc = movie?.clip
+  const movieSrc = `http://localhost:8000/media/${video?.file}`
 
   return (
     <>

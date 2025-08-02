@@ -1,7 +1,7 @@
 import { Box, Heading, SimpleGrid, Spinner, Text } from '@chakra-ui/react'
 import React from 'react'
 import InfiniteScroll from 'react-infinite-scroll-component'
-import useEpHistories from '../hooks/interact/useEpHistories'
+import useExpressionViews from '../hooks/interact/useExpressionViews'
 import useViewHistory from '../hooks/interact/useViewHistory'
 import useLanguageStore from '@/languageStore'
 import ExpressionCardDeleteMark from '@/components/profile/ExpressionCardDeleteMark'
@@ -9,7 +9,7 @@ import ExpressionCardDeleteMark from '@/components/profile/ExpressionCardDeleteM
 const ProfileHistoryPage = () => {
   const lang = useLanguageStore(s => s.language)
 
-  const { data, refetch, error, fetchNextPage,  hasNextPage } = useEpHistories()
+  const { data, refetch, error, fetchNextPage,  hasNextPage } = useExpressionViews()
   const fetchExpressionsCount = data?.pages.reduce(
     (total, page) => total + page.results.length, 0) || 0
 

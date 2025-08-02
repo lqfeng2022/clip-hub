@@ -1,15 +1,15 @@
 import { useInfiniteQuery } from '@tanstack/react-query'
 import InteractAPIClient from '@/services/api-interact'
 import { useAuth } from '@/AuthContext'
-import Epbook from '@/entities/Epbook'
+import ExpressionLike from '@/entities/ExpressionLike'
 import FetchResponse from '@/entities/FetchResponse'
 
-const apiClient = new InteractAPIClient<Epbook>('epbooks')
+const apiClient = new InteractAPIClient<ExpressionLike>('eplikes')
 
-const useEpbooks = () => {
+const useExpressionLikes = () => {
   const { user } = useAuth()
-  return useInfiniteQuery<FetchResponse<Epbook>, Error>({
-    queryKey: ['epbooks'],
+  return useInfiniteQuery<FetchResponse<ExpressionLike>, Error>({
+    queryKey: ['eplikes'],
     queryFn: ({pageParam = 1}) => apiClient.getAll({
       params: {
         withCredentials: true,
@@ -25,4 +25,4 @@ const useEpbooks = () => {
   })
 }
 
-export default useEpbooks
+export default useExpressionLikes

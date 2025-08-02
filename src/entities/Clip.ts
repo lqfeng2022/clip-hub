@@ -1,8 +1,6 @@
 import { Creator } from './Creator'
 import Expression from './Expression'
 import Genre from './Genre'
-import Movie from './Movie'
-import Platform from './Platform'
 import { Subtitle } from './Subtitle'
 import Tag from './Tag'
 
@@ -19,14 +17,12 @@ export default interface Clip {
   original: string,
   original_ch?: string,
   creator: Creator,
-  platform: Platform,
   release_year: number,
   kind: 'SHORT' | 'NORMAL',
-  movies: Movie[],
+  file: string,
+  website: string,
   likes_count: number,
   views_count: number,
-  like_state: boolean,
-  bookmark_state: boolean,
   expressions: Expression[],
   subtitles: Subtitle[],
 }

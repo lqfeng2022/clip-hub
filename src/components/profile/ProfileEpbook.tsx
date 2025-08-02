@@ -1,6 +1,6 @@
 import { Box, Button, HStack, Heading, SimpleGrid, Text } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
-import useEpbooks from '@/hooks/interact/useEpbooks'
+import useExpressionLikes from '@/hooks/interact/useExpressionLikes'
 import EmptyCard from '../EmptyCard'
 import ExpressionCardSimple from '../expression/ExpressionCardSimple'
 import useLanguageStore from '@/languageStore'
@@ -8,7 +8,7 @@ import useLanguageStore from '@/languageStore'
 const ProfileEpbook = () => {
   const lang = useLanguageStore(s => s.language)
 
-  const { data, error } = useEpbooks()
+  const { data, error } = useExpressionLikes()
   const epbooks = data?.pages[0].results
     .filter((epbook) => epbook.visible)
     .slice(0, 4)

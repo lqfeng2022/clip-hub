@@ -1,7 +1,7 @@
 import noImage from '@/assets/no-image.jpg'
 import InteractIcons from '@/components/expression/InteractIcons'
 import Expression from '@/entities/Expression'
-import useExpressionInteract from '@/hooks/store/useExpressionInteract'
+import useExpressionInteract from '@/hooks/interact/useExpressionInteract'
 import ExpressionAttributes from '@/pages/ExpressionAttributes'
 import { Box, Center, GridItem, Heading, Image, SimpleGrid } from '@chakra-ui/react'
 import { useEffect } from 'react'
@@ -34,7 +34,11 @@ const ExpressionDetailContent = ({ exp, clipexp }: Props) => {
         <GridItem order={{ base: 1, lg: 2 }}>
           <Center>
             <Box>
-              <Image w='100%' maxH='600px' src={exp.image || noImage} />
+              <Image 
+                w='100%' 
+                maxH='600px' 
+                src={exp.image || noImage} 
+              />
               <InteractIcons expression={exp}/>
             </Box>
           </Center>
