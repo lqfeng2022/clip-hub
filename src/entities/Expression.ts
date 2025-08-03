@@ -1,6 +1,6 @@
 import Clip from './Clip'
+import Langtag from './Langtag'
 import { Subtitle } from './Subtitle'
-import Tag from './Tag'
 
 export default interface Expression {
   id: number,
@@ -8,7 +8,7 @@ export default interface Expression {
   slug: string,
   image: string,
   language: string,
-  langtags: Tag[],
+  langtags: Langtag[],
   explain: string,
   explain_ch: string,
   video: Clip,

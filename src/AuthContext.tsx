@@ -40,7 +40,9 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   useEffect(() => { fetchUser() }, [])
 
   return (
-    <AuthContext.Provider value={{ user, setUser, isAuthenticated: !!user, fetchUser }}>
+    <AuthContext.Provider 
+      value={{ user, setUser, isAuthenticated: !!user, fetchUser }}
+    >
       {children}
     </AuthContext.Provider>
   )

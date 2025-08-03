@@ -2,7 +2,6 @@ import { Creator } from './Creator'
 import Expression from './Expression'
 import Genre from './Genre'
 import { Subtitle } from './Subtitle'
-import Tag from './Tag'
 
 export default interface Clip {
   id: number,
@@ -13,7 +12,6 @@ export default interface Clip {
   description_ch?: string,
   cover: string,
   genre: Genre,
-  tags: Tag[],
   original: string,
   original_ch?: string,
   creator: Creator,

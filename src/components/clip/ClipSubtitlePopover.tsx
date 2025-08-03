@@ -3,7 +3,6 @@ import { Popover, PopoverTrigger, Text, PopoverContent, PopoverArrow, PopoverClo
 import noImage from '@/assets/no-image.jpg'
 import { Link } from 'react-router-dom'
 
-
 interface Props {
   part: string,
   expression: Expression
@@ -15,6 +14,7 @@ const ClipSubtitlePopover = ({ part, expression }: Props) => {
         <Text
           as='strong'
           color='yellow.200'
+          _hover={{ color: 'yellow.400'}}
           fontSize='xl'
           cursor='pointer'
         >
@@ -34,7 +34,7 @@ const ClipSubtitlePopover = ({ part, expression }: Props) => {
             <Link to={'/expressions/' + expression.slug}>
               <Image
                 w='100%'
-                maxH='250px'
+                maxH='200px'
                 objectFit='cover'
                 className='img-hover'
                 src={expression.image || noImage}

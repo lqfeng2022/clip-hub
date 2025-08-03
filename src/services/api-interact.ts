@@ -14,14 +14,14 @@ class InteractAPIClient<T> {
     this.endpoint = endpoint
   }
 
-  // get all epbooks/view_histories/likes/playlists..
+  // get all eplikes/view histories/lists..
   getAll = (config?: AxiosRequestConfig) => {
     return axiosInstance
       .get<FetchResponse<T>>(`/${this.endpoint}/`, config)
       .then((res) => res.data) //extract data from response
   }
 
-  // get a given id playlist
+  // get a given id eplikes..
   get = (id: number | string, config?: AxiosRequestConfig) => {
     return axiosInstance
       .get<T>(this.endpoint + `/slug/${id}/`, config)
@@ -35,14 +35,14 @@ class InteractAPIClient<T> {
       .then((res) => res.data)
   }
 
-  // create a playlist
+  // create a new list
   postList = (data: any, config?: AxiosRequestConfig) => {
     return axiosInstance
       .post(`/${this.endpoint}/`, data, config)
       .then((res) => res.data)
   }
 
-  // create list items
+  // create a list item
   postListItem = (
     id: number | string, 
     data: any, 
@@ -53,7 +53,7 @@ class InteractAPIClient<T> {
       .then((res) => res.data)
   }
 
-  // update playlist title
+  // update list title
   putList = (
     id: number | string, 
     data: any, 
@@ -64,7 +64,7 @@ class InteractAPIClient<T> {
       .then((res) => res.data)
   }
 
-  // delete playlist
+  // delete list
   deleteList = (
     id: number | string, 
     config?: AxiosRequestConfig
@@ -73,7 +73,7 @@ class InteractAPIClient<T> {
       .delete(`/${this.endpoint}/${id}/`, config)
   }
 
-  // delete playlist item
+  // delete list item
   deleteListItem = (
     ListId: number,
     listItemId: number,
@@ -84,7 +84,6 @@ class InteractAPIClient<T> {
   }
 
   // create search
-  // create interaction actions (history/like/epbook/..)
   postSearch = (
     data: any,
     config?: AxiosRequestConfig
@@ -94,7 +93,7 @@ class InteractAPIClient<T> {
       .then((res) => res.data)
   }
 
-  // update search item
+  // update search (soft delete search)
   putSearch = (
     id: number,
     data: any,

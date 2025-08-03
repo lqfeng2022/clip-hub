@@ -1,8 +1,8 @@
 import { create } from 'zustand'
 
 interface ClipQuery {
-  genreId?: number,
   // 2.1)SOLUTION: make these properties are optional too (undefined)
+  genreId?: number,
   sortOrder?: string,
   searchText?: string,
 }
@@ -17,21 +17,21 @@ interface ClipQueryStore {
 }
 
 const useClipQueryStore = create<ClipQueryStore>((set) => ({
-  // 2)ISSEU: Type '{}' is missing the following properties from type 'ClipQuery': 
-  //   languageId, sortOrder, searchTexts(2739)
+  // 2)ISSEU: 
+  // Type '{}' is missing the following properties from type 'ClipQuery': sortOrder, searchTexts(2739)
   clipQuery: {},
+  
   // 3)when search a clip, we should only set the searchText and clear other filters,
-  //   cus what if we don’t clear other filters like genre/language,
-  //   the user may select the wrong genre/language..
-  setSearchText: (searchText) => set(() => ({ 
-    clipQuery: { searchText } 
-  })),
-  setGenreId: (genreId) => set((store) => ({ 
-    clipQuery: { ...store.clipQuery, genreId }
-  })),
-  setSortOrder: (sortOrder) => set((store) => ({ 
-    clipQuery: { ...store.clipQuery, sortOrder } 
-  })),
+  //   cus what if we don’t clear other filters like genre, the user may select the wrong genre..
+  setSearchText: (searchText) => set(
+    () => ({ clipQuery: { searchText } })
+  ),
+  setGenreId: (genreId) => set(
+    (store) => ({ clipQuery: { ...store.clipQuery, genreId }})
+  ),
+  setSortOrder: (sortOrder) => set(
+    (store) => ({ clipQuery: { ...store.clipQuery, sortOrder } })
+  ),
 }))
 
 export default useClipQueryStore

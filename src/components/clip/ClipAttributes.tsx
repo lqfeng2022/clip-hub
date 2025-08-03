@@ -1,6 +1,6 @@
 import Clip from '@/entities/Clip'
 import useLanguageStore from '@/languageStore'
-import { SimpleGrid } from '@chakra-ui/react'
+import { Link, SimpleGrid } from '@chakra-ui/react'
 import ClipAttrDefinition from './ClipAttrDefinition'
 
 const ClipAttributes = ({ clip }: { clip: Clip }) => {
@@ -14,7 +14,13 @@ const ClipAttributes = ({ clip }: { clip: Clip }) => {
   return (
     <SimpleGrid columns={2}>
       <ClipAttrDefinition term={original}>
-        {lang === 'ch' && clip.original_ch ? clip.original_ch : clip.original}
+        <Link 
+          href={clip.website} 
+          isExternal
+          _hover={{color: 'yellow.200', fontStyle: 'italic'}}
+        >
+          {lang === 'ch' && clip.original_ch ? clip.original_ch : clip.original}
+        </Link>
       </ClipAttrDefinition>
       <ClipAttrDefinition term={release_year}>
         {clip.release_year}

@@ -12,7 +12,6 @@ export const parseTimeline = (timeline: string): number => {
 export const sortSubtitlesByTimeline = (data: Subtitle[]) => {
   return [...data].sort((a, b) => 
    parseTimeline(a.timeline) - parseTimeline(b.timeline))
-
 }
 
 // expression formality tags

@@ -15,7 +15,7 @@ class APIClient<T> {
     this.endpoint = endpoint
   }
 
-  // `config`: optional parameter, cus we need it in Clips hook
+  // `config`: optional parameter, cus we need it in clip hook
   getAll = (config?: AxiosRequestConfig) => {
     return axiosInstance
       .get<FetchResponse<T>>(this.endpoint, config)
@@ -28,7 +28,7 @@ class APIClient<T> {
       .then((res) => res.data)
   }
 
-  // create interaction actions (history/like/epbook/..)
+  // create interaction actions (history/like/list/..)
   post = (
     id: number | string, 
     action: string, 

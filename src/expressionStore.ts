@@ -19,18 +19,16 @@ interface ExpressionQueryStore {
 const useExpressionQueryStore = create<ExpressionQueryStore>((set) => ({
   expressionQuery: {},
 
-  setSearchText: (searchText) => set(() => ({ 
-    expressionQuery: { searchText } 
-  })),
+  setSearchText: (searchText) => set(
+    () => ({ expressionQuery: { searchText } })
+  ),
 
-  setTagId: (tagId) => set((store) => ({
+  setTagId: (tagId) => set((store) => ({ 
     expressionQuery: { ...store.expressionQuery, tagId } 
   })),
-
-  setFormal: (formal) => set((store) => ({
-    expressionQuery: { ...store.expressionQuery, formal }
+  setFormal: (formal) => set((store) => ({ 
+    expressionQuery: { ...store.expressionQuery, formal } 
   })),
-  
   setSortOrder: (sortOrder) => set((store) => ({ 
     expressionQuery: { ...store.expressionQuery, sortOrder } 
   })),

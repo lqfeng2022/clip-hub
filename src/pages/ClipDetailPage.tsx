@@ -10,6 +10,7 @@ import useClip from '../hooks/store/useClip'
 const ClipDetailPage = () => {
   const { slug } = useParams() // get `slug` from url
   const { data: clip, isLoading, error } = useClip(slug!)
+  
   const videoRef = useRef<HTMLVideoElement>(null)
   
   const lang = useLanguageStore(s => s.language)
