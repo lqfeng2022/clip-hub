@@ -5,12 +5,12 @@ import EmptyCard from '../EmptyCard'
 import ExpressionCardSimple from '../expression/ExpressionCardSimple'
 import useLanguageStore from '@/languageStore'
 
-const ProfileEpbook = () => {
+const ProfileEplike = () => {
   const lang = useLanguageStore(s => s.language)
 
   const { data, error } = useExpressionLikes()
-  const epbooks = data?.pages[0].results
-    .filter((epbook) => epbook.visible)
+  const eplikes = data?.pages[0].results
+    .filter((eplike) => eplike.visible)
     .slice(0, 4)
 
   if (error) return <Text>{error.message}</Text>
@@ -25,7 +25,7 @@ const ProfileEpbook = () => {
             colorScheme='gray' 
             size='sm' 
             variant='outline'
-            disabled={epbooks?.length === 0}
+            disabled={eplikes?.length === 0}
           >
             {lang === 'en' ? 'View All' : '查看所有'}
           </Button>
@@ -36,11 +36,11 @@ const ProfileEpbook = () => {
         py='10px'
         spacing={3}
       >
-        {epbooks?.length === 0 && <EmptyCard/>}
-        {epbooks?.map((epbook) => (
+        {eplikes?.length === 0 && <EmptyCard/>}
+        {eplikes?.map((eplike) => (
           <ExpressionCardSimple 
-            expression={epbook.expression} 
-            key={epbook.expression.id}
+            expression={eplike.expression} 
+            key={eplike.expression.id}
           />
         ))}
       </SimpleGrid>
@@ -48,4 +48,4 @@ const ProfileEpbook = () => {
   )
 }
 
-export default ProfileEpbook
+export default ProfileEplike

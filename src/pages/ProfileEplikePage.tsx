@@ -5,7 +5,7 @@ import useExpressionLikes from '../hooks/interact/useExpressionLikes'
 import ExpressionCard from '../components/expression/ExpressionCard'
 import useLanguageStore from '@/languageStore'
 
-const ProfileEpbookPage = () => {
+const ProfileEplikePage = () => {
   const lange = useLanguageStore(s => s.language)
 
   const { data, refetch, error, fetchNextPage,  hasNextPage } = useExpressionLikes()
@@ -32,12 +32,12 @@ const ProfileEpbookPage = () => {
           {data?.pages.map((page, index) => (
             <React.Fragment key={index}>
               {page?.results
-                .filter((epbook) => epbook.visible)
-                .map((epbook) => (
+                .filter((eplike) => eplike.visible)
+                .map((eplike) => (
                   <ExpressionCard
-                    expression={epbook.expression}
+                    expression={eplike.expression}
                     onUnmark={() => refetch()}
-                    key={epbook.id}
+                    key={eplike.id}
                   />
               ))}
             </React.Fragment>
@@ -48,4 +48,4 @@ const ProfileEpbookPage = () => {
   )
 }
 
-export default ProfileEpbookPage
+export default ProfileEplikePage

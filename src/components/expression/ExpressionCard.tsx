@@ -1,4 +1,4 @@
-import { Box, Card, CardBody, Heading, Image } from '@chakra-ui/react'
+import { AspectRatio, Box, Card, CardBody, Heading, Image } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
 import Expression from '@/entities/Expression'
 import ExpressionCardLike from './ExpressionCardLike'
@@ -12,11 +12,13 @@ const ExpressionCard = ({ expression, onUnmark }: Props) => {
   return (
     <Card gap={1} my={1} overflow='hidden' variant=''>
       <Box position='relative'>
-        <Image
-          w='100%'
-          objectFit='cover'
-          src={expression.image || noImage}
-        />
+        <AspectRatio ratio={16 / 9}>
+          <Image
+            w='100%'
+            objectFit='cover'
+            src={expression.image || noImage}
+          />
+        </AspectRatio>
         <ExpressionCardLike
           expression={expression} 
           onUnmark={onUnmark}

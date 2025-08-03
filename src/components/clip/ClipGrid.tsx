@@ -20,7 +20,7 @@ const ClipGrid = () => {
       loader={<Spinner/>}
     >
       <SimpleGrid
-        columns={{ sm: 1, lg: 2, xl: 3 }}
+        columns={{ sm: 1, md: 2, xl: 3 }}
         p='10px'
         spacing={3}
       >

@@ -6,7 +6,6 @@ import ExpressionGrid from '../components/expression/ExpressionGrid'
 import LangtagsSelector from '../components/expression/LangtagsSelector'
 import LangtagsList from '../components/expression/LangtagsList'
 import useLanguageStore from '@/languageStore'
-import FormalityList from '@/components/expression/FormalityList'
 import FormalityTags from '@/components/expression/FormalityTags'
 import { formality } from '@/helperfunction'
 
@@ -37,8 +36,7 @@ function ExpressionPage() {
       <Show above='lg'>
         <GridItem area='aside' px={2.5}>
           <Box mt={8}>
-            <Divider my={3} borderColor='white'/>
-            <FormalityList/>
+            <Divider my={2} borderColor='white'/>
             <LangtagsList/>
           </Box>
         </GridItem>

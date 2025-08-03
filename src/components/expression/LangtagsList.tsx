@@ -2,6 +2,7 @@ import { Heading, Spinner, Tag, Wrap, WrapItem } from '@chakra-ui/react'
 import useLangtags from '@/hooks/store/useLangtags'
 import useExpressionQueryStore from '@/expressionStore'
 import useLanguageStore from '@/languageStore'
+import FormalityTags from './FormalityTags'
 
 const LangtagsList = () => {
   const { data, error, isLoading } = useLangtags()
@@ -19,9 +20,10 @@ const LangtagsList = () => {
   if (isLoading) return <Spinner />
   return (
     <>
-      <Heading fontSize='3xl' pt={5} pb={3}>
-        {lang === 'en' ? 'Tags' : '语言标签'}
+      <Heading fontSize='3xl' py={3}>
+        {lang === 'en' ? 'Langtags' : '语言标签'}
       </Heading>
+      <FormalityTags />
       <Wrap spacing={4} py={2}>
       {data?.results.map((tag) => (
         <WrapItem key={tag.id}>

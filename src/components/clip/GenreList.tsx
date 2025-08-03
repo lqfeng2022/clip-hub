@@ -23,7 +23,7 @@ const GenreList = () => {
         {data?.results.map((genre) => (
           <ListItem py='6px' key={genre.id}>
             <HStack spacing={4}>
-              <AspectRatio w='70px' ratio={9 / 6}>
+              <AspectRatio w='60px' ratio={9 / 6}>
                 <Image
                   objectFit='cover'
                   borderRadius={5}

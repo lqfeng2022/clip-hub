@@ -19,6 +19,7 @@ const ExpressionCardDeleteMark = ({ expression, handleClick }: Props) => {
         <Image
           w='100%'
           objectFit='cover'
+          aspectRatio={ 16 / 9}
           src={expression.image}
         />
         <Icon 
