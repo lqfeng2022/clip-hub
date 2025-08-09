@@ -6,6 +6,7 @@ import ExpressionAttributes from '@/pages/ExpressionAttributes'
 import { Box, Center, GridItem, Heading, Image, SimpleGrid } from '@chakra-ui/react'
 import { useEffect } from 'react'
 import ExpressionRecommend from '../ExpressionRecommend'
+import { pocketURL } from '@/services/pocket'
 
 interface Props {
   exp: Expression,
@@ -37,7 +38,7 @@ const ExpressionDetailContent = ({ exp, clipexp }: Props) => {
               <Image 
                 w='100%' 
                 maxH='600px' 
-                src={exp.image || noImage} 
+                src={`${pocketURL}${exp.image}` || noImage} 
               />
               <InteractIcons expression={exp}/>
             </Box>

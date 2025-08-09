@@ -2,6 +2,7 @@ import { Card, CardBody, Heading, Image } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
 import Expression from '@/entities/Expression'
 import noImage from '@/assets/no-image.jpg'
+import { pocketURL } from '@/services/pocket'
 
 const ExpressionCardSimple = ({ expression }: { expression: Expression }) => {
   return (
@@ -9,8 +10,8 @@ const ExpressionCardSimple = ({ expression }: { expression: Expression }) => {
       <Image
         w='100%'
         objectFit='cover'
-        aspectRatio={ 20 / 9}
-        src={expression.image || noImage}
+        aspectRatio={ 16 / 9}
+        src={`${pocketURL}${expression.image}` || noImage}
       />
       <CardBody p='5px'>
         <Link to={'/expressions/' + expression.slug}>

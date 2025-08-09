@@ -2,6 +2,7 @@ import { AspectRatio, Box, Button, Divider, Heading, HStack, Image, List, ListIt
 import useGenres from '@/hooks/store/useGenres'
 import useClipQueryStore from '@/clipStore'
 import useLanguageStore from '@/languageStore'
+import { pocketURL } from '@/services/pocket'
 
 const GenreList = () => {
   const selectedGenreId = useClipQueryStore((s) => s.clipQuery.genreId)
@@ -11,23 +12,24 @@ const GenreList = () => {
   const title = lang === 'en' ? 'Clip genres' : '视频类别'
   
   const { data, error, isLoading } = useGenres()
+  
   if (error) return null
   if (isLoading) return <Spinner />
   return (
     <Box mt={8}>
       <Divider my={3} borderColor='white'/>
-      <Heading fontSize='3xl' pb={3}>
+      <Heading fontSize='3xl' py={3}>
         {title}
       </Heading>
-      <List>
+      <List py={1}>
         {data?.results.map((genre) => (
-          <ListItem py='6px' key={genre.id}>
+          <ListItem py='8px' key={genre.id}>
             <HStack spacing={4}>
               <AspectRatio w='60px' ratio={9 / 6}>
                 <Image
                   objectFit='cover'
-                  borderRadius={5}
-                  src={genre.image}
+                  borderRadius={9}
+                  src={`${pocketURL}${genre.image}`}
                 />
               </AspectRatio>
               <Button

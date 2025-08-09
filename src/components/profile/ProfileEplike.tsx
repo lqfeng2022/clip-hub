@@ -11,7 +11,7 @@ const ProfileEplike = () => {
   const { data, error } = useExpressionLikes()
   const eplikes = data?.pages[0].results
     .filter((eplike) => eplike.visible)
-    .slice(0, 4)
+    .slice(0, 5)
 
   if (error) return <Text>{error.message}</Text>
   return (

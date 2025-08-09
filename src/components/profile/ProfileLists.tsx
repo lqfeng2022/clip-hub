@@ -8,7 +8,7 @@ const ProfileLists = () => {
   const lang = useLanguageStore(s => s.language)
 
   const { data, error } = useLists()
-  const lists = data?.pages[0].results.slice(0, 4)
+  const lists = data?.pages[0].results
 
   if (error) return <Text>{error.message}</Text>
   return (

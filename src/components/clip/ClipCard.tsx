@@ -2,6 +2,7 @@ import { Image, CardBody, Heading, Text, HStack, Avatar, Box, Card, AspectRatio 
 import { Link } from 'react-router-dom'
 import Clip from '@/entities/Clip'
 import useLanguageStore from '@/languageStore'
+import { pocketURL } from '@/services/pocket'
 
 const ClipCard = ({ clip }: { clip: Clip }) => {
   const lang = useLanguageStore(s => s.language)
@@ -11,15 +12,15 @@ const ClipCard = ({ clip }: { clip: Clip }) => {
   const original = lang === 'ch' && clip.original_ch ? clip.original_ch : clip.original
 
   return (
-    <Card bg='gray.800' borderRadius={10} overflow='hidden' variant='unstyled'>
+    <Card bg='gray.800' borderRadius={12} overflow='hidden' variant='unstyled'>
       <AspectRatio ratio={16/9}>
-        <Image src={clip.cover} className='img-hover' />
+        <Image src={`${pocketURL}${clip.cover}`} className='img-hover' />
       </AspectRatio>
       <CardBody p='12px 4px'>
         <HStack align='flex-start' wrap='wrap' spacing={4}>
           <Avatar
             size='sm'
-            src={clip.genre.image}
+            src={`${pocketURL}${clip.genre.image}`}
             alignSelf='flex-start'
             flexShrink={0}
           />

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import ProfileListCardIcon from './ProfileListCardIcon'
 import List from '@/entities/List'
 import nocontent from '@/assets/no-content.png'
+import { pocketURL } from '@/services/pocket'
 
 const ExpressionListCardCover = ({ list }: { list: List }) => {
   const image = list.items[0]?.expression.image
@@ -16,7 +17,7 @@ const ExpressionListCardCover = ({ list }: { list: List }) => {
           <Box position='relative'>
             <Image
               aspectRatio={16/9}
-              src={image ?? nocontent}
+              src={image ? `${pocketURL}${image}` : nocontent}
               objectFit='cover'
               className='img-hover'
             />

@@ -2,6 +2,7 @@ import Expression from '@/entities/Expression'
 import { Popover, PopoverTrigger, Text, PopoverContent, PopoverArrow, PopoverCloseButton, PopoverHeader, PopoverBody, Box, Image, Stack } from '@chakra-ui/react'
 import noImage from '@/assets/no-image.jpg'
 import { Link } from 'react-router-dom'
+import { pocketURL } from '@/services/pocket'
 
 interface Props {
   part: string,
@@ -15,7 +16,7 @@ const ClipSubtitlePopover = ({ part, expression }: Props) => {
           as='strong'
           color='yellow.200'
           _hover={{ color: 'yellow.400'}}
-          fontSize='xl'
+          fontSize='lg'
           cursor='pointer'
         >
           {part}
@@ -37,7 +38,7 @@ const ClipSubtitlePopover = ({ part, expression }: Props) => {
                 maxH='200px'
                 objectFit='cover'
                 className='img-hover'
-                src={expression.image || noImage}
+                src={`${pocketURL}${expression.image}` || noImage}
               />
             </Link>
             <Text fontSize='sm'>

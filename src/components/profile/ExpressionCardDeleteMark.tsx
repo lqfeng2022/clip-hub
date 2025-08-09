@@ -2,6 +2,7 @@ import { Box, Card, CardBody, Heading, Icon, Image } from '@chakra-ui/react'
 import { IoCloseOutline } from 'react-icons/io5'
 import { Link } from 'react-router-dom'
 import Expression from '@/entities/Expression'
+import { pocketURL } from '@/services/pocket'
 
 interface Props {
   expression: Expression,
@@ -20,7 +21,7 @@ const ExpressionCardDeleteMark = ({ expression, handleClick }: Props) => {
           w='100%'
           objectFit='cover'
           aspectRatio={ 16 / 9}
-          src={expression.image}
+          src={`${pocketURL}${expression.image}`}
         />
         <Icon 
           as={IoCloseOutline}

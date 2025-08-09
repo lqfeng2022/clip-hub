@@ -38,10 +38,10 @@ const ClipSubtitleTimeline = ({ subtitle, handleJump}: Props) => {
             {subtitle.characters.map((character) =>
               <Avatar
                 key={character.id}
-                size='small'
+                size='sm'
                 fontWeight='bold'
                 name={character.name}
-                src={character?.portrait ? character.portrait : ''}
+                src={''}
               />
             )}
           </AvatarGroup>

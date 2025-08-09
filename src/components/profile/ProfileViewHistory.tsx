@@ -11,7 +11,7 @@ const ProfileViewHistory = () => {
   const { data, error } = useExpressionViews()
   const views = data?.pages[0].results
     .filter((view) => view.visible)
-    .slice(0, 4)
+    .slice(0, 5)
 
   if (error) return <Text>{error.message}</Text>
   return (

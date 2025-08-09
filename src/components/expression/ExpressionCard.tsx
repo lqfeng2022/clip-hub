@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import Expression from '@/entities/Expression'
 import ExpressionCardLike from './ExpressionCardLike'
 import noImage from '@/assets/no-image.jpg'
+import { pocketURL } from '@/services/pocket'
 
 interface Props {
   expression: Expression,
@@ -16,7 +17,7 @@ const ExpressionCard = ({ expression, onUnmark }: Props) => {
           <Image
             w='100%'
             objectFit='cover'
-            src={expression.image || noImage}
+            src={`${pocketURL}${expression.image}` || noImage}
           />
         </AspectRatio>
         <ExpressionCardLike
