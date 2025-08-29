@@ -13,7 +13,7 @@ const NavBar = () => {
   const fullName = user?.first_name || user?.last_name
     ? `${user?.first_name ?? ''} ${user?.last_name ?? ''}`.trim()
     : user?.username
-  const portrait = `http://localhost:8000/${user?.portrait}`
+  const portrait = `https://clipwords.me/${user?.portrait}`
   
   const language = useLanguageStore((s) => s.language)
   const setLanguage = useLanguageStore((s) => s.setLanguage)

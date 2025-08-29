@@ -1,1 +1,1 @@
-export const pocketURL = 'http://localhost:8000/media/'
+export const pocketURL = 'https://clipwords.me/media/'

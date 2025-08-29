@@ -2,7 +2,7 @@ import FetchResponse from '@/entities/FetchResponse'
 import axios, { AxiosRequestConfig } from 'axios'
 
 const axiosInstance = axios.create({
-  baseURL: 'http://localhost:8000/store',
+  baseURL: 'https://clipwords.me/store',
   withCredentials: true, // send cookie to backend
   params: {}
 })

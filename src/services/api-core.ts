@@ -1,7 +1,7 @@
 import axios, { AxiosRequestConfig } from 'axios'
 
 const axiosInstance = axios.create({
-  baseURL: 'http://localhost:8000',
+  baseURL: 'https://clipwords.me',
   withCredentials: true, // send cookie to backend
   params: {}
 })

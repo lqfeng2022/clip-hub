@@ -1,7 +1,7 @@
 import axios, { AxiosRequestConfig } from 'axios'
 
 const axiosInstance = axios.create({
-  baseURL: 'http://localhost:8000/interact/profiles',
+  baseURL: 'https://clipwords.me/interact/profiles',
   withCredentials: true, // send cookie to backend, it's global default
   params: {}
 })

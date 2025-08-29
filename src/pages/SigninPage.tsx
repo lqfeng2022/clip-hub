@@ -26,7 +26,7 @@ const SigninPage = () => {
       onSuccess: () => {
         fetchUser()
         navigate('/profile')
-        window.location.reload() // clear auth context
+        // window.location.reload() // clear auth context
       }
     })
   }

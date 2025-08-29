@@ -8,7 +8,7 @@ interface Props {
   videoRef: RefObject<HTMLVideoElement>
 }
 const ClipMovie = ({ video, videoRef }: Props) => {
-  const movieSrc = `http://localhost:8000/media/${video?.file}`
+  const movieSrc = `https://clipwords.me/media/${video?.file}`
 
   return (
         <Box maxW='' mx='auto'>

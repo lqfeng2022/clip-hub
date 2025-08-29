@@ -31,7 +31,7 @@ const ProfileUser = () => {
     })
   }
 
-  const portraitUrl = `http://localhost:8000/${user?.portrait}`
+  const portraitUrl = `https://clipwords.me/${user?.portrait}`
 
   const location = useLocation()
   const isProfileMePage = location.pathname.startsWith('/profile/me')
