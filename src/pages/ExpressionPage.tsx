@@ -8,6 +8,7 @@ import LangtagsList from '../components/expression/LangtagsList'
 import useLanguageStore from '@/languageStore'
 import FormalityTags from '@/components/expression/FormalityTags'
 import { formality } from '@/helperfunction'
+import WordsList from '@/components/expression/WordsList'
 
 function ExpressionPage() {
   const lang = useLanguageStore(s => s.language)
@@ -38,6 +39,7 @@ function ExpressionPage() {
           <Box mt={8}>
             <Divider my={2} borderColor='white'/>
             <LangtagsList/>
+            {/* <WordsList/> */}
           </Box>
         </GridItem>
       </Show>

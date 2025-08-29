@@ -1,4 +1,4 @@
-import { Box, Heading, HStack, Icon, Image, Stack, Text } from '@chakra-ui/react'
+import { Box, Heading, HStack, Icon, Image, Stack, Tag, Text } from '@chakra-ui/react'
 import { ImQuotesLeft } from 'react-icons/im'
 import { Link } from 'react-router-dom'
 import Expression from '@/entities/Expression'
@@ -14,7 +14,8 @@ const ExpressionAttributes = ({ expression } : { expression: Expression }) => {
   const words_header = lang === 'en' ? 'Words' : '单词'
   const clip_header = lang === 'en' ? 'Clip' : '表达式所在的视频'
 
-  const explain = lang === 'ch' && expression.explain_ch ? expression.explain_ch : expression.explain
+  const explain = lang === 'ch' && expression.explain_ch 
+    ? expression.explain_ch : expression.explain
 
   return (
     <>
@@ -37,7 +38,16 @@ const ExpressionAttributes = ({ expression } : { expression: Expression }) => {
         <Heading size='md' color='gray.500'>
           {tags_header}
         </Heading>
-        <TagHList items={expression.langtags} color='teal'/>
+        <HStack>
+          <Tag
+            size='sm'
+            colorScheme='blue'
+            backgroundColor='#4A5568'
+          >
+            {expression.formal}
+          </Tag>
+          <TagHList items={expression.langtags} color='teal'/>
+        </HStack>
       </Box>
       {/* word tags */}
       <Box pt={2}>

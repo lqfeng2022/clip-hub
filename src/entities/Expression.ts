@@ -9,6 +9,7 @@ export default interface Expression {
   slug: string,
   image: string,
   language: string,
+  formal: string,
   langtags: Langtag[],
   words: Word[],
   explain: string,

@@ -15,6 +15,7 @@ const useExpressions = () => {
     queryFn: ({pageParam = 1}) => apiClient.getAll({
       params: {
         langtags__id: expressionQuery.tagId,
+        words__id: expressionQuery.wordId,
         formal: expressionQuery.formal,
         ordering: expressionQuery.sortOrder,
         search: expressionQuery.searchText,

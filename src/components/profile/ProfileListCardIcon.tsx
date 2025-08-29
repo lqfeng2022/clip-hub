@@ -12,6 +12,7 @@ const ProfileListCardIcon = () => {
       left={1}
       p={1}
       bg='rgba(0,0,0,0.4)'
+      borderRadius='md'
     />
   )
 }
