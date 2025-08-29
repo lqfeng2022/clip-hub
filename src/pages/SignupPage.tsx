@@ -19,14 +19,13 @@ const SignupPage = () => {
     last_name: '',
   })
 
-  const handleChange = (field: keyof typeof signup) => {
+  const handleChange = (field: keyof typeof signup) =>
     (e: ChangeEvent<HTMLInputElement> | string) => {
       // if e is typeof `string`, return it directly,
       // otherwise return e.target.value, cus it's type of `ChangeEvent`
       const value = (typeof e === 'string') ? e : e.target.value
       setSignup(prev => ({ ...prev, [field]: value }))
     }
-  }
 
   const handleSignup = () => {
     const { password2, ...payload } = signup
@@ -80,7 +79,7 @@ const SignupPage = () => {
               type='text' 
               placeholder={`${context.username}..`}
               value={signup.username}
-              onChange={() => handleChange('username')}
+              onChange={handleChange('username')}
             />
             <FormHelperText>{error?.message}</FormHelperText>
           </FormControl>
@@ -89,7 +88,7 @@ const SignupPage = () => {
             <FormLabel>{context.password}</FormLabel>
             <PasswordInput 
               value={signup.password} 
-              onChange={() => handleChange('password')}
+              onChange={handleChange('password')}
             />
             <FormHelperText>{context.password_note}</FormHelperText>
           </FormControl>
@@ -98,7 +97,7 @@ const SignupPage = () => {
             <FormLabel>{context.password_2}</FormLabel>
             <PasswordInput 
               value={signup.password2} 
-              onChange={() => handleChange('password2')}
+              onChange={handleChange('password2')}
             />
             {signup.password2 === signup.password ? 
               <FormHelperText>{context.password2_note}</FormHelperText>
@@ -112,7 +111,7 @@ const SignupPage = () => {
               type='email'
               placeholder={context.email_place}
               value={signup.email} 
-              onChange={() => handleChange('email')}
+              onChange={handleChange('email')}
             />
             <FormHelperText>{error?.message}</FormHelperText>
           </FormControl>
@@ -123,7 +122,7 @@ const SignupPage = () => {
               <Input 
                 placeholder={context.first_name} 
                 value={signup.first_name}
-                onChange={() => handleChange('first_name')}
+                onChange={handleChange('first_name')}
               />
             </FormControl>
             <FormControl>
@@ -131,7 +130,7 @@ const SignupPage = () => {
               <Input 
                 placeholder={context.last_name}
                 value={signup.last_name} 
-                onChange={() => handleChange('last_name')}
+                onChange={handleChange('last_name')}
               />
             </FormControl>
           </HStack>
