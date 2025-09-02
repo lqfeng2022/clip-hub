@@ -37,7 +37,9 @@ const useListsManager = (exp: Expression, onClose: () => void) => {
 
     // if we have added list, add exp to the lists
     if (added.length > 0)
-      addListItem({ expression_id: exp.id, listIds: added })
+      addListItem({ expression_id: exp.id, listIds: added }, { 
+        onSuccess: () => refetch()
+      })
 
     // if we have removed list, remove the exp from the lists
     if (removed.length > 0) {
@@ -47,7 +49,7 @@ const useListsManager = (exp: Expression, onClose: () => void) => {
         return item ? { listId, listItemId: item.id } : null
       }).filter(Boolean) as { listId: number, listItemId: number }[]
       // `filter(Boolean)`: a quick way to remove the falsy objs
-      deleteListItems(deleteTargets)
+      deleteListItems(deleteTargets, { onSuccess: () => refetch() })
     }
 
     onClose()

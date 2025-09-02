@@ -1,5 +1,5 @@
 import { Avatar, Button, HStack, Icon } from '@chakra-ui/react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../AuthContext'
 import ClipLogo from './ClipLogo'
 import EpLogo from './EpLogo'
@@ -17,6 +17,8 @@ const NavBar = () => {
   
   const language = useLanguageStore((s) => s.language)
   const setLanguage = useLanguageStore((s) => s.setLanguage)
+
+  const navigate = useNavigate()
 
   return (
     <HStack p='16px 10px' gap={5} justifyContent='space-between'>

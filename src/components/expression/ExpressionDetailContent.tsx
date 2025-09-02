@@ -7,14 +7,21 @@ import { Box, Center, GridItem, Heading, Image, SimpleGrid } from '@chakra-ui/re
 import { useEffect } from 'react'
 import ExpressionRecommend from '../ExpressionRecommend'
 import { pocketURL } from '@/services/pocket'
+import useExpressionViews from '@/hooks/interact/useExpressionViews'
 
 interface Props {
   exp: Expression,
   clipexp: Expression[]
 }
 const ExpressionDetailContent = ({ exp, clipexp }: Props) => {
+  const { refetch } = useExpressionViews()
   const { mutate } = useExpressionInteract(exp.id, 'views')
-  useEffect(() => { mutate({ visible: true }) }, [mutate])
+  
+  useEffect(() => { 
+    mutate({ visible: true }, {
+      onSuccess: () => refetch()
+    }) 
+  }, [mutate])
 
   return (
     <SimpleGrid
