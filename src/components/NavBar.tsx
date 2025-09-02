@@ -37,7 +37,7 @@ const NavBar = () => {
       {user ? (
         <Link to='/profile'>
           <Avatar
-            size='small'
+            size='sm'
             fontWeight='bold'
             name={fullName}
             src={user?.portrait ? portrait : ''}

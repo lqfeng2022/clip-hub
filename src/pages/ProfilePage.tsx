@@ -1,4 +1,4 @@
-import { Box, Heading, Image, Text } from '@chakra-ui/react'
+import { Box, Heading, Image } from '@chakra-ui/react'
 import ProfileUser from '../components/profile/ProfileUser'
 import ProfileEplike from '../components/profile/ProfileEplike'
 import ProfileLists from '../components/profile/ProfileLists'
