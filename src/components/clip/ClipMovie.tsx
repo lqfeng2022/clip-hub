@@ -16,8 +16,12 @@ const ClipMovie = ({ video, videoRef }: Props) => {
             <video
               src={movieSrc}
               poster={`${pocketURL}${video.cover}`}
-              controls
               ref={videoRef}
+              controls
+              playsInline
+              autoPlay
+              loop
+              muted
             /> 
           </AspectRatio>
         </Box>
