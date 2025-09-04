@@ -21,7 +21,6 @@ const ClipMovie = ({ video, videoRef }: Props) => {
               playsInline
               autoPlay
               loop
-              muted
             /> 
           </AspectRatio>
         </Box>
