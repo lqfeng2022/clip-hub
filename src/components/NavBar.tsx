@@ -1,11 +1,11 @@
+import useLanguageStore from '@/languageStore'
 import { Avatar, Button, HStack, Icon } from '@chakra-ui/react'
-import { Link, useNavigate } from 'react-router-dom'
+import { FaLanguage } from 'react-icons/fa'
+import { Link } from 'react-router-dom'
 import { useAuth } from '../AuthContext'
 import ClipLogo from './ClipLogo'
 import EpLogo from './EpLogo'
 import SearchInputDrawer from './SearchInputDrawer'
-import { HiLanguage } from 'react-icons/hi2'
-import useLanguageStore from '@/languageStore'
 
 const NavBar = () => {
   const { user } = useAuth()
@@ -17,8 +17,6 @@ const NavBar = () => {
   
   const language = useLanguageStore((s) => s.language)
   const setLanguage = useLanguageStore((s) => s.setLanguage)
-
-  const navigate = useNavigate()
 
   return (
     <HStack p='16px 10px' gap={5} justifyContent='space-between'>
@@ -34,7 +32,7 @@ const NavBar = () => {
         variant='link'
         onClick={() => setLanguage(language === 'ch' ? 'en' : 'ch')}
       >
-        <Icon as={HiLanguage} boxSize='25px' />
+        <Icon as={FaLanguage} boxSize='35px' />
       </Button>
       {user ? (
         <Link to='/profile'>

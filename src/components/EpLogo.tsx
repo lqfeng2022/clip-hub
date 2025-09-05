@@ -1,13 +1,9 @@
 import useSearchContext from '@/hooks/interact/useSearchContex'
-import useLanguageStore from '@/languageStore'
 import { Badge, Icon } from '@chakra-ui/react'
 import { HiLanguage } from 'react-icons/hi2'
 
 const EpLogo = () => {
   const { isExpression } = useSearchContext()
-
-  const lang = useLanguageStore((s) => s.language)
-  const expression = lang === 'en' ? 'expression' : '英文表达式'
 
   return (
     <Badge
@@ -25,7 +21,7 @@ const EpLogo = () => {
         color='green.300'
         verticalAlign='bottom'
       /> 
-      {expression}
+      expression
     </Badge>
   )
 }
