@@ -1,8 +1,8 @@
-import { Button, Modal, ModalBody, ModalCloseButton, ModalContent, ModalOverlay, useDisclosure } from '@chakra-ui/react'
+import { Button, Heading, Modal, ModalBody, ModalCloseButton, ModalContent, ModalOverlay, useDisclosure } from '@chakra-ui/react'
 import { useLangtag } from '@/hooks/store/useLangtag'
 import useExpressionQueryStore from '@/expressionStore'
-import LangtagsList from './LangtagsList'
 import useLanguageStore from '@/languageStore'
+import Langtags from './Langtags'
 
 const LangtsgsSelector = () => {
   const lang = useLanguageStore(s => s.language)
@@ -26,7 +26,10 @@ const LangtsgsSelector = () => {
         <ModalContent>
           <ModalCloseButton />
           <ModalBody>
-            <LangtagsList/>
+            <Heading fontSize='3xl' py={3}>
+              {lang === 'en' ? 'Langtags' : '语言标签'}
+            </Heading>
+            <Langtags/>
           </ModalBody>
         </ModalContent>
       </Modal>

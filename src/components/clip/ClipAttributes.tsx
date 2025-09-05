@@ -13,22 +13,24 @@ const ClipAttributes = ({ clip }: { clip: Clip }) => {
   const website = lang === 'en' ? 'Website' : '视频网站'
 
   return (
-    <SimpleGrid columns={2}>
-      <ClipAttrDefinition term={original}>
-          {lang === 'ch' && clip.original_ch ? clip.original_ch : clip.original}
-      </ClipAttrDefinition>
-      <ClipAttrDefinition term={release_year}>
-        {clip.release_year}
-      </ClipAttrDefinition>
-      <ClipAttrDefinition term={genre}>
-        {clip.genre.title}
-      </ClipAttrDefinition>
-      <ClipAttrDefinition term={creator}>
-        {clip.creator.name}
-      </ClipAttrDefinition>
+    <>
+      <SimpleGrid columns={2}>
+        <ClipAttrDefinition term={original}>
+            {lang === 'ch' && clip.original_ch ? clip.original_ch : clip.original}
+        </ClipAttrDefinition>
+        <ClipAttrDefinition term={release_year}>
+          {clip.release_year}
+        </ClipAttrDefinition>
+        <ClipAttrDefinition term={genre}>
+          {clip.genre.title}
+        </ClipAttrDefinition>
+        <ClipAttrDefinition term={creator}>
+          {clip.creator.name}
+        </ClipAttrDefinition>
+      </SimpleGrid>
       <ClipAttrDefinition term={website}>
-        <Link 
-          href={clip.website} 
+        <Link
+          href={clip.website}
           isExternal
           fontStyle='italic'
           _hover={{color: 'yellow.200'}}
@@ -36,7 +38,7 @@ const ClipAttributes = ({ clip }: { clip: Clip }) => {
           {'https://www.youtube.com'}
         </Link>
       </ClipAttrDefinition>
-    </SimpleGrid>
+    </>
   )
 }
 

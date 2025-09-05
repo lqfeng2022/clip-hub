@@ -60,7 +60,7 @@ const ClipDetailPage = () => {
             </Collapse>
             {show && (
               <Box textAlign='right'>
-                <Button size='xl' p='3px 5px' mt={2} mb={3} onClick={handleToggle}>
+                <Button size='xl' p='3px 5px' mt={1} mb={3} onClick={handleToggle}>
                   show lesss
                 </Button>
               </Box>

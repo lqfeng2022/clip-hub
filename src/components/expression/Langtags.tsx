@@ -1,11 +1,10 @@
-import { Heading, Tag, Wrap, WrapItem } from '@chakra-ui/react'
+import { Box, Tag, Wrap, WrapItem } from '@chakra-ui/react'
 import useLangtags from '@/hooks/store/useLangtags'
 import useExpressionQueryStore from '@/expressionStore'
 import useLanguageStore from '@/languageStore'
-import FormalityTags from './FormalityTags'
 import BeatLoader from '../BeatLoader'
 
-const LangtagsList = () => {
+const Langtags = () => {
   const { data, error, isLoading } = useLangtags()
 
   const lang = useLanguageStore(s => s.language)
@@ -20,11 +19,7 @@ const LangtagsList = () => {
   if (error) return null
   if (isLoading) return <BeatLoader />
   return (
-    <>
-      <Heading fontSize='3xl' py={3}>
-        {lang === 'en' ? 'Langtags' : '语言标签'}
-      </Heading>
-      <FormalityTags />
+    <Box flex='1' overflowY='auto' maxH='70vh' pr={2.5}>
       <Wrap spacing={4} py={2}>
       {data?.results.map((tag) => (
         <WrapItem key={tag.id}>
@@ -55,8 +50,8 @@ const LangtagsList = () => {
         </WrapItem>
       ))}
       </Wrap>
-    </>
+    </Box>
   )
 }
 
-export default LangtagsList
+export default Langtags

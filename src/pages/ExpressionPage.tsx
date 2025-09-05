@@ -1,14 +1,13 @@
-import { Box, Divider, Grid, GridItem, Heading, HStack, Show } from '@chakra-ui/react'
-import { useLangtag } from '../hooks/store/useLangtag'
-import useExpressionQueryStore from '../expressionStore'
-import ExpressionSortSelector from '../components/expression/ExpressionSortSelector'
-import ExpressionGrid from '../components/expression/ExpressionGrid'
-import LangtagsSelector from '../components/expression/LangtagsSelector'
-import LangtagsList from '../components/expression/LangtagsList'
-import useLanguageStore from '@/languageStore'
 import FormalityTags from '@/components/expression/FormalityTags'
+import Langtags from '@/components/expression/Langtags'
 import { formality } from '@/helperfunction'
-import WordsList from '@/components/expression/WordsList'
+import useLanguageStore from '@/languageStore'
+import { Box, Divider, Grid, GridItem, Heading, HStack, Show } from '@chakra-ui/react'
+import ExpressionGrid from '../components/expression/ExpressionGrid'
+import ExpressionSortSelector from '../components/expression/ExpressionSortSelector'
+import LangtagsSelector from '../components/expression/LangtagsSelector'
+import useExpressionQueryStore from '../expressionStore'
+import { useLangtag } from '../hooks/store/useLangtag'
 
 function ExpressionPage() {
   const lang = useLanguageStore(s => s.language)
@@ -38,7 +37,11 @@ function ExpressionPage() {
         <GridItem area='aside' px={2.5}>
           <Box mt={8}>
             <Divider my={2} borderColor='white'/>
-            <LangtagsList/>
+            <Heading fontSize='3xl' py={3}>
+              {lang === 'en' ? 'Langtags' : '语言标签'}
+            </Heading>
+            <FormalityTags />
+            <Langtags/>
             {/* <WordsList/> */}
           </Box>
         </GridItem>
