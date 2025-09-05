@@ -1,8 +1,9 @@
-import { Box, SimpleGrid, Spinner, Text } from '@chakra-ui/react'
+import { Box, SimpleGrid, Text } from '@chakra-ui/react'
 import React from 'react'
 import InfiniteScroll from 'react-infinite-scroll-component'
 import useExpressions from '@/hooks/store/useExpressions'
 import ExpressionCard from './ExpressionCard'
+import BeatLoader from '../BeatLoader'
 
 const ExpressionGrid = () => {
   const { data, error, fetchNextPage, hasNextPage } = useExpressions()
@@ -16,7 +17,7 @@ const ExpressionGrid = () => {
       dataLength={fetchExpressionsCount} 
       hasMore={!!hasNextPage}
       next={() => fetchNextPage()}
-      loader={<Spinner/>}
+      loader={<BeatLoader/>}
     >
       <SimpleGrid
         columns={{ sm: 2, lg: 3, xl: 4 }}

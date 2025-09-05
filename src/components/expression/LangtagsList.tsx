@@ -1,8 +1,9 @@
-import { Heading, Spinner, Tag, Wrap, WrapItem } from '@chakra-ui/react'
+import { Heading, Tag, Wrap, WrapItem } from '@chakra-ui/react'
 import useLangtags from '@/hooks/store/useLangtags'
 import useExpressionQueryStore from '@/expressionStore'
 import useLanguageStore from '@/languageStore'
 import FormalityTags from './FormalityTags'
+import BeatLoader from '../BeatLoader'
 
 const LangtagsList = () => {
   const { data, error, isLoading } = useLangtags()
@@ -17,7 +18,7 @@ const LangtagsList = () => {
   )
 
   if (error) return null
-  if (isLoading) return <Spinner />
+  if (isLoading) return <BeatLoader />
   return (
     <>
       <Heading fontSize='3xl' py={3}>

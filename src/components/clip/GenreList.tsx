@@ -1,8 +1,9 @@
-import { AspectRatio, Box, Button, Divider, Heading, HStack, Image, List, ListItem, Spinner } from '@chakra-ui/react'
+import { AspectRatio, Box, Button, Divider, Heading, HStack, Image, List, ListItem } from '@chakra-ui/react'
 import useGenres from '@/hooks/store/useGenres'
 import useClipQueryStore from '@/clipStore'
 import useLanguageStore from '@/languageStore'
 import { pocketURL } from '@/services/pocket'
+import BeatLoader from '../BeatLoader'
 
 const GenreList = () => {
   const selectedGenreId = useClipQueryStore((s) => s.clipQuery.genreId)
@@ -14,7 +15,7 @@ const GenreList = () => {
   const { data, error, isLoading } = useGenres()
   
   if (error) return null
-  if (isLoading) return <Spinner />
+  if (isLoading) return <BeatLoader />
   return (
     <Box mt={8}>
       <Divider my={3} borderColor='white'/>

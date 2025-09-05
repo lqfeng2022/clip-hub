@@ -1,10 +1,11 @@
-import { Box, Heading, SimpleGrid, Spinner, Text } from '@chakra-ui/react'
+import { Box, Heading, SimpleGrid, Text } from '@chakra-ui/react'
 import React from 'react'
 import InfiniteScroll from 'react-infinite-scroll-component'
 import useExpressionViews from '../hooks/interact/useExpressionViews'
 import useViewHistory from '../hooks/interact/useViewHistory'
 import useLanguageStore from '@/languageStore'
 import ExpressionCardDeleteMark from '@/components/profile/ExpressionCardDeleteMark'
+import BeatLoader from '@/components/BeatLoader'
 
 const ProfileHistoryPage = () => {
   const lang = useLanguageStore(s => s.language)
@@ -31,7 +32,7 @@ const ProfileHistoryPage = () => {
         dataLength={fetchExpressionsCount}
         hasMore={!!hasNextPage}
         next={() => fetchNextPage()}
-        loader={<Spinner/>}
+        loader={<BeatLoader/>}
       >
         <SimpleGrid
           columns={{ base: 2, lg: 3, xl: 4 }}

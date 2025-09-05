@@ -1,9 +1,10 @@
-import { SimpleGrid, Spinner, Text } from '@chakra-ui/react'
+import { SimpleGrid, Text } from '@chakra-ui/react'
 import React from 'react'
 import InfiniteScroll from 'react-infinite-scroll-component'
 import useClips from '@/hooks/store/useClips'
 import ClipCard from './ClipCard'
 import ClipCardSkeleton from './ClipCardSkeleton'
+import BeatLoader from '../BeatLoader'
 
 const ClipGrid = () => {
   const { data, error, isLoading, fetchNextPage, hasNextPage } = useClips()
@@ -17,7 +18,7 @@ const ClipGrid = () => {
       dataLength={fetchClipsCount} 
       hasMore={!!hasNextPage}
       next={() => fetchNextPage()}
-      loader={<Spinner/>}
+      loader={<BeatLoader/>}
     >
       <SimpleGrid
         columns={{ sm: 1, md: 2, xl: 3 }}

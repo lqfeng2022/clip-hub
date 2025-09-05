@@ -1,9 +1,10 @@
-import { Heading, SimpleGrid, Spinner, Text } from '@chakra-ui/react'
+import { Heading, SimpleGrid, Text } from '@chakra-ui/react'
 import React from 'react'
 import InfiniteScroll from 'react-infinite-scroll-component'
 import useExpressionLikes from '../hooks/interact/useExpressionLikes'
 import ExpressionCard from '../components/expression/ExpressionCard'
 import useLanguageStore from '@/languageStore'
+import BeatLoader from '@/components/BeatLoader'
 
 const ProfileEplikePage = () => {
   const lange = useLanguageStore(s => s.language)
@@ -22,7 +23,7 @@ const ProfileEplikePage = () => {
         dataLength={fetchExpressionsCount}
         hasMore={!!hasNextPage}
         next={() => fetchNextPage()}
-        loader={<Spinner/>}
+        loader={<BeatLoader/>}
       >
         <SimpleGrid
           columns={{ sm: 2, lg: 3, xl: 4 }}

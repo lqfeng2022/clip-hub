@@ -1,7 +1,8 @@
 import useExpressionQueryStore from '@/expressionStore'
 import useAlphabets from '@/hooks/store/useAlphabets'
 import useLanguageStore from '@/languageStore'
-import { Box, Heading, List, ListItem, Spinner, Text } from '@chakra-ui/react'
+import { Box, Heading, List, ListItem, Text } from '@chakra-ui/react'
+import BeatLoader from '../BeatLoader'
 
 const WordsList = () => {
   const { data, error, isLoading } = useAlphabets()
@@ -16,7 +17,7 @@ const WordsList = () => {
   )
 
   if (error) return null
-  if (isLoading) return <Spinner />
+  if (isLoading) return <BeatLoader />
   return (
   <>
     <Heading fontSize='3xl' py={3}>

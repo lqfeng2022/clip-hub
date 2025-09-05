@@ -1,5 +1,5 @@
 import useLanguageStore from '@/languageStore'
-import { Box, Button, Collapse, Grid, GridItem, Heading, HStack, Spinner, Text } from '@chakra-ui/react'
+import { Box, Button, Collapse, Grid, GridItem, Heading, HStack, Text } from '@chakra-ui/react'
 import { useState } from 'react'
 import { useParams } from 'react-router-dom'
 import ClipAttributes from '../components/clip/ClipAttributes'
@@ -7,6 +7,7 @@ import ClipMovie from '../components/clip/ClipMovie'
 import useClip from '../hooks/store/useClip'
 import ClipExpression from '@/components/ClipExpression'
 import useClipExpressions from '@/hooks/store/useClipExpressions'
+import BeatLoader from '@/components/BeatLoader'
 
 const ClipDetailPage = () => {
   const { slug } = useParams() // get `slug` from url
@@ -24,7 +25,7 @@ const ClipDetailPage = () => {
   const [show, setShow] = useState(false)
   const handleToggle = () => setShow(!show)
 
-  if (isLoading) return <Spinner/>
+  if (isLoading) return <BeatLoader/>
   if (error || !clip) throw error 
   return (
     <Grid
@@ -42,9 +43,11 @@ const ClipDetailPage = () => {
             <Heading size='md' color='gray.500' mr={2}>
               {about}
             </Heading>
-            {!show && <Button size='xl' p='3px 5px' variant='ghost' onClick={handleToggle}>
-              ...more
-            </Button>}
+            {!show && (
+              <Button size='xl' p='3px 5px' variant='ghost' onClick={handleToggle}>
+                ...more
+              </Button>
+            )}
           </HStack>
           <Box
             px={3}
@@ -55,14 +58,18 @@ const ClipDetailPage = () => {
               <Text py={2}>{about_content}</Text>
               <ClipAttributes clip={clip}/>
             </Collapse>
-            {show && <Button size='xl' p='3px 5px' mt={2} mb={3} onClick={handleToggle}>
-              show lesss
-            </Button>}
+            {show && (
+              <Box textAlign='right'>
+                <Button size='xl' p='3px 5px' mt={2} mb={3} onClick={handleToggle}>
+                  show lesss
+                </Button>
+              </Box>
+            )}
           </Box>
         </Box>
       </GridItem>
       <GridItem order={{ base: 1, lg: 2 }}>
-        <Heading size='md' pb={1} pt={{base: 2, lg: 0}} color='gray'>
+        <Heading size='md' pb={1} pt={{base: 2.5, lg: 0}} color='gray'>
           {heading}
         </Heading>
         <ClipExpression data={clipexp?.results ?? []}/>

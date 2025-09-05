@@ -2,10 +2,11 @@ import useListDelete from '@/hooks/interact/useListDelete'
 import useLists from '@/hooks/interact/useLists'
 import useListUpdate from '@/hooks/interact/useListUpdate'
 import useLanguageStore from '@/languageStore'
-import { Box, Heading, SimpleGrid, Spinner, Text } from '@chakra-ui/react'
+import { Box, Heading, SimpleGrid, Text } from '@chakra-ui/react'
 import React from 'react'
 import InfiniteScroll from 'react-infinite-scroll-component'
 import ExpressionListCard from '../components/profile/ExpressionListCard'
+import BeatLoader from '@/components/BeatLoader'
 
 const ProfileListsPage = () => {
   const lang = useLanguageStore(s => s.language)
@@ -34,7 +35,7 @@ const ProfileListsPage = () => {
         dataLength={fetchExpressionsCount}
         hasMore={!!hasNextPage}
         next={() => fetchNextPage()}
-        loader={<Spinner/>}
+        loader={<BeatLoader/>}
       >
         <SimpleGrid
           columns={{ sm: 2, lg: 3, xl: 4 }}
