@@ -23,7 +23,7 @@ const InteractIcons = ({ expression }: { expression: Expression }) => {
         </HStack>
         {/* expression list */}
         <InteractIconSave exp={expression}/>
-        <Icon as={BiShare} boxSize={6}/>
+        <Icon as={BiShare} boxSize={6} color='gray'/>
       </HStack>
     </Stack>
   )

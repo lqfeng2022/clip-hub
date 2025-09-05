@@ -12,7 +12,7 @@ const ExpressionAttributes = ({ expression } : { expression: Expression }) => {
   const explain_header = lang === 'en' ? 'Explain' : '解释'
   const tags_header = lang === 'en' ? 'Tags' : '语言标签'
   const words_header = lang === 'en' ? 'Words' : '单词'
-  const clip_header = lang === 'en' ? 'Clip' : '表达式所在的视频'
+  const clip_header = lang === 'en' ? 'Clip Video' : '表达式所在的视频'
 
   const explain = lang === 'ch' && expression.explain_ch 
     ? expression.explain_ch : expression.explain
