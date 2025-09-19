@@ -7,7 +7,7 @@ const ClipMovie = ({ video }: { video: Clip }) => {
 
   return (
     <Box 
-      maxW={video.kind === 'SHORT' ? '400px' : ''} 
+      maxW={video.kind === 'SHORT' ? '350px' : ''} 
       mx='auto'
       borderRadius='xl'
       overflow='hidden'
