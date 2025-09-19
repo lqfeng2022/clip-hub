@@ -1,11 +1,13 @@
 import useLanguageStore from '@/languageStore'
-import { Avatar, Button, HStack, Icon, Show, Stack } from '@chakra-ui/react'
+import { Avatar, Button, Circle, HStack, Icon, Show, Stack } from '@chakra-ui/react'
 import { FaLanguage } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 import { useAuth } from '../AuthContext'
 import ClipLogo from './ClipLogo'
 import EpLogo from './EpLogo'
 import SearchInput from './SearchInput'
+import { useState } from 'react'
+import { BsSearch } from 'react-icons/bs'
 
 const NavBar = () => {
   const { user } = useAuth()
@@ -18,6 +20,8 @@ const NavBar = () => {
   const language = useLanguageStore((s) => s.language)
   const setLanguage = useLanguageStore((s) => s.setLanguage)
 
+  const [display, setDisplay] = useState(false)
+
   return (
     <Stack p='16px 10px' gap={5}>
       <HStack gap={5} justifyContent='space-between'>
@@ -29,6 +33,15 @@ const NavBar = () => {
         </Link>
         <Show above='md'>
           <SearchInput />
+        </Show>
+        <Show below='md'>
+          <Circle 
+            size={10}
+            _hover={{ bg: 'gray.600' }}
+            onClick={() => setDisplay(!display)}
+          >
+            <Icon as={BsSearch} boxSize={5}/>
+          </Circle>
         </Show>
         <Button
           colorScheme='gray'
@@ -52,9 +65,7 @@ const NavBar = () => {
           </Link>
         )}
       </HStack>
-      <Show below='md'>
-        <SearchInput />
-      </Show>
+      {display && <SearchInput />}
     </Stack>
   )
 }
