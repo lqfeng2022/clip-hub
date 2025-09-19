@@ -6,8 +6,15 @@ const ClipMovie = ({ video }: { video: Clip }) => {
   const movieSrc = `https://clipwords.me/media/${video?.file}`
 
   return (
-    <Box maxW='' mx='auto'>
-      <AspectRatio ratio={16/9}>
+    <Box 
+      maxW={video.kind === 'SHORT' ? '400px' : ''} 
+      mx='auto'
+      borderRadius='xl'
+      overflow='hidden'
+    >
+      <AspectRatio 
+        ratio={video.kind === 'SHORT' ? 9/16 : 16/9}
+      >
         <video
           src={movieSrc}
           poster={`${pocketURL}${video.cover}`}

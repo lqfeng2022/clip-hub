@@ -22,7 +22,7 @@ const ClipDetailPage = () => {
     ? clip.description_ch : clip?.description
   const heading = lang === 'en' ? 'Expressions' : '视频中的表达式'
 
-  const [show, setShow] = useState(false)
+  const [show, setShow] = useState(true)
   const handleToggle = () => setShow(!show)
 
   if (isLoading) return <BeatLoader/>
@@ -37,14 +37,19 @@ const ClipDetailPage = () => {
     >
       <GridItem order={{ base: 1, lg: 1 }}>
         <ClipMovie video={clip}/>
-        <Heading py={3}>{header}</Heading>
+        <Heading size='md' py={3}>{header}</Heading>
         <Box>
           <HStack mb={2}>
             <Heading size='md' color='gray.500' mr={2}>
               {about}
             </Heading>
             {!show && (
-              <Button size='xl' p='3px 5px' variant='ghost' onClick={handleToggle}>
+              <Button 
+                size='xl' 
+                p='3px 5px' 
+                variant='ghost' 
+                onClick={handleToggle}
+              >
                 ...more
               </Button>
             )}
@@ -59,11 +64,16 @@ const ClipDetailPage = () => {
               <ClipAttributes clip={clip}/>
             </Collapse>
             {show && (
-              <Box textAlign='right'>
-                <Button size='xl' p='3px 5px' mt={1} mb={3} onClick={handleToggle}>
-                  show lesss
-                </Button>
-              </Box>
+              <Button 
+                size='xl' 
+                p='3px 5px' 
+                variant='ghost' 
+                mt={1} 
+                mb={3} 
+                onClick={handleToggle}
+              >
+                show lesss
+              </Button>
             )}
           </Box>
         </Box>
