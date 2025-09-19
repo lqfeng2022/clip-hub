@@ -1,11 +1,11 @@
 import useLanguageStore from '@/languageStore'
-import { Avatar, Button, HStack, Icon } from '@chakra-ui/react'
+import { Avatar, Button, HStack, Icon, Show, Stack } from '@chakra-ui/react'
 import { FaLanguage } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 import { useAuth } from '../AuthContext'
 import ClipLogo from './ClipLogo'
 import EpLogo from './EpLogo'
-import SearchInputDrawer from './SearchInputDrawer'
+import SearchInput from './SearchInput'
 
 const NavBar = () => {
   const { user } = useAuth()
@@ -19,36 +19,43 @@ const NavBar = () => {
   const setLanguage = useLanguageStore((s) => s.setLanguage)
 
   return (
-    <HStack p='16px 10px' gap={5} justifyContent='space-between'>
-      <Link to='/'>
-        <ClipLogo/>
-      </Link>
-      <Link to='/expressions'>
-        <EpLogo />
-      </Link>
-      <SearchInputDrawer />
-      <Button
-        colorScheme='gray'
-        variant='link'
-        onClick={() => setLanguage(language === 'ch' ? 'en' : 'ch')}
-      >
-        <Icon as={FaLanguage} boxSize='35px' />
-      </Button>
-      {user ? (
-        <Link to='/profile'>
-          <Avatar
-            size='sm'
-            fontWeight='bold'
-            name={fullName}
-            src={user?.portrait ? portrait : ''}
-          />
+    <Stack p='16px 10px' gap={5}>
+      <HStack gap={5} justifyContent='space-between'>
+        <Link to='/'>
+          <ClipLogo/>
         </Link>
-      ) : (
-        <Link to='/user/signin'>
-          <Avatar bg='teal.500' size='sm' />
+        <Link to='/expressions'>
+          <EpLogo />
         </Link>
-      )}
-    </HStack>
+        <Show above='md'>
+          <SearchInput />
+        </Show>
+        <Button
+          colorScheme='gray'
+          variant='link'
+          onClick={() => setLanguage(language === 'ch' ? 'en' : 'ch')}
+        >
+          <Icon as={FaLanguage} boxSize='35px' />
+        </Button>
+        {user ? (
+          <Link to='/profile'>
+            <Avatar
+              size='sm'
+              fontWeight='bold'
+              name={fullName}
+              src={user?.portrait ? portrait : ''}
+            />
+          </Link>
+        ) : (
+          <Link to='/user/signin'>
+            <Avatar bg='teal.500' size='sm' />
+          </Link>
+        )}
+      </HStack>
+      <Show below='md'>
+        <SearchInput />
+      </Show>
+    </Stack>
   )
 }
 
