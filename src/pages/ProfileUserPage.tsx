@@ -1,8 +1,8 @@
-import { Box, Heading, Image, Stack } from '@chakra-ui/react'
-import ProfileUserForms from '../components/profile/ProfileUserForms'
-import ProfileUser from '../components/profile/ProfileUser'
+import ProfileBack from '@/components/profile/ProfileBack'
 import useLanguageStore from '@/languageStore'
-import profileBack from '@/assets/profile-02.jpg'
+import { Heading, Stack } from '@chakra-ui/react'
+import ProfileUser from '../components/profile/ProfileUser'
+import ProfileUserForms from '../components/profile/ProfileUserForms'
 
 const ProfileUserPage = () => {
   const lang = useLanguageStore(s => s.language)
@@ -10,14 +10,7 @@ const ProfileUserPage = () => {
 
   return (
     <Stack p={2}>
-      <Box
-        height='160px'
-        borderRadius={5}
-        overflow='hidden'
-        bg='gray.500'
-      >
-        <Image width='100vw' src={profileBack}/>
-      </Box>
+      <ProfileBack/>
       <ProfileUser/>
       <Heading py={4}>{header}</Heading>
       <ProfileUserForms />
