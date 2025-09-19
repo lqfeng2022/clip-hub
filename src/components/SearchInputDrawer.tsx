@@ -18,7 +18,7 @@ const SearchInputDrawer = () => {
         >
           <Icon as={BsSearch} boxSize={5}/>
         </Circle>
-        <Drawer onClose={onClose} isOpen={isOpen} size='xs'>
+        <Drawer onClose={onClose} isOpen={isOpen} size='full'>
           <DrawerOverlay />
           <DrawerContent>
             <DrawerCloseButton />

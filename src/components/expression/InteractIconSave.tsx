@@ -30,7 +30,7 @@ const InteractIconSave = ({ exp }: { exp: Expression }) => {
         _hover={{ cursor: 'pointer' }}
       />
       {/* Model A */}
-      <Modal isOpen={isMainOpen} onClose={onMainClose}>
+      <Modal size='xs' isOpen={isMainOpen} onClose={onMainClose}>
         <ModalOverlay />
         <ModalContent>
           {/* Header: title + close button */}
@@ -47,7 +47,6 @@ const InteractIconSave = ({ exp }: { exp: Expression }) => {
           {/* Footer buttons: save + add */}
           <ModalFooter gap={3}>
             <Button 
-              size='sm' 
               colorScheme='gray' 
               mr={3} 
               onClick={() => {
@@ -57,7 +56,7 @@ const InteractIconSave = ({ exp }: { exp: Expression }) => {
               Save
             </Button>
             {/* Click to open the Model B */}
-            <Button variant='outline' size='sm' onClick={onAddOpen}>
+            <Button variant='outline' onClick={onAddOpen}>
               Add new list
             </Button>
           </ModalFooter>
