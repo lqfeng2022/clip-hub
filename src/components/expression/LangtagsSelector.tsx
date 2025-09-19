@@ -21,7 +21,7 @@ const LangtsgsSelector = () => {
       <Button size='sm' onClick={onOpen}>
         {lang === 'en' ? header : header_ch}
       </Button>
-      <Modal size='sm' isOpen={isOpen} onClose={onClose}>
+      <Modal size='xs' isOpen={isOpen} onClose={onClose}>
         <ModalOverlay 
           bg='blackAlpha.300'
           backdropFilter='blur(10px) hue-rotate(90deg)'

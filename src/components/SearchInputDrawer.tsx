@@ -1,4 +1,4 @@
-import { Circle, Drawer, DrawerBody, DrawerCloseButton, DrawerContent, DrawerHeader, DrawerOverlay, Icon, Show, useDisclosure } from '@chakra-ui/react'
+import { Box, Circle, Icon, Modal, ModalBody, ModalCloseButton, ModalContent, ModalHeader, ModalOverlay, Show, useDisclosure } from '@chakra-ui/react'
 import { BsSearch } from 'react-icons/bs'
 import SearchInput from './SearchInput'
 
@@ -7,10 +7,10 @@ const SearchInputDrawer = () => {
 
   return (
     <>
-      <Show above='sm'>
+      <Show above='md'>
         <SearchInput />
       </Show>
-      <Show below='sm'>
+      <Show below='md'>
         <Circle 
           size={10}
           _hover={{ bg: 'gray.500' }}
@@ -18,16 +18,20 @@ const SearchInputDrawer = () => {
         >
           <Icon as={BsSearch} boxSize={5}/>
         </Circle>
-        <Drawer onClose={onClose} isOpen={isOpen} size='full'>
-          <DrawerOverlay />
-          <DrawerContent>
-            <DrawerCloseButton />
-            <DrawerHeader>Search what you like..</DrawerHeader>
-            <DrawerBody>
+        <Modal onClose={onClose} isOpen={isOpen}>
+          <ModalOverlay
+            bg='blackAlpha.300'
+            backdropFilter='blur(10px) hue-rotate(90deg)'
+          />
+          <ModalContent>
+            <ModalCloseButton />
+            <ModalHeader>Search what you like..</ModalHeader>
+            <ModalBody>
               <SearchInput onClose={onClose}/>
-            </DrawerBody>
-          </DrawerContent>
-        </Drawer>
+              <Box h='100vw'/>
+            </ModalBody>
+          </ModalContent>
+        </Modal>
       </Show>
     </>
   )
