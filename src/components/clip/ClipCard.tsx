@@ -13,9 +13,11 @@ const ClipCard = ({ clip }: { clip: Clip }) => {
 
   return (
     <Card bg='gray.800' borderRadius={12} overflow='hidden' variant='unstyled'>
-      <AspectRatio ratio={16/9}>
-        <Image src={`${pocketURL}${clip.cover}`} className='img-hover' />
-      </AspectRatio>
+      <Box borderRadius='lg' overflow='hidden'>
+        <AspectRatio ratio={16/9}>
+          <Image src={`${pocketURL}${clip.cover}`} className='img-hover' />
+        </AspectRatio>
+      </Box>
       <CardBody p='12px 4px'>
         <HStack align='flex-start' wrap='wrap' spacing={4}>
           <Avatar

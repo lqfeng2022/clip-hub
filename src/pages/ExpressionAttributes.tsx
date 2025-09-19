@@ -72,7 +72,9 @@ const ExpressionAttributes = ({ expression } : { expression: Expression }) => {
               {expression.video.title}
             </Text>
             <Image
-              w='100%' aspectRatio={ 30 / 9 }
+              w='100%' 
+              aspectRatio={ 30/9 }
+              borderRadius='lg'
               objectFit='cover'
               src={`${pocketURL}${expression.video.cover}`}
               className='img-hover'

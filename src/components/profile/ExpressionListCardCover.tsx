@@ -16,6 +16,7 @@ const ExpressionListCardCover = ({ list }: { list: List }) => {
         <Link to={contentLink}>
           <Box position='relative'>
             <Image
+              borderRadius='lg'
               aspectRatio={16/9}
               src={image ? `${pocketURL}${image}` : nocontent}
               objectFit='cover'

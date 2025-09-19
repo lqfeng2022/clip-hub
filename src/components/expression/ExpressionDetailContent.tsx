@@ -53,10 +53,11 @@ const ExpressionDetailContent = ({ exp, clipexp }: Props) => {
         <GridItem order={{ base: 1, lg: 2 }}>
           <Center>
             <Box>
-              <Image 
-                w='100%' 
-                maxH='600px' 
-                src={`${pocketURL}${exp.image}` || noImage} 
+              <Image
+                w='100%'
+                maxH='600px'
+                borderRadius='md'
+                src={`${pocketURL}${exp.image}` || noImage}
               />
               <InteractIcons expression={exp}/>
             </Box>

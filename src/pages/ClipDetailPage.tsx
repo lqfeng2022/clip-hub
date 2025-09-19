@@ -79,7 +79,7 @@ const ClipDetailPage = () => {
         </Box>
       </GridItem>
       <GridItem order={{ base: 1, lg: 2 }}>
-        <Heading size='md' pb={1} pt={{base: 2.5, lg: 0}} color='gray'>
+        <Heading size='md' pb={1} pt={{base: 3, lg: 0}} color='gray'>
           {heading}
         </Heading>
         <ClipExpression data={clipexp?.results ?? []}/>

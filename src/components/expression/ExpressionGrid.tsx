@@ -22,7 +22,7 @@ const ExpressionGrid = () => {
       <SimpleGrid
         columns={{ sm: 2, lg: 3, xl: 4 }}
         p='10px'
-        spacing={3}
+        spacing={4}
       >
         {data?.pages.map((page, index) => (
           <React.Fragment key={index}>

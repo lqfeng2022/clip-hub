@@ -19,8 +19,9 @@ const ExpressionCardDeleteMark = ({ expression, handleClick }: Props) => {
       <Box position='relative'>
         <Image
           w='100%'
+          borderRadius='lg'
           objectFit='cover'
-          aspectRatio={ 16 / 9}
+          aspectRatio={ 16/9}
           src={`${pocketURL}${expression.image}`}
         />
         <Icon 

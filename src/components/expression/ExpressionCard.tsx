@@ -11,9 +11,9 @@ interface Props {
 }
 const ExpressionCard = ({ expression, onUnmark }: Props) => {
   return (
-    <Card gap={1} my={1} overflow='hidden' variant=''>
-      <Box position='relative'>
-        <AspectRatio ratio={16 / 9}>
+    <Card gap={1} my={1} variant=''>
+      <Box borderRadius='lg' overflow='hidden'>
+        <AspectRatio ratio={16/9}>
           <Image
             w='100%'
             objectFit='cover'
