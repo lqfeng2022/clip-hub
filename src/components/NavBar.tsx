@@ -36,8 +36,8 @@ const NavBar = () => {
         </Show>
         <Show below='md'>
           <Circle 
-            size={10}
-            _hover={{ bg: 'gray.600' }}
+            size={8}
+            _hover={{ bg: 'gray.700' }}
             onClick={() => setDisplay(!display)}
           >
             <Icon as={BsSearch} boxSize={5}/>

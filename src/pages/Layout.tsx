@@ -1,6 +1,7 @@
 import { Box } from '@chakra-ui/react'
 import { Outlet, useLocation } from 'react-router-dom'
 import NavBar from '../components/NavBar'
+import ScrollToTop from '@/components/ScrollToTop'
 
 const Layout = () => {
   const location = useLocation()
@@ -12,6 +13,7 @@ const Layout = () => {
     <>
       {!shouldHideNav && <NavBar/>}
       <Box>
+        <ScrollToTop/>
         <Outlet/>
       </Box>
     </>

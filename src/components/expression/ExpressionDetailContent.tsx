@@ -37,7 +37,7 @@ const ExpressionDetailContent = ({ exp, clipexp }: Props) => {
         {/* 2. Clip details and recommendation */}
         <GridItem order={{ base: 2, lg: 1 }}>
           {/* 2.1 Clip details */}
-          <Heading pb={5} fontSize='5xl' lineHeight={1}>
+          <Heading pb={5} fontSize='4xl' lineHeight={1}>
             {exp.title}
           </Heading>
           <ExpressionAttributes expression={exp}/>

@@ -22,7 +22,7 @@ const ExpressionAttributes = ({ expression } : { expression: Expression }) => {
       {/* clip quotes */}
       <HStack align='flex-start' wrap='wrap'>
         <Icon as={ImQuotesLeft}/>
-        <Heading fontSize='2xl' flex='1'>
+        <Heading fontSize='xl' flex='1'>
           {expression.subtitle.content}
         </Heading>
       </HStack>

@@ -13,7 +13,7 @@ const ExpressionListAdd = ({ isOpen, onClose, onCreate }: Props) => {
   }
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose}>
+    <Modal size='xs' isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />
       <ModalContent>
         <ModalHeader>Create a new list</ModalHeader>
