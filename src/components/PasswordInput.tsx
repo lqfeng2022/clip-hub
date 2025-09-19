@@ -1,16 +1,14 @@
+import { passwordInput } from '@/data/passwordInput'
 import useLanguageStore from '@/languageStore'
 import { Button, Input, InputGroup, InputRightElement } from '@chakra-ui/react'
-import { useState } from 'react'
+import { ComponentProps, useState } from 'react'
 
 interface Props {
-  value: string
-  onChange: (value: string) => void
+  PasswordInput: ComponentProps<typeof Input>
 }
-const PasswordInput = ({ value, onChange }: Props) => {
+const PasswordInput = ({ PasswordInput: props }: Props) => {
   const lang = useLanguageStore(s => s.language)
-  const placeholder = lang === 'en' ? 'Enter password' : '输入密码'
-  const hide_lang = lang === 'en' ? 'Hide' : '隐藏'
-  const show_lang = lang === 'en' ? 'Show' : '显示'
+  const inputText = lang === 'en' ? passwordInput.en : passwordInput.zh
 
   const [show, setShow] = useState(false)
   const handleClick = () => setShow(!show)
@@ -20,13 +18,12 @@ const PasswordInput = ({ value, onChange }: Props) => {
       <Input
         pr='4.5rem'
         type={show ? 'text' : 'password'}
-        placeholder={placeholder}
-        value={value}
-        onChange={(ps) => onChange(ps.target.value)}
+        placeholder={inputText.placeholder}
+        {...props}
       />
       <InputRightElement width='4.5rem'>
         <Button h='1.75rem' size='sm' onClick={handleClick}>
-          {show ? hide_lang : show_lang}
+          {show ? inputText.hide_lang : inputText.show_lang}
         </Button>
       </InputRightElement>
     </InputGroup>

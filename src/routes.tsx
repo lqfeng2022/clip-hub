@@ -8,12 +8,12 @@ import ProfileLayout from './pages/ProfileLayout'
 import ProfilePage from './pages/ProfilePage'
 import ProfileUserPage from './pages/ProfileUserPage'
 import SigninPage from './pages/SigninPage'
-import SignupPage from './pages/SignupPage'
 import ProfileHistoryPage from './pages/ProfileHistoryPage'
 import ExpressionDetailPage from './pages/ExpressionDetailPage'
 import ProfileEplikePage from './pages/ProfileEplikePage'
 import ProfileListDetailPage from './pages/ProfileListDetailPage'
 import ProfileListsPage from './pages/ProfileListsPage'
+import SignupPage from './pages/SignupPage'
 
 const router = createBrowserRouter([
   {

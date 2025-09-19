@@ -1,63 +1,64 @@
-import { Box, Button, FormControl, Heading, HStack, Icon, Input, InputGroup, InputLeftElement, Text, useToast } from '@chakra-ui/react'
-import { useEffect, useState } from 'react'
-import { CiPhone } from 'react-icons/ci'
-import { MdAlternateEmail } from 'react-icons/md'
 import { useAuth } from '@/AuthContext'
+import { profileData } from '@/data/profileData'
 import useProfileUpdate from '@/hooks/useProfileUpdate'
 import useLanguageStore from '@/languageStore'
+import { ProfileForm, profileSchema } from '@/validation/profileSchema'
+import { Box, Button, FormControl, Heading, HStack, Icon, Input, InputGroup, InputLeftElement, Text, useToast } from '@chakra-ui/react'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { useEffect } from 'react'
+import { useForm } from 'react-hook-form'
+import { CiPhone } from 'react-icons/ci'
+import { MdAlternateEmail } from 'react-icons/md'
 
 const ProfileUserForms = () => {
   const lang = useLanguageStore(s => s.language)
-  const content = lang === 'en' ? {
-    username: { name: "username", note: "Currently, username is your only identity of this web.."},
-    name: { name: "Name", note: "Choose a name that represents you and your content." },
-    contact: { name: "Contact info", note: "Let us know how to contact you with better services." },
-    birthday: { name: "Birthday", note: "Choose a date as your birthday, maybe, you're gonna get some surprise." },
-  }  : {
-    username: { name: "用户名", note: "目前呢，用户名是你在本站的唯一凭证.."},
-    name: { name: "名字", note: "选择一个名字来代表你自己.." },
-    contact: { name: "联络信息", note: "为了提供更好的服务，让我们知道如何联络你.." },
-    birthday: { name: "生日", note: "选择一个日期作为你的生日，或许会有惊喜.." },
-  }
+  const content = lang === 'en' ? profileData.en  : profileData.zh
 
   // Sync user data once loaded
   const { user, fetchUser } = useAuth()
   const { mutate } = useProfileUpdate()
   const toast = useToast()
 
-  const [formData, setFormData] = useState({
-    first_name: '', last_name: '', email: '', phone: '', birth_date: ''
+  const { 
+    register, handleSubmit, reset, formState: { errors } 
+  } = useForm<ProfileForm>({
+    resolver: zodResolver(profileSchema),
+    defaultValues: {
+      first_name: '',
+      last_name: '',
+      email: '',
+      phone: '',
+      birth_date: '',
+    }
   })
 
   useEffect(() => {
-    if (!user) return
-    const { first_name, last_name, email, phone, birth_date } = user
-    setFormData({
-      first_name: first_name || '',
-      last_name: last_name || '',
-      email: email || '',
-      phone: phone || '',
-      birth_date: birth_date || '',
-    })
-  }, [user])
+    if (user) {
+      reset({
+        first_name: user.first_name || '',
+        last_name: user.last_name || '',
+        email: user.email || '',
+        phone: user.phone || '',
+        birth_date: user.birth_date || '',
+      })
+    }
+  }, [user, reset])
 
-  const handleChange = (field: string, value: any) => {
-    setFormData((prev) => ({ ...prev, [field]: value }))
-  }
-
-  const handleSubmit = () => {
-    mutate(formData, {
+  const onSubmit = (data: ProfileForm) => {
+    mutate(data, {
       onSuccess: () => {
         toast({ title: 'Success!', status: 'success', duration: 2000 }),
         fetchUser()
       },
-      onError: () => toast({ title: 'Upload failed', status: 'error', duration: 2000 })
+      onError: () => toast({ 
+        title: 'Upload failed', status: 'error', duration: 2000 
+      })
     })
   }
 
   if (!user) return null
   return (
-    <>
+    <form onSubmit={handleSubmit(onSubmit)}>
       {/* 0)username */}
       <Box mb={7}>
         <Heading fontSize='lg'>{content.username.name}</Heading>
@@ -74,16 +75,20 @@ const ProfileUserForms = () => {
           <FormControl>
             <Input
               placeholder='First name'
-              value={formData.first_name}
-              onChange={(e) => handleChange('first_name', e.target.value)}
+              {...register('first_name')}
             />
+            {errors.first_name && (
+              <Text color='red.500' fontSize='sm'>{errors.first_name.message}</Text>
+            )}
           </FormControl>
           <FormControl>
             <Input
               placeholder='Last name'
-              value={formData.last_name}
-              onChange={(e) => handleChange('last_name', e.target.value)}
+              {...register('last_name')}
             />
+            {errors.last_name && (
+              <Text color='red.500' fontSize='sm'>{errors.last_name.message}</Text>
+            )}
           </FormControl>
         </HStack>
       </Box>
@@ -99,10 +104,12 @@ const ProfileUserForms = () => {
             <Input
               type='email'
               placeholder='Email address'
-              value={formData.email}
-              onChange={(e) => handleChange('email', e.target.value)}
+              {...register('email')}
             />
           </InputGroup>
+          {errors.email && (
+            <Text color='red.500' fontSize='sm'>{errors.email.message}</Text>
+          )}
         </FormControl>
         <FormControl maxW='600px'>
           <InputGroup>
@@ -112,10 +119,12 @@ const ProfileUserForms = () => {
             <Input 
               type='tel' 
               placeholder='Phone number' 
-              value={formData.phone}
-              onChange={(e) => handleChange('phone', e.target.value)}
+              {...register('phone')}
             />
           </InputGroup>
+          {errors.phone && (
+            <Text color='red.500' fontSize='sm'>{errors.phone.message}</Text>
+          )}
         </FormControl>
       </Box>
       {/* 3)Birthday form */}
@@ -126,9 +135,11 @@ const ProfileUserForms = () => {
           <Input
             type='date'
             placeholder='Your birthday'
-            value={formData.birth_date ?? ''}
-            onChange={(e) => handleChange('birth_date', e.target.value)}
+            {...register('birth_date')}
           />
+          {errors.birth_date && (
+            <Text color='red.500' fontSize='sm'>{errors.birth_date.message}</Text>
+          )}
         </FormControl>
       </Box>
       <Button 
@@ -136,11 +147,11 @@ const ProfileUserForms = () => {
         maxW='100px'
         size='md' 
         fontSize='lg' 
-        onClick={handleSubmit}
+        type='submit'
       >
         {lang === 'en' ? 'Publish' : '保存信息'}
       </Button>
-    </>
+    </form>
   )
 }
 

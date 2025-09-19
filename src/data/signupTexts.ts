@@ -1,0 +1,41 @@
+export const signupTexts = {
+  en: {
+    header: "Sign up", 
+    note: "to continue to CLIPs",
+    username: "User name",
+    password: "Set your password",
+    password_note: [ 
+      { id: 1, content: "Your password can’t be too similar to your other personal information." }, 
+      { id: 2, content: "Your password must contain at least 8 characters." },
+      { id: 3, content: "Your password can’t be a commonly used password." },
+      { id: 4, content: "Your password can’t be entirely numeric." },
+    ],
+    password_2: "Confirm your password",
+    password2_note: "You really got your pw, bro",
+    password2_error: "Hey, you gotta hit it again, bro",
+    email: "Email address",
+    email_place: "Enter your email",
+    first_name: "First name",
+    last_name: "Last name",
+    signup_lang: "Sign Up",
+  },
+  zh: {
+    header: "注册", 
+    note: "为了更好的的用户体验",
+    username: "用户名",
+    password: "设置你的密码",
+    password_note: [ 
+      { id: 1, content: "请勿使用包含个人信息字符的密码。" }, 
+      { id: 2, content: "你的密码必须包含至少8个字符，但不可以是纯数字。" },
+      { id: 3, content: "请不要使用容易被猜测到的密码。" },
+    ],
+    password_2: "请确认你的密码",
+    password2_note: "哟，你还真记得你设置的密码",
+    password2_error: "嘿，你得再输入一次～",
+    email: "Email 地址",
+    email_place: "输入你的 email",
+    first_name: "名字",
+    last_name: "姓氏",
+    signup_lang: "提交注册",
+  }
+}
