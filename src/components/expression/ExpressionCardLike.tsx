@@ -17,15 +17,15 @@ const ExpressionCardLike = ({ expression, onUnmark }: Props) => {
     <Icon
       as={marked ? IoHeart : IoHeartOutline} // or IoBookmark
       boxSize={7}
-      color={marked ? 'yellow' : ''}
+      color={marked ? 'orange' : ''}
       position='absolute'
       top={1}
       right={1}
-      bg='rgba(0,0,0,0.4)'
+      bg='rgba(0,0,0,0.5)'
       borderRadius='full'
       p={1}
       cursor='pointer'
-      _hover={{ color: 'yellow.300' }}
+      _hover={{ color: 'pink.300' }}
       onClick={toggleMarked}
     />
   )

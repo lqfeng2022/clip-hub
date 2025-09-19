@@ -12,7 +12,7 @@ interface Props {
 const ExpressionCardNatural = ({ expression, onUnmark }: Props) => {
   return (
     <Card gap={1} my={1} overflow='hidden' variant=''>
-      <Box borderRadius='lg' overflow='hidden'>
+      <Box borderRadius='md' overflow='hidden'>
         <Image
           w='100%'
           objectFit='cover'

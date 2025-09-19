@@ -30,7 +30,7 @@ const ProfileLists = () => {
       </HStack>
       <SimpleGrid
         columns={{ base: 2, lg: 3, xl: 4 }}
-        p='10px'
+        py='10px'
         spacing={3}
       >
         {lists?.map((list) => (

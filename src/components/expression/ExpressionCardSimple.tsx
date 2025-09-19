@@ -9,7 +9,7 @@ const ExpressionCardSimple = ({ expression }: { expression: Expression }) => {
     <Card gap={1} overflow='hidden' variant=''>
       <Image
         w='100%'
-        borderRadius='lg'
+        borderRadius='md'
         objectFit='cover'
         aspectRatio={ 16/9}
         src={`${pocketURL}${expression.image}` || noImage}

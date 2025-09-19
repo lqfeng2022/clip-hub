@@ -9,12 +9,6 @@ import ProfileViewHistory from '../components/profile/ProfileViewHistory'
 const Profile = () => { 
   const { user } = useAuth()
 
-  if (!user) return (
-      <Heading fontSize='md'>
-        You cannot access this url, please signin
-      </Heading>
-    )
-
   return (
     <Stack p={2}>
       <ProfileBack/>
@@ -22,6 +16,9 @@ const Profile = () => {
       <ProfileViewHistory/>
       <ProfileEplike/>
       <ProfileLists/>
+      {!user && <Heading fontSize='md'>
+        You cannot access this url, please signin
+      </Heading>}
     </Stack>
   )
 }

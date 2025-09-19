@@ -1,13 +1,12 @@
-import useLanguageStore from '@/languageStore'
-import { Avatar, Button, Circle, HStack, Icon, Show, Stack } from '@chakra-ui/react'
-import { FaLanguage } from 'react-icons/fa'
+import { Avatar, Circle, HStack, Icon, Show, Stack } from '@chakra-ui/react'
+import { useState } from 'react'
+import { BsSearch } from 'react-icons/bs'
 import { Link } from 'react-router-dom'
 import { useAuth } from '../AuthContext'
 import ClipLogo from './ClipLogo'
 import EpLogo from './EpLogo'
+import LanguageButton from './LanguageButton'
 import SearchInput from './SearchInput'
-import { useState } from 'react'
-import { BsSearch } from 'react-icons/bs'
 
 const NavBar = () => {
   const { user } = useAuth()
@@ -16,9 +15,6 @@ const NavBar = () => {
     ? `${user?.first_name ?? ''} ${user?.last_name ?? ''}`.trim()
     : user?.username
   const portrait = `https://clipwords.me/${user?.portrait}`
-  
-  const language = useLanguageStore((s) => s.language)
-  const setLanguage = useLanguageStore((s) => s.setLanguage)
 
   const [display, setDisplay] = useState(false)
 
@@ -43,13 +39,7 @@ const NavBar = () => {
             <Icon as={BsSearch} boxSize={5}/>
           </Circle>
         </Show>
-        <Button
-          colorScheme='gray'
-          variant='link'
-          onClick={() => setLanguage(language === 'ch' ? 'en' : 'ch')}
-        >
-          <Icon as={FaLanguage} boxSize='35px' />
-        </Button>
+        <LanguageButton/>
         {user ? (
           <Link to='/profile'>
             <Avatar

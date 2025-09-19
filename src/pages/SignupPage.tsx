@@ -1,4 +1,4 @@
-import { Box, Button, FormControl, FormHelperText, FormLabel, Heading, HStack, Input, SimpleGrid, Stack, Text } from '@chakra-ui/react'
+import { Box, Button, FormControl, FormHelperText, FormLabel, Heading, HStack, Input, ListItem, OrderedList, SimpleGrid, Stack, Text, UnorderedList } from '@chakra-ui/react'
 import { ChangeEvent, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import useSignup from '../hooks/useSignup'
@@ -38,7 +38,12 @@ const SignupPage = () => {
     note: "to continue to CLIPs",
     username: "User name",
     password: "Set your password",
-    password_note: "Data validation",
+    password_note: [ 
+      { id: 1, content: "Your password can’t be too similar to your other personal information." }, 
+      { id: 2, content: "Your password must contain at least 8 characters." },
+      { id: 3, content: "Your password can’t be a commonly used password." },
+      { id: 4, content: "Your password can’t be entirely numeric." },
+    ],
     password_2: "Confirm your password",
     password2_note: "You really got your pw, bro",
     password2_error: "Hey, you gotta hit it again, bro",
@@ -52,7 +57,11 @@ const SignupPage = () => {
     note: "为了更好的的用户体验",
     username: "用户名",
     password: "设置你的密码",
-    password_note: "请使用 - 数字 - 字母 - 特殊字符 - 设置你的密码",
+    password_note: [ 
+      { id: 1, content: "请勿使用包含个人信息字符的密码。" }, 
+      { id: 2, content: "你的密码必须包含至少8个字符，但不可以是纯数字。" },
+      { id: 3, content: "请不要使用容易被猜测到的密码。" },
+    ],
     password_2: "请确认你的密码",
     password2_note: "哟，你还真记得你设置的密码",
     password2_error: "嘿，你得再输入一次～",
@@ -90,7 +99,15 @@ const SignupPage = () => {
               value={signup.password} 
               onChange={handleChange('password')}
             />
-            <FormHelperText>{context.password_note}</FormHelperText>
+            <FormHelperText>
+              <OrderedList spacing={1.5}>
+                {context.password_note.map((note) => 
+                  <ListItem key={note.id}>
+                    {note.content}
+                  </ListItem>
+                )}
+              </OrderedList>
+            </FormHelperText>
           </FormControl>
           {/* CONVORM password */}
           <FormControl isRequired>

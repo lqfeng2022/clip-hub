@@ -39,7 +39,7 @@ const ClipDetailPage = () => {
         <ClipMovie video={clip}/>
         <Heading size='md' py={3}>{header}</Heading>
         <Box>
-          <HStack mb={2}>
+          <HStack mb={1}>
             <Heading size='md' color='gray.500' mr={2}>
               {about}
             </Heading>
@@ -65,11 +65,10 @@ const ClipDetailPage = () => {
             </Collapse>
             {show && (
               <Button 
-                size='xl' 
+                size='sm' 
                 p='3px 5px' 
+                my={1} 
                 variant='ghost' 
-                mt={1} 
-                mb={3} 
                 onClick={handleToggle}
               >
                 show lesss

@@ -30,6 +30,8 @@ const ExpressionCardDeleteMark = ({ expression, handleClick }: Props) => {
           position='absolute'
           top={1}
           right={1}
+          bg='rgba(0,0,0,0.5)'
+          borderRadius='full'
           cursor='pointer'
           _hover={{ color: 'yellow.200' }}
           onClick={handleClick}
