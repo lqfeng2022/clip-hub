@@ -48,6 +48,7 @@ const SearchInput = ({ onClose }: { onClose?: () => void }) => {
           <Input
             ref={inputRef}
             borderRadius={20}
+            fontSize='16px' // stops Safari from auto-zooming
             placeholder={lang === 'en' ? placeholder : placeholder_ch}
             variant='filled'
             onFocus={() => setIsFocused(true)}
