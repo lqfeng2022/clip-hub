@@ -7,9 +7,12 @@ import React from 'react'
 import InfiniteScroll from 'react-infinite-scroll-component'
 import ExpressionListCard from '../components/profile/ExpressionListCard'
 import BeatLoader from '@/components/BeatLoader'
+import { profilePages } from '@/data/profilePages'
 
 const ProfileListsPage = () => {
   const lang = useLanguageStore(s => s.language)
+  const header = lang === 'en' 
+    ? profilePages.en.your_lists : profilePages.zh.your_lists
 
   const { data, refetch, error, fetchNextPage,  hasNextPage } = useLists()
   const fetchExpressionsCount = data?.pages.reduce(
@@ -25,11 +28,11 @@ const ProfileListsPage = () => {
     deleteList({listId}, { onSuccess: () => refetch() })
   }
 
-  if (error) return <Text>{error.message}</Text>
   return (
     <>
+      {error && <Text>{error.message}</Text>}
       <Heading m={4} fontSize='3xl'>
-        {lang === 'en' ? 'Your lists' : '你的表达式列表'}
+        {header}
       </Heading>
       <InfiniteScroll
         dataLength={fetchExpressionsCount}

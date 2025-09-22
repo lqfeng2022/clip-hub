@@ -3,10 +3,12 @@ import useLanguageStore from '@/languageStore'
 import { Heading, Stack } from '@chakra-ui/react'
 import ProfileUser from '../components/profile/ProfileUser'
 import ProfileUserForms from '../components/profile/ProfileUserForms'
+import { profilePages } from '@/data/profilePages'
 
 const ProfileUserPage = () => {
   const lang = useLanguageStore(s => s.language)
-  const header = lang === 'en' ? 'Profile Settings' : '个人信息设置'
+  const header = lang === 'en' 
+    ? profilePages.en.profile : profilePages.zh.profile
 
   return (
     <Stack p={2}>

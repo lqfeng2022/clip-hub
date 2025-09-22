@@ -8,18 +8,21 @@ import ExpressionSortSelector from '../components/expression/ExpressionSortSelec
 import LangtagsSelector from '../components/expression/LangtagsSelector'
 import useExpressionQueryStore from '../expressionStore'
 import { useLangtag } from '../hooks/store/useLangtag'
+import { expressionPage } from '@/data/expressionPage'
 
 function ExpressionPage() {
   const lang = useLanguageStore(s => s.language)
+  const headers = lang === 'en' ? expressionPage.en : expressionPage.zh
 
   const langtagId = useExpressionQueryStore((s) => s.expressionQuery.tagId)
   const langtag = useLangtag(langtagId)
+  const langtag_title = lang === 'en' ? langtag?.title : langtag?.title_ch
 
   const formal = useExpressionQueryStore((s) => s.expressionQuery.formal)
   const formal_target = formality.find(tag => tag.name === formal)
+  const formality_title = lang === 'en' ? formal_target?.title : formal_target?.title_ch
 
-  const header = `${formal_target?.title || ''} ${langtag?.title || ''} Expressions`
-  const header_ch = `${formal_target?.title_ch || ''} ${langtag?.title_ch || ''} 表达式`
+  const header = `${formality_title || ''} ${langtag_title || ''} ${headers.expression_header}`
   
   return (
     <Grid
@@ -38,7 +41,7 @@ function ExpressionPage() {
           <Box mt={8}>
             <Divider my={2} borderColor='white'/>
             <Heading fontSize='3xl' py={3}>
-              {lang === 'en' ? 'Langtags' : '语言标签'}
+              {headers.langtags_header}
             </Heading>
             <FormalityTags />
             <Langtags/>
@@ -50,7 +53,7 @@ function ExpressionPage() {
       <GridItem area='main'>
         <Box px={2}>
           <Heading my={4} fontSize='3xl'>
-            {lang === 'en' ? header : header_ch}
+            {header}
           </Heading>
           <Show below='lg'>
             <FormalityTags/>

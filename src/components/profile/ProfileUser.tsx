@@ -5,9 +5,11 @@ import { Link, useLocation, useNavigate } from 'react-router-dom'
 import useSignout from '@/hooks/useSignout'
 import { useAuth } from '@/AuthContext'
 import useLanguageStore from '@/languageStore'
+import { profilePages } from '@/data/profilePages'
 
 const ProfileUser = () => {
   const lang = useLanguageStore(s => s.language)
+  const buttons = lang === 'en' ? profilePages.en : profilePages.zh
 
   const { user, setUser } = useAuth()
   const { mutate } = useSignout()
@@ -56,7 +58,7 @@ const ProfileUser = () => {
             <Link to='/profile/me'>
               {!isProfileMePage && 
                 <Button size='sm' variant='ghost'>
-                  {lang === 'en' ? 'Edit profile' : '编辑个人资料'}
+                  {buttons.edit}
                 </Button>
               }
             </Link>
@@ -70,7 +72,7 @@ const ProfileUser = () => {
               variant='outline' 
               onClick={handleLogout}
             >
-              {lang === 'en' ? 'Log out' : '退出登陆'}
+              {buttons.logout}
             </Button>
           </HStack>
         </Box>

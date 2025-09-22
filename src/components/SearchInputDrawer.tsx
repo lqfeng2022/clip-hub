@@ -22,7 +22,7 @@ const SearchInputDrawer = () => {
       <Drawer onClose={onClose} isOpen={isOpen} size='xs'>
         <DrawerOverlay />
         <DrawerContent>
-          <DrawerCloseButton />
+          <DrawerCloseButton _focus={{ boxShadow: 'none' }}/>
           <DrawerHeader>{`Search what you like.`}</DrawerHeader>
           <DrawerBody>
             <SearchInput onClose={onClose}/>

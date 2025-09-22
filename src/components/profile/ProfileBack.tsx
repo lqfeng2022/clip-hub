@@ -10,8 +10,7 @@ const ProfileBack = () => {
       <Text p='10px 20px'>
         Hey there! I’m <strong>Simon Lee</strong>, the creator of <i>ClipWords</i>. 
         I’m creating <strong>a fun AI agent</strong> on top of our English Expression database. 
-        Think of it as <strong>a friendly English-Speaking companion</strong> — witty, supportive, and always up 
-        for a conversation...
+        Think of it as <strong>a friendly English-Speaking companion</strong>...
       </Text>
     </Box>
   )

@@ -4,6 +4,7 @@ import useGenres from '@/hooks/store/useGenres'
 import useClipQueryStore from '@/clipStore'
 import useGenre from '@/hooks/store/useGenre'
 import useLanguageStore from '@/languageStore'
+import { clipPage } from '@/data/clipPage'
 
 const GenreSelector = () => {
   const selectedGenreId = useClipQueryStore((s) => s.clipQuery.genreId)
@@ -11,15 +12,16 @@ const GenreSelector = () => {
   const selectedGenre = useGenre(selectedGenreId)
 
   const lang = useLanguageStore(s => s.language)
-  const title = selectedGenre?.title || 'Genre'
-  const title_ch = selectedGenre?.title_ch || '类别'
+  const title = lang === 'en' 
+    ? selectedGenre?.title || clipPage.en.genre
+    : selectedGenre?.title_ch || clipPage.zh.genre
   
   const { data, error } = useGenres()
   if (error) return null
   return (
     <Menu>
       <MenuButton size='sm' as={Button} rightIcon={<BsChevronDown />}>
-        {lang === 'en' ? title : title_ch}
+        {title}
       </MenuButton>
       <MenuList>
         <MenuItem onClick={() => setSelectedGenreId(undefined)}>

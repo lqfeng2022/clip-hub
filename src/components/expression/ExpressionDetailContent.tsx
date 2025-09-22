@@ -9,6 +9,7 @@ import ClipExpression from '../ClipExpression'
 import { pocketURL } from '@/services/pocket'
 import useExpressionViews from '@/hooks/interact/useExpressionViews'
 import useLanguageStore from '@/languageStore'
+import { expressionPage } from '@/data/expressionPage'
 
 interface Props {
   exp: Expression,
@@ -19,19 +20,18 @@ const ExpressionDetailContent = ({ exp, clipexp }: Props) => {
   const { mutate } = useExpressionInteract(exp.id, 'views')
 
   const lang = useLanguageStore(s => s.language)
-  const others = lang === 'en' ? 'Other Expressions' : '其他的表达式'
+  const others = lang === 'en' 
+    ? expressionPage.en.others : expressionPage.zh.others
   
   useEffect(() => { 
-    mutate({ visible: true }, {
-      onSuccess: () => refetch()
-    }) 
+    mutate({ visible: true }, { onSuccess: () => refetch()}) 
   }, [mutate])
 
   return (
     <SimpleGrid
       p='15px 10px'
       columns={{ base: 1, lg: 2 }}
-      spacing={5}
+      spacing={4}
       >
         {/* 2. Clip details and recommendation */}
         <GridItem order={{ base: 2, lg: 1 }}>
@@ -41,7 +41,7 @@ const ExpressionDetailContent = ({ exp, clipexp }: Props) => {
           </Heading>
           <ExpressionAttributes expression={exp}/>
           {/* 2.2 Recommend: using clip expressions temporarily */}
-          <Box pt={4}>
+          <Box pt={5}>
             <Heading size='md' pb={1} color='gray'>
               {others}
             </Heading>

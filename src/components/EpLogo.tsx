@@ -1,9 +1,14 @@
+import { expressionPage } from '@/data/expressionPage'
 import useSearchContext from '@/hooks/interact/useSearchContex'
+import useLanguageStore from '@/languageStore'
 import { Badge, Icon } from '@chakra-ui/react'
 import { TbMessageLanguage } from 'react-icons/tb'
 
 const EpLogo = () => {
   const { isExpression } = useSearchContext()
+  const lang = useLanguageStore(s => s.language)
+  const content = lang === 'en' 
+    ? expressionPage.en.navbar : expressionPage.zh.navbar
 
   return (
     <Badge
@@ -21,7 +26,7 @@ const EpLogo = () => {
         color='green.300'
         verticalAlign='bottom'
       /> 
-      expression
+      {content}
     </Badge>
   )
 }

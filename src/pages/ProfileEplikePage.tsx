@@ -5,20 +5,21 @@ import useExpressionLikes from '../hooks/interact/useExpressionLikes'
 import ExpressionCard from '../components/expression/ExpressionCard'
 import useLanguageStore from '@/languageStore'
 import BeatLoader from '@/components/BeatLoader'
+import { profilePages } from '@/data/profilePages'
 
 const ProfileEplikePage = () => {
-  const lange = useLanguageStore(s => s.language)
+  const lang = useLanguageStore(s => s.language)
+  const header = lang === 'en' 
+    ? profilePages.en.liked_expression : profilePages.zh.liked_expression
 
   const { data, refetch, error, fetchNextPage,  hasNextPage } = useExpressionLikes()
   const fetchExpressionsCount = data?.pages.reduce(
     (total, page) => total + page.results.length, 0) || 0
 
-  if (error) return <Text>{error.message}</Text>
   return (
     <>
-      <Heading m={4} fontSize='3xl'>
-        {lange === 'en' ? 'Liked expressions' : '喜欢的表达式'}
-      </Heading>
+      {error && <Text>{error.message}</Text>}
+      <Heading m={4} fontSize='3xl'>{header}</Heading>
       <InfiniteScroll
         dataLength={fetchExpressionsCount}
         hasMore={!!hasNextPage}

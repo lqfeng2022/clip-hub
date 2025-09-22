@@ -55,7 +55,10 @@ const SearchHistoryBox = ({ kind, onSelect }: Props) => {
               variant='' 
               fontWeight='light' 
               _hover={{cursor: 'pointer'}}
-              onMouseDown={() => handleUpdate(search)}
+              onMouseDown={(e) => {
+                e.preventDefault() // prevents blur/outside-click from firing
+                handleUpdate(search)
+              }}
             >
               delete
             </Badge>

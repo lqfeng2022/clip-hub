@@ -6,9 +6,12 @@ import useViewHistory from '../hooks/interact/useViewHistory'
 import useLanguageStore from '@/languageStore'
 import ExpressionCardDeleteMark from '@/components/profile/ExpressionCardDeleteMark'
 import BeatLoader from '@/components/BeatLoader'
+import { profilePages } from '@/data/profilePages'
 
 const ProfileHistoryPage = () => {
   const lang = useLanguageStore(s => s.language)
+  const header = lang === 'en' 
+    ? profilePages.en.view_history : profilePages.zh.view_history
 
   const { data, refetch, error, fetchNextPage,  hasNextPage } = useExpressionViews()
   const fetchExpressionsCount = data?.pages.reduce(
@@ -22,12 +25,10 @@ const ProfileHistoryPage = () => {
     )
   }
 
-  if (error) return <Text>{error.message}</Text>
   return (
     <>
-      <Heading m={4} fontSize='3xl'>
-        {lang === 'en' ? 'View history' : '你的浏览记录'}
-      </Heading>
+      {error && <Text>{error.message}</Text>}
+      <Heading m={4} fontSize='3xl'>{header}</Heading>
       <InfiniteScroll
         dataLength={fetchExpressionsCount}
         hasMore={!!hasNextPage}

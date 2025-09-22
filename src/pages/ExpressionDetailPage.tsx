@@ -12,15 +12,17 @@ const ExpressionDetailPage = () => {
   const videoId = exp?.video?.id
   const { data: clipexp } = useClipExpressions(videoId)
   
-  if (!slug) return <Text>No slug found</Text>
-  if (isLoading) return <BeatLoader/>
   if (error || !exp) throw error 
   return (
-    <ExpressionDetailContent 
-      exp={exp} 
-      // pass `[]` until it's ready, avoid runtime crashes
-      clipexp={clipexp?.results ?? []} 
-    />
+    <>
+      {!slug && <Text>No slug found</Text>}
+      {isLoading && <BeatLoader/>}
+      <ExpressionDetailContent
+        exp={exp}
+        // pass `[]` until it's ready, avoid runtime crashes
+        clipexp={clipexp?.results ?? []}
+      />
+    </>
   )
 }
 

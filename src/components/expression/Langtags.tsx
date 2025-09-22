@@ -19,7 +19,7 @@ const Langtags = () => {
   if (error) return null
   if (isLoading) return <BeatLoader />
   return (
-    <Box flex='1' overflowY='auto' maxH='70vh' pr={2.5}>
+    <Box flex='1' overflowY='auto' maxH='60vh' pr={3}>
       <Wrap spacing={4} py={2}>
       {data?.results.map((tag) => (
         <WrapItem key={tag.id}>
