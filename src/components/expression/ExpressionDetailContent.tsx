@@ -9,7 +9,6 @@ import ClipExpression from '../ClipExpression'
 import { pocketURL } from '@/services/pocket'
 import useExpressionViews from '@/hooks/interact/useExpressionViews'
 import useLanguageStore from '@/languageStore'
-import BeatLoader from '../BeatLoader'
 
 interface Props {
   exp: Expression,

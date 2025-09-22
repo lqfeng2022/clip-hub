@@ -44,7 +44,7 @@ const SearchBox = ({ kind }: { kind: 'CLIP' | 'WORDS' }) => {
               _hover={{cursor: 'pointer'}}
               onMouseDown={() => handleUpdate(search)}
             >
-              x
+              delete
             </Badge>
           </HStack>
         )}

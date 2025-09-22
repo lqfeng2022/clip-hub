@@ -1,12 +1,10 @@
-import { Avatar, Circle, HStack, Icon, Show, Stack } from '@chakra-ui/react'
-import { useState } from 'react'
-import { BsSearch } from 'react-icons/bs'
+import { Avatar, HStack, Stack } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
 import { useAuth } from '../AuthContext'
 import ClipLogo from './ClipLogo'
 import EpLogo from './EpLogo'
 import LanguageButton from './LanguageButton'
-import SearchInput from './SearchInput'
+import SearchInputDrawer from './SearchInputDrawer'
 
 const NavBar = () => {
   const { user } = useAuth()
@@ -15,8 +13,6 @@ const NavBar = () => {
     ? `${user?.first_name ?? ''} ${user?.last_name ?? ''}`.trim()
     : user?.username
   const portrait = `https://clipwords.me/${user?.portrait}`
-
-  const [display, setDisplay] = useState(false)
 
   return (
     <Stack p='16px 10px' gap={5}>
@@ -27,18 +23,7 @@ const NavBar = () => {
         <Link to='/expressions'>
           <EpLogo />
         </Link>
-        <Show above='md'>
-          <SearchInput />
-        </Show>
-        <Show below='md'>
-          <Circle 
-            size={8}
-            _hover={{ bg: 'gray.700' }}
-            onClick={() => setDisplay(!display)}
-          >
-            <Icon as={BsSearch} boxSize={5}/>
-          </Circle>
-        </Show>
+        <SearchInputDrawer/>
         <LanguageButton/>
         {user ? (
           <Link to='/profile'>
@@ -55,7 +40,6 @@ const NavBar = () => {
           </Link>
         )}
       </HStack>
-      {display && <SearchInput />}
     </Stack>
   )
 }

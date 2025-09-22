@@ -1,59 +1,73 @@
-import { Badge, Box, Input, InputGroup, InputLeftElement, InputRightElement, Show, useOutsideClick } from '@chakra-ui/react'
-import { FormEvent, useRef, useState } from 'react'
+import useLanguageStore from '@/languageStore'
+import { SearchForm, searchSchema } from '@/validation/searchSchema'
+import { Badge, Box, FormControl, FormErrorMessage, Input, InputGroup, InputLeftElement, InputRightElement, Show, useOutsideClick } from '@chakra-ui/react'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { useRef, useState } from 'react'
+import { useForm } from 'react-hook-form'
 import { BsSearch } from 'react-icons/bs'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../AuthContext'
 import useSearchContext from '../hooks/interact/useSearchContex'
 import useSearchPost from '../hooks/interact/useSearchPost'
 import SearchBox from './SearchBox'
-import useLanguageStore from '@/languageStore'
 
 const SearchInput = ({ onClose }: { onClose?: () => void }) => {
   const { user } = useAuth()
   const lang = useLanguageStore(s => s.language)
 
-  // get search context type from searchContext hook
+  // search context and mutation hooks
   const { isExpression, placeholder, placeholder_ch, setSearchText, kind } = useSearchContext()
   const { mutate } = useSearchPost()
+
   const navigate = useNavigate()
 
-  // points to input element, then read it or whatever you want
+  // UI: dropdown focus handling
   const boxRef = useRef<HTMLInputElement>(null)
-  const inputRef = useRef<HTMLInputElement>(null)
   const [isFocused, setIsFocused] = useState(false)
-  
   useOutsideClick({ ref: boxRef, handler: () => setIsFocused(false) })
 
-  const handleSubmit = (event: FormEvent) => {
-    event.preventDefault()
-    if (!inputRef.current) return
+  // form handling with RHF + Zod
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isValid },
+    reset,
+  } = useForm<SearchForm>({
+    resolver: zodResolver(searchSchema),
+    mode: 'onChange', // live validation
+  })
 
-    const content = inputRef.current.value.trim()
-    if (!content) return
+  // what happens when user submits search
+  const onSubmit = (data: SearchForm) => {
+    const content = data.content.trim()
 
-    setSearchText(content) // Update local search state
-    inputRef.current.blur() // This hides the keyboard on mobile and collapses UI
+    setSearchText(content) // update local search state
 
     // Post new search record to backend
     if (user) mutate({ content, kind, visible: true })
     if (onClose) onClose()
-    if (!isExpression) navigate('/')  // Optional navigation
+    if (!isExpression) navigate('/') // optional navigation
+    reset() // clear input if you want
   }
   
   return (
     <Box position='relative' w='full' ref={boxRef}>
-      <form onSubmit={handleSubmit}>
-        <InputGroup size={{ base: 'sm', lg: 'md'}}>
-          <InputLeftElement children={<BsSearch />} />
-          <Input
-            ref={inputRef}
-            borderRadius={20}
-            fontSize='16px' // stops Safari from auto-zooming
-            placeholder={lang === 'en' ? placeholder : placeholder_ch}
-            variant='filled'
-            onFocus={() => setIsFocused(true)}
-            onBlur={() => setIsFocused(false)}
-          />
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <InputGroup size='md'>
+          <InputLeftElement children={<BsSearch />}/>
+          <FormControl isInvalid={!!errors.content}>
+            <Input
+              {...register('content')}
+              borderRadius={20}
+              fontSize='16px' // stops Safari from auto-zooming
+              placeholder={lang === 'en' ? placeholder : placeholder_ch}
+              variant='filled'
+              pl='2.5rem'
+              onFocus={() => setIsFocused(true)}
+              onBlur={() => setIsFocused(false)}
+            />
+            <FormErrorMessage>{errors.content?.message}</FormErrorMessage>
+          </FormControl>
          <Show above='md'>
            {!isFocused && <InputRightElement>
               <Badge variant='outline' mr={10}>enter</Badge>

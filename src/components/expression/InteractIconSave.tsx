@@ -47,6 +47,7 @@ const InteractIconSave = ({ exp }: { exp: Expression }) => {
           {/* Footer buttons: save + add */}
           <ModalFooter gap={3}>
             <Button 
+              size='sm'
               colorScheme='gray' 
               mr={3} 
               onClick={() => {
@@ -56,7 +57,7 @@ const InteractIconSave = ({ exp }: { exp: Expression }) => {
               Save
             </Button>
             {/* Click to open the Model B */}
-            <Button variant='outline' onClick={onAddOpen}>
+            <Button variant='outline' size='sm' onClick={onAddOpen}>
               Add new list
             </Button>
           </ModalFooter>
