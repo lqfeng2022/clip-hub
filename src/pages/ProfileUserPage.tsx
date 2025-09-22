@@ -12,7 +12,7 @@ const ProfileUserPage = () => {
     <Stack p={2}>
       <ProfileBack/>
       <ProfileUser/>
-      <Heading py={4}>{header}</Heading>
+      <Heading py={4} px={1}>{header}</Heading>
       <ProfileUserForms />
     </Stack>
   )

@@ -62,7 +62,7 @@ const SignupPage = () => {
               <PasswordInput
                 PasswordInput={register('password')}
               />
-              <FormHelperText>
+              <FormHelperText px={2}>
                 <OrderedList spacing={1.5}>
                   {context.password_note.map((note) =>
                     <ListItem key={note.id}>
@@ -71,7 +71,9 @@ const SignupPage = () => {
                   )}
                 </OrderedList>
               </FormHelperText>
-              {errors.password && <FormHelperText color='red.300'>{errors.password.message}</FormHelperText>}
+              {errors.password && 
+                <FormHelperText color='red.300'>{errors.password.message}</FormHelperText>
+              }
             </FormControl>
             {/* CONVORM password */}
             <FormControl isRequired>
@@ -79,9 +81,7 @@ const SignupPage = () => {
               <PasswordInput
                 PasswordInput={register('password2')}
               />
-              {!errors.password2 ? (
-                <FormHelperText>{context.password2_note}</FormHelperText>
-              ) : (
+              {errors.password2 && (
                 <FormHelperText color='red.300'>{errors.password2.message}</FormHelperText>
               )}
             </FormControl>

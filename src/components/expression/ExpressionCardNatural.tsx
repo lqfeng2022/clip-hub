@@ -27,7 +27,7 @@ const ExpressionCardNatural = ({ expression, onUnmark }: Props) => {
         <Link to={'/expressions/' + expression.slug}>
           <Heading
             pb={2}
-            fontSize='xl'
+            fontSize='lg'
             color='yellow.200'
             _hover={{ color: 'white'}}
           >
