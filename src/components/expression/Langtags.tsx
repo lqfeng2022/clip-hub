@@ -10,11 +10,9 @@ const Langtags = () => {
   const lang = useLanguageStore(s => s.language)
 
   const selectedTagId = useExpressionQueryStore(
-    (s) => s.expressionQuery.tagId
-  )
+    (s) => s.expressionQuery.tagId)
   const setSelectTagId = useExpressionQueryStore(
-    (s) => s.setTagId
-  )
+    (s) => s.setTagId)
 
   if (error) return null
   if (isLoading) return <BeatLoader />

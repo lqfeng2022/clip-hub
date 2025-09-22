@@ -19,9 +19,7 @@ const ProfileUserForms = () => {
   const { mutate } = useProfileUpdate()
   const toast = useToast()
 
-  const { 
-    register, handleSubmit, reset, formState: { errors } 
-  } = useForm<ProfileForm>({
+  const { register, handleSubmit, reset, formState: { errors } } = useForm<ProfileForm>({
     resolver: zodResolver(profileSchema),
     defaultValues: {
       first_name: '',

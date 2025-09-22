@@ -2,22 +2,14 @@ import useLists from '@/hooks/interact/useLists'
 import useLanguageStore from '@/languageStore'
 import { Avatar, Box, Divider, HStack, Icon, List, ListItem, Text } from '@chakra-ui/react'
 import { useState } from 'react'
-import { CiUser } from 'react-icons/ci'
-import { IoIosHeartEmpty } from 'react-icons/io'
-import { CiCircleList } from 'react-icons/ci'
-import { MdHistoryToggleOff } from 'react-icons/md'
 import { Link } from 'react-router-dom'
+import { profilePages } from '@/data/profilePages'
 
 const ProfileListLink = () => {
   const lang = useLanguageStore(s => s.language)
   const [selected, setSelected] = useState<string | null>(null)
-
-  const list = [
-    { title: 'Profile', title_ch: '个人资料', icon: CiUser, link: '/profile' },
-    { title: 'History', title_ch: '浏览记录', icon: MdHistoryToggleOff, link: '/profile/history' },
-    { title: 'Liked words', title_ch: '喜欢的表达式', icon: IoIosHeartEmpty, link: '/profile/expression' },
-    { title: 'Your Lists', title_ch: '表达式列表', icon: CiCircleList, link: '/profile/list' },
-  ]
+  const list = lang === 'en' 
+    ? profilePages.en.list : profilePages.zh.list
 
   const { data, error } = useLists()
   const collections = data?.pages[0].results.slice(0, 9)
@@ -41,7 +33,7 @@ const ProfileListLink = () => {
               />
               <Link to={p.link}>
                 <Text fontSize='lg' as='strong'>
-                  {lang === 'en' ? p.title : p.title_ch}
+                  {p.title}
                 </Text>
               </Link>
             </HStack>

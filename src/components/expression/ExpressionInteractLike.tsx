@@ -9,8 +9,7 @@ interface Props {
 }
 const ExpressionInteractLike = ({ expression, onUnmark }: Props) => {
   const { marked, toggleMarked, user } = useExpressionLikeManager(
-    expression.id, expression.like_state, onUnmark
-  )
+    expression.id, expression.like_state, onUnmark)
 
   return (
     <>

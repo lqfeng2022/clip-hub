@@ -16,9 +16,9 @@ const ProfileEplikePage = () => {
   const fetchExpressionsCount = data?.pages.reduce(
     (total, page) => total + page.results.length, 0) || 0
 
+  if (error) return <Text>{error.message}</Text>
   return (
     <>
-      {error && <Text>{error.message}</Text>}
       <Heading m={4} fontSize='3xl'>{header}</Heading>
       <InfiniteScroll
         dataLength={fetchExpressionsCount}

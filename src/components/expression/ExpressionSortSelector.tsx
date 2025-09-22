@@ -2,17 +2,12 @@ import { Button, Menu, MenuButton, MenuItem, MenuList } from '@chakra-ui/react'
 import { BsChevronDown } from 'react-icons/bs'
 import useExpressionQueryStore from '@/expressionStore'
 import useLanguageStore from '@/languageStore'
+import { expressionPage } from '@/data/expressionPage'
 
 const ExpressionSortSelector = () => {
   const lang = useLanguageStore(s => s.language)
-
-  const sortOrders = [
-    { value: '', label: 'Relevance', label_ch: '默认序列' },
-    { value: 'title', label: 'Name', label_ch: '名称' },
-    { value: 'last_update', label: 'Date added', label_ch: '更新顺序' },
-    { value: 'views_count', label: 'Most viewed', label_ch: '最多浏览'},
-    { value: 'likes_count', label: 'Most liked', label_ch: '最多喜欢'}
-  ]
+  const sortOrders = lang === 'en' 
+    ? expressionPage.en.sortOrders : expressionPage.zh.sortOrders
 
   const sortOrder = useExpressionQueryStore((s) => s.expressionQuery.sortOrder)
   const setSortOrder = useExpressionQueryStore((s) => s.setSortOrder)
@@ -21,13 +16,14 @@ const ExpressionSortSelector = () => {
     (order) => order.value === sortOrder
   )
 
-  const header = `Order by: ${currentSortOrder?.label || 'Relevance'}`
-  const header_ch = `排序: ${currentSortOrder?.label_ch || '默认序列'}`
+  const header = lang === 'en' 
+    ? `${expressionPage.en.sort_prefix}: ${currentSortOrder?.label || expressionPage.en.sort_surfix}`
+    : `${expressionPage.zh.sort_prefix}: ${currentSortOrder?.label || expressionPage.zh.sort_surfix}`
 
   return (
     <Menu>
       <MenuButton size='sm' as={Button} rightIcon={<BsChevronDown />}>
-        {lang === 'en' ? header : header_ch}
+        {header}
       </MenuButton>
       <MenuList>
         {sortOrders.map((order) => (
@@ -36,7 +32,7 @@ const ExpressionSortSelector = () => {
             key={order.value}
             value={order.value}
           >
-            {lang === 'en' ? order.label : order.label_ch}
+            {order.label}
           </MenuItem>
         ))}
       </MenuList>

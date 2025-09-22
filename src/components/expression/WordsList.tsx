@@ -10,11 +10,9 @@ const WordsList = () => {
   const lang = useLanguageStore(s => s.language)
 
   const selectedWordId = useExpressionQueryStore(
-    (s) => s.expressionQuery.wordId
-  )
+    (s) => s.expressionQuery.wordId)
   const setSelectWordId = useExpressionQueryStore(
-    (s) => s.setWordId
-  )
+    (s) => s.setWordId)
 
   if (error) return null
   if (isLoading) return <BeatLoader />

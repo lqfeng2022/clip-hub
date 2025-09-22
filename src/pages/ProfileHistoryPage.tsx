@@ -25,9 +25,9 @@ const ProfileHistoryPage = () => {
     )
   }
 
+  if (error) return <Text>{error.message}</Text>
   return (
     <>
-      {error && <Text>{error.message}</Text>}
       <Heading m={4} fontSize='3xl'>{header}</Heading>
       <InfiniteScroll
         dataLength={fetchExpressionsCount}

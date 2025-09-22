@@ -14,8 +14,7 @@ const ClipSortSelector = () => {
   const setSortOrder = useClipQueryStore((s) => s.setSortOrder)
 
   const currentSortOrder = sortOrders.find(
-    (order) => order.value === sortOrder
-  )
+    (order) => order.value === sortOrder)
 
   const header = lang === 'en' 
     ? `${clipPage.en.sort_prefix}: ${currentSortOrder?.label || clipPage.en.sort_surfix}`

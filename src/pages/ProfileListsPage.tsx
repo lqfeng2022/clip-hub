@@ -28,9 +28,9 @@ const ProfileListsPage = () => {
     deleteList({listId}, { onSuccess: () => refetch() })
   }
 
+  if (error) return <Text>{error.message}</Text>
   return (
     <>
-      {error && <Text>{error.message}</Text>}
       <Heading m={4} fontSize='3xl'>
         {header}
       </Heading>

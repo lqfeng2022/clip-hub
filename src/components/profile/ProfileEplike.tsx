@@ -15,40 +15,38 @@ const ProfileEplike = () => {
     .filter((eplike) => eplike.visible)
     .slice(0, 5)
 
+  if (error) return <Text>{error.message}</Text>
   return (
-    <>
-    {error && <Text>{error.message}</Text>}
-      <Box mt={8} px={2}>
-        <HStack justifyContent='space-between' my={5}>
-          <Heading fontSize='2xl'>
-            {buttons.liked}
-          </Heading>
-          <Link to='expression'>
-            <Button
-              colorScheme='gray'
-              size='sm'
-              variant='outline'
-              disabled={eplikes?.length === 0}
-            >
-              {buttons.view_all}
-            </Button>
-          </Link>
-        </HStack>
-        <SimpleGrid
-          columns={{ base: 2, lg: 3, xl: 4 }}
-          py='10px'
-          spacing={3}
-        >
-          {eplikes?.length === 0 && <EmptyCard/>}
-          {eplikes?.map((eplike) => (
-            <ExpressionCardSimple
-              expression={eplike.expression}
-              key={eplike.expression.id}
-            />
-          ))}
-        </SimpleGrid>
-      </Box>
-    </>
+    <Box mt={8} px={2}>
+      <HStack justifyContent='space-between' my={5}>
+        <Heading fontSize='2xl'>
+          {buttons.liked}
+        </Heading>
+        <Link to='expression'>
+          <Button
+            colorScheme='gray'
+            size='sm'
+            variant='outline'
+            disabled={eplikes?.length === 0}
+          >
+            {buttons.view_all}
+          </Button>
+        </Link>
+      </HStack>
+      <SimpleGrid
+        columns={{ base: 2, lg: 3, xl: 4 }}
+        py='10px'
+        spacing={3}
+      >
+        {eplikes?.length === 0 && <EmptyCard/>}
+        {eplikes?.map((eplike) => (
+          <ExpressionCardSimple
+            expression={eplike.expression}
+            key={eplike.expression.id}
+          />
+        ))}
+      </SimpleGrid>
+    </Box>
   )
 }
 
