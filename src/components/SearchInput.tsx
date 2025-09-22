@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../AuthContext'
 import useSearchContext from '../hooks/interact/useSearchContex'
 import useSearchPost from '../hooks/interact/useSearchPost'
-import SearchBox from './SearchBox'
+import SearchHistoryBox from './SearchHistoryBox'
 
 const SearchInput = ({ onClose }: { onClose?: () => void }) => {
   const { user } = useAuth()
@@ -30,6 +30,7 @@ const SearchInput = ({ onClose }: { onClose?: () => void }) => {
   const {
     register,
     handleSubmit,
+    setValue,
     formState: { errors, isValid },
     reset,
   } = useForm<SearchForm>({
@@ -40,14 +41,22 @@ const SearchInput = ({ onClose }: { onClose?: () => void }) => {
   // what happens when user submits search
   const onSubmit = (data: SearchForm) => {
     const content = data.content.trim()
+    if (!content) return
 
-    setSearchText(content) // update local search state
+    setSearchText(content) // update local state
+    if (user) mutate({ content, kind, visible: true }) // post to backend
 
-    // Post new search record to backend
-    if (user) mutate({ content, kind, visible: true })
+    setIsFocused(false)   // hide <SearchBox />
     if (onClose) onClose()
+
     if (!isExpression) navigate('/') // optional navigation
+
     reset() // clear input if you want
+  }
+
+  const onSelectHistory = (value: string) => {
+    setValue('content', value)  // programmatically update the input
+    setIsFocused(true)          // keep the dropdown open if desired
   }
   
   return (
@@ -75,7 +84,9 @@ const SearchInput = ({ onClose }: { onClose?: () => void }) => {
             }
          </Show>
         </InputGroup>
-        {isFocused && <SearchBox kind={kind}/>}
+        {isFocused && (
+          <SearchHistoryBox kind={kind} onSelect={onSelectHistory}/>
+        )}
       </form>
     </Box>
   )
