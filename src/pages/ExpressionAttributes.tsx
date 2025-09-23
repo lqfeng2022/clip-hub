@@ -1,4 +1,4 @@
-import { Box, Heading, HStack, Icon, Image, Stack, Tag, Text } from '@chakra-ui/react'
+import { Box, Heading, HStack, Icon, Image, ListItem, Stack, Tag, Text, UnorderedList } from '@chakra-ui/react'
 import { ImQuotesLeft } from 'react-icons/im'
 import { Link } from 'react-router-dom'
 import Expression from '@/entities/Expression'
@@ -6,15 +6,19 @@ import TagHList from '@/components/TagHList'
 import useLanguageStore from '@/languageStore'
 import { pocketURL } from '@/services/pocket'
 import { expressionPage } from '@/data/expressionPage'
+import { splitByPhrase, splitExplain } from '@/helperfunction'
 
 const ExpressionAttributes = ({ expression } : { expression: Expression }) => {
   const lang = useLanguageStore(s => s.language)
-
   const attributes = lang === 'en' 
     ? expressionPage.en : expressionPage.zh
-    
-  const explain = lang === 'ch' && expression.explain_ch 
-    ? expression.explain_ch : expression.explain
+  // const explain = lang === 'ch' && expression.explain_ch 
+  //   ? expression.explain_ch : expression.explain
+
+  const parts = splitByPhrase(expression.subtitle.content, expression.title)
+  const explainParts = lang === 'en' 
+    ? splitExplain(expression.explain)
+    : splitExplain(expression.explain_ch)
 
   return (
     <>
@@ -22,7 +26,13 @@ const ExpressionAttributes = ({ expression } : { expression: Expression }) => {
       <HStack align='flex-start' wrap='wrap'>
         <Icon as={ImQuotesLeft}/>
         <Heading fontSize='xl' flex='1'>
-          {expression.subtitle.content}
+          {parts.map((part, i) =>
+            part.toLowerCase() === expression.title.toLowerCase() ? (
+              <Text as='span' key={i} color='yellow.200'>{part}</Text>
+            ) : (
+              <Text as='span' key={i}>{part}</Text>
+            )
+          )}
         </Heading>
       </HStack>
       {/* explaining */}
@@ -30,7 +40,15 @@ const ExpressionAttributes = ({ expression } : { expression: Expression }) => {
         <Heading size='md' pb={1} color='gray.500'>
           {attributes.explain_header}
         </Heading>
-        <Text>{explain}</Text>
+        {/* <Text>{explain}</Text> */}
+        <UnorderedList px={2} styleType="'-'">
+          {explainParts.map((part, i) => (
+            <ListItem key={i} mb={1} pl={2} fontSize='lg'>
+              <Text as='span' fontWeight='bold'>{part.label}</Text>
+              {`: ${part.text}`}
+            </ListItem>
+          ))}
+        </UnorderedList>
       </Box>
       {/* language tags */}
       <Box>

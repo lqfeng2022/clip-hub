@@ -16,6 +16,12 @@ export const expressionPage = {
       { value: 'last_update', label: 'Date added' },
       { value: 'views_count', label: 'Most viewed' },
       { value: 'likes_count', label: 'Most liked' }
+    ],
+    formality: [
+      { id: 0, name: '', title: 'All' },
+      { id: 1, name: 'FORMAL', title: 'Formal' },
+      { id: 2, name: 'NEUTRAL', title: 'Neutral' },
+      { id: 3, name: 'CASUAL', title: 'Casual' },
     ]
   },
   zh: {
@@ -35,6 +41,12 @@ export const expressionPage = {
       { value: 'last_update', label: '更新顺序' },
       { value: 'views_count', label: '最多浏览'},
       { value: 'likes_count', label: '最多喜欢'}
+    ],
+    formality: [
+      { id: 0, name: '', title: 'All' },
+      { id: 1, name: 'FORMAL', title: '正式的' },
+      { id: 2, name: 'NEUTRAL', title: '中性的' },
+      { id: 3, name: 'CASUAL', title: '随意的' },
     ]
   }
 }

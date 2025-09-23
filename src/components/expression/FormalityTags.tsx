@@ -1,19 +1,22 @@
+import { expressionPage } from '@/data/expressionPage'
 import useExpressionQueryStore from '@/expressionStore'
-import { formality } from '@/helperfunction'
 import useLanguageStore from '@/languageStore'
 import { Tag, Wrap, WrapItem } from '@chakra-ui/react'
 
 const FormalityTags = () => {
   const lang = useLanguageStore(s => s.language)
   
-  const formal = useExpressionQueryStore((s) => s.expressionQuery.formal)
-  const setFormal = useExpressionQueryStore((s) => s.setFormal)
+  const formalId = useExpressionQueryStore((s) => s.expressionQuery.formal)
+  const setFormalId = useExpressionQueryStore((s) => s.setFormal)
+
+  const formality = lang === 'en' 
+    ? expressionPage.en.formality : expressionPage.zh.formality
 
   return (
     <Wrap spacing={4} py={3}>
     {formality.map((tag) => (
       <WrapItem key={tag.id}>
-        {tag.name === formal ? (
+        {tag.name === formalId ? (
           <Tag 
             size='md' 
             variant='outline' 
@@ -21,20 +24,20 @@ const FormalityTags = () => {
             backgroundColor='#4A5568'
             color='white'
             fontWeight='bold'
-            onClick={() => setFormal(tag.name)}
+            onClick={() => setFormalId(tag.name)}
             className='tag-hover'
           >
-            {lang === 'en' ? tag.title : tag.title_ch}
+            {tag.title}
           </Tag> ) : (
           <Tag 
             size='md' 
             variant='outline' 
             colorScheme='blue' 
             fontWeight='normal'
-            onClick={() => setFormal(tag.name)}
+            onClick={() => setFormalId(tag.name)}
             className='tag-hover'
           >
-            {lang === 'en' ? tag.title : tag.title_ch}
+            {tag.title}
           </Tag>
         )}
       </WrapItem>

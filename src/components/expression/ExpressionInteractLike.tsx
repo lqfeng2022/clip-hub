@@ -17,9 +17,9 @@ const ExpressionInteractLike = ({ expression, onUnmark }: Props) => {
         <Icon
           as={marked ? IoHeart : IoHeartOutline} // or IoBookmark
           boxSize={6}
-          color={marked ? 'yellow' : ''}
+          color={marked ? 'orange' : ''}
           cursor='pointer'
-          _hover={{ color: 'yellow.300' }}
+          _hover={{ color: 'orange.300' }}
           onClick={toggleMarked}
         /> ) : (
           <Icon as={IoHeartOutline} boxSize={6} opacity={0.5}/>

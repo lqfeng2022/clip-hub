@@ -1,6 +1,5 @@
 import FormalityTags from '@/components/expression/FormalityTags'
 import Langtags from '@/components/expression/Langtags'
-import { formality } from '@/helperfunction'
 import useLanguageStore from '@/languageStore'
 import { Box, Divider, Grid, GridItem, Heading, HStack, Show } from '@chakra-ui/react'
 import ExpressionGrid from '../components/expression/ExpressionGrid'
@@ -18,9 +17,12 @@ function ExpressionPage() {
   const langtag = useLangtag(langtagId)
   const langtag_title = lang === 'en' ? langtag?.title : langtag?.title_ch
 
-  const formal = useExpressionQueryStore((s) => s.expressionQuery.formal)
-  const formal_target = formality.find(tag => tag.name === formal)
-  const formality_title = lang === 'en' ? formal_target?.title : formal_target?.title_ch
+  const formalId = useExpressionQueryStore((s) => s.expressionQuery.formal)
+  const formality = lang === 'en'
+    ? expressionPage.en.formality : expressionPage.zh.formality
+
+  const formality_target = formality.find(tag => tag.name === formalId)
+  const formality_title = formality_target?.title
 
   const header = `${formality_title || ''} ${langtag_title || ''} ${headers.expression_header}`
   

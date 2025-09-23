@@ -32,36 +32,36 @@ const ExpressionDetailContent = ({ exp, clipexp }: Props) => {
       p='15px 10px'
       columns={{ base: 1, lg: 2 }}
       spacing={4}
-      >
-        {/* 2. Clip details and recommendation */}
-        <GridItem order={{ base: 2, lg: 1 }}>
-          {/* 2.1 Clip details */}
-          <Heading pb={5} fontSize='4xl' lineHeight={1}>
-            {exp.title}
+    >
+      {/* 2. Clip details and recommendation */}
+      <GridItem order={{ base: 2, lg: 1 }}>
+        {/* 2.1 Clip details */}
+        <Heading pb={5} fontSize='4xl' lineHeight={1}>
+          {exp.title}
+        </Heading>
+        <ExpressionAttributes expression={exp}/>
+        {/* 2.2 Recommend: using clip expressions temporarily */}
+        <Box pt={5}>
+          <Heading size='md' pb={1} color='gray'>
+            {others}
           </Heading>
-          <ExpressionAttributes expression={exp}/>
-          {/* 2.2 Recommend: using clip expressions temporarily */}
-          <Box pt={5}>
-            <Heading size='md' pb={1} color='gray'>
-              {others}
-            </Heading>
-            <ClipExpression data={clipexp}/>
+          <ClipExpression data={clipexp}/>
+        </Box>
+      </GridItem>
+      {/* 1. Clip image and interactions */}
+      <GridItem order={{ base: 1, lg: 2 }}>
+        <Center>
+          <Box>
+            <Image
+              w='100%'
+              maxH='600px'
+              borderRadius='md'
+              src={`${pocketURL}${exp.image}` || noImage}
+            />
+            <InteractIcons expression={exp}/>
           </Box>
-        </GridItem>
-        {/* 1. Clip image and interactions */}
-        <GridItem order={{ base: 1, lg: 2 }}>
-          <Center>
-            <Box>
-              <Image
-                w='100%'
-                maxH='600px'
-                borderRadius='md'
-                src={`${pocketURL}${exp.image}` || noImage}
-              />
-              <InteractIcons expression={exp}/>
-            </Box>
-          </Center>
-        </GridItem>
+        </Center>
+      </GridItem>
     </SimpleGrid>
   )
 }

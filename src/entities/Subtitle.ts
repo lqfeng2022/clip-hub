@@ -1,5 +1,5 @@
-import { Character } from "./Character";
-import Expression from "./Expression";
+import { Character } from './Character';
+import Expression from './Expression';
 
 export interface Subtitle {
   id: number,

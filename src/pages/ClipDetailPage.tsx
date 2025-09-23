@@ -58,7 +58,7 @@ const ClipDetailPage = () => {
           </HStack>
           <Box
             px={3}
-            borderRadius='15px'
+            borderRadius='12px'
             background='gray.700'
           >
             <Collapse in={show}>
