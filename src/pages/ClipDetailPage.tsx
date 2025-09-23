@@ -39,43 +39,24 @@ const ClipDetailPage = () => {
     >
       <GridItem order={{ base: 1, lg: 1 }}>
         <ClipMovie video={clip}/>
-        <Heading size='md' py={3}>{header}</Heading>
+        <Heading size='md' py={4}>{header}</Heading>
         <Box>
           <HStack mb={1}>
-            <Heading size='md' color='gray.500' mr={2}>
+            <Heading size='md' color='gray.500'>
               {clip_page.about}
             </Heading>
-            {!show && (
-              <Button 
-                size='xl' 
-                p='3px 5px' 
-                variant='ghost' 
-                onClick={handleToggle}
-              >
-                ...more
-              </Button>
-            )}
+            {!show && <Button size='xl' variant='ghost' onClick={handleToggle}>
+              ...more
+            </Button>}
           </HStack>
-          <Box
-            px={3}
-            borderRadius='12px'
-            background='gray.700'
-          >
+          <Box px={3} borderRadius='10px' background='gray.700'>
             <Collapse in={show}>
-              <Text py={2}>{about_content}</Text>
+              <Text pt={2}>{about_content}</Text>
               <ClipAttributes clip={clip}/>
             </Collapse>
-            {show && (
-              <Button 
-                size='sm' 
-                p='3px 5px' 
-                my={1} 
-                variant='ghost' 
-                onClick={handleToggle}
-              >
-                show lesss
-              </Button>
-            )}
+            {show && <Button size='sm' px='3px' variant='ghost' onClick={handleToggle}>
+              show lesss
+            </Button>}
           </Box>
         </Box>
       </GridItem>
