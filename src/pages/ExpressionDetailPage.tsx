@@ -19,7 +19,9 @@ const ExpressionDetailPage = () => {
     <ExpressionDetailContent
       exp={exp}
       // pass `[]` until it's ready, avoid runtime crashes
-      clipexp={clipexp?.results ?? []}
+      clipexp={
+        (clipexp?.results ?? []).filter(e => e.id !== exp.id)
+      }
     />
 )
 }

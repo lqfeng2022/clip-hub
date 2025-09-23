@@ -41,7 +41,7 @@ const ExpressionAttributes = ({ expression } : { expression: Expression }) => {
           {attributes.explain_header}
         </Heading>
         {/* <Text>{explain}</Text> */}
-        <UnorderedList px={2} styleType="'-'">
+        <UnorderedList styleType="'-'">
           {explainParts.map((part, i) => (
             <ListItem key={i} mb={1} pl={2} fontSize='lg'>
               <Text as='span' fontWeight='bold'>{part.label}</Text>
@@ -55,7 +55,7 @@ const ExpressionAttributes = ({ expression } : { expression: Expression }) => {
         <Heading size='md' color='gray.500'>
           {attributes.tags_header}
         </Heading>
-        <HStack>
+        <HStack wrap='wrap' spacing={3}>
           <Tag
             size='sm'
             colorScheme='blue'
