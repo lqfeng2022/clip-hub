@@ -12,8 +12,6 @@ const ExpressionAttributes = ({ expression } : { expression: Expression }) => {
   const lang = useLanguageStore(s => s.language)
   const attributes = lang === 'en' 
     ? expressionPage.en : expressionPage.zh
-  // const explain = lang === 'ch' && expression.explain_ch 
-  //   ? expression.explain_ch : expression.explain
 
   const parts = splitByPhrase(expression.subtitle.content, expression.title)
   const explainParts = lang === 'en' 
@@ -40,10 +38,9 @@ const ExpressionAttributes = ({ expression } : { expression: Expression }) => {
         <Heading size='md' pb={1} color='gray.500'>
           {attributes.explain_header}
         </Heading>
-        {/* <Text>{explain}</Text> */}
-        <UnorderedList styleType="'-'">
+        <UnorderedList pl={1}>
           {explainParts.map((part, i) => (
-            <ListItem key={i} mb={1} pl={2} fontSize='lg'>
+            <ListItem key={i} mb={1} fontSize='lg'>
               <Text as='span' fontWeight='bold'>{part.label}</Text>
               {`: ${part.text}`}
             </ListItem>
