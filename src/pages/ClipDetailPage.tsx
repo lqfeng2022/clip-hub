@@ -15,17 +15,14 @@ const ClipDetailPage = () => {
   const { data: clip, isLoading, error } = useClip(slug!)
   const { data: clipexp } = useClipExpressions(clip?.id)
   
-  const lang = useLanguageStore(s => s.language)
+  const [show, setShow] = useState(true)
 
+  const lang = useLanguageStore(s => s.language)
   const header = lang === 'ch' && clip?.title_ch
     ? clip?.title_ch : clip?.title
   const about_content = lang === 'ch' && clip?.description_ch 
     ? clip.description_ch : clip?.description
-
   const clip_page = lang === 'en' ? clipPage.en : clipPage.zh
-
-  const [show, setShow] = useState(true)
-  const handleToggle = () => setShow(!show)
 
   if (isLoading) return <BeatLoader/>
   if (error || !clip) throw error 
@@ -45,7 +42,12 @@ const ClipDetailPage = () => {
             <Heading size='md' color='gray.500'>
               {clip_page.about}
             </Heading>
-            {!show && <Button size='xl' variant='ghost' onClick={handleToggle}>
+            {!show && <Button 
+              size='xl' 
+              variant='ghost' 
+              _hover={{ backgrouond: ''}} 
+              onClick={() => setShow(!show)}
+            >
               ...more
             </Button>}
           </HStack>
@@ -54,7 +56,13 @@ const ClipDetailPage = () => {
               <Text pt={2}>{about_content}</Text>
               <ClipAttributes clip={clip}/>
             </Collapse>
-            {show && <Button size='sm' px='3px' variant='ghost' onClick={handleToggle}>
+            {show && <Button 
+              size='sm' 
+              px='3px' 
+              variant='ghost' 
+              _hover={{ backgrouond: ''}} 
+              onClick={() => setShow(!show)}
+            >
               show lesss
             </Button>}
           </Box>
