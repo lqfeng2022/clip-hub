@@ -38,9 +38,9 @@ const ExpressionAttributes = ({ expression } : { expression: Expression }) => {
         <Heading size='md' pb={1} color='gray.500'>
           {attributes.explain_header}
         </Heading>
-        <UnorderedList pl={1}>
+        <UnorderedList styleType="'-'">
           {explainParts.map((part, i) => (
-            <ListItem key={i} mb={1} fontSize='lg'>
+            <ListItem key={i} mb={1} pl={2} fontSize='lg'>
               <Text as='span' fontWeight='bold'>{part.label}</Text>
               {`: ${part.text}`}
             </ListItem>
