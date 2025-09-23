@@ -2,7 +2,7 @@ import noImage from '@/assets/no-image.jpg'
 import InteractIcons from '@/components/expression/InteractIcons'
 import Expression from '@/entities/Expression'
 import useExpressionInteract from '@/hooks/interact/useExpressionInteract'
-import ExpressionAttributes from '@/pages/ExpressionAttributes'
+import ExpressionAttributes from '@/components/expression/ExpressionAttributes'
 import { Box, Center, GridItem, Heading, Image, SimpleGrid } from '@chakra-ui/react'
 import { useEffect } from 'react'
 import ClipExpression from '../ClipExpression'
@@ -36,7 +36,7 @@ const ExpressionDetailContent = ({ exp, clipexp }: Props) => {
       {/* 2. Clip details and recommendation */}
       <GridItem order={{ base: 2, lg: 1 }}>
         {/* 2.1 Clip details */}
-        <Heading pb={5} fontSize='4xl' lineHeight={1}>
+        <Heading pb={7} fontSize='4xl' lineHeight={1}>
           {exp.title}
         </Heading>
         <ExpressionAttributes expression={exp}/>
