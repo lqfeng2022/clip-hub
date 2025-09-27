@@ -77,12 +77,12 @@ const SearchInput = ({ onClose }: { onClose?: () => void }) => {
             />
             <FormErrorMessage>{errors.content?.message}</FormErrorMessage>
           </FormControl>
-         <Show above='md'>
-           {!isFocused && <InputRightElement>
-              <Badge variant='outline' mr={10}>enter</Badge>
-            </InputRightElement>
-            }
-         </Show>
+          <Show above='md'>
+            {!isFocused && <InputRightElement>
+                <Badge variant='outline' mr={10}>enter</Badge>
+              </InputRightElement>
+              }
+          </Show>
         </InputGroup>
         {isFocused && (
           <SearchHistoryBox kind={kind} onSelect={onSelectHistory}/>

@@ -6,12 +6,23 @@ import { IoEyeOutline } from 'react-icons/io5'
 import InteractIconSave from './InteractIconSave'
 import ExpressionInteractLike from './ExpressionInteractLike'
 
-const InteractIcons = ({ expression }: { expression: Expression }) => {  
+interface Props {
+  expression: Expression,
+  chatOpen: boolean,
+  onChatToggle: () => void,
+}
+const InteractIcons = ({ expression, chatOpen, onChatToggle }: Props) => {  
   return (
     <Stack spacing={4} m='12px 10px'>
       <HStack justifyContent='space-between'>
         {/* AI agent chat */}
-        <Icon as={IoIosChatboxes} boxSize={6} color='gray'/>
+        <Icon 
+          as={IoIosChatboxes} 
+          boxSize={6} 
+          color={chatOpen ? 'green' : ''}
+          onClick={onChatToggle} 
+          cursor='pointer'
+        />
         {/* expression like */}
         <HStack>
           <ExpressionInteractLike expression={expression}/>

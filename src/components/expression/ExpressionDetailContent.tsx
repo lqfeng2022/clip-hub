@@ -3,19 +3,23 @@ import InteractIcons from '@/components/expression/InteractIcons'
 import Expression from '@/entities/Expression'
 import useExpressionInteract from '@/hooks/interact/useExpressionInteract'
 import ExpressionAttributes from '@/components/expression/ExpressionAttributes'
-import { Box, Center, GridItem, Heading, Image, SimpleGrid } from '@chakra-ui/react'
-import { useEffect } from 'react'
+import { Box, Center, GridItem, Heading, Image, Show, SimpleGrid } from '@chakra-ui/react'
+import { useEffect, useState } from 'react'
 import ClipExpression from '../ClipExpression'
 import { pocketURL } from '@/services/pocket'
 import useExpressionViews from '@/hooks/interact/useExpressionViews'
 import useLanguageStore from '@/languageStore'
 import { expressionPage } from '@/data/expressionPage'
+import ChatBox from './ChatBox'
+import ExpressionHeader from './ExpressionHeader'
 
 interface Props {
   exp: Expression,
   clipexp: Expression[]
 }
 const ExpressionDetailContent = ({ exp, clipexp }: Props) => {
+  const [chatOpen, setChatOpen] = useState(false)
+
   const { refetch } = useExpressionViews()
   const { mutate } = useExpressionInteract(exp.id, 'views')
 
@@ -31,16 +35,15 @@ const ExpressionDetailContent = ({ exp, clipexp }: Props) => {
     <SimpleGrid
       p='15px 10px'
       columns={{ base: 1, lg: 2 }}
-      spacing={4}
+      spacing={5}
     >
-      {/* 2. Clip details and recommendation */}
+      {/* 2. Expression details and recommendation */}
       <GridItem order={{ base: 2, lg: 1 }}>
-        {/* 2.1 Clip details */}
-        <Heading pb={7} fontSize='4xl' lineHeight={1}>
-          {exp.title}
-        </Heading>
+        {/* 2.1 Expression title */}
+        <Show above='md'><ExpressionHeader expression={exp}/></Show>
+        {/* 2.2 Expression attributes(explain/langtas/words/clip) */}
         <ExpressionAttributes expression={exp}/>
-        {/* 2.2 Recommend: using clip expressions temporarily */}
+        {/* 2.3 Expression recommendation */}
         <Box pt={5}>
           <Heading size='md' pb={1} color='gray'>
             {others}
@@ -48,8 +51,10 @@ const ExpressionDetailContent = ({ exp, clipexp }: Props) => {
           <ClipExpression data={clipexp}/>
         </Box>
       </GridItem>
-      {/* 1. Clip image and interactions */}
+      {/* 1. Expression image & interactions, chatbox */}
       <GridItem order={{ base: 1, lg: 2 }}>
+        {/* 1.1 image & interactions */}
+        <Show below='md'><ExpressionHeader expression={exp}/></Show>
         <Center>
           <Box>
             <Image
@@ -58,9 +63,18 @@ const ExpressionDetailContent = ({ exp, clipexp }: Props) => {
               borderRadius='md'
               src={`${pocketURL}${exp.image}` || noImage}
             />
-            <InteractIcons expression={exp}/>
+            <InteractIcons 
+              expression={exp} 
+              chatOpen={chatOpen}
+              onChatToggle={() => setChatOpen(!chatOpen)}
+            />
           </Box>
         </Center>
+        {/* 1.2 Chat box display on above='md' */}
+        <ChatBox 
+          extend={chatOpen} 
+          setExtend={() => setChatOpen(!chatOpen)}
+        />
       </GridItem>
     </SimpleGrid>
   )
