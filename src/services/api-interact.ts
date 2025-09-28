@@ -102,6 +102,17 @@ class InteractAPIClient<T> {
     return axiosInstance
       .put(`/${this.endpoint}/${id}/`, data, config)
   }
+
+  // create a chat message
+  postChatMessage = (
+    id: number | string, 
+    data: any, 
+    config?: AxiosRequestConfig
+  ) => {
+    return axiosInstance
+      .post(`/${this.endpoint}/${id}/messages/`, data, config)
+      .then((res) => res.data)
+  }
 }
 
 export default InteractAPIClient
