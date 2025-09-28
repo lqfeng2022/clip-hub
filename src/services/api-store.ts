@@ -39,6 +39,16 @@ class APIClient<T> {
       .post(`${this.endpoint}/${id}/${action}/`, data, config)
       .then((res) => res.data)
   }
+
+  // get chatsession from a given id expression
+  getChat = (
+    id: number | string, 
+    config?: AxiosRequestConfig
+  ) => {
+    return axiosInstance
+      .get<FetchResponse<T>>(this.endpoint + `/${id}/chatsession/`, config)
+      .then((res) => res.data)
+  }
 }
 
 export default APIClient

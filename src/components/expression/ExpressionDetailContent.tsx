@@ -72,6 +72,7 @@ const ExpressionDetailContent = ({ exp, clipexp }: Props) => {
         </Center>
         {/* 1.2 Chat box display on above='md' */}
         <ChatBox 
+          expression={exp}
           extend={chatOpen} 
           setExtend={() => setChatOpen(!chatOpen)}
         />
