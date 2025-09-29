@@ -3,7 +3,7 @@ import { Heading } from '@chakra-ui/react'
 
 const ExpressionHeader = ({ expression } : { expression: Expression }) => {
   return (
-    <Heading pb={7} fontSize='4xl' lineHeight={1}>
+    <Heading pb={7} fontSize='3xl' lineHeight={1.2}>
       {expression.title}
     </Heading>
   )

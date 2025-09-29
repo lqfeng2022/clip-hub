@@ -17,10 +17,10 @@ const ChatUserMessage = ({ fullName, message }: Props) => {
       />
       <Box maxW='350px'>
         <Text pb={1} fontSize='sm' color='gray.300'>
-          @{fullName}
+          {fullName}
         </Text>
-        <Box borderRadius='10px' background='gray.200' p='4px 8px'>
-          <Text color='gray.700'>
+        <Box borderRadius='10px' background='gray.200' p='5px 10px'>
+          <Text color='gray.600' fontWeight='bold'>
             {message.content}
           </Text>
         </Box>

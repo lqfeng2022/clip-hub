@@ -1,5 +1,12 @@
+import { FormEvent } from 'react'
 import { Subtitle } from './entities/Subtitle'
 
+
+export const autoGrow = (e: FormEvent<HTMLTextAreaElement>) => {
+  const target = e.currentTarget
+  target.style.height = 'auto'
+  target.style.height = `${target.scrollHeight}px`
+}
 
 export const parseTimeline = (timeline: string): number => {
     const [minStr, secStr] = timeline.split(':').map(s => s.trim())
