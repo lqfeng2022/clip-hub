@@ -8,7 +8,7 @@ const useListDelete = () => {
   return useMutation({
     // React Query expects mutationFn to take a single argument 
     mutationFn: ({ listId }: { listId: number }) => 
-      apiClient.deleteList(listId, { withCredentials: true })
+      apiClient.delete(listId, { withCredentials: true })
   })
 }
 

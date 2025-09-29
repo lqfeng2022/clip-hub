@@ -64,8 +64,8 @@ class InteractAPIClient<T> {
       .then((res) => res.data)
   }
 
-  // delete list
-  deleteList = (
+  // delete list/chatSession
+  delete = (
     id: number | string, 
     config?: AxiosRequestConfig
   ) => {
