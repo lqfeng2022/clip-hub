@@ -8,8 +8,7 @@ import { profilePages } from '@/data/profilePages'
 const ProfileListLink = () => {
   const lang = useLanguageStore(s => s.language)
   const [selected, setSelected] = useState<string | null>(null)
-  const list = lang === 'en' 
-    ? profilePages.en.list : profilePages.zh.list
+  const list = lang === 'en' ? profilePages.en.list : profilePages.zh.list
 
   const { data, error } = useLists()
   const collections = data?.pages[0].results.slice(0, 9)

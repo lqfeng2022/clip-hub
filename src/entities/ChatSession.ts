@@ -5,4 +5,5 @@ export default interface ChatSession {
   user: number,
   expression: number,
   messages: ChatMessage[],
+  created_at: string,
 }

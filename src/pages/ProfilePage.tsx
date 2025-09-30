@@ -5,6 +5,7 @@ import ProfileEplike from '../components/profile/ProfileEplike'
 import ProfileLists from '../components/profile/ProfileLists'
 import ProfileUser from '../components/profile/ProfileUser'
 import ProfileViewHistory from '../components/profile/ProfileViewHistory'
+import ProfileChatSession from '@/components/profile/ProfileChatSession'
 
 const Profile = () => { 
   const { user } = useAuth()
@@ -13,6 +14,7 @@ const Profile = () => {
     <Stack p={2}>
       <ProfileBack/>
       <ProfileUser/>
+      <ProfileChatSession/>
       <ProfileViewHistory/>
       <ProfileEplike/>
       <ProfileLists/>

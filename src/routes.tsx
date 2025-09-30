@@ -14,6 +14,7 @@ import ProfileEplikePage from './pages/ProfileEplikePage'
 import ProfileListDetailPage from './pages/ProfileListDetailPage'
 import ProfileListsPage from './pages/ProfileListsPage'
 import SignupPage from './pages/SignupPage'
+import ProfileChatPage from './pages/ProfileChatPage'
 
 const router = createBrowserRouter([
   {
@@ -31,6 +32,7 @@ const router = createBrowserRouter([
         children: [
           { index: true, element: <ProfilePage /> },
           { path: 'me', element: <ProfileUserPage /> },
+          { path: 'chatsession', element: <ProfileChatPage/>},
           { path: 'history', element: <ProfileHistoryPage /> },
           { path: 'expression', element: <ProfileEplikePage /> },
           { path: 'list', element: <ProfileListsPage /> },
