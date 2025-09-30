@@ -55,25 +55,19 @@ const ProfileUser = () => {
             <Text fontSize='lg' color='gray.300' py={1}>
               {`@${user?.username}`}
             </Text>
-            <Link to='/profile/me'>
-              {!isProfileMePage && 
-                <Button size='sm' variant='ghost'>
-                  {buttons.edit}
-                </Button>
-              }
-            </Link>
           </HStack>
           <HStack py={2} justifyContent='space-between'>
             <Button leftIcon={<FaBloggerB/>} size='sm' disabled>
               Be a Bro
             </Button>
-            <Button 
-              size='sm' 
-              variant='outline' 
-              onClick={handleLogout}
-            >
-              {buttons.logout}
-            </Button>
+            {isProfileMePage ? (
+              <Button size='sm' variant='outline' onClick={handleLogout}>
+                {buttons.logout}
+              </Button>
+            ) : (<Link to='/profile/me'>
+              <Button size='sm' variant='solid'>{buttons.edit}</Button>
+            </Link>
+            )}
           </HStack>
         </Box>
       </HStack>

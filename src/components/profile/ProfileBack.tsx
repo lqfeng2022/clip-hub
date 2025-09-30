@@ -1,17 +1,10 @@
-import { Box, Text } from '@chakra-ui/react'
+import { Box, Image } from '@chakra-ui/react'
+import backImage from '@/assets/profile-back.webp'
 
 const ProfileBack = () => {
   return (
-    <Box
-      height='160px'
-      borderRadius={5}
-      bgGradient='linear(to-r, gray.200, gray.400, gray.600)'
-    >
-      <Text p='10px 20px'>
-        Hey there! I’m <strong>Simon Lee</strong>, the creator of <i>ClipWords</i>. 
-        I’m creating <strong>a fun AI agent</strong> on top of our English Expression database. 
-        Think of it as <strong>a friendly English-Speaking companion</strong>...
-      </Text>
+    <Box height='160px' borderRadius={5} overflow='hidden'>
+      <Image src={backImage} objectFit='cover'/>
     </Box>
   )
 }
