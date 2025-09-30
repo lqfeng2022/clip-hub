@@ -10,7 +10,6 @@ import BeatLoader from '../BeatLoader'
 import ChatBotDleteModal from './ChatBotDleteModal'
 import ChatBoxForm from './ChatBoxForm'
 import ChatBoxHeader from './ChatBoxHeader'
-import ChatBoxUnauth from './ChatBoxUnauth'
 import ChatMessagesList from './ChatMessagesList'
 
 interface Props {
@@ -22,7 +21,10 @@ const ChatBox = ({ expression, extend, setExtend }: Props) => {
   const { isAuthenticated } = useAuth()
     
   // GET chat session
-  const { data: chatSessions, isLoading, error, refetch} = useChatSession(expression.id.toString())
+  const { data: chatSessions, isLoading, error, refetch} = useChatSession(
+    expression.id.toString(), 
+    isAuthenticated // only fetch when logged in
+  )
   const chatSession = chatSessions?.results[0]
 
   // set a local empty STATE `messages`, then put the chatMessages to it once
@@ -50,14 +52,15 @@ const ChatBox = ({ expression, extend, setExtend }: Props) => {
     })
   }
 
-  if (error && !isAuthenticated) return <ChatBoxUnauth/>
+  if (error) return null
 
   return (
     <Box margin='12px 2px 24px' borderRadius='10px' background='gray.700'>
+      {!isAuthenticated && <ChatBoxHeader/>}
       {isAuthenticated && <Box p={3}>
         <Collapse in={extend} startingHeight='78px'>
           <ChatBoxHeader/>
-          {isLoading && <BeatLoader/>}
+          {chatSession?.messages.length !== 0 && isLoading && <BeatLoader/>}
           {!chatSession 
             ? <Button my={3} size='sm' onClick={handlePost}>Start a chat</Button>
             : (<Box>
