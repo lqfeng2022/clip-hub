@@ -4,7 +4,7 @@ import Expression from '@/entities/Expression'
 import useChatSessionDelete from '@/hooks/interact/useChatSessionDelete'
 import useChatSessionPost from '@/hooks/interact/useChatSessionPost'
 import useChatSession from '@/hooks/store/useChatSession'
-import { Box, Button, Collapse, Flex, useDisclosure } from '@chakra-ui/react'
+import { Box, Button, Collapse, useDisclosure } from '@chakra-ui/react'
 import { useEffect, useState } from 'react'
 import BeatLoader from '../BeatLoader'
 import ChatBotDleteModal from './ChatBotDleteModal'
@@ -55,11 +55,11 @@ const ChatBox = ({ expression, extend, setExtend }: Props) => {
   if (error) return null
 
   return (
-    <Box margin='12px 2px 24px' borderRadius='10px' background='gray.700'>
-      {!isAuthenticated && <ChatBoxHeader/>}
+    <Box margin='20px 2px 20px' borderRadius='10px' background='gray.700'>
+      {!isAuthenticated && <ChatBoxHeader extend={extend} setExtend={setExtend}/>}
       {isAuthenticated && <Box p={3}>
         <Collapse in={extend} startingHeight='78px'>
-          <ChatBoxHeader/>
+          <ChatBoxHeader extend={extend} setExtend={setExtend}/>
           {chatSession?.messages.length !== 0 && isLoading && <BeatLoader/>}
           {!chatSession 
             ? <Button my={3} size='sm' onClick={handlePost}>Start a chat</Button>
@@ -79,11 +79,9 @@ const ChatBox = ({ expression, extend, setExtend }: Props) => {
             </Box>) 
           }
         </Collapse>
-        <Flex justify='flex-end' px='3px' _hover={{ backgrouond: ''}}>
-          {extend && <Button size='sm' variant='ghost' onClick={setExtend}>
-            show lesss
-          </Button>}
-        </Flex>
+        {extend && <Button size='sm' variant='ghost' onClick={setExtend}>
+          show lesss
+        </Button>}
       </Box>}
     </Box>
   )

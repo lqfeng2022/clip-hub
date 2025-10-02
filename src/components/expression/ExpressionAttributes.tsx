@@ -72,7 +72,7 @@ const ExpressionAttributes = ({ expression } : { expression: Expression }) => {
       </Box>
       {/* clip link */}
       <Stack>
-        <Heading size='md' py={2} color='gray.500'>
+        <Heading size='md' p='20px 0px 8px' color='gray.500'>
           {attributes.clip_header}
         </Heading>
         <Link to={`/clips/${expression.video.slug}`}>

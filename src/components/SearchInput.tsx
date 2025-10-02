@@ -49,7 +49,7 @@ const SearchInput = ({ onClose }: { onClose?: () => void }) => {
     setIsFocused(false)   // hide <SearchBox />
     if (onClose) onClose()
 
-    if (!isExpression) navigate('/') // optional navigation
+    isExpression ? navigate('/expressions') : navigate('/')
 
     reset() // clear input if you want
   }

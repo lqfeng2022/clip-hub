@@ -1,27 +1,22 @@
+import BeatLoader from '@/components/BeatLoader'
+import ClipExpression from '@/components/ClipExpression'
+import { clipPage } from '@/data/clipPage'
+import useClipExpressions from '@/hooks/store/useClipExpressions'
 import useLanguageStore from '@/languageStore'
-import { Box, Button, Collapse, Grid, GridItem, Heading, HStack, Text } from '@chakra-ui/react'
-import { useState } from 'react'
+import { Grid, GridItem, Heading } from '@chakra-ui/react'
 import { useParams } from 'react-router-dom'
 import ClipAttributes from '../components/clip/ClipAttributes'
 import ClipMovie from '../components/clip/ClipMovie'
 import useClip from '../hooks/store/useClip'
-import ClipExpression from '@/components/ClipExpression'
-import useClipExpressions from '@/hooks/store/useClipExpressions'
-import BeatLoader from '@/components/BeatLoader'
-import { clipPage } from '@/data/clipPage'
 
 const ClipDetailPage = () => {
   const { slug } = useParams() // get `slug` from url
   const { data: clip, isLoading, error } = useClip(slug!)
   const { data: clipexp } = useClipExpressions(clip?.id)
-  
-  const [show, setShow] = useState(true)
 
   const lang = useLanguageStore(s => s.language)
   const header = lang === 'ch' && clip?.title_ch
     ? clip?.title_ch : clip?.title
-  const about_content = lang === 'ch' && clip?.description_ch 
-    ? clip.description_ch : clip?.description
   const clip_page = lang === 'en' ? clipPage.en : clipPage.zh
 
   if (isLoading) return <BeatLoader/>
@@ -37,39 +32,10 @@ const ClipDetailPage = () => {
       <GridItem order={{ base: 1, lg: 1 }}>
         <ClipMovie video={clip}/>
         <Heading size='md' py={4}>{header}</Heading>
-        <Box>
-          <HStack mb={1}>
-            <Heading size='md' color='gray.500'>
-              {clip_page.about}
-            </Heading>
-            {!show && <Button 
-              size='xl' 
-              variant='ghost' 
-              _hover={{ backgrouond: ''}} 
-              onClick={() => setShow(!show)}
-            >
-              ...more
-            </Button>}
-          </HStack>
-          <Box px={3} borderRadius='10px' background='gray.700'>
-            <Collapse in={show}>
-              <Text pt={2}>{about_content}</Text>
-              <ClipAttributes clip={clip}/>
-            </Collapse>
-            {show && <Button 
-              size='sm' 
-              px='3px' 
-              variant='ghost' 
-              _hover={{ backgrouond: ''}} 
-              onClick={() => setShow(!show)}
-            >
-              show lesss
-            </Button>}
-          </Box>
-        </Box>
+        <ClipAttributes clip={clip}/>
       </GridItem>
       <GridItem order={{ base: 1, lg: 2 }}>
-        <Heading size='md' pb={1} pt={{base: 3, lg: 0}} color='gray'>
+        <Heading size='md' pb={1} pt={{base: 7, lg: 0}} color='gray'>
           {clip_page.expressions}
         </Heading>
         <ClipExpression data={clipexp?.results ?? []}/>

@@ -7,26 +7,14 @@ import InteractIconSave from './InteractIconSave'
 import ExpressionInteractLike from './ExpressionInteractLike'
 import { useAuth } from '@/AuthContext'
 
-interface Props {
-  expression: Expression,
-  chatOpen: boolean,
-  onChatToggle: () => void,
-}
-const InteractIcons = ({ expression, chatOpen, onChatToggle }: Props) => {
+const InteractIcons = ({ expression }: { expression: Expression}) => {
   const { isAuthenticated } = useAuth()
 
   return (
     <Stack spacing={4} m='12px 10px'>
       <HStack justifyContent='space-between'>
         {/* AI agent chat */}
-        {isAuthenticated ? <Icon 
-          as={IoIosChatboxes} 
-          boxSize={6} 
-          color={chatOpen ? 'yellow.500' : ''}
-          onClick={onChatToggle} 
-          cursor='pointer'
-        /> : <Icon as={IoIosChatboxes} boxSize={6} opacity='0.3'/>
-        }
+        <Icon as={IoIosChatboxes} boxSize={6} opacity={isAuthenticated ? '0.8' : '0.3'}/>
         {/* expression like */}
         <HStack>
           <ExpressionInteractLike expression={expression}/>

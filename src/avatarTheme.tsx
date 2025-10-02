@@ -9,7 +9,7 @@ const large = defineStyle({
     height: '122px',
   },
   label: {
-    fontSize: '7xl',
+    fontSize: '6xl',
   },
 })
 

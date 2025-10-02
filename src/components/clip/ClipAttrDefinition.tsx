@@ -7,7 +7,7 @@ interface Props {
 }
 const ClipAttrDefinition = ({ term, children }: Props) => {
   return (
-    <Box my={1}>
+    <Box my={2}>
       <Heading pb={1} fontSize='md' color='gray.500'>
         {term}
       </Heading>

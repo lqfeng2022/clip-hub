@@ -63,11 +63,7 @@ const ExpressionDetailContent = ({ exp, clipexp }: Props) => {
               borderRadius='md'
               src={`${pocketURL}${exp.image}` || noImage}
             />
-            <InteractIcons 
-              expression={exp} 
-              chatOpen={chatOpen}
-              onChatToggle={() => setChatOpen(!chatOpen)}
-            />
+            <InteractIcons expression={exp}/>
           </Box>
         </Center>
         {/* 1.2 Chat box display on above='md' */}
