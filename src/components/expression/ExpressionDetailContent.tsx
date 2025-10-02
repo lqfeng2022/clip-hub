@@ -11,7 +11,6 @@ import useExpressionViews from '@/hooks/interact/useExpressionViews'
 import useLanguageStore from '@/languageStore'
 import { expressionPage } from '@/data/expressionPage'
 import ChatBox from './ChatBox'
-import ExpressionHeader from './ExpressionHeader'
 
 interface Props {
   exp: Expression,
@@ -39,11 +38,12 @@ const ExpressionDetailContent = ({ exp, clipexp }: Props) => {
     >
       {/* 2. Expression details and recommendation */}
       <GridItem order={{ base: 2, lg: 1 }}>
-        {/* 2.1 Expression title */}
-        <Show above='md'><ExpressionHeader expression={exp}/></Show>
-        {/* 2.2 Expression attributes(explain/langtas/words/clip) */}
+        <Show above='md'>
+          <Heading pb={7} fontSize='3xl' lineHeight={1.2}>
+            {exp.title}
+          </Heading>
+        </Show>
         <ExpressionAttributes expression={exp}/>
-        {/* 2.3 Expression recommendation */}
         <Box pt={5}>
           <Heading size='md' pb={1} color='gray'>
             {others}
@@ -53,8 +53,6 @@ const ExpressionDetailContent = ({ exp, clipexp }: Props) => {
       </GridItem>
       {/* 1. Expression image & interactions, chatbox */}
       <GridItem order={{ base: 1, lg: 2 }}>
-        {/* 1.1 image & interactions */}
-        <Show below='md'><ExpressionHeader expression={exp}/></Show>
         <Center>
           <Box>
             <Image
@@ -66,7 +64,11 @@ const ExpressionDetailContent = ({ exp, clipexp }: Props) => {
             <InteractIcons expression={exp}/>
           </Box>
         </Center>
-        {/* 1.2 Chat box display on above='md' */}
+        <Show below='md'>
+          <Heading pb={5} fontSize='3xl' lineHeight={1.2}>
+            {exp.title}
+          </Heading>
+        </Show>
         <ChatBox 
           expression={exp}
           extend={chatOpen} 

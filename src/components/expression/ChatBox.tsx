@@ -55,7 +55,7 @@ const ChatBox = ({ expression, extend, setExtend }: Props) => {
   if (error) return null
 
   return (
-    <Box margin='20px 2px 20px' borderRadius='10px' background='gray.700'>
+    <Box margin='10px 2px 10px' borderRadius='10px' background='gray.700'>
       {!isAuthenticated && <ChatBoxHeader extend={extend} setExtend={setExtend}/>}
       {isAuthenticated && <Box p={3}>
         <Collapse in={extend} startingHeight='78px'>
