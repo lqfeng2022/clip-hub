@@ -44,7 +44,7 @@ const ExpressionDetailContent = ({ exp, clipexp }: Props) => {
           </Heading>
         </Show>
         <ExpressionAttributes expression={exp}/>
-        <Box pt={5}>
+        <Box pt={7}>
           <Heading size='md' pb={1} color='gray'>
             {others}
           </Heading>

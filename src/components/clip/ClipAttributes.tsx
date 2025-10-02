@@ -15,7 +15,7 @@ const ClipAttributes = ({ clip }: { clip: Clip }) => {
   const attributes = lang === 'en' ? clipPage.en : clipPage.zh
   const clip_page = lang === 'en' ? clipPage.en : clipPage.zh
 
-  const [show, setShow] = useState(true)
+  const [show, setShow] = useState(false)
 
   return (
     <Box p={3} mt={3} borderRadius='10px' background='gray.700'>
