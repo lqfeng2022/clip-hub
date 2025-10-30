@@ -2,12 +2,12 @@ import { Button, Menu, MenuButton, MenuItem, MenuList } from '@chakra-ui/react'
 import { BsChevronDown } from 'react-icons/bs'
 import useExpressionQueryStore from '@/expressionStore'
 import useLanguageStore from '@/languageStore'
-import expressionPage from '@/data/expressionPage'
+import expressionPageData from '@/data/expressionPageData'
 
 const ExpressionSortSelector = () => {
   const lang = useLanguageStore(s => s.language)
   const sortOrders = lang === 'en' 
-    ? expressionPage.en.sortOrders : expressionPage.zh.sortOrders
+    ? expressionPageData.en.sortOrders : expressionPageData.zh.sortOrders
 
   const sortOrder = useExpressionQueryStore((s) => s.expressionQuery.sortOrder)
   const setSortOrder = useExpressionQueryStore((s) => s.setSortOrder)
@@ -17,8 +17,8 @@ const ExpressionSortSelector = () => {
   )
 
   const header = lang === 'en' 
-    ? `${expressionPage.en.sort_prefix}: ${currentSortOrder?.label || expressionPage.en.sort_surfix}`
-    : `${expressionPage.zh.sort_prefix}: ${currentSortOrder?.label || expressionPage.zh.sort_surfix}`
+    ? `${expressionPageData.en.sort_prefix}: ${currentSortOrder?.label || expressionPageData.en.sort_surfix}`
+    : `${expressionPageData.zh.sort_prefix}: ${currentSortOrder?.label || expressionPageData.zh.sort_surfix}`
 
   return (
     <Menu>

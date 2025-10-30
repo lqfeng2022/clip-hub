@@ -20,7 +20,7 @@ const Langtags = () => {
     <Box 
       flex='1' 
       overflowY='auto' 
-      maxH='70vh' 
+      maxH='75vh' 
       pr={3}>
       <Wrap spacing={4} py={2}>
       {data?.results.map((tag) => (

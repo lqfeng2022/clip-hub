@@ -7,12 +7,12 @@ import React from 'react'
 import InfiniteScroll from 'react-infinite-scroll-component'
 import ExpressionListCard from '../components/profile/ExpressionListCard'
 import BeatLoader from '@/components/BeatLoader'
-import profilePages from '@/data/profilePages'
+import profilePagesData from '@/data/profilePagesData'
 
 const ProfileListsPage = () => {
   const lang = useLanguageStore(s => s.language)
   const header = lang === 'en' 
-    ? profilePages.en.your_lists : profilePages.zh.your_lists
+    ? profilePagesData.en.your_lists : profilePagesData.zh.your_lists
 
   const { data, refetch, error, fetchNextPage,  hasNextPage } = useLists()
   const fetchExpressionsCount = data?.pages.reduce(

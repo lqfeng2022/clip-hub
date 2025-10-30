@@ -4,11 +4,11 @@ import useExpressionLikes from '@/hooks/interact/useExpressionLikes'
 import EmptyCard from '../EmptyCard'
 import ExpressionCardSimple from '../expression/ExpressionCardSimple'
 import useLanguageStore from '@/languageStore'
-import profilePages from '@/data/profilePages'
+import profilePagesData from '@/data/profilePagesData'
 
 const ProfileExpressionLike = () => {
   const lang = useLanguageStore(s => s.language)
-  const buttons = lang === 'en' ? profilePages.en : profilePages.zh
+  const buttons = lang === 'en' ? profilePagesData.en : profilePagesData.zh
 
   const { data, error } = useExpressionLikes()
   const eplikes = data?.pages[0].results

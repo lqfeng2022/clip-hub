@@ -1,4 +1,4 @@
-import passwordInput from '@/data/passwordInput'
+import passwordInputData from '@/data/passwordInputData'
 import useLanguageStore from '@/languageStore'
 import { Button, Input, InputGroup, InputRightElement } from '@chakra-ui/react'
 import { ComponentProps, useState } from 'react'
@@ -8,7 +8,7 @@ interface Props {
 }
 const PasswordInput = ({ PasswordInput: props }: Props) => {
   const lang = useLanguageStore(s => s.language)
-  const inputText = lang === 'en' ? passwordInput.en : passwordInput.zh
+  const inputText = lang === 'en' ? passwordInputData.en : passwordInputData.zh
 
   const [show, setShow] = useState(false)
   const handleClick = () => setShow(!show)

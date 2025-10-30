@@ -1,4 +1,4 @@
-import expressionPage from '@/data/expressionPage'
+import expressionPageData from '@/data/expressionPageData'
 import useLanguageStore from '@/languageStore'
 import { Badge, Icon } from '@chakra-ui/react'
 import { TbMessageLanguage } from 'react-icons/tb'
@@ -10,7 +10,7 @@ const ExpressionLogo = () => {
 
   const lang = useLanguageStore(s => s.language)
   const content = lang === 'en' 
-    ? expressionPage.en.navbar : expressionPage.zh.navbar
+    ? expressionPageData.en.navbar : expressionPageData.zh.navbar
 
   return (
     <Badge

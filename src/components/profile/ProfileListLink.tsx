@@ -3,12 +3,12 @@ import useLanguageStore from '@/languageStore'
 import { Avatar, Box, Divider, HStack, Icon, List, ListItem, Text } from '@chakra-ui/react'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import profilePages from '@/data/profilePages'
+import profilePagesData from '@/data/profilePagesData'
 
 const ProfileListLink = () => {
   const lang = useLanguageStore(s => s.language)
   const [selected, setSelected] = useState<string | null>(null)
-  const list = lang === 'en' ? profilePages.en.list : profilePages.zh.list
+  const list = lang === 'en' ? profilePagesData.en.list : profilePagesData.zh.list
 
   const { data, error } = useLists()
   const collections = data?.pages[0].results.slice(0, 9)

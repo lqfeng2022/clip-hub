@@ -1,5 +1,5 @@
 import PasswordInput from '@/components/PasswordInput'
-import signupTexts from '@/data/signupTexts'
+import signupPageData from '@/data/signupPageData'
 import useLanguageStore from '@/languageStore'
 import { SignupForm, signupSchema } from '@/validation/signupSchema'
 import { Box, Button, FormControl, FormHelperText, FormLabel, Heading, HStack, Input, ListItem, OrderedList, SimpleGrid, Stack, Text } from '@chakra-ui/react'
@@ -11,7 +11,7 @@ import useSignup from '../hooks/useSignup'
 
 const SignupPage = () => {
   const lang = useLanguageStore(s => s.language)
-  const context = lang === 'en' ? signupTexts.en : signupTexts.zh
+  const context = lang === 'en' ? signupPageData.en : signupPageData.zh
 
   const navigate = useNavigate()
   const { mutate, error }= useSignup()

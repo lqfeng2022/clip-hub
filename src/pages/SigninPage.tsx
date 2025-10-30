@@ -1,5 +1,5 @@
 import PasswordInput from '@/components/PasswordInput'
-import signinTexts from '@/data/signinTexts'
+import signinPageData from '@/data/signinPageData'
 import useLanguageStore from '@/languageStore'
 import { SigninForm, signinSchema } from '@/validation/signinSchema'
 import { Box, Button, FormControl, FormHelperText, FormLabel, Heading, HStack, Input, SimpleGrid, Text } from '@chakra-ui/react'
@@ -12,7 +12,7 @@ import useSignin from '../hooks/useSignin'
 
 const SigninPage = () => {
   const lang = useLanguageStore(s => s.language)
-  const content = lang === 'en' ? signinTexts.en : signinTexts.zh
+  const content = lang === 'en' ? signinPageData.en : signinPageData.zh
   
   const { mutate, error } = useSignin()
   const { fetchUser } = useAuth()

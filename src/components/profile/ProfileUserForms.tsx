@@ -1,5 +1,5 @@
 import { useAuth } from '@/AuthContext'
-import profileData from '@/data/profileData'
+import profileUserData from '@/data/profileUserData'
 import useProfileUpdate from '@/hooks/useProfileUpdate'
 import useLanguageStore from '@/languageStore'
 import { ProfileForm, profileSchema } from '@/validation/profileSchema'
@@ -12,7 +12,7 @@ import { MdAlternateEmail } from 'react-icons/md'
 
 const ProfileUserForms = () => {
   const lang = useLanguageStore(s => s.language)
-  const content = lang === 'en' ? profileData.en  : profileData.zh
+  const content = lang === 'en' ? profileUserData.en  : profileUserData.zh
 
   // Sync user data once loaded
   const { user, fetchUser } = useAuth()

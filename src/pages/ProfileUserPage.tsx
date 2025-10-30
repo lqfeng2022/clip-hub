@@ -3,12 +3,12 @@ import useLanguageStore from '@/languageStore'
 import { Heading, Stack } from '@chakra-ui/react'
 import ProfileUser from '../components/profile/ProfileUser'
 import ProfileUserForms from '../components/profile/ProfileUserForms'
-import profilePages from '@/data/profilePages'
+import profilePagesData from '@/data/profilePagesData'
 
 const ProfileUserPage = () => {
   const lang = useLanguageStore(s => s.language)
   const header = lang === 'en' 
-    ? profilePages.en.profile : profilePages.zh.profile
+    ? profilePagesData.en.profile : profilePagesData.zh.profile
 
   return (
     <Stack p={2}>

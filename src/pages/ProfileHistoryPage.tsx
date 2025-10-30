@@ -6,12 +6,12 @@ import useViewHistory from '../hooks/interact/useViewHistory'
 import useLanguageStore from '@/languageStore'
 import ExpressionCardDeleteMark from '@/components/profile/ExpressionCardDeleteMark'
 import BeatLoader from '@/components/BeatLoader'
-import profilePages from '@/data/profilePages'
+import profilePagesData from '@/data/profilePagesData'
 
 const ProfileHistoryPage = () => {
   const lang = useLanguageStore(s => s.language)
   const header = lang === 'en' 
-    ? profilePages.en.view_history : profilePages.zh.view_history
+    ? profilePagesData.en.view_history : profilePagesData.zh.view_history
 
   const { data, refetch, error, fetchNextPage,  hasNextPage } = useExpressionViews()
   const fetchExpressionsCount = data?.pages.reduce(

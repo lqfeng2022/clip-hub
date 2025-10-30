@@ -2,13 +2,13 @@ import { Box, Button, Heading, HStack, SimpleGrid, Text } from '@chakra-ui/react
 import { Link } from 'react-router-dom'
 import EmptyCard from '../EmptyCard'
 import useLanguageStore from '@/languageStore'
-import profilePages from '@/data/profilePages'
+import profilePagesData from '@/data/profilePagesData'
 import useChats from '@/hooks/interact/useChats'
 import ExpressionCardChat from './ExpressionCardChat'
 
 const ProfileChatSession = () => {
   const lang = useLanguageStore(s => s.language)
-  const buttons = lang === 'en' ? profilePages.en : profilePages.zh
+  const buttons = lang === 'en' ? profilePagesData.en : profilePagesData.zh
 
   const { data, error } = useChats()
   const chats = data?.pages[0].results.slice(0, 5)

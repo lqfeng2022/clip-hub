@@ -7,11 +7,11 @@ import ExpressionSortSelector from '../components/expression/ExpressionSortSelec
 import LangtagsSelector from '../components/expression/LangtagsSelector'
 import useExpressionQueryStore from '../expressionStore'
 import { useLangtag } from '../hooks/store/useLangtag'
-import expressionPage from '@/data/expressionPage'
+import expressionPageData from '@/data/expressionPageData'
 
 function ExpressionPage() {
   const lang = useLanguageStore(s => s.language)
-  const headers = lang === 'en' ? expressionPage.en : expressionPage.zh
+  const headers = lang === 'en' ? expressionPageData.en : expressionPageData.zh
 
   const langtagId = useExpressionQueryStore((s) => s.expressionQuery.tagId)
   const langtag = useLangtag(langtagId)
@@ -19,7 +19,7 @@ function ExpressionPage() {
 
   const formalId = useExpressionQueryStore((s) => s.expressionQuery.formal)
   const formality = lang === 'en'
-    ? expressionPage.en.formality : expressionPage.zh.formality
+    ? expressionPageData.en.formality : expressionPageData.zh.formality
 
   const formality_target = formality.find(tag => tag.name === formalId)
   const formality_title = formality_target?.title

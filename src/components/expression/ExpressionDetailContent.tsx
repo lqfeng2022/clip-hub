@@ -9,7 +9,7 @@ import ClipExpression from '../ClipExpression'
 import { pocketURL } from '@/services/pocket'
 import useExpressionViews from '@/hooks/interact/useExpressionViews'
 import useLanguageStore from '@/languageStore'
-import expressionPage from '@/data/expressionPage'
+import expressionPageData from '@/data/expressionPageData'
 import ChatBox from './ChatBox'
 
 interface Props {
@@ -24,7 +24,7 @@ const ExpressionDetailContent = ({ exp, clipexp }: Props) => {
 
   const lang = useLanguageStore(s => s.language)
   const others = lang === 'en' 
-    ? expressionPage.en.others : expressionPage.zh.others
+    ? expressionPageData.en.others : expressionPageData.zh.others
   
   useEffect(() => { 
     mutate({ visible: true }, { onSuccess: () => refetch()}) 

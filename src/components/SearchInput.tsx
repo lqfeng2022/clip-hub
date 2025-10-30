@@ -10,7 +10,7 @@ import { useAuth } from '../AuthContext'
 import useSearchPost from '../hooks/interact/useSearchPost'
 import SearchHistoryBox from './SearchHistoryBox'
 import useExpressionQueryStore from '@/expressionStore'
-import expressionPage from '@/data/expressionPage'
+import expressionPageData from '@/data/expressionPageData'
 
 const SearchInput = ({ onClose }: { onClose?: () => void }) => {
   const { user } = useAuth()
@@ -19,7 +19,7 @@ const SearchInput = ({ onClose }: { onClose?: () => void }) => {
 
   // search context and mutation hooks
   const placeholder = lang === 'en' 
-    ? expressionPage.en.search_box : expressionPage.zh.search_box
+    ? expressionPageData.en.search_box : expressionPageData.zh.search_box
   const { mutate } = useSearchPost()
 
   const navigate = useNavigate()

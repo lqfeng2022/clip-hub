@@ -5,12 +5,12 @@ import useExpressionLikes from '../hooks/interact/useExpressionLikes'
 import ExpressionCard from '../components/expression/ExpressionCard'
 import useLanguageStore from '@/languageStore'
 import BeatLoader from '@/components/BeatLoader'
-import profilePages from '@/data/profilePages'
+import profilePagesData from '@/data/profilePagesData'
 
 const ProfileEplikePage = () => {
   const lang = useLanguageStore(s => s.language)
   const header = lang === 'en' 
-    ? profilePages.en.liked_expression : profilePages.zh.liked_expression
+    ? profilePagesData.en.liked_expression : profilePagesData.zh.liked_expression
 
   const { data, refetch, error, fetchNextPage,  hasNextPage } = useExpressionLikes()
   const fetchExpressionsCount = data?.pages.reduce(

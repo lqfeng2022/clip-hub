@@ -5,11 +5,11 @@ import { Link, useLocation, useNavigate } from 'react-router-dom'
 import useSignout from '@/hooks/useSignout'
 import { useAuth } from '@/AuthContext'
 import useLanguageStore from '@/languageStore'
-import profilePages from '@/data/profilePages'
+import profilePagesData from '@/data/profilePagesData'
 
 const ProfileUser = () => {
   const lang = useLanguageStore(s => s.language)
-  const buttons = lang === 'en' ? profilePages.en : profilePages.zh
+  const buttons = lang === 'en' ? profilePagesData.en : profilePagesData.zh
 
   const { user, setUser } = useAuth()
   const { mutate } = useSignout()

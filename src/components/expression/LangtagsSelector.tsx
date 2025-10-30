@@ -3,7 +3,7 @@ import { useLangtag } from '@/hooks/store/useLangtag'
 import useExpressionQueryStore from '@/expressionStore'
 import useLanguageStore from '@/languageStore'
 import Langtags from './Langtags'
-import expressionPage from '@/data/expressionPage'
+import expressionPageData from '@/data/expressionPageData'
 
 const LangtsgsSelector = () => {
   const lang = useLanguageStore(s => s.language)
@@ -14,8 +14,8 @@ const LangtsgsSelector = () => {
   const selectedLangtag = useLangtag(selectedTagId)
 
   const header = lang === 'en' 
-    ? selectedLangtag?.title || expressionPage.en.tags_header
-    : selectedLangtag?.title_ch || expressionPage.zh.tags_header
+    ? selectedLangtag?.title || expressionPageData.en.tags_header
+    : selectedLangtag?.title_ch || expressionPageData.zh.tags_header
 
   return (
     <>

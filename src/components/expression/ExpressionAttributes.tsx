@@ -4,13 +4,13 @@ import Expression from '@/entities/Expression'
 import TagHList from '@/components/TagHList'
 import useLanguageStore from '@/languageStore'
 import { pocketURL } from '@/services/pocket'
-import expressionPage from '@/data/expressionPage'
+import expressionPageData from '@/data/expressionPageData'
 import { splitByPhrase, splitExplain } from '@/helperfunction'
 
 const ExpressionAttributes = ({ expression } : { expression: Expression }) => {
   const lang = useLanguageStore(s => s.language)
   const attributes = lang === 'en' 
-    ? expressionPage.en : expressionPage.zh
+    ? expressionPageData.en : expressionPageData.zh
 
   const parts = splitByPhrase(expression.subtitle.content, expression.title)
   const explainParts = lang === 'en' 

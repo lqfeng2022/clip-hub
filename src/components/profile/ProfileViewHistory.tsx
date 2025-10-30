@@ -4,11 +4,11 @@ import useExpressionViews from '@/hooks/interact/useExpressionViews'
 import EmptyCard from '../EmptyCard'
 import useLanguageStore from '@/languageStore'
 import ExpressionCardSimple from '../expression/ExpressionCardSimple'
-import profilePages from '@/data/profilePages'
+import profilePagesData from '@/data/profilePagesData'
 
 const ProfileViewHistory = () => {
   const lang = useLanguageStore(s => s.language)
-  const buttons = lang === 'en' ? profilePages.en : profilePages.zh
+  const buttons = lang === 'en' ? profilePagesData.en : profilePagesData.zh
 
   const { data, error } = useExpressionViews()
   const views = data?.pages[0].results

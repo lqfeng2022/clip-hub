@@ -1,6 +1,6 @@
 import BeatLoader from '@/components/BeatLoader'
 import ExpressionCardChat from '@/components/profile/ExpressionCardChat'
-import profilePages from '@/data/profilePages'
+import profilePagesData from '@/data/profilePagesData'
 import useChats from '@/hooks/interact/useChats'
 import useLanguageStore from '@/languageStore'
 import { Box, Heading, SimpleGrid, Text } from '@chakra-ui/react'
@@ -10,7 +10,7 @@ import InfiniteScroll from 'react-infinite-scroll-component'
 const ProfileChatPage = () => {
   const lang = useLanguageStore(s => s.language)
   const header = lang === 'en' 
-    ? profilePages.en.view_chat : profilePages.zh.view_chat
+    ? profilePagesData.en.view_chat : profilePagesData.zh.view_chat
 
   const { data, error, fetchNextPage,  hasNextPage } = useChats()
   const fetchChatSessionsCount = data?.pages.reduce(

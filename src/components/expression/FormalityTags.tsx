@@ -1,4 +1,4 @@
-import expressionPage from '@/data/expressionPage'
+import expressionPageData from '@/data/expressionPageData'
 import useExpressionQueryStore from '@/expressionStore'
 import useLanguageStore from '@/languageStore'
 import { Tag, Wrap, WrapItem } from '@chakra-ui/react'
@@ -10,7 +10,7 @@ const FormalityTags = () => {
   const setFormalId = useExpressionQueryStore((s) => s.setFormal)
 
   const formality = lang === 'en' 
-    ? expressionPage.en.formality : expressionPage.zh.formality
+    ? expressionPageData.en.formality : expressionPageData.zh.formality
 
   return (
     <Wrap spacing={4} py={3}>
