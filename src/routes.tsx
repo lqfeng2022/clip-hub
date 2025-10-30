@@ -1,5 +1,4 @@
 import { createBrowserRouter } from 'react-router-dom'
-import ClipDetailPage from './pages/ClipDetailPage'
 import ErrorPage from './pages/ErrorPage'
 import ExpressionPage from './pages/ExpressionPage'
 import HomePage from './pages/HomePage'
@@ -23,7 +22,6 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage/>,
     children: [
       { index: true, element: <HomePage/> },
-      { path: 'clips/:slug', element: <ClipDetailPage/> },
       { path: 'expressions', element: <ExpressionPage/> },
       { path: 'expressions/:slug', element: <ExpressionDetailPage/> },
       { 

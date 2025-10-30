@@ -2,7 +2,7 @@ import { Box, Button, Heading, HStack, SimpleGrid, Text } from '@chakra-ui/react
 import { Link } from 'react-router-dom'
 import EmptyCard from '../EmptyCard'
 import useLanguageStore from '@/languageStore'
-import { profilePages } from '@/data/profilePages'
+import profilePages from '@/data/profilePages'
 import useChats from '@/hooks/interact/useChats'
 import ExpressionCardChat from './ExpressionCardChat'
 

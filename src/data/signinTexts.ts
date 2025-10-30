@@ -1,4 +1,4 @@
-export const signinTexts = {
+export default {
   en: {
     header: "Sign in", 
     note: "to continue to ClipWords",

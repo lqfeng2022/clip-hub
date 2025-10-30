@@ -2,7 +2,7 @@ import { Avatar, HStack, Stack } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
 import { useAuth } from '../AuthContext'
 import ClipLogo from './ClipLogo'
-import EpLogo from './EpLogo'
+import ExpressionLogo from './ExpressionLogo'
 import LanguageButton from './LanguageButton'
 import SearchInputDrawer from './SearchInputDrawer'
 
@@ -21,7 +21,7 @@ const NavBar = () => {
           <ClipLogo/>
         </Link>
         <Link to='/expressions'>
-          <EpLogo />
+          <ExpressionLogo />
         </Link>
         <SearchInputDrawer/>
         <LanguageButton/>

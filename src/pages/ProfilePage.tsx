@@ -1,7 +1,7 @@
 import { useAuth } from '@/AuthContext'
 import ProfileBack from '@/components/profile/ProfileBack'
 import { Heading, Stack } from '@chakra-ui/react'
-import ProfileEplike from '../components/profile/ProfileEplike'
+import ProfileExpressionLike from '../components/profile/ProfileExpressionLike'
 import ProfileLists from '../components/profile/ProfileLists'
 import ProfileUser from '../components/profile/ProfileUser'
 import ProfileViewHistory from '../components/profile/ProfileViewHistory'
@@ -16,7 +16,7 @@ const Profile = () => {
       <ProfileUser/>
       <ProfileChatSession/>
       <ProfileViewHistory/>
-      <ProfileEplike/>
+      <ProfileExpressionLike/>
       <ProfileLists/>
       {!user && <Heading fontSize='md'>
         You cannot access this url, please signin

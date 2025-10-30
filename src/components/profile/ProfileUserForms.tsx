@@ -1,5 +1,5 @@
 import { useAuth } from '@/AuthContext'
-import { profileData } from '@/data/profileData'
+import profileData from '@/data/profileData'
 import useProfileUpdate from '@/hooks/useProfileUpdate'
 import useLanguageStore from '@/languageStore'
 import { ProfileForm, profileSchema } from '@/validation/profileSchema'

@@ -1,11 +1,10 @@
-import { Box, Heading, HStack, Icon, Image, ListItem, Stack, Tag, Text, UnorderedList } from '@chakra-ui/react'
+import { Box, Heading, HStack, Icon, Image, Link, ListItem, Stack, Tag, Text, UnorderedList } from '@chakra-ui/react'
 import { ImQuotesLeft } from 'react-icons/im'
-import { Link } from 'react-router-dom'
 import Expression from '@/entities/Expression'
 import TagHList from '@/components/TagHList'
 import useLanguageStore from '@/languageStore'
 import { pocketURL } from '@/services/pocket'
-import { expressionPage } from '@/data/expressionPage'
+import expressionPage from '@/data/expressionPage'
 import { splitByPhrase, splitExplain } from '@/helperfunction'
 
 const ExpressionAttributes = ({ expression } : { expression: Expression }) => {
@@ -75,7 +74,7 @@ const ExpressionAttributes = ({ expression } : { expression: Expression }) => {
         <Heading size='md' p='20px 0px 8px' color='gray.500'>
           {attributes.clip_header}
         </Heading>
-        <Link to={`/clips/${expression.video.slug}`}>
+        <Link isExternal href={expression.video.website}>
           <Box position='relative'>
             <Text
               fontWeight='bold'

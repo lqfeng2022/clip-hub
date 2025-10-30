@@ -1,6 +1,7 @@
-export const expressionPage = {
+export default {
   en: {
     navbar: 'expression',
+    search_box: 'Search expressions...',
     expression_header: "Expressions",
     langtags_header: "Langtags",
     explain_header: "Explain",
@@ -26,6 +27,7 @@ export const expressionPage = {
   },
   zh: {
     navbar: '英文表达式',
+    search_box: '搜索表达式...',
     expression_header: "表达式",
     langtags_header: "语言标签",
     explain_header: "解释",

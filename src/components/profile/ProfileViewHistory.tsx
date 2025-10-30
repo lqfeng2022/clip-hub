@@ -4,7 +4,7 @@ import useExpressionViews from '@/hooks/interact/useExpressionViews'
 import EmptyCard from '../EmptyCard'
 import useLanguageStore from '@/languageStore'
 import ExpressionCardSimple from '../expression/ExpressionCardSimple'
-import { profilePages } from '@/data/profilePages'
+import profilePages from '@/data/profilePages'
 
 const ProfileViewHistory = () => {
   const lang = useLanguageStore(s => s.language)

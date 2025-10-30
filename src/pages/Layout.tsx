@@ -13,7 +13,7 @@ const Layout = () => {
     <>
       {!shouldHideNav && <NavBar/>}
       <Box>
-        <ScrollToTop/>
+        <ScrollToTop/> {/* resets scroll on every route change */}
         <Outlet/>
       </Box>
     </>

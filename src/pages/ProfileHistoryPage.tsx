@@ -6,7 +6,7 @@ import useViewHistory from '../hooks/interact/useViewHistory'
 import useLanguageStore from '@/languageStore'
 import ExpressionCardDeleteMark from '@/components/profile/ExpressionCardDeleteMark'
 import BeatLoader from '@/components/BeatLoader'
-import { profilePages } from '@/data/profilePages'
+import profilePages from '@/data/profilePages'
 
 const ProfileHistoryPage = () => {
   const lang = useLanguageStore(s => s.language)

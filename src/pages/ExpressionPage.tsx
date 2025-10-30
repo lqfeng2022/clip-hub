@@ -7,7 +7,7 @@ import ExpressionSortSelector from '../components/expression/ExpressionSortSelec
 import LangtagsSelector from '../components/expression/LangtagsSelector'
 import useExpressionQueryStore from '../expressionStore'
 import { useLangtag } from '../hooks/store/useLangtag'
-import { expressionPage } from '@/data/expressionPage'
+import expressionPage from '@/data/expressionPage'
 
 function ExpressionPage() {
   const lang = useLanguageStore(s => s.language)

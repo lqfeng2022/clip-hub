@@ -2,7 +2,7 @@ import { Box, Flex, HStack, Stack } from '@chakra-ui/react'
 import { ReactNode } from 'react'
 import { Link } from 'react-router-dom'
 import ClipLogo from './ClipLogo'
-import EpLogo from './EpLogo'
+import ExpressionLogo from './ExpressionLogo'
 import LanguageButton from './LanguageButton'
 
 const SignContainer = ({ children }: { children: ReactNode }) => {
@@ -23,7 +23,7 @@ const SignContainer = ({ children }: { children: ReactNode }) => {
         <Stack p={10} gap={3}>
           <HStack gap={5}>
             <Link to='/'><ClipLogo/></Link>
-            <Link to='/expressions'><EpLogo/></Link>
+            <Link to='/expressions'><ExpressionLogo/></Link>
             <LanguageButton/>
           </HStack>
           {children}

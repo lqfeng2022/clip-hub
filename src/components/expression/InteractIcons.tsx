@@ -4,7 +4,7 @@ import { BiShare } from 'react-icons/bi'
 import { IoIosChatboxes } from 'react-icons/io'
 import { IoEyeOutline } from 'react-icons/io5'
 import InteractIconSave from './InteractIconSave'
-import ExpressionInteractLike from './ExpressionInteractLike'
+import InteractLike from './InteractLike'
 import { useAuth } from '@/AuthContext'
 
 const InteractIcons = ({ expression }: { expression: Expression}) => {
@@ -17,7 +17,7 @@ const InteractIcons = ({ expression }: { expression: Expression}) => {
         <Icon as={IoIosChatboxes} boxSize={6} opacity={isAuthenticated ? '0.8' : '0.3'}/>
         {/* expression like */}
         <HStack>
-          <ExpressionInteractLike expression={expression}/>
+          <InteractLike expression={expression}/>
           <Text>{expression.likes_count}</Text>
         </HStack>
         {/* expression view history */}

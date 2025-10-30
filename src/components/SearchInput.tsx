@@ -7,16 +7,19 @@ import { useForm } from 'react-hook-form'
 import { BsSearch } from 'react-icons/bs'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../AuthContext'
-import useSearchContext from '../hooks/interact/useSearchContex'
 import useSearchPost from '../hooks/interact/useSearchPost'
 import SearchHistoryBox from './SearchHistoryBox'
+import useExpressionQueryStore from '@/expressionStore'
+import expressionPage from '@/data/expressionPage'
 
 const SearchInput = ({ onClose }: { onClose?: () => void }) => {
   const { user } = useAuth()
   const lang = useLanguageStore(s => s.language)
+  const setSearchText = useExpressionQueryStore((s) => s.setSearchText)
 
   // search context and mutation hooks
-  const { isExpression, placeholder, placeholder_ch, setSearchText, kind } = useSearchContext()
+  const placeholder = lang === 'en' 
+    ? expressionPage.en.search_box : expressionPage.zh.search_box
   const { mutate } = useSearchPost()
 
   const navigate = useNavigate()
@@ -27,12 +30,8 @@ const SearchInput = ({ onClose }: { onClose?: () => void }) => {
   useOutsideClick({ ref: boxRef, handler: () => setIsFocused(false) })
 
   // form handling with RHF + Zod
-  const {
-    register,
-    handleSubmit,
-    setValue,
-    formState: { errors, isValid },
-    reset,
+  const { 
+    register, handleSubmit, setValue, formState: { errors, isValid }, reset 
   } = useForm<SearchForm>({
     resolver: zodResolver(searchSchema),
     mode: 'onChange', // live validation
@@ -44,12 +43,12 @@ const SearchInput = ({ onClose }: { onClose?: () => void }) => {
     if (!content) return
 
     setSearchText(content) // update local state
-    if (user) mutate({ content, kind, visible: true }) // post to backend
+    if (user) mutate({ content, visible: true }) // post to backend
 
     setIsFocused(false)   // hide <SearchBox />
     if (onClose) onClose()
 
-    isExpression ? navigate('/expressions') : navigate('/')
+    navigate('/expressions')
 
     reset() // clear input if you want
   }
@@ -69,7 +68,7 @@ const SearchInput = ({ onClose }: { onClose?: () => void }) => {
               {...register('content')}
               borderRadius={20}
               fontSize='16px' // stops Safari from auto-zooming
-              placeholder={lang === 'en' ? placeholder : placeholder_ch}
+              placeholder={placeholder}
               variant='filled'
               pl='2.5rem'
               onFocus={() => setIsFocused(true)}
@@ -85,7 +84,7 @@ const SearchInput = ({ onClose }: { onClose?: () => void }) => {
           </Show>
         </InputGroup>
         {isFocused && (
-          <SearchHistoryBox kind={kind} onSelect={onSelectHistory}/>
+          <SearchHistoryBox onSelect={onSelectHistory}/>
         )}
       </form>
     </Box>

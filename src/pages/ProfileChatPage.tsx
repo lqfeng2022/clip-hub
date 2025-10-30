@@ -1,6 +1,6 @@
 import BeatLoader from '@/components/BeatLoader'
 import ExpressionCardChat from '@/components/profile/ExpressionCardChat'
-import { profilePages } from '@/data/profilePages'
+import profilePages from '@/data/profilePages'
 import useChats from '@/hooks/interact/useChats'
 import useLanguageStore from '@/languageStore'
 import { Box, Heading, SimpleGrid, Text } from '@chakra-ui/react'

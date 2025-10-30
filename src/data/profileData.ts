@@ -1,4 +1,4 @@
-export const profileData = {
+export default {
   en: {
     username: { name: "username", note: "Currently, username is your only identity of this web.."},
     name: { name: "Name", note: "Choose a name that represents you and your content." },

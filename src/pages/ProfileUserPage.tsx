@@ -3,7 +3,7 @@ import useLanguageStore from '@/languageStore'
 import { Heading, Stack } from '@chakra-ui/react'
 import ProfileUser from '../components/profile/ProfileUser'
 import ProfileUserForms from '../components/profile/ProfileUserForms'
-import { profilePages } from '@/data/profilePages'
+import profilePages from '@/data/profilePages'
 
 const ProfileUserPage = () => {
   const lang = useLanguageStore(s => s.language)

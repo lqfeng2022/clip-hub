@@ -1,4 +1,4 @@
-export const passwordInput = {
+export default {
   en: {
     placeholder: "Enter password", 
     hide_lang: "Hide",

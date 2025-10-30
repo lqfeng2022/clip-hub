@@ -7,7 +7,7 @@ import React from 'react'
 import InfiniteScroll from 'react-infinite-scroll-component'
 import ExpressionListCard from '../components/profile/ExpressionListCard'
 import BeatLoader from '@/components/BeatLoader'
-import { profilePages } from '@/data/profilePages'
+import profilePages from '@/data/profilePages'
 
 const ProfileListsPage = () => {
   const lang = useLanguageStore(s => s.language)

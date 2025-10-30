@@ -9,7 +9,7 @@ interface Props {
   expression: Expression,
   onUnmark?: () => void, // optional callback
 }
-const ExpressionCardNatural = ({ expression, onUnmark }: Props) => {
+const ExpressionCardTwo = ({ expression, onUnmark }: Props) => {
   return (
     <Card gap={1} my={1} overflow='hidden' variant=''>
       <Box borderRadius='md' overflow='hidden'>
@@ -39,4 +39,4 @@ const ExpressionCardNatural = ({ expression, onUnmark }: Props) => {
   )
 }
 
-export default ExpressionCardNatural
+export default ExpressionCardTwo

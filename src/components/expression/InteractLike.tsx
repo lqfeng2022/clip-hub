@@ -7,7 +7,7 @@ interface Props {
   expression: Expression,
   onUnmark?: () => void, // optional callback
 }
-const ExpressionInteractLike = ({ expression, onUnmark }: Props) => {
+const InteractLike = ({ expression, onUnmark }: Props) => {
   const { marked, toggleMarked, user } = useExpressionLikeManager(
     expression.id, expression.like_state, onUnmark)
 
@@ -29,4 +29,4 @@ const ExpressionInteractLike = ({ expression, onUnmark }: Props) => {
   )
 }
 
-export default ExpressionInteractLike
+export default InteractLike

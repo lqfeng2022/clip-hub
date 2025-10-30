@@ -1,4 +1,4 @@
-export const signupTexts = {
+export default {
   en: {
     header: "Sign up", 
     note: "to continue to CLIPs",

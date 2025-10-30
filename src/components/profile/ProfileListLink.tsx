@@ -3,7 +3,7 @@ import useLanguageStore from '@/languageStore'
 import { Avatar, Box, Divider, HStack, Icon, List, ListItem, Text } from '@chakra-ui/react'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { profilePages } from '@/data/profilePages'
+import profilePages from '@/data/profilePages'
 
 const ProfileListLink = () => {
   const lang = useLanguageStore(s => s.language)

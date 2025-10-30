@@ -3,5 +3,4 @@ export default interface Search {
   content: string,
   visible: boolean,
   timestamp: string,
-  kind: 'CLIP' | 'WORDS'
 }

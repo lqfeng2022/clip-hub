@@ -1,11 +1,13 @@
-import { expressionPage } from '@/data/expressionPage'
-import useSearchContext from '@/hooks/interact/useSearchContex'
+import expressionPage from '@/data/expressionPage'
 import useLanguageStore from '@/languageStore'
 import { Badge, Icon } from '@chakra-ui/react'
 import { TbMessageLanguage } from 'react-icons/tb'
+import { useLocation } from 'react-router-dom'
 
-const EpLogo = () => {
-  const { isExpression } = useSearchContext()
+const ExpressionLogo = () => {
+  const location = useLocation()
+  const isExpression = location.pathname.startsWith('/expression')
+
   const lang = useLanguageStore(s => s.language)
   const content = lang === 'en' 
     ? expressionPage.en.navbar : expressionPage.zh.navbar
@@ -31,4 +33,4 @@ const EpLogo = () => {
   )
 }
 
-export default EpLogo
+export default ExpressionLogo

@@ -5,7 +5,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom'
 import useSignout from '@/hooks/useSignout'
 import { useAuth } from '@/AuthContext'
 import useLanguageStore from '@/languageStore'
-import { profilePages } from '@/data/profilePages'
+import profilePages from '@/data/profilePages'
 
 const ProfileUser = () => {
   const lang = useLanguageStore(s => s.language)

@@ -5,7 +5,7 @@ import useExpressionLikes from '../hooks/interact/useExpressionLikes'
 import ExpressionCard from '../components/expression/ExpressionCard'
 import useLanguageStore from '@/languageStore'
 import BeatLoader from '@/components/BeatLoader'
-import { profilePages } from '@/data/profilePages'
+import profilePages from '@/data/profilePages'
 
 const ProfileEplikePage = () => {
   const lang = useLanguageStore(s => s.language)

@@ -1,4 +1,4 @@
-import { expressionPage } from '@/data/expressionPage'
+import expressionPage from '@/data/expressionPage'
 import useExpressionQueryStore from '@/expressionStore'
 import useLanguageStore from '@/languageStore'
 import { Tag, Wrap, WrapItem } from '@chakra-ui/react'

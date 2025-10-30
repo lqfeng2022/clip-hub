@@ -1,4 +1,4 @@
-import { passwordInput } from '@/data/passwordInput'
+import passwordInput from '@/data/passwordInput'
 import useLanguageStore from '@/languageStore'
 import { Button, Input, InputGroup, InputRightElement } from '@chakra-ui/react'
 import { ComponentProps, useState } from 'react'

@@ -4,16 +4,15 @@ import useSearchPut from '../hooks/interact/useSearchPut'
 import { useAuth } from '../AuthContext'
 
 interface Props {
-  kind: 'CLIP' | 'WORDS'
   onSelect?: (value: string) => void
 }
-const SearchHistoryBox = ({ kind, onSelect }: Props) => {
+const SearchHistoryBox = ({ onSelect }: Props) => {
   const { user } = useAuth()
   const { data, refetch, error } = useSearches()
   const { mutate } = useSearchPut()
 
   const searches = data?.pages[0].results
-    .filter((view) => view.visible && view.kind === kind)
+    .filter((view) => view.visible)
   
   const handleUpdate = (search: {id: number}) => {
     if (user) mutate({id: search.id, visible: false }, {

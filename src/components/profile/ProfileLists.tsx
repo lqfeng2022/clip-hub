@@ -3,7 +3,7 @@ import useLanguageStore from '@/languageStore'
 import { Box, Button, HStack, Heading, SimpleGrid, Text } from '@chakra-ui/react'
 import ExpressionListCardSimple from './ExpressionListCardSimple'
 import { Link } from 'react-router-dom'
-import { profilePages } from '@/data/profilePages'
+import profilePages from '@/data/profilePages'
 
 const ProfileLists = () => {
   const lang = useLanguageStore(s => s.language)

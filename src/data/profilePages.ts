@@ -3,7 +3,7 @@ import { IoIosHeartEmpty } from 'react-icons/io'
 import { IoChatboxEllipsesOutline } from 'react-icons/io5'
 import { MdHistoryToggleOff } from 'react-icons/md'
 
-export const profilePages = {
+export default {
   en: {
     list: [
       { title: 'Profile', icon: CiUser, link: '/profile' },

@@ -9,7 +9,7 @@ import ClipExpression from '../ClipExpression'
 import { pocketURL } from '@/services/pocket'
 import useExpressionViews from '@/hooks/interact/useExpressionViews'
 import useLanguageStore from '@/languageStore'
-import { expressionPage } from '@/data/expressionPage'
+import expressionPage from '@/data/expressionPage'
 import ChatBox from './ChatBox'
 
 interface Props {

@@ -2,7 +2,7 @@ import { Button, Menu, MenuButton, MenuItem, MenuList } from '@chakra-ui/react'
 import { BsChevronDown } from 'react-icons/bs'
 import useExpressionQueryStore from '@/expressionStore'
 import useLanguageStore from '@/languageStore'
-import { expressionPage } from '@/data/expressionPage'
+import expressionPage from '@/data/expressionPage'
 
 const ExpressionSortSelector = () => {
   const lang = useLanguageStore(s => s.language)
