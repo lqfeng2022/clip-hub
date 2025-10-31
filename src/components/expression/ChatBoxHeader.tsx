@@ -15,14 +15,14 @@ const ChatBoxHeader = ({ extend, setExtend }: Props) => {
     <Box mb={5} p={isAuthenticated ? 0 : 3}>
       <HStack>
         <Heading size='md' color='gray.500'>Chat Box</Heading>
-        {!extend && <Button
-            size='xl'
-            variant='ghost'
-            _hover={{ backgrouond: ''}}
-            onClick={ setExtend}
-          >
-            ...more
-          </Button>}
+        {isAuthenticated && !extend && <Button
+          size='xl'
+          variant='ghost'
+          _hover={{ backgrouond: ''}}
+          onClick={ setExtend}
+        >
+          ...more
+        </Button>}
       </HStack>
       <Text p={2} color='gray.200' fontWeight='bold'>
         {content}

@@ -8,7 +8,7 @@ export default {
     tags_header: "Langtags",
     words_header: "Words",
     clip_header: "Clip Video",
-    others: "Other Expressions", 
+    others: "Related Expressions", 
     sort_prefix: "Order by",
     sort_surfix: "Relevance",
     sortOrders: [

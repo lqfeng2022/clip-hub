@@ -17,7 +17,7 @@ interface Props {
   clipexp: Expression[]
 }
 const ExpressionDetailContent = ({ exp, clipexp }: Props) => {
-  const [chatOpen, setChatOpen] = useState(false)
+  const [chatOpen, setChatOpen] = useState(true)
 
   const { refetch } = useExpressionViews()
   const { mutate } = useExpressionInteract(exp.id, 'views')
