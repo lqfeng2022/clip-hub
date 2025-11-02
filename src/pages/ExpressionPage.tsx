@@ -40,7 +40,7 @@ function ExpressionPage() {
       {/* Aside for langtags */}
       <Show above='lg'>
         <GridItem area='aside' px={2.5}>
-          <Box mt={8}>
+          <Box mt={8} flex='1' overflowY='auto' maxH='85vh'>
             <Divider my={2} borderColor='white'/>
             <Heading fontSize='3xl' py={3}>
               {headers.langtags_header}

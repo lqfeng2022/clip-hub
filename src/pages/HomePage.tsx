@@ -1,14 +1,19 @@
-import { SimpleGrid } from '@chakra-ui/react'
+import Footer from '@/components/homepage/Footer'
+import Greeting from '@/components/homepage/Greeting'
+import Hero from '@/components/homepage/Hero'
+import Introducing from '@/components/homepage/Introducing'
+import Summary from '@/components/homepage/Summary'
+import { Box } from '@chakra-ui/react'
 
 function HomePage() {
   return (
-      <SimpleGrid
-        columns={{ sm: 1, md: 2 }}
-        p='10px'
-        spacing={4}
-      >
-        ...
-      </SimpleGrid>
+    <Box px={2}>
+      <Hero/>
+      <Greeting/>
+      <Introducing/>
+      <Summary/>
+      <Footer/>
+    </Box>
   )
 }
 
