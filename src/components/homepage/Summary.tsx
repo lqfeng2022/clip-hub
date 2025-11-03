@@ -9,10 +9,14 @@ const Summary = () => {
   const { user } = useAuth()
 
   const lang = useLanguageStore(s => s.language)
+  
   const summary = lang === 'en' ? homepageData.en.summary : homepageData.zh.summary
+
   const browser = lang === 'en' ? 'Browser Expressions' : '浏览表达式'
   const viewprofile = lang === 'en' ? 'View Profile' : '查看个人主页'
   const joinforfree = lang === 'en' ? 'Join for Free' : '免费注册使用'
+
+  const textwieght = lang === 'en' ? 'bold' : ''
 
   return (
     <Center>
@@ -23,7 +27,7 @@ const Summary = () => {
         <MotionBox animation='fade-up' pt={8} pb={9}>
           <Text
             fontSize='lg'
-            fontWeight='bold'
+            fontWeight={textwieght}
             color='gray.200'
             textAlign='center'
           >

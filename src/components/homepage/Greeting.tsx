@@ -6,21 +6,24 @@ import { AspectRatio, Box, Center, Heading, Text } from '@chakra-ui/react'
 
 const Greeting = () => {
   const lang = useLanguageStore(s => s.language)
+  
   const greeting = lang === 'en' 
     ? homepageData.en.greeting : homepageData.zh.greeting
+
+  const textwieght = lang === 'en' ? 'bold' : ''
 
   return (
     <Center>
       <Box py={20} maxW='800px'>
         <Text textAlign='center' fontStyle='italic' color='yellow'>
-          <strong>Hello</strong>,
+          Hello,
         </Text>
         <Heading textAlign='center' pb={8}>
           {greeting.title}
         </Heading>
         <Text
           fontSize='lg' 
-          fontWeight='bold' 
+          fontWeight={textwieght}
           color='gray.200' 
           textAlign='center'
         >
@@ -36,8 +39,8 @@ const Greeting = () => {
           </AspectRatio>
         </Box>
         <Text 
-          fontWeight='bold' 
-          color='gray.100' 
+          fontWeight={textwieght}
+          color='gray.100'
           textAlign='right'
         >
           {greeting.foot}

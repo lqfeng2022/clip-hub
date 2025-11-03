@@ -17,7 +17,9 @@ import MotionBox from './MotionBox'
 
 const Introducing = () => {
   const lang = useLanguageStore(s => s.language)
+
   const reasons = lang === 'en' ? homepageData.en.introduce : homepageData.zh.introduce
+  const textwieght = lang === 'en' ? 'bold' : ''
 
   const iconMap: { [key: string]: IconType } = {
     path: GiStonePath,
@@ -45,7 +47,6 @@ const Introducing = () => {
             <Text
               pb={3}
               as='i'
-              fontWeight='bold'
               color='green.300'
             >
               {reasons.title}
@@ -74,8 +75,12 @@ const Introducing = () => {
                 borderRadius='full'
                 p={1.5}
               />
-              <Heading pt={2} pb={5}>{list.header}</Heading>
-              <Text fontWeight='bold' color='gray.200'>{list.content}</Text>
+              <Heading pt={2} pb={5}>
+                {list.header}
+              </Heading>
+              <Text fontWeight={textwieght} color='gray.200'>
+                {list.content}
+              </Text>
             </MotionBox>
             <MotionBox 
               borderRadius='lg' 

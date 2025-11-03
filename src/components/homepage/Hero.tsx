@@ -15,6 +15,8 @@ const Hero = () => {
   const browser = lang === 'en' ? 'Browser Expressions' : '浏览表达式'
   const signup = lang === 'en' ? 'Sign Up for Free' : '免费注册使用'
 
+  const textwieght = lang === 'en' ? 'bold' : ''
+
   return (
   <SimpleGrid 
     columns={{sm: 1, lg: 2}}
@@ -30,7 +32,12 @@ const Hero = () => {
       >
         {hero.title}
       </Heading>
-      <Text py={6} fontSize='xl' fontWeight='bold' color='gray.200'>
+      <Text 
+        py={6} 
+        fontSize='xl' 
+        fontWeight={textwieght}
+        color='gray.200'
+      >
         {hero.content}
       </Text>
       {user ? (<Link to='/expressions'>
@@ -43,7 +50,7 @@ const Hero = () => {
           {browser}
         </Button>
       </Link>
-      ) : (<Link to='/user/singn'>
+      ) : (<Link to='/user/signin'>
         <Button
           rightIcon={<FaArrowRight />}
           colorScheme='green'
