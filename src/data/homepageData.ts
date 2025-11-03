@@ -59,53 +59,53 @@ export default {
   },
   zh : {
     hero : { 
-      title: "Master English. Speak Confidently. Learn Real Expressions with AI.", 
-      content: "A hub of 10,000+ real-life English expressions and 10+ unique AI tutors that help you speak naturally — through text, voice, and even face-to-face conversations."
+      title: "掌握英语 · 自信开口，用 AI 学习最真实的英语表达", 
+      content: "一个拥有 10,000+ 日常英语表达式、10+ 不同性格 AI 英语老师的英语口语练习平台，让你通过文字，语音，甚至面对面对话的方式，进行日常口语练习。"
     },
     greeting: {
-      title: "I’m Simon Lee.",
-      content: "I’ve spent over 20 years exploring languages — English, Japanese, and French. As a developer, I’ve learned everything in Computer Science through English — Design, Programming, AI, Quantum Computing — yet I still struggled to speak fluently.",
-      foot: "So I built this platform — to help myself and others finally speak English with confidence, not hesitation.",
+      title: "我是李 秋風",
+      content: "我学习外语已经好多年了 — 英语、日语、法语都接触过。而作为一个开发者，我通过英语学习了所有的电脑相关的知识 — 基础知识，UI设计，编程，人工智能，甚至量子计算，但我依然不能自信地用英语表达自己。",
+      foot: "所以我决定建立这个平台，不仅为别人，也为我自己提供一个AI时代最好的英语口语练习方式，let's hit the road!",
     },
     introduce: {
-      title: "Why You’ll Love Learning Here",
-      content: "Real Conversations. Real Characters. Real Progress.",
+      title: "为什么你会爱上这里",
+      content: "真实对话 · 真实角色 · 真实进步",
       lists: [
         { 
           title: "path", 
-          header: "A Clear Path to Confident Speaking", 
-          content: "Follow a structured path to master real conversation English — from casual to formal, even the slang and humor that make you sound like a native.",
+          header: "清晰的口语进阶路线", 
+          content: "从正式到随意，从礼貌寒暄到俚语幽默，循序渐进，带你掌握真正能用得上的英语口语。",
         },
         {
           title: "source",
-          header: "Learn from Real-World Sources",
-          content: "All expressions are drawn from authentic media — movies, TV dramas, interviews, podcasts, and more — so you don’t just learn textbook English, you learn living English.",
+          header: "出自真实语境",
+          content: "所有表达式都选自热门的电影、电视剧、体育、搞笑综艺、街头采访、播客等中的一段对话或者独白。我们不需要课本，我们只要活生生的英语。",
         },
         {
           title: "aitutor",
-          header: "Practice with Character AI Tutors",
-          content: "Chat with AI tutors inspired by unique personalities — from witty lawyers like Jimmy McGill to poetic thinkers like Dr. Manhattan. Each brings a different voice, style, and rhythm — helping you adapt to diverse speaking styles.",
+          header: "跟个性化的 AI 老师练口语",
+          content: "你可以和不同风格的 AI 英语老师聊天，比如「风骚律师」中的 Jimmy McGill、「我为喜剧狂」中骚话不断的 Abby Flynn，「守望者」中强大而又过于诗意的曼哈顿博士等等。每位老师都有独特的表达方式和说话风格，你可以随时选择你喜欢的 AI 老师。",
         },
         {
           title: "voicechat",
-          header: "Speak Anytime with Voice Chat",
-          content: "The fastest way to fluency is to speak daily. Start a voice chat anytime, anywhere — your AI tutor listens, replies, and keeps the conversation flowing naturally.",
+          header: "随时语音练习，开口就是进步",
+          content: "真正的流利来自每天的开口练习。随时按下按钮，你就能和我们的 AI 老师语音聊天，让英语成为你的日常语言。",
         },
         {
           title: "pronunciation",
-          header: "Smart Pronunciation Feedback",
-          content: "Our AI evaluates your speech and tracks your improvement over time. You’ll see how your pronunciation evolves — no judgment, just data-driven progress.",
+          header: "AI 语音评测，每天看到进步",
+          content: "我们使用最先进的VTT语音模型分析你的发音，并用数据记录变化。没有评判，只有清晰反馈 — 让你看到每一步成长。",
         },
         {
           title: "personalizing",
-          header: "Manage and Personalize Your Learning",
-          content: "Save your favorite expressions, organize them into custom lists, and let AI generate personalized conversations that match your voice and your daily life.",
+          header: "表达式收藏管理 & 个性化推荐生成",
+          content: "把你喜欢的英语表达式加入收藏，创建属于自己的表达式列表。AI 老师还能根据你的表达习惯，生活场景和个人信息，生成个性化的对话内容，让你真正表达自己”，而不是模仿别人。",
         },
       ]
     },
     summary: {
-      title: "Fluency isn’t about perfection",
-      content: "When you can speak confidently with your AI tutor, you’ll speak confidently in the real world — naturally, effortlessly, and as yourself. Because fluency isn’t about perfection — it’s about comfort, connection, and confidence."
+      title: "因为流利并不是完美，习惯而已",
+      content: "当你能够随意地和我们的 AI 老师开口聊天，你自然也能在日常生活工作中随意的开口讲英语。因为流利并不是“完美无误”，只是通过不断的练习找到一种让自己最舒服的表达方式而已。"
     },
     footer: {
       title: 'Clip 英文表达式',

@@ -10,6 +10,9 @@ const Summary = () => {
 
   const lang = useLanguageStore(s => s.language)
   const summary = lang === 'en' ? homepageData.en.summary : homepageData.zh.summary
+  const browser = lang === 'en' ? 'Browser Expressions' : '浏览表达式'
+  const viewprofile = lang === 'en' ? 'View Profile' : '查看个人主页'
+  const joinforfree = lang === 'en' ? 'Join for Free' : '免费注册使用'
 
   return (
     <Center>
@@ -35,7 +38,7 @@ const Summary = () => {
                   borderRadius='full'
                   size={{base: 'md', lg: 'lg'}}
                 >
-                  Browser Expressions
+                  {browser}
                 </Button>
               </Link>
             </MotionBox>
@@ -46,7 +49,7 @@ const Summary = () => {
                   borderRadius='full'
                   size={{base: 'md', lg: 'lg'}}
                 >
-                  View Profile
+                  {viewprofile}
                 </Button>
               </Link>
               ) : (<Link to='/user/signin'>
@@ -55,7 +58,7 @@ const Summary = () => {
                   borderRadius='full'
                   size={{base: 'md', lg: 'lg'}}
                 >
-                  Join for Free
+                  {joinforfree}
                 </Button>
               </Link>)}
             </MotionBox>

@@ -8,8 +8,12 @@ import { Link } from 'react-router-dom'
 
 const Hero = () => {
   const { user } = useAuth()
+
   const lang = useLanguageStore(s => s.language)
   const hero = lang === 'en' ? homepageData.en.hero : homepageData.zh.hero
+
+  const browser = lang === 'en' ? 'Browser Expressions' : '浏览表达式'
+  const signup = lang === 'en' ? 'Sign Up for Free' : '免费注册使用'
 
   return (
   <SimpleGrid 
@@ -36,7 +40,7 @@ const Hero = () => {
           borderRadius='full'
           size={{base: 'md', lg: 'lg'}}
         >
-          Browser Expressions
+          {browser}
         </Button>
       </Link>
       ) : (<Link to='/user/singn'>
@@ -46,7 +50,7 @@ const Hero = () => {
           borderRadius='full'
           size={{base: 'md', lg: 'lg'}}
         >
-          Sign Up for Free
+          {signup}
         </Button>
       </Link>
       )}
