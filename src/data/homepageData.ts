@@ -6,8 +6,8 @@ export default {
     },
     greeting: {
       title: "I’m Simon Lee.",
-      content: "I’ve spent over 20 years exploring languages — English, Japanese, and French. As a developer, I’ve learned everything in Computer Science through English — Design, Programming, AI, Quantum Computing — yet I still struggled to speak fluently.",
-      foot: "So I built this platform — to help myself and others finally speak English with confidence, not hesitation.",
+      content: "As a developer, I’ve learned everything in Computer Science through English — UI Design, Programming, AI, Quantum Computing — yet I still struggled to speak fluently.",
+      foot: "So I built this platform — to help people finally speak English with confidence, not hesitation.",
     },
     introduce: {
       title: "Why You’ll Love Learning Here",
@@ -64,7 +64,7 @@ export default {
     },
     greeting: {
       title: "我是李 秋風",
-      content: "我学习外语已经好多年了 — 英语、日语、法语都有接触过。而作为一个开发者，我通过英语学习了从0开始的所有计算机相关的知识 — 计算机基础，UI设计，编程，人工智能，甚至量子计算 — 但我依然不能自信地用英语表达自己。",
+      content: "作为一个开发者，我通过英语学习了从0开始的所有计算机知识 — 计算机基础，UI设计，编程，人工智能，甚至量子计算 — 但我依然不能自信地用英语表达自己。",
       foot: "所以我决定建立这个平台，为更多像我这样的，以及想通过碎片化时间随时随地练习口语的人，提供一个好的口语练习方式。",
     },
     introduce: {

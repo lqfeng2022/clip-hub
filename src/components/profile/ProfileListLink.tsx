@@ -1,9 +1,10 @@
 import useLists from '@/hooks/interact/useLists'
 import useLanguageStore from '@/languageStore'
-import { Avatar, Box, Divider, HStack, Icon, List, ListItem, Text } from '@chakra-ui/react'
+import { Image, Box, Divider, HStack, Icon, List, ListItem, Text } from '@chakra-ui/react'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import profilePagesData from '@/data/profilePagesData'
+import { pocketURL } from '@/services/pocket'
 
 const ProfileListLink = () => {
   const lang = useLanguageStore(s => s.language)
@@ -46,10 +47,11 @@ const ProfileListLink = () => {
               onClick={() => setSelected(p.title)}
             >
               <HStack spacing={3}>
-                <Avatar 
-                  size='sm' 
-                  fontWeight='bold' 
-                  name={p.title}
+                <Image
+                  boxSize='50px'
+                  objectFit='cover'
+                  borderRadius='10px'
+                  src={`${pocketURL}${p.items[0]?.expression.image}`}
                 />
                 <Link to={`/profile/list/${p.slug}`}>
                   <Text 
