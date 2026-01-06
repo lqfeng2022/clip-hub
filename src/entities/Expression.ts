@@ -1,22 +1,15 @@
-import Clip from './Clip'
-import Langtag from './Langtag'
-import { Subtitle } from './Subtitle'
-import Word from './Word'
+import Host from './Host'
+import Subtitle from './Subtitle'
+import Video from './Video'
 
 export default interface Expression {
   id: number,
   title: string,
   slug: string,
   image: string,
-  language: string,
-  formal: string,
-  langtags: Langtag[],
-  words: Word[],
-  explain: string,
-  explain_ch: string,
-  video: Clip,
+  host: Host,
+  video: Video,
   subtitle: Subtitle,
-  like_state: boolean,
-  views_count: number,
-  likes_count: number,
+  created_at: string,
+  updated_at: string,
 }

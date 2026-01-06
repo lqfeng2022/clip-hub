@@ -18,13 +18,19 @@ class APIClient<T> {
   // `config`: optional parameter, cus we need it in clip hook
   getAll = (config?: AxiosRequestConfig) => {
     return axiosInstance
-      .get<FetchResponse<T>>(this.endpoint, config)
+      .get<FetchResponse<T>>(`/${this.endpoint}/`, config)
       .then((res) => res.data) //extract data from response
   }
 
   get = (id: number | string) => {
     return axiosInstance
-      .get<T>(this.endpoint + `/slug/${id}/`)
+      .get<T>(`${this.endpoint}/${id}/`)
+      .then((res) => res.data)
+  }
+
+  getRelevant = (id: number | string, config?: AxiosRequestConfig) => {
+    return axiosInstance
+      .get<FetchResponse<T>>(`${this.endpoint}/${id}/relevants/`, config)
       .then((res) => res.data)
   }
 
@@ -37,16 +43,6 @@ class APIClient<T> {
   ) => {
     return axiosInstance
       .post(`${this.endpoint}/${id}/${action}/`, data, config)
-      .then((res) => res.data)
-  }
-
-  // get chatsession from a given id expression
-  getChat = (
-    id: number | string, 
-    config?: AxiosRequestConfig
-  ) => {
-    return axiosInstance
-      .get<FetchResponse<T>>(this.endpoint + `/${id}/chatsession/`, config)
       .then((res) => res.data)
   }
 }

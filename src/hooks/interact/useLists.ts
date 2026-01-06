@@ -1,19 +1,19 @@
 import { useInfiniteQuery } from '@tanstack/react-query'
-import InteractAPIClient from '@/services/api-interact'
+import APIClient from '@/services/api-interact'
 import FetchResponse from '@/entities/FetchResponse'
-import List from '@/entities/List'
+import Collection from '@/entities/Collection'
 import { useAuth } from '@/AuthContext'
 
-const apiClient = new InteractAPIClient<List>('collections')
+const apiClient = new APIClient<Collection>('collections')
 
 const useLists = () => {
   const { user } = useAuth()
 
-  return useInfiniteQuery<FetchResponse<List>, Error>({
+  return useInfiniteQuery<FetchResponse<Collection>, Error>({
     queryKey: ['collections'],
     queryFn: ({pageParam = 1}) => apiClient.getAll({
+      withCredentials: true,
       params: {
-        withCredentials: true,
         page: pageParam,
       },
     }),

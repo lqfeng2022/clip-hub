@@ -1,19 +1,30 @@
-import Footer from '@/components/homepage/Footer'
-import Greeting from '@/components/homepage/Greeting'
-import Hero from '@/components/homepage/Hero'
-import Introducing from '@/components/homepage/Introducing'
-import Summary from '@/components/homepage/Summary'
-import { Box } from '@chakra-ui/react'
+import { useAuth } from '@/AuthContext'
+import HpIntro from '@/components/hpIntro/HpIntro'
+import ProductFeed from '@/components/product/FeedPosts'
+import FeedTabs from '@/components/product/FeedTabs'
+import FollowingPosts from '@/components/product/FollowingPosts'
+import { Box, Show } from '@chakra-ui/react'
+import { useState } from 'react'
 
-function HomePage() {
+const HomePage = () => {
+  const { user } = useAuth()
+
+  const [activeTab, setActiveTab] = useState<'For You' | 'Following'>('For You')
+  const forYou = activeTab === 'For You'
+  const following = activeTab === 'Following'
+
   return (
-    <Box px={2}>
-      <Hero/>
-      <Greeting/>
-      <Introducing/>
-      <Summary/>
-      <Footer/>
-    </Box>
+    <>
+      {user ? <Box>
+        <FeedTabs onChange={setActiveTab}/>
+        {forYou && <ProductFeed />}
+        {following && <FollowingPosts />}
+      </Box> : <Box>
+          <Show above='lg'><ProductFeed/></Show>
+          <Show below='xl'><HpIntro/></Show>
+        </Box>
+      }
+    </>
   )
 }
 

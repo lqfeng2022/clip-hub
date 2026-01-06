@@ -1,42 +1,69 @@
-import { Box, Heading, SimpleGrid } from '@chakra-ui/react'
-import { useParams } from 'react-router-dom'
-import useList from '../hooks/interact/useList'
-import useListItemDelete from '../hooks/interact/useListItemDelete'
-import ExpressionCardDeleteMark from '@/components/profile/ExpressionCardDeleteMark'
+import { Box, SimpleGrid, Text } from '@chakra-ui/react'
+import ExpressionCard from '@/components/product/ExpressionCard'
+import PageNavTab from '@/components/PageNavTab'
+import SubtitleCard from '@/components/product/SubtitleCard'
+import VideoCard from '@/components/product/VideoCard'
+import useListProducts from '@/hooks/interact/useListProducts'
+import { useLocation, useParams } from 'react-router-dom'
+import useList from '@/hooks/interact/useList'
+import BeatLoader from '@/components/BeatLoader'
+import React from 'react'
+import InfiniteScroll from 'react-infinite-scroll-component'
+import PostCount from '@/components/product/PostCount'
 
 const ProfileListDetailPage = () => {
-  const { slug } = useParams()
-  const { data, refetch } = useList(slug!)
+  // fetch list using slug (this will return id)
+  const { slug } = useParams<{slug?: string}>() // we ALWAYS have slug
+  const { data: list, isLoading: listLoading } = useList(slug!)
 
-  const { mutate: listItemDelete } = useListItemDelete()
-  const handleDelteList = (listId: number, listItemId: number) => { 
-    listItemDelete(
-      { listId, listItemId }, 
-      { onSuccess: () => refetch() }
-    )
-  }
+  // if coming from previous page, we still get list from state (optional)
+  const { state } = useLocation()
+  const passedList = state?.list
 
+  // pick id priority:
+  // 1. from useList (fresh from API)
+  // 2. fallback to state (fast navigation)
+  const listId = list?.id || passedList?.id
+
+  // When list is not loaded yet, don't run products query
+  const { data: products, error, fetchNextPage, hasNextPage } = useListProducts(
+    listId!, { 
+      enabled: !!listId,   // 🔥 IMPORTANT
+  })
+
+  if (listLoading) return <BeatLoader />
+  if (error) return <Text>{error.message}</Text>
+
+  const fetchCount = products?.pages.reduce(
+      (total, page) => total + page.results.length, 0) || 0
+  
   return (
     <>
-      <Heading m={4} fontSize='3xl'>
-        List: {data?.title}
-      </Heading>
-      <SimpleGrid
-        columns={{ base: 2, lg: 3, xl: 4 }}
-        p='10px'
-        spacing={3}
+      <PageNavTab title={`List > ${list?.title}`}/>
+      <PostCount count={fetchCount} genre='Posts'/>
+      <InfiniteScroll
+        dataLength={fetchCount}
+        hasMore={!!hasNextPage}
+        next={() => fetchNextPage()}
+        loader={<BeatLoader/>}
       >
-        {data?.items.map((item) => (
-          <Box key={item.id}>
-            <ExpressionCardDeleteMark 
-              expression={item.expression}
-              handleClick={() => handleDelteList(
-                data.id, item.id
+        <SimpleGrid>
+          {products?.pages.map((page, index) => (
+            <React.Fragment key={index}>
+              {page?.results.map((prod) => 
+                <Box key={prod.id}>
+                  {prod.type === 'expression' && 
+                    <ExpressionCard product={prod}/>}
+                  {prod.type === 'subtitle' && 
+                    <SubtitleCard product={prod}/>}
+                  {prod.type === 'video' && 
+                    <VideoCard product={prod}/>}
+                </Box>
               )}
-            />
-          </Box>
-        ))}
-      </SimpleGrid>
+            </React.Fragment>
+          ))}
+        </SimpleGrid>
+      </InfiniteScroll>
     </>
   )
 }

@@ -1,7 +1,7 @@
 import { useMutation } from '@tanstack/react-query'
-import ProfileAPIClient from '../services/api-profile'
+import APIClient from '../services/api-profile'
 
-const apiClient = new ProfileAPIClient('me') // main endpoint
+const apiClient = new APIClient('me') // main endpoint
 
 const useProfileUpdate = () => {
   return useMutation({

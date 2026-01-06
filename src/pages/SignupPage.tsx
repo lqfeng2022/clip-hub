@@ -1,12 +1,11 @@
-import PasswordInput from '@/components/PasswordInput'
+import PasswordInput from '@/components/profile/PasswordInput'
 import signupPageData from '@/data/signupPageData'
-import useLanguageStore from '@/languageStore'
+import useLanguageStore from '@/stores/languageStore'
 import { SignupForm, signupSchema } from '@/validation/signupSchema'
 import { Box, Button, FormControl, FormHelperText, FormLabel, Heading, HStack, Input, ListItem, OrderedList, SimpleGrid, Stack, Text } from '@chakra-ui/react'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
-import SignContainer from '../components/SignContainer'
 import useSignup from '../hooks/useSignup'
 
 const SignupPage = () => {
@@ -33,8 +32,8 @@ const SignupPage = () => {
   }
 
   return (
-    <SignContainer>
-      <SimpleGrid columns={{sm: 1, md: 2}}>
+    <Box maxW='600px' mb={10}>
+      <SimpleGrid m={10} gap={3}>
         {/* SIGNUP header */}
         <Box mb={5}>
           <Heading fontSize='4xl'>{context.header}</Heading>
@@ -120,8 +119,10 @@ const SignupPage = () => {
             </HStack>
             {/* SIGN UP submit button */}
             <Button
+              py={6} 
               mt={2}
               size='md'
+              borderRadius='lg'
               fontSize='lg'
               type='submit'
             >
@@ -130,7 +131,7 @@ const SignupPage = () => {
           </Stack>
         </form>
       </SimpleGrid>
-    </SignContainer>
+    </Box>
   )
 }
 

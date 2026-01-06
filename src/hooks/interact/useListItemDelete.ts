@@ -1,15 +1,22 @@
 import { useMutation } from '@tanstack/react-query'
-import InteractAPIClient from '@/services/api-interact'
-import ListItemTuples from '@/entities/ListItemTuples'
+import APIClient from '@/services/api-interact'
+import CollectionItemTuple from '@/entities/CollectionItemTuple'
+import { useAuth } from '@/AuthContext'
 
-const apiClient = new InteractAPIClient('collections') // main endpoint
+const apiClient = new APIClient('collections')
 
 const useListItemDelete = () => {
+  const { user } = useAuth()
+
   return useMutation({
-    mutationFn: ({ listId, listItemId }: ListItemTuples) => 
-      apiClient.deleteListItem(
-        listId, listItemId, { withCredentials: true }
+    mutationFn: async({ listId, listItemId }: CollectionItemTuple) => {
+      if (!user) return
+      return apiClient.deleteListItem(
+        listId, 
+        listItemId, 
+        { withCredentials: true }
       )
+    }
   })
 }
 

@@ -1,25 +1,22 @@
 import { useInfiniteQuery } from '@tanstack/react-query'
-import InteractAPIClient from '@/services/api-interact'
+import APIClient from '@/services/api-interact'
 import FetchResponse from '@/entities/FetchResponse'
 import Search from '@/entities/Search'
-import { useAuth } from '@/AuthContext'
 
-const apiClient = new InteractAPIClient<Search>('searches')
+const apiClient = new APIClient<Search>('searches')
 
 const useSearches = () => {
-  const { user } = useAuth()
-  return useInfiniteQuery<FetchResponse<Search>, Error>({
+    return useInfiniteQuery<FetchResponse<Search>, Error>({
     queryKey: ['searches'],
     queryFn: ({pageParam = 1}) => apiClient.getAll({
+      withCredentials: true,
       params: {
-        withCredentials: true,
         page: pageParam,
       },
     }),
     getNextPageParam: (lastPage, allPages) => {
       return lastPage.next ? allPages.length + 1 : undefined
     },
-    enabled: !!user,
     retry: false,
   })
 }

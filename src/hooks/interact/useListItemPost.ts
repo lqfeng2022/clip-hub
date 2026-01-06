@@ -1,19 +1,21 @@
 import { useMutation } from '@tanstack/react-query'
-import InteractAPIClient from '@/services/api-interact'
+import APIClient from '@/services/api-interact'
+import { useAuth } from '@/AuthContext'
 
-const apiClient = new InteractAPIClient('collections')
+const apiClient = new APIClient('collections')
 
-interface Props {
-  expression_id: number, 
-  listIds: number[]
-}
 const useListItemPost = () => {
+  const { user } = useAuth()
+
   return useMutation({
-    mutationFn: async ({ expression_id, listIds }: Props) => {
+    mutationFn: async ({ product_id, listIds }: { 
+      product_id: number, listIds: number[] 
+    }) => {
+      if (!user) return
       const responses = await Promise.allSettled(
         listIds.map((listId) => apiClient.postListItem(
           listId, 
-          { expression_id }, 
+          { product_id }, 
           { withCredentials: true }
         ))
       )

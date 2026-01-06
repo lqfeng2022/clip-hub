@@ -1,0 +1,60 @@
+import { Product } from '@/entities/Product'
+import { Box, Card, HStack, Text } from '@chakra-ui/react'
+import { ReactNode } from 'react'
+import { Link } from 'react-router-dom'
+import HostAvatar from '../host/HostAvatar'
+import InteractIcons from '../profile/InteractIcons'
+import HostBadge from './HostBadge'
+import PostMenu from './PostMenu'
+import { formatSimpleDate } from '@/helps/formatDate'
+
+interface Props {
+  product: Product,
+  children?: ReactNode,
+}
+const PostContainer = ({ product, children }: Props) => {
+  const frommatedDate = formatSimpleDate(product.updated_at)
+  
+  return (
+    <Box 
+      py={3} 
+      borderBottom='1px solid' 
+      borderColor='gray.700' 
+      _hover={{ bg: 'gray.700'}}
+    >
+      <HStack align='flex-start' spacing={3} px={4}>
+        <Box py={1}>
+          <Link to={`/host/${product.host.slug}`}>
+            <HostAvatar host={product.host}/>
+          </Link>
+        </Box>
+        <Card boxShadow='none' flex='1' bg='transparent'>
+          {/* TOP: host info + menu */}
+          <HStack justifyContent='space-between'>
+            <HStack>
+              <Text fontWeight='bold'>
+                {product.host.name}
+              </Text>
+              <Text color='gray' fontSize='sm'>
+                @{product.host.slug}
+              </Text>
+              <HostBadge/>
+              <Text color='gray.300' fontSize='sm'>
+                {frommatedDate}
+              </Text>
+            </HStack>
+            <Box my='-8px'>
+              <PostMenu product={product}/>
+            </Box>
+          </HStack>
+            {/* CENTER: expression, subtitle, video */}
+            {children}
+          {/* BOTTOM: */}
+          <InteractIcons product={product}/>
+        </Card>
+      </HStack>
+    </Box>
+  )
+}
+
+export default PostContainer

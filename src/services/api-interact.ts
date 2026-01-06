@@ -7,42 +7,56 @@ const axiosInstance = axios.create({
   params: {}
 })
 
-class InteractAPIClient<T> {
+class APIClient<T> {
   endpoint: string 
 
   constructor(endpoint: string) {
     this.endpoint = endpoint
   }
 
-  // get all eplikes/view histories/lists..
+  // get all lists/chatsessions/searches
   getAll = (config?: AxiosRequestConfig) => {
     return axiosInstance
       .get<FetchResponse<T>>(`/${this.endpoint}/`, config)
       .then((res) => res.data) //extract data from response
   }
 
-  // get a given id eplikes..
-  get = (id: number | string, config?: AxiosRequestConfig) => {
+  // get a given slug list
+  getList = (id: number | string, config?: AxiosRequestConfig) => {
     return axiosInstance
       .get<T>(this.endpoint + `/slug/${id}/`, config)
       .then((res) => res.data)
   }
 
-  // update a given id clip from liked/viewed
+  // get all list products
+  getListProducts = (id: number | string, config?: AxiosRequestConfig) => {
+    return axiosInstance
+      .get<FetchResponse<T>>(`${this.endpoint}/${id}/products/`, config)
+      .then((res) => res.data) //extract data from response
+  }
+
+  // get a given id chatsession
+  getChatSession = (id: number | string, config?: AxiosRequestConfig) => {
+    return axiosInstance
+      .get<T>(`${this.endpoint}/${id}/`, config)
+      .then((res) => res.data)
+  }
+
+  // update a give id serach/list
   put = (id: number | string, data: any, config?: AxiosRequestConfig) => {
     return axiosInstance
       .put(`/${this.endpoint}/${id}/`, data, config)
       .then((res) => res.data)
   }
 
-  // create a new list
-  postList = (data: any, config?: AxiosRequestConfig) => {
+  // create a new list/search/chatsession
+  post = (data: any, config?: AxiosRequestConfig) => {
     return axiosInstance
       .post(`/${this.endpoint}/`, data, config)
       .then((res) => res.data)
   }
 
-  // create a list item
+  // create a new listitem
   postListItem = (
     id: number | string, 
     data: any, 
@@ -53,57 +67,7 @@ class InteractAPIClient<T> {
       .then((res) => res.data)
   }
 
-  // update list title
-  putList = (
-    id: number | string, 
-    data: any, 
-    config?: AxiosRequestConfig
-  ) => {
-    return axiosInstance
-      .put(`/${this.endpoint}/${id}/`, data, config)
-      .then((res) => res.data)
-  }
-
-  // delete list/chatSession
-  delete = (
-    id: number | string, 
-    config?: AxiosRequestConfig
-  ) => {
-    return axiosInstance
-      .delete(`/${this.endpoint}/${id}/`, config)
-  }
-
-  // delete list item
-  deleteListItem = (
-    ListId: number,
-    listItemId: number,
-    config?: AxiosRequestConfig
-  ) => {
-    return axiosInstance
-      .delete(`/${this.endpoint}/${ListId}/items/${listItemId}/`, config)
-  }
-
-  // create search
-  postSearch = (
-    data: any,
-    config?: AxiosRequestConfig
-  ) => {
-    return axiosInstance
-      .post(`/${this.endpoint}/`, data, config)
-      .then((res) => res.data)
-  }
-
-  // update search (soft delete search)
-  putSearch = (
-    id: number,
-    data: any,
-    config?: AxiosRequestConfig
-  ) => {
-    return axiosInstance
-      .put(`/${this.endpoint}/${id}/`, data, config)
-  }
-
-  // create a chat message
+  // create a new chatmessage
   postChatMessage = (
     id: number | string, 
     data: any, 
@@ -113,6 +77,23 @@ class InteractAPIClient<T> {
       .post(`/${this.endpoint}/${id}/messages/`, data, config)
       .then((res) => res.data)
   }
+
+  // delete a given id list/chatSession
+  delete = (id: number | string, config?: AxiosRequestConfig) => {
+    return axiosInstance
+      .delete(`/${this.endpoint}/${id}/`, config)
+  }
+
+  // delete a given id listitem
+  deleteListItem = (
+    ListId: number, 
+    listItemId: number, 
+    config?: AxiosRequestConfig
+  ) => {
+    return axiosInstance
+      .delete(`/${this.endpoint}/${ListId}/items/${listItemId}/`, config)
+  }
+
 }
 
-export default InteractAPIClient
+export default APIClient

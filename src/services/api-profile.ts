@@ -1,12 +1,12 @@
 import axios, { AxiosRequestConfig } from 'axios'
 
 const axiosInstance = axios.create({
-  baseURL: 'https://clipwords.me/interact/profiles',
+  baseURL: 'https://clipwords.me/profile',
   withCredentials: true, // send cookie to backend, it's global default
   params: {}
 })
 
-class ProfileAPIClient {
+class APIClient {
   endpoint: string 
 
   constructor(endpoint: string) {
@@ -30,4 +30,4 @@ class ProfileAPIClient {
 
 }
 
-export default ProfileAPIClient
+export default APIClient

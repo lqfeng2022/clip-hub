@@ -1,47 +1,47 @@
 import BeatLoader from '@/components/BeatLoader'
-import ExpressionCardChat from '@/components/profile/ExpressionCardChat'
+import PageNavTab from '@/components/PageNavTab'
+import PostCount from '@/components/product/PostCount'
+import ChatSessionCard from '@/components/chat/ChatSessionCard'
 import profilePagesData from '@/data/profilePagesData'
-import useChats from '@/hooks/interact/useChats'
-import useLanguageStore from '@/languageStore'
-import { Box, Heading, SimpleGrid, Text } from '@chakra-ui/react'
+import useChatSessions from '@/hooks/interact/useChatSessions'
+import useLanguageStore from '@/stores/languageStore'
+import { Box, SimpleGrid, Text } from '@chakra-ui/react'
 import React from 'react'
 import InfiniteScroll from 'react-infinite-scroll-component'
+import ChatSessionCardNull from '@/components/chat/ChatSessionCardNull'
 
 const ProfileChatPage = () => {
   const lang = useLanguageStore(s => s.language)
   const header = lang === 'en' 
-    ? profilePagesData.en.view_chat : profilePagesData.zh.view_chat
+    ? profilePagesData.en.view_chat 
+    : profilePagesData.zh.view_chat
 
-  const { data, error, fetchNextPage,  hasNextPage } = useChats()
-  const fetchChatSessionsCount = data?.pages.reduce(
+  const { data, error, fetchNextPage,  hasNextPage } = useChatSessions()
+  const fetchCount = data?.pages.reduce(
     (total, page) => total + page.results.length, 0) || 0
 
   if (error) return <Text>{error.message}</Text>
   return (
     <>
-      <Heading m={4} fontSize='3xl'>{header}</Heading>
+      <PageNavTab title={header}/>
+      <PostCount count={fetchCount} genre='Chat Sessions'/>
       <InfiniteScroll
-        dataLength={fetchChatSessionsCount}
+        dataLength={fetchCount}
         hasMore={!!hasNextPage}
         next={() => fetchNextPage()}
         loader={<BeatLoader/>}
       >
-        <SimpleGrid
-          columns={{ base: 2, lg: 3, xl: 4 }}
-          p='10px'
-          spacing={3}
-        >
+        <SimpleGrid my={5}>
           {data?.pages.map((page, index) => (
             <React.Fragment key={index}>
-              {page?.results.map((chat) => (
+              {page?.results.map((chat) =>
                 <Box key={chat.id}>
-                  <ExpressionCardChat
-                    key={chat.expression.id}
-                    expression={chat.expression}
-                    messages={chat.messages_count}
-                  />
+                  {chat.product ?
+                    <ChatSessionCard chat={chat}/> :
+                    <ChatSessionCardNull chat={chat}/>
+                  }
                 </Box>
-              ))}
+              )}
             </React.Fragment>
           ))}
         </SimpleGrid>

@@ -1,1 +1,0 @@
-export const pocketURL = 'https://clipwords.me/media/'

@@ -1,5 +1,5 @@
 import { createContext, useContext, useState, useEffect, ReactNode } from 'react'
-import ProfileAPIClient from './services/api-profile'
+import APIClient from './services/api-profile'
 import User from './entities/User'
 
 interface AuthContextType {
@@ -16,7 +16,7 @@ const AuthContext = createContext<AuthContextType>({
   fetchUser: async () => {},  // fallback
 })
 
-const apiClient = new ProfileAPIClient('me')
+const apiClient = new APIClient('me')
 
 // Wrap useProfile() in a context-based AuthProvider
 export const AuthProvider = ({ children }: { children: ReactNode }) => {

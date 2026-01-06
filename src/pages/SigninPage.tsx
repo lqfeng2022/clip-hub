@@ -1,13 +1,12 @@
-import PasswordInput from '@/components/PasswordInput'
+import PasswordInput from '@/components/profile/PasswordInput'
 import signinPageData from '@/data/signinPageData'
-import useLanguageStore from '@/languageStore'
+import useLanguageStore from '@/stores/languageStore'
 import { SigninForm, signinSchema } from '@/validation/signinSchema'
-import { Box, Button, FormControl, FormHelperText, FormLabel, Heading, HStack, Input, SimpleGrid, Text } from '@chakra-ui/react'
+import { Box, Button, FormControl, FormHelperText, FormLabel, Heading, HStack, Input, SimpleGrid, Stack, Text } from '@chakra-ui/react'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../AuthContext'
-import SignContainer from '../components/SignContainer'
 import useSignin from '../hooks/useSignin'
 
 const SigninPage = () => {
@@ -28,17 +27,19 @@ const SigninPage = () => {
     mutate(data, {
       onSuccess: () => {
         fetchUser()
-        navigate('/profile')
+        navigate('/')
       }
     })
   }
   
   return (
-    <SignContainer>
-      <SimpleGrid columns={{sm: 1, md: 2}}>
+    <Box maxW='600px'>
+      <SimpleGrid m={10} gap={3}>
         {/* SIGNIN header */}
         <Box mb={5}>
-          <Heading fontSize='4xl'>{content.header}</Heading>
+          <Heading fontSize='4xl'>
+            {content.header}
+          </Heading>
           <Text pt={2}>{content.note}</Text>
         </Box>
         <Box>
@@ -49,7 +50,7 @@ const SigninPage = () => {
               <Input 
                 type='text' 
                 placeholder={`${content.username}..`}
-                {...register("username")}
+                {...register('username')}
               />
               <FormHelperText color={errors.username ? 'red.300' : (error ? 'red.300' : undefined)}>
                 {errors.username ? errors.username.message : message}
@@ -59,14 +60,14 @@ const SigninPage = () => {
             <FormControl py={8}>
               <FormLabel>{content.password} :</FormLabel>
               <PasswordInput 
-                PasswordInput={register("password")}
+                PasswordInput={register('password')}
               />
               <FormHelperText color={errors.password ? 'red.300' : (error ? 'red.300' : undefined)}>
                 {errors.password ? errors.password.message : message}
               </FormHelperText>
             </FormControl>
             {/* LOGIN button */}
-            <Button mb={5} size='md' fontSize='lg' type="submit">
+            <Button mb={5} size='sm' type='submit'>
               {content.login_lang}
             </Button>
           </form>
@@ -74,14 +75,18 @@ const SigninPage = () => {
           <HStack justifyContent='end' gap={5}>
             <Text>{content.signup_message}</Text>
             <Link to='/user/signup'>
-              <Button size='sm' variant='outline' colorScheme='yellow'>
+              <Button 
+                size='sm'
+                bg='gray.600'
+                _hover={{bg: 'gray.700'}}
+              >
                 {content.signup_lang}
               </Button>
             </Link>
           </HStack>
         </Box>
       </SimpleGrid>
-    </SignContainer>
+    </Box>
   )
 }
 

@@ -1,55 +1,52 @@
 import useListDelete from '@/hooks/interact/useListDelete'
 import useLists from '@/hooks/interact/useLists'
-import useListUpdate from '@/hooks/interact/useListUpdate'
-import useLanguageStore from '@/languageStore'
-import { Box, Heading, SimpleGrid, Text } from '@chakra-ui/react'
+import useListUpdate from '@/hooks/interact/useListPut'
+import useLanguageStore from '@/stores/languageStore'
+import { Box, SimpleGrid, Text } from '@chakra-ui/react'
 import React from 'react'
 import InfiniteScroll from 'react-infinite-scroll-component'
-import ExpressionListCard from '../components/profile/ExpressionListCard'
+import CollectionCard from '../components/collection/CollectionCard'
 import BeatLoader from '@/components/BeatLoader'
 import profilePagesData from '@/data/profilePagesData'
+import PageNavTab from '@/components/PageNavTab'
+import PostCount from '@/components/product/PostCount'
 
 const ProfileListsPage = () => {
   const lang = useLanguageStore(s => s.language)
   const header = lang === 'en' 
     ? profilePagesData.en.your_lists : profilePagesData.zh.your_lists
 
-  const { data, refetch, error, fetchNextPage,  hasNextPage } = useLists()
-  const fetchExpressionsCount = data?.pages.reduce(
+  const { data, error, fetchNextPage,  hasNextPage } = useLists()
+  const fetchCount = data?.pages.reduce(
     (total, page) => total + page.results.length, 0) || 0
 
   const { mutate: updateList } = useListUpdate()
   const handleUpdateList = (listId: number, title: string) => {
-    updateList({ listId, title }, { onSuccess: () => refetch() })
+    updateList({ listId, title })
   }
 
   const { mutate: deleteList } = useListDelete()
   const handleDelteList = (listId: number) => {
-    deleteList({listId}, { onSuccess: () => refetch() })
+    deleteList({listId})
   }
 
   if (error) return <Text>{error.message}</Text>
   return (
     <>
-      <Heading m={4} fontSize='3xl'>
-        {header}
-      </Heading>
+      <PageNavTab title={header}/>
+      <PostCount count={fetchCount} genre='Lists'/>
       <InfiniteScroll
-        dataLength={fetchExpressionsCount}
+        dataLength={fetchCount}
         hasMore={!!hasNextPage}
         next={() => fetchNextPage()}
         loader={<BeatLoader/>}
       >
-        <SimpleGrid
-          columns={{ sm: 2, lg: 3, xl: 4 }}
-          p='10px'
-          spacing={3}
-        >
+        <SimpleGrid px={4} py={8} gap={6}>
           {data?.pages.map((page, index) => (
             <React.Fragment key={index}>
               {page?.results.map((list) => (
                 <Box key={list.id}>
-                  <ExpressionListCard
+                  <CollectionCard
                     list={list}
                     onDelete={() => handleDelteList(list.id)}
                     onUpdate={(title) => { 

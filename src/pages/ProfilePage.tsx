@@ -1,26 +1,30 @@
 import { useAuth } from '@/AuthContext'
-import ProfileBack from '@/components/profile/ProfileBack'
-import { Heading, Stack } from '@chakra-ui/react'
-import ProfileExpressionLike from '../components/profile/ProfileExpressionLike'
-import ProfileLists from '../components/profile/ProfileLists'
-import ProfileUser from '../components/profile/ProfileUser'
-import ProfileViewHistory from '../components/profile/ProfileViewHistory'
-import ProfileChatSession from '@/components/profile/ProfileChatSession'
+import Subscriptions from '@/components/host/Subscriptions'
+import PageNavTab from '@/components/PageNavTab'
+import ProfileTabs from '@/components/profile/ProfileTabs'
+import { Stack } from '@chakra-ui/react'
+import { useState } from 'react'
+import LikedPosts from '../components/profile/LikedPosts'
+import UserProfile from '../components/profile/UserProfile'
+import ViewHistories from '../components/profile/ViewHistories'
 
 const Profile = () => { 
   const { user } = useAuth()
+  const title = `${user?.first_name} ${user?.last_name}`
+
+  const [
+    activeTab, 
+    setActiveTab
+  ] = useState<'Likes' | 'Subscribes' | 'Histories'>('Likes')
 
   return (
-    <Stack p={2}>
-      <ProfileBack/>
-      <ProfileUser/>
-      <ProfileChatSession/>
-      <ProfileViewHistory/>
-      <ProfileExpressionLike/>
-      <ProfileLists/>
-      {!user && <Heading fontSize='md'>
-        You cannot access this url, please signin
-      </Heading>}
+    <Stack gap={0}>
+      <PageNavTab title={title}/>
+      <UserProfile/>
+      <ProfileTabs onChange={setActiveTab}/>
+      {activeTab === 'Histories' && <ViewHistories/>}
+      {activeTab === 'Likes' && <LikedPosts/>}
+      {activeTab === 'Subscribes' && <Subscriptions/>}
     </Stack>
   )
 }

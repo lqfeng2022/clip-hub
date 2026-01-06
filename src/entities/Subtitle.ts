@@ -1,11 +1,14 @@
-import { Character } from './Character';
-import Expression from './Expression';
+import Expression from './Expression'
+import Host from './Host'
+import Video from './Video'
 
-export interface Subtitle {
+export default interface Subtitle {
   id: number,
-  timeline: string,
+  order: number,
   content: string,
-  content_ch: string,
-  characters: Character[],
+  video: Video,
+  host: Host,
   expressions: Expression[],
+  created_at: string,
+  updated_at: string,
 }

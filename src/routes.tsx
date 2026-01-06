@@ -1,19 +1,22 @@
 import { createBrowserRouter } from 'react-router-dom'
 import ErrorPage from './pages/ErrorPage'
-import ExpressionPage from './pages/ExpressionPage'
-import HomePage from './pages/HomePage'
-import Layout from './pages/Layout'
-import ProfileLayout from './pages/ProfileLayout'
 import ProfilePage from './pages/ProfilePage'
-import ProfileUserPage from './pages/ProfileUserPage'
+import ProfileEditPage from './pages/ProfileEditPage'
 import SigninPage from './pages/SigninPage'
-import ProfileHistoryPage from './pages/ProfileHistoryPage'
-import ExpressionDetailPage from './pages/ExpressionDetailPage'
-import ProfileEplikePage from './pages/ProfileEplikePage'
+import ProductDetailPage from './pages/ProductDetailPage'
 import ProfileListDetailPage from './pages/ProfileListDetailPage'
 import ProfileListsPage from './pages/ProfileListsPage'
 import SignupPage from './pages/SignupPage'
 import ProfileChatPage from './pages/ProfileChatPage'
+import HomePage from './pages/HomePage'
+import LanguageSettingPage from './pages/LanguageSettingPage'
+import ProfileBookmarkPage from './pages/ProfileBookmarkPage'
+import SearchPage from './pages/SearchPage'
+import HostDetailPage from './pages/HostDetailPage'
+import Layout from './Layout'
+import ChatDetailPage from './pages/ChatDetailPage'
+import NotificationPage from './pages/NotificationPage'
+import BeBroPage from './pages/BeBroPage'
 
 const router = createBrowserRouter([
   {
@@ -22,19 +25,22 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage/>,
     children: [
       { index: true, element: <HomePage/> },
-      { path: 'expressions', element: <ExpressionPage/> },
-      { path: 'expressions/:slug', element: <ExpressionDetailPage/> },
+      { path: 'search', element: <SearchPage/> },
+      { path: 'notifications', element: <NotificationPage/> },
+      { path: 'products/:id', element: <ProductDetailPage/> },
+      { path: 'host/:hostSlug', element: <HostDetailPage/> },
+      { path: 'bebro', element: <BeBroPage/> },
+      { path: 'languages', element: <LanguageSettingPage/> },
       { 
         path: 'profile', 
-        element: <ProfileLayout/>,
         children: [
           { index: true, element: <ProfilePage /> },
-          { path: 'me', element: <ProfileUserPage /> },
-          { path: 'chatsession', element: <ProfileChatPage/>},
-          { path: 'history', element: <ProfileHistoryPage /> },
-          { path: 'expression', element: <ProfileEplikePage /> },
-          { path: 'list', element: <ProfileListsPage /> },
-          { path: 'list/:slug', element: <ProfileListDetailPage /> },
+          { path: 'me', element: <ProfileEditPage /> },
+          { path: 'chat', element: <ProfileChatPage/> },
+          { path: 'chat/:id', element: <ChatDetailPage/> },
+          { path: 'bookmark', element: <ProfileBookmarkPage/> },
+          { path: 'collection', element: <ProfileListsPage /> },
+          { path: 'collection/:slug', element: <ProfileListDetailPage /> },
         ],
       },
       { path: 'user/signin', element: <SigninPage/> },

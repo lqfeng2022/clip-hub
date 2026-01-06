@@ -1,7 +1,7 @@
 export default {
   en: {
     navbar: 'expression',
-    search_box: 'Search expressions...',
+    search_box: 'Search',
     expression_header: "Expressions",
     langtags_header: "Langtags",
     explain_header: "Explain",
@@ -18,16 +18,10 @@ export default {
       { value: 'views_count', label: 'Most viewed' },
       { value: 'likes_count', label: 'Most liked' }
     ],
-    formality: [
-      { id: 0, name: '', title: 'All' },
-      { id: 1, name: 'FORMAL', title: 'Formal' },
-      { id: 2, name: 'NEUTRAL', title: 'Neutral' },
-      { id: 3, name: 'CASUAL', title: 'Casual' },
-    ]
   },
   zh: {
     navbar: '英文表达式',
-    search_box: '搜索表达式...',
+    search_box: '搜索',
     expression_header: "表达式",
     langtags_header: "语言标签",
     explain_header: "解释",
@@ -44,11 +38,5 @@ export default {
       { value: 'views_count', label: '最多浏览'},
       { value: 'likes_count', label: '最多喜欢'}
     ],
-    formality: [
-      { id: 0, name: '', title: 'All' },
-      { id: 1, name: 'FORMAL', title: '正式的' },
-      { id: 2, name: 'NEUTRAL', title: '中性的' },
-      { id: 3, name: 'CASUAL', title: '随意的' },
-    ]
   }
 }

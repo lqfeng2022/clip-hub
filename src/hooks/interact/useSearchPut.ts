@@ -1,16 +1,22 @@
 import { useMutation } from '@tanstack/react-query'
-import InteractAPIClient from '@/services/api-interact'
+import APIClient from '@/services/api-interact'
+import { useAuth } from '@/AuthContext'
+import { Search } from 'react-router-dom'
 
-const apiClient = new InteractAPIClient('searches')
+const apiClient = new APIClient<Search>('searches')
 
 const useSearchPut = () => {
+  const { user } = useAuth()
+
   return useMutation({
-    mutationFn: ({ id, visible } : { id: number, visible: boolean }) => 
-      apiClient.putSearch(
+    mutationFn: async ({ id, visible } : { id: number, visible: boolean }) => {
+      if (!user) return
+      return apiClient.put(
         id, 
         { visible }, 
         { withCredentials: true }
       )
+    }
   })
 }
 
