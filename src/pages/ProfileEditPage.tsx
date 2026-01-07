@@ -11,7 +11,7 @@ const ProfileEditPage = () => {
     ? profilePagesData.en.profile : profilePagesData.zh.profile
 
   return (
-    <Stack>
+    <Stack gap={0}>
       <PageNavTab title={'Edit Profile'}/>
       <UserProfile/>
       <Heading px={4} pt={4}>{header}</Heading>

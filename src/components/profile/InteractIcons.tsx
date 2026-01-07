@@ -11,7 +11,7 @@ const InteractIcons = ({ product }: { product: Product}) => {
   const { isAuthenticated } = useAuth()
 
   return (
-    <Stack spacing={4} m='12px 10px 0px'>
+    <Stack spacing={4} m='12px 5px 0px'>
       <HStack justifyContent='space-between'>
         {/* AGENT CHAT */}
         <InteractChatIcon product={product}/>

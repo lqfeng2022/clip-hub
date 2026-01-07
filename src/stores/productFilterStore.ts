@@ -3,24 +3,24 @@ import { create } from 'zustand'
 export type ProductType = 'expression' | 'subtitle' | 'video' | null
 
 // Convert Host tabs -> type filter
-export type HostTab = 'All' | 'Expressions' | 'Subtitles' | 'Videos'
+export type HostTab = 'All' | 'Words' | 'Clips' | 'Videos'
 const hostTabToType = (tab: HostTab): ProductType => {
   switch (tab) {
-    case 'Expressions': return 'expression'
-    case 'Subtitles':   return 'subtitle'
-    case 'Videos':      return 'video'
-    default:            return null
+    case 'Words':   return 'expression'
+    case 'Clips':   return 'subtitle'
+    case 'Videos':  return 'video'
+    default:        return null
   }
 }
 
 // Convert Search tabs -> type filter
-export type SearchTab = 'Latest' | 'Subtitle' | 'Expression' | 'Clip'
+export type SearchTab = 'Latest' | 'Clip' | 'Words' | 'Video'
 const searchTabToType = (tab: SearchTab): ProductType | undefined => {
   switch (tab) {
-    case 'Expression': return 'expression'
-    case 'Subtitle':   return 'subtitle'
-    case 'Clip':       return 'video'
-    default:           return undefined
+    case 'Words':  return 'expression'
+    case 'Clip':   return 'subtitle'
+    case 'Video':  return 'video'
+    default:       return undefined
   }
 }
 

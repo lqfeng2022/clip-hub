@@ -1,7 +1,7 @@
 import useProductFilterStore, { SearchTab } from '@/stores/productFilterStore'
 import { Center, SimpleGrid, Text } from '@chakra-ui/react'
 
-const tabs: SearchTab[] = ['Latest', 'Subtitle', 'Expression', 'Clip']
+const tabs: SearchTab[] = ['Latest', 'Clip', 'Words', 'Video']
 
 const SearchTabs = () => {
   const current = useProductFilterStore(s => s.searchTab)

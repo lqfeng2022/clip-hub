@@ -7,6 +7,7 @@ const HostBadge = () => {
       fontSize='0.6em' 
       variant='solid' 
       colorScheme='green'
+      fontWeight='light'
     >
       Host
     </Badge>

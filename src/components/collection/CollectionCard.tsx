@@ -16,12 +16,12 @@ const CollectionCard = ({ list, onUpdate, onDelete }: Props) => {
   return (
     <Card 
       direction='row'
-      overflow='hidden' 
+      // overflow='hidden' 
       variant='unstyled' 
       borderRadius={12}
     >
       <CollectionCardCover list={list}/>
-      <CardBody px='10px'>
+      <CardBody pl='10px'>
         <HStack justifyContent='space-between' alignItems='flex-start'>
           <CollectionCardTitle list={list}/>
           <CollectionEditMenu onDelete={onDelete} onOpen={onOpen}/>

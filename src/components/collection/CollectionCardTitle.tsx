@@ -12,7 +12,7 @@ const CollectionCardTitle = ({ list }: { list: Collection }) => {
       state={{list}}
     >
       <Heading
-        fontSize='xl'
+        fontSize='sm'
         noOfLines={2}
         pt='6px'
         _hover={hasItems ? { color: 'yellow.300' } : {}}
