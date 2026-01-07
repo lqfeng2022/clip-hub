@@ -39,7 +39,7 @@ const ProfileListDetailPage = () => {
   
   return (
     <>
-      <PageNavTab title={`List > ${list?.title}`}/>
+      <PageNavTab title={`List: ${list?.title}`}/>
       <PostCount count={fetchCount} genre='Posts'/>
       <InfiniteScroll
         dataLength={fetchCount}
