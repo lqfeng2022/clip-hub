@@ -100,39 +100,38 @@ export const voiceRecorder = ({ onConfirmSend }: Props) => {
 
       if (isIOS()) {
         logger.debug('Stopping iOS recording')
-        processorRef.current?.disconnect()
-        sourceRef.current?.disconnect()
-        streamRef.current?.getTracks().forEach(t => t.stop())
 
         if (!audioBuffersRef.current.length) {
-          logger.warn('No audio captured on iOS')
+          logger.warn('No audio captured')
           return
         }
 
         const sampleRate = audioContextRef.current!.sampleRate
-        logger.debug('Encoding PCM to MP3, buffer chunks:', audioBuffersRef.current.length)
         const mp3Blob = encodePCMToMP3(audioBuffersRef.current, sampleRate, 64)
-        logger.info('MP3 encoding complete, blob size:', mp3Blob.size)
+        logger.info('MP3 blob generated, size:', mp3Blob.size)
 
-        // 🔑 Set state before closing AudioContext
+        // 🔑 Set state before disconnecting nodes
         const url = URL.createObjectURL(mp3Blob)
         setPendingBlob(mp3Blob)
         setAudioURL(url)
 
-        // Defer AudioContext closing so React re-renders Send/Discard UI
+        // After state set, disconnect nodes & close context
         setTimeout(() => {
+          processorRef.current?.disconnect()
+          sourceRef.current?.disconnect()
+          streamRef.current?.getTracks().forEach(t => t.stop())
           audioContextRef.current?.close()
           audioContextRef.current = null
           processorRef.current = null
           sourceRef.current = null
           streamRef.current = null
-          logger.debug('AudioContext closed and cleaned up')
-        }, 0)
+          logger.debug('iOS AudioContext cleaned up')
+        }, 100) // 100ms gives Safari time to render preview
 
-        // Optional: download logs automatically (allowed because Stop button is a user gesture)
+        // Trigger log download safely
         setTimeout(() => {
           logger.download()
-        }, 0)
+        }, 200)
 
         return
       }
