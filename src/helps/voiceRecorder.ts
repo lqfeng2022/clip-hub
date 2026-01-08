@@ -85,8 +85,7 @@ export const voiceRecorder = ({ onConfirmSend }: Props) => {
     setIsRecording(true)
   }
 
-  /* ---------------- STOP ---------------- */
-
+  /* ---------------- STOP RECORDING ---------------- */
   const stopRecording = async () => {
     setIsRecording(false)
 
@@ -103,10 +102,14 @@ export const voiceRecorder = ({ onConfirmSend }: Props) => {
         64
       )
       
-      await audioContextRef.current?.close()
-
+      // Set state BEFORE closing AudioContext
       setPendingBlob(mp3Blob)
       setAudioURL(URL.createObjectURL(mp3Blob))
+
+      // Now it’s safe to close
+      await audioContextRef.current?.close()
+
+      // At this point, React shows Send / Discard UI correctly
       return
     }
 
