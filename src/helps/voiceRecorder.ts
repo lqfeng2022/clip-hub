@@ -1,5 +1,7 @@
+// src/helps/voiceRecorder.ts
 import { useEffect, useRef, useState } from 'react'
 import { encodePCMToMP3 } from '@/helps/mp3Encoder'
+import { logger } from '@/helps/fileLogger'
 
 interface Props {
   onConfirmSend: (blob: Blob) => void
@@ -14,10 +16,10 @@ export const voiceRecorder = ({ onConfirmSend }: Props) => {
   const [audioURL, setAudioURL] = useState<string | null>(null)
   const [pendingBlob, setPendingBlob] = useState<Blob | null>(null)
 
-  // MediaRecorder (non-iOS)
+  // Non-iOS
   const mediaRecorderRef = useRef<MediaRecorder | null>(null)
 
-  // Web Audio (iOS)
+  // iOS Web Audio
   const audioContextRef = useRef<AudioContext | null>(null)
   const processorRef = useRef<ScriptProcessorNode | null>(null)
   const sourceRef = useRef<MediaStreamAudioSourceNode | null>(null)
@@ -26,97 +28,121 @@ export const voiceRecorder = ({ onConfirmSend }: Props) => {
 
   /* ---------------- START RECORDING ---------------- */
   const startRecording = async () => {
-    const stream = await navigator.mediaDevices.getUserMedia({ audio: true })
-    streamRef.current = stream
+    try {
+      logger.debug('Requesting microphone access')
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true })
+      streamRef.current = stream
+      logger.info('Microphone access granted', stream)
 
-    /* ===== iOS PATH ===== */
-    if (isIOS()) {
-      const AudioCtx = window.AudioContext || (window as any).webkitAudioContext
-      const audioContext = new AudioCtx()
+      if (isIOS()) {
+        logger.debug('iOS detected, initializing AudioContext')
+        const AudioCtx = window.AudioContext || (window as any).webkitAudioContext
+        const audioContext = new AudioCtx()
+        audioContextRef.current = audioContext
 
-      // REQUIRED on iOS
-      if (audioContext.state === 'suspended') {
-        await audioContext.resume()
+        if (audioContext.state === 'suspended') {
+          logger.debug('Resuming suspended AudioContext')
+          await audioContext.resume()
+          logger.debug('AudioContext resumed', audioContext.state)
+        }
+
+        const source = audioContext.createMediaStreamSource(stream)
+        sourceRef.current = source
+
+        const processor = audioContext.createScriptProcessor(4096, 1, 1)
+        processorRef.current = processor
+
+        audioBuffersRef.current = []
+
+        processor.onaudioprocess = (e) => {
+          audioBuffersRef.current.push(new Float32Array(e.inputBuffer.getChannelData(0)))
+          logger.debug('Captured audio buffer chunk', e.inputBuffer.length)
+        }
+
+        source.connect(processor)
+        processor.connect(audioContext.destination)
+
+        setIsRecording(true)
+        logger.info('iOS recording started')
+        return
       }
-      audioContextRef.current = audioContext
 
-      const source = audioContext.createMediaStreamSource(stream)
-      sourceRef.current = source
+      // Non-iOS
+      logger.debug('Non-iOS detected, using MediaRecorder')
+      const recorder = new MediaRecorder(stream)
+      const chunks: Blob[] = []
 
-      /**
-       * ScriptProcessorNode is deprecated BUT
-       * AudioWorklet is NOT stable on iOS Safari.
-       * This is the only production-safe solution.
-       */
-      const processor = audioContext.createScriptProcessor(4096, 1, 1)
-      processorRef.current = processor
-
-      audioBuffersRef.current = []
-
-      processor.onaudioprocess = (e) => {
-        audioBuffersRef.current.push(
-          new Float32Array(e.inputBuffer.getChannelData(0))
-        )
+      recorder.ondataavailable = (e) => {
+        if (e.data.size > 0) chunks.push(e.data)
+        logger.debug('MediaRecorder chunk available', e.data.size)
       }
 
-      source.connect(processor)
-      processor.connect(audioContext.destination)
+      recorder.onstop = () => {
+        const blob = new Blob(chunks, { type: recorder.mimeType })
+        setPendingBlob(blob)
+        setAudioURL(URL.createObjectURL(blob))
+        logger.info('MediaRecorder stopped, blob size:', blob.size)
+      }
 
+      recorder.start()
+      mediaRecorderRef.current = recorder
       setIsRecording(true)
-      return
+      logger.info('Non-iOS recording started')
+    } catch (err) {
+      logger.error('Failed to start recording', err)
     }
-
-    /* ===== NON-iOS PATH ===== */
-    const recorder = new MediaRecorder(stream)
-    const chunks: Blob[] = []
-
-    recorder.ondataavailable = (e) => {
-      if (e.data.size > 0) chunks.push(e.data)
-    }
-
-    recorder.onstop = () => {
-      const blob = new Blob(chunks, { type: recorder.mimeType })
-      setPendingBlob(blob)
-      setAudioURL(URL.createObjectURL(blob))
-    }
-
-    recorder.start()
-    mediaRecorderRef.current = recorder
-    setIsRecording(true)
   }
 
   /* ---------------- STOP RECORDING ---------------- */
   const stopRecording = async () => {
-    setIsRecording(false)
+    try {
+      setIsRecording(false)
 
-    /* ===== iOS STOP ===== */
-    if (isIOS()) {
-      processorRef.current?.disconnect()
-      sourceRef.current?.disconnect()
-      streamRef.current?.getTracks().forEach((t) => t.stop())
-      
-      // DO NOT close context before encoding
-      const mp3Blob = encodePCMToMP3(
-        audioBuffersRef.current,
-        audioContextRef.current!.sampleRate,
-        64
-      )
-      
-      // Set state BEFORE closing AudioContext
-      setPendingBlob(mp3Blob)
-      setAudioURL(URL.createObjectURL(mp3Blob))
-      await new Promise(r => setTimeout(r, 50)) // 50ms delay
+      if (isIOS()) {
+        logger.debug('Stopping iOS recording')
+        processorRef.current?.disconnect()
+        sourceRef.current?.disconnect()
+        streamRef.current?.getTracks().forEach(t => t.stop())
 
-      // Now it’s safe to close
-      await audioContextRef.current?.close()
+        if (!audioBuffersRef.current.length) {
+          logger.warn('No audio captured on iOS')
+          return
+        }
 
-      // At this point, React shows Send / Discard UI correctly
-      return
+        const sampleRate = audioContextRef.current!.sampleRate
+        logger.debug('Encoding PCM to MP3, buffer chunks:', audioBuffersRef.current.length)
+        const mp3Blob = encodePCMToMP3(audioBuffersRef.current, sampleRate, 64)
+        logger.info('MP3 encoding complete, blob size:', mp3Blob.size)
+
+        // 🔑 Set state before closing AudioContext
+        const url = URL.createObjectURL(mp3Blob)
+        setPendingBlob(mp3Blob)
+        setAudioURL(url)
+
+        // Defer AudioContext closing so React re-renders Send/Discard UI
+        setTimeout(() => {
+          audioContextRef.current?.close()
+          audioContextRef.current = null
+          processorRef.current = null
+          sourceRef.current = null
+          streamRef.current = null
+          logger.debug('AudioContext closed and cleaned up')
+        }, 0)
+
+        // Optional: download logs automatically (allowed because Stop button is a user gesture)
+        setTimeout(() => {
+          logger.download()
+        }, 0)
+
+        return
+      }
+
+      // Non-iOS
+      mediaRecorderRef.current?.stop()
+      streamRef.current?.getTracks().forEach(t => t.stop())
+    } catch (err) {
+      logger.error('Error during stopRecording', err)
     }
-
-    /* ===== NON-iOS STOP ===== */
-    mediaRecorderRef.current?.stop()
-    streamRef.current?.getTracks().forEach((t) => t.stop())
   }
 
   /* ---------------- CONTROLS ---------------- */
@@ -125,7 +151,11 @@ export const voiceRecorder = ({ onConfirmSend }: Props) => {
   }
 
   const confirmSend = () => {
-    if (!pendingBlob) return
+    if (!pendingBlob) {
+      logger.warn('confirmSend called but no pending blob')
+      return
+    }
+    logger.info('Sending audio blob to backend, size:', pendingBlob.size)
     onConfirmSend(pendingBlob)
     cleanup()
   }
@@ -134,13 +164,15 @@ export const voiceRecorder = ({ onConfirmSend }: Props) => {
     if (audioURL) URL.revokeObjectURL(audioURL)
     setAudioURL(null)
     setPendingBlob(null)
+    logger.debug('Cleaned up recording state')
   }
 
-  /* ---------------- CLEANUP ---------------- */
+  /* ---------------- CLEANUP ON UNMOUNT ---------------- */
   useEffect(() => {
     return () => {
       if (audioURL) URL.revokeObjectURL(audioURL)
-      streamRef.current?.getTracks().forEach((t) => t.stop())
+      streamRef.current?.getTracks().forEach(t => t.stop())
+      logger.debug('Component unmounted, cleaned up streams')
     }
   }, [audioURL])
 
