@@ -1,7 +1,7 @@
 import { Box, Badge, Image } from '@chakra-ui/react'
 import bro_image from '@/assets/bro.jpg'
 
-const PremiumCoverBadge = () => {
+const PremiumCoverBadge = ({ step }: { step: string }) => {
   return (
     <Box 
       position='relative' 
@@ -12,17 +12,19 @@ const PremiumCoverBadge = () => {
       <Image
         objectFit='cover'
         src={bro_image}
-        opacity={0.8}
+        opacity={0.7}
       />
       <Badge 
         position='absolute'
         top={3}
         right={3}
-        bg='green'
+        bg='green.600'
         fontWeight='light'
-        px={2} fontSize='lg'
+        px={2} 
+        py='2px'
+        fontSize='sm'
       >
-        starter
+        {step}
       </Badge>
     </Box>
   )
