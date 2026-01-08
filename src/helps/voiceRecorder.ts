@@ -105,6 +105,7 @@ export const voiceRecorder = ({ onConfirmSend }: Props) => {
       // Set state BEFORE closing AudioContext
       setPendingBlob(mp3Blob)
       setAudioURL(URL.createObjectURL(mp3Blob))
+      await new Promise(r => setTimeout(r, 50)) // 50ms delay
 
       // Now it’s safe to close
       await audioContextRef.current?.close()
