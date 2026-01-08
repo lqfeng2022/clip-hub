@@ -21,7 +21,7 @@ const CollectionCard = ({ list, onUpdate, onDelete }: Props) => {
       borderRadius={12}
     >
       <CollectionCardCover list={list}/>
-      <CardBody pl='10px'>
+      <CardBody pl='10px' pr='5px'>
         <HStack justifyContent='space-between' alignItems='flex-start'>
           <CollectionCardTitle list={list}/>
           <CollectionEditMenu onDelete={onDelete} onOpen={onOpen}/>

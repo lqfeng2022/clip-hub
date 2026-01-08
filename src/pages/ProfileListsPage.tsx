@@ -41,7 +41,7 @@ const ProfileListsPage = () => {
         next={() => fetchNextPage()}
         loader={<BeatLoader/>}
       >
-        <SimpleGrid px={4} py={8} gap={6}>
+        <SimpleGrid pl={4} py={8} gap={6}>
           {data?.pages.map((page, index) => (
             <React.Fragment key={index}>
               {page?.results.map((list) => (

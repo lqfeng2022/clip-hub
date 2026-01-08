@@ -4,7 +4,7 @@ import { autoGrow } from '@/helps/autoGrow'
 import { voiceRecorder } from '@/helps/voiceRecorder'
 import useChatMessagePost from '@/hooks/interact/useChatMessagePost'
 import { ChatForm, chatSchema } from '@/validation/chatSchema'
-import { Badge, Box, Button, FormControl, HStack, Icon, InputGroup, Stack, Textarea } from '@chakra-ui/react'
+import { Badge, Box, FormControl, HStack, Icon, InputGroup, Stack, Textarea } from '@chakra-ui/react'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Dispatch, SetStateAction, useState } from 'react'
 import { useForm } from 'react-hook-form'
@@ -14,6 +14,8 @@ import { IoAddOutline } from 'react-icons/io5'
 import { PiWaveform } from 'react-icons/pi'
 import { IoVideocamOutline } from 'react-icons/io5'
 import ChatAudioBoxSimple from './ChatAudioBoxSimple'
+import { GoSmiley } from 'react-icons/go'
+
 
 interface Props {
   chatSession: ChatSession,
@@ -143,7 +145,7 @@ const ChatInputForm = ({ chatSession, setMessages }: Props) => {
       >
         {!audioURL ? (
           <Box w='100%' textAlign='center' py={2} cursor='pointer'>
-            {isRecording ? 'Recording… Tap to stop' : 'Tap to record'}
+            {isRecording ? 'Recording…' : 'Tap to Record'}
           </Box>
         ) : (
           <HStack w='100%' justifyContent='space-between' pr={5}>
@@ -151,7 +153,8 @@ const ChatInputForm = ({ chatSession, setMessages }: Props) => {
             <HStack gap={5}>
               <Badge 
                 cursor='pointer' 
-                colorScheme='red' 
+                colorScheme='red'
+                fontWeight='light'
                 onClick={cleanup}
               >
                 Discard
@@ -159,6 +162,7 @@ const ChatInputForm = ({ chatSession, setMessages }: Props) => {
               <Badge 
                 cursor='pointer' 
                 colorScheme='green' 
+                fontWeight='light'
                 onClick={confirmSend}
               >
                 Send
@@ -210,20 +214,17 @@ const ChatInputForm = ({ chatSession, setMessages }: Props) => {
               />
               <Icon as={CiPhone} boxSize={6} color='gray'/>
               <Icon as={IoVideocamOutline} boxSize={6} color='gray'/>
-              {isHostSpeakOn && <Button 
-                size='xs' 
-                fontSize='sm' 
-                color='gray.200'
-                bg={isEnhancement ? 'gray.600' : 'orange.600'} 
-                _hover={isEnhancement ? {bg: 'gray.700'} : {bg: 'orange.700'}}
-                onClick={() => setIsEnhancement(prev => !prev)}
-              >
-                {isEnhancement ? 'enhanced' : 'enhance'}
-              </Button>}
+              {isHostSpeakOn && <Icon 
+                boxSize={6}
+                as={GoSmiley} 
+                cursor='pointer'
+                color={isEnhancement ? 'orange.200' : 'gray.100'}
+                onClick={() => setIsEnhancement(prev => !prev)}/>
+              }
             </HStack>
             <Badge
               fontSize='0.8em'
-              fontWeight='light'
+              fontWeight={isEnhancement ? 'bold' : 'light'}
               colorScheme={chatModeColorScheme}
             >
               {chatModeLabel}

@@ -39,7 +39,7 @@ const PremiumCard = () => {
         </Stack>
         <List 
           spacing={4} 
-          fontSize='lg' 
+          fontSize='sm' 
           fontWeight='semibold' 
           color='gray.200'
         >

@@ -23,16 +23,16 @@ const ChatSessionCardNull = ({ chat } : { chat: ChatSession }) => {
     <HStack 
       align='flex-start' 
       spacing={4} 
-      m={4} p={3} 
+      m={3} p={2} 
       bg='#1A202CAA'
       borderRadius='15px'
     >
       <AvatarGroup size={{base: 'md', sm: 'lg'}} max={2}>
-        <Avatar name={fullName} src={portrait} borderColor='white'/>
+        <Avatar name={fullName} src={portrait} borderColor='gray'/>
         <Avatar src={chat.host.portrait} opacity={0.8} />
       </AvatarGroup>
       {/* `flex: '1'`: Make this HStack grow to fill available space */}
-      <HStack justifyContent='space-between' flex='1'>
+      <HStack justifyContent='space-between' flex='1' align='flex-start'>
         <Link to={`/profile/chat/${chat.id.toString()}`}>
           <HStack spacing={2} pt={2}>
             <Stack spacing={1}>
@@ -47,8 +47,8 @@ const ChatSessionCardNull = ({ chat } : { chat: ChatSession }) => {
                 <Text fontSize='xl' fontWeight='bold'>
                   {chat.messages_count ?? 0}
                 </Text>
-                <Text fontSize='sm' color='gray.500'>
-                  chat messages
+                <Text fontSize='xs' color='gray.500'>
+                  messages
                 </Text>
               </HStack>
             </Stack>

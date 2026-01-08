@@ -5,8 +5,8 @@ const NotificationPage = () => {
   return (
     <>
       <PageNavTab title='Notifications'/>
-      <Stack textAlign='center' mt={10} h='90vh'>
-        <Heading>
+      <Stack textAlign='start' m={5} h='90vh'>
+        <Heading fontSize='2xl'>
           Nothing to see here — yet
         </Heading>
         <Text color='gray.400'>

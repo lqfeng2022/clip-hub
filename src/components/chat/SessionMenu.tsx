@@ -35,11 +35,11 @@ const SessionMenu = ({ chat }: Props) => {
       <MenuList 
         bg='gray.700' 
         py={0}
-        borderRadius='xl'
+        borderRadius='lg'
         overflow='hidden'
       >
         <MenuItem 
-          fontSize='xl' 
+          fontSize='lg' 
           py={2}
           onClick={() => navigate(hostPageUrl)}
         >
@@ -49,7 +49,7 @@ const SessionMenu = ({ chat }: Props) => {
           </Text>
         </MenuItem>
         <MenuItem 
-          fontSize='xl'
+          fontSize='lg'
           py={2}
           onClick={() => navigate(postPageUrl)}
         >
@@ -59,7 +59,7 @@ const SessionMenu = ({ chat }: Props) => {
           </Text>
         </MenuItem>
         <MenuItem 
-          fontSize='xl' 
+          fontSize='lg' 
           py={2}
           onClick={deleteChat}
         >

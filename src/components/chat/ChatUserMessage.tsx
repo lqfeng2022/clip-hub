@@ -12,7 +12,7 @@ const ChatUserMessage = ({ fullName, message }: Props) => {
       <Avatar 
         alignSelf='flex-start'
         mt={1}
-        size='md' 
+        size='sm'
         opacity={0.8}
         name={fullName}
       />
@@ -22,7 +22,7 @@ const ChatUserMessage = ({ fullName, message }: Props) => {
           content={message.content!}
         /> 
         : <Box 
-            maxW={{base: '280px', sm: '300px'}}
+            maxW={{base: '260px', sm: '300px'}}
             borderRadius='12px' 
             background='RGBA(0, 0, 0, 0.22)'
             p='8px 15px'
@@ -30,7 +30,7 @@ const ChatUserMessage = ({ fullName, message }: Props) => {
             <Text 
               color='gray.100' 
               lineHeight={1.4}
-              fontSize={{base: 'xs', sm: 'md'}}
+              fontSize={{base: 'sm', sm: 'md'}}
             >
               {message.content}
             </Text>

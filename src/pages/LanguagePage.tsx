@@ -1,7 +1,7 @@
 import PageNavTab from '@/components/PageNavTab'
 import languages from '@/data/languages'
 import useLanguageStore from '@/stores/languageStore'
-import { HStack, Icon, List, ListItem, Text, Image } from '@chakra-ui/react'
+import { HStack, Icon, List, ListItem, Text, Image, Stack } from '@chakra-ui/react'
 import { IoIosCheckmarkCircleOutline } from 'react-icons/io'
 
 const LanguageSettingPage = () => {
@@ -17,7 +17,7 @@ const LanguageSettingPage = () => {
         {langImages.map((lang, index) => (
           <ListItem 
             key={index}
-            p={3}
+            p={2}
             borderBottom='1px'
             borderColor='gray.500'
             opacity={lang.disabled ? 0.4 : 1}
@@ -26,18 +26,20 @@ const LanguageSettingPage = () => {
             onClick={() => !lang.disabled && setLanguage(lang.code)}
           >
             <HStack justifyContent='space-between'>
-              <HStack spacing={5}>
+              <HStack spacing={4}>
                 <Image src={lang.icon} boxSize={14}/>
-                <Text fontWeight='semibold' color='gray.200'>
-                  {lang.title}
-                </Text>
-                <Text color='gray.200'>
-                  {lang.trans}
-                </Text>
+                <Stack spacing={1}>
+                  <Text fontWeight='semibold' color='gray.200' fontSize='sm'>
+                    {lang.title}
+                  </Text>
+                  <Text color='gray.200' fontSize='sm'>
+                    {lang.trans}
+                  </Text>
+                </Stack>
               </HStack>
               <Icon 
                 as={IoIosCheckmarkCircleOutline}
-                fontSize='35px' 
+                fontSize='28px' 
                 color={language === lang.code ? 'yellow.200' : 'gray.500'}
               />
             </HStack>

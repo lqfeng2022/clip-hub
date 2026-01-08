@@ -12,7 +12,7 @@ const PostBadges = ({ product }: { product: Product }) => {
     <Badge
       colorScheme={TYPE_COLORS[product.type]}
       fontSize='0.8em'
-      // fontWeight='light'
+      fontWeight='light'
       textTransform='capitalize'
     >
       {product.type}

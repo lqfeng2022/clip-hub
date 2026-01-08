@@ -15,7 +15,7 @@ const CollectionEditMenu = ({ onDelete, onOpen }: Props ) => {
           aria-label='Options'
           icon={<CgMoreVertical />}
           variant='ghost'
-          size='lg'
+          size='md'
           borderRadius='full'
         />
         <MenuList 

@@ -4,7 +4,7 @@ const BeatLoader = () => {
   const dots = [0, 1, 2]
 
   return (
-    <HStack spacing={2} p='10px'>
+    <HStack spacing={2} p='20px'>
       {dots.map((i) => (
         <Box
           key={i}

@@ -11,7 +11,7 @@ interface Props {
 const ChatSessionCardSimple = ({ chat } : Props) => {
   const product = chat.product
   const host = chat.host
-  const {image, title } = getProductDisplay(product, 100)
+  const { image, title } = getProductDisplay(product, 50)
 
   return (
     <HStack 
@@ -55,7 +55,7 @@ const ChatSessionCardSimple = ({ chat } : Props) => {
             </Box>
           </Link>
           <Text 
-            fontSize={{base: '2xs', sm: 'sm'}}
+            fontSize={{base: 'xs', sm: 'sm'}}
             fontWeight='bold' 
             color='gray.100'
           >

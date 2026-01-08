@@ -19,14 +19,14 @@ const ChatBotMessage = ({ host, message }: Props) => {
           align='right'
         />
           : <Box
-            maxW={{base: '280px', sm: '300px'}}
+            maxW={{base: '260px', sm: '300px'}}
             borderRadius='12px'
             background='gray.700'
             p='8px 15px'
           >
             <Text 
               lineHeight={1.4}
-              fontSize={{base: 'xs', sm: 'md'}}
+              fontSize={{base: 'sm', sm: 'md'}}
             >
               {message.content}
             </Text>
@@ -34,7 +34,7 @@ const ChatBotMessage = ({ host, message }: Props) => {
         }
       </Stack>
       <Avatar 
-        size='md'
+        size='sm'
         alignSelf='flex-start' 
         mt={1} 
         src={host.portrait}

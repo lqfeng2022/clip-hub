@@ -9,13 +9,13 @@ import ChatSession from '@/entities/ChatSession'
 const ChatSessionCard = ({ chat } : { chat: ChatSession }) => {
   const product = chat.product
   const host = chat.host
-  const {image, title } = getProductDisplay(product, 80)
+  const {image, title } = getProductDisplay(product, 30)
 
   return (
     <HStack 
       align='flex-start' 
       spacing={4} 
-      mx={5} my={2} p={3} 
+      m={3} p={2} 
       bg='#1A202CAA'
       borderRadius='15px'
     >
@@ -50,7 +50,7 @@ const ChatSessionCard = ({ chat } : { chat: ChatSession }) => {
             </Box>
             <Stack spacing={1}>
               <Text 
-                fontSize={{base: '2xs', sm: 'sm'}}
+                fontSize={{base: 'xs', sm: 'sm'}}
                 fontWeight='bold' 
                 color='gray.100'
               >
@@ -60,8 +60,8 @@ const ChatSessionCard = ({ chat } : { chat: ChatSession }) => {
                 <Text fontSize='xl' fontWeight='bold'>
                   {chat.messages_count ?? 0}
                 </Text>
-                <Text fontSize='sm' color='gray.500'>
-                  chat messages
+                <Text fontSize='xs' color='gray.500'>
+                  messages
                 </Text>
               </HStack>
             </Stack>
