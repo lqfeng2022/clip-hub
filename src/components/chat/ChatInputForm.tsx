@@ -215,7 +215,7 @@ const ChatInputForm = ({ chatSession, setMessages }: Props) => {
               <Icon as={CiPhone} boxSize={6} color='gray'/>
               <Icon as={IoVideocamOutline} boxSize={6} color='gray'/>
               {isHostSpeakOn && <Icon 
-                boxSize={6}
+                boxSize={5}
                 as={GoSmiley} 
                 cursor='pointer'
                 color={isEnhancement ? 'orange.200' : 'gray.100'}

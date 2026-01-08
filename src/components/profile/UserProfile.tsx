@@ -42,19 +42,21 @@ const UserProfile = () => {
     <>
       <Box position='relative'>
         <Box height='200px' overflow='hidden'>
-          <Image src={backImage} objectFit='cover'/>
+          <Image src={backImage} objectFit='cover' opacity={0.8}/>
         </Box>
         <Avatar
-          size='large'
-          position='absolute' top='135px' ml={5}
+          size='lg'
+          position='absolute' top={{base: '145px', sm: '160px'}} ml={5}
           name={fullName} src={portraitUrl}
-          sx={{boxShadow: '0 0 0 5px #CBD5E0'}}
+          sx={{boxShadow: '0 0 0 4px #CBD5E0'}}
           opacity={0.95}
         />
-      </Box>
-      <Box px={5} py={2}>
-        <Box textAlign='right'>
+        <Box width='100%' position='absolute' top='0px'>
           <UserCredit/>
+        </Box>
+      </Box>
+      <Box px={5} py={3}>
+        <Box textAlign='right' pb={3}>
           {isProfileMePage &&
             <Button size='sm' variant='outline' onClick={handleLogout}>
               {buttons.logout}
@@ -65,10 +67,10 @@ const UserProfile = () => {
             </Button>
           </Link>}
         </Box>
-        <Heading fontSize='3xl'>
+        <Heading fontSize='xl'>
           {fullName}
         </Heading>
-        <Text fontSize='lg' color='gray.300' pb={3}>
+        <Text fontSize='sm' color='gray.300' pb={3}>
           {`@${user?.username}`}
         </Text>
       </Box>
