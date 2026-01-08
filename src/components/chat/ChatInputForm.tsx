@@ -83,7 +83,13 @@ const ChatInputForm = ({ chatSession, setMessages }: Props) => {
   }
 
   // AUDIO LOGIC
-  const { toggleRecording, isRecording, audioURL, confirmSend, cleanup } = voiceRecorder({
+  const { 
+    toggleRecording, 
+    isRecording, 
+    audioURL, 
+    confirmSend, 
+    cleanup 
+  } = voiceRecorder({
     onConfirmSend: (blob) => {
       if (!chatId) return
 

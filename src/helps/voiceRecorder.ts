@@ -24,17 +24,20 @@ export const voiceRecorder = ({ onConfirmSend }: Props) => {
   const streamRef = useRef<MediaStream | null>(null)
   const audioBuffersRef = useRef<Float32Array[]>([])
 
-  /* ---------------- START ---------------- */
-
+  /* ---------------- START RECORDING ---------------- */
   const startRecording = async () => {
     const stream = await navigator.mediaDevices.getUserMedia({ audio: true })
     streamRef.current = stream
 
     /* ===== iOS PATH ===== */
     if (isIOS()) {
-      const AudioCtx =
-        window.AudioContext || (window as any).webkitAudioContext
+      const AudioCtx = window.AudioContext || (window as any).webkitAudioContext
       const audioContext = new AudioCtx()
+
+      // REQUIRED on iOS
+      if (audioContext.state === 'suspended') {
+        await audioContext.resume()
+      }
       audioContextRef.current = audioContext
 
       const source = audioContext.createMediaStreamSource(stream)
@@ -92,13 +95,15 @@ export const voiceRecorder = ({ onConfirmSend }: Props) => {
       processorRef.current?.disconnect()
       sourceRef.current?.disconnect()
       streamRef.current?.getTracks().forEach((t) => t.stop())
-      await audioContextRef.current?.close()
-
+      
+      // DO NOT close context before encoding
       const mp3Blob = encodePCMToMP3(
         audioBuffersRef.current,
         audioContextRef.current!.sampleRate,
         64
       )
+      
+      await audioContextRef.current?.close()
 
       setPendingBlob(mp3Blob)
       setAudioURL(URL.createObjectURL(mp3Blob))
@@ -111,7 +116,6 @@ export const voiceRecorder = ({ onConfirmSend }: Props) => {
   }
 
   /* ---------------- CONTROLS ---------------- */
-
   const toggleRecording = () => {
     isRecording ? stopRecording() : startRecording()
   }
@@ -129,7 +133,6 @@ export const voiceRecorder = ({ onConfirmSend }: Props) => {
   }
 
   /* ---------------- CLEANUP ---------------- */
-
   useEffect(() => {
     return () => {
       if (audioURL) URL.revokeObjectURL(audioURL)
