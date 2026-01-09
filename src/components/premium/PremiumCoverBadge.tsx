@@ -19,10 +19,8 @@ const PremiumCoverBadge = ({ step }: { step: string }) => {
         top={3}
         right={3}
         bg='green.600'
-        fontWeight='light'
-        px={2} 
-        py='2px'
-        fontSize='sm'
+        fontWeight='semibold'
+        fontSize='0.8em'
       >
         {step}
       </Badge>

@@ -37,7 +37,7 @@ const PremiumCard = ({ credits, price, step, note }: Props) => {
             Subscribe
           </Button>
         </HStack>
-        <Text fontWeight='light'>
+        <Text color='gray.100'>
           {note}
         </Text>
       </Stack>
