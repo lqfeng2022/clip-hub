@@ -1,6 +1,4 @@
-// src/helps/voiceRecorder.ts
 import { useEffect, useRef, useState } from 'react'
-import { encodePCMToMP3 } from './mp3Encoder'
 
 interface Props {
   onConfirmSend: (blob: Blob) => void
@@ -30,18 +28,12 @@ export const voiceRecorder = ({ onConfirmSend }: Props) => {
         }
       }
 
-      recorder.onstop = async () => {
-        const webmBlob = new Blob(chunksRef.current)
-        const arrayBuffer = await webmBlob.arrayBuffer()
-        const audioCtx = new AudioContext()
-        const audioBuffer = await audioCtx.decodeAudioData(arrayBuffer)
+      recorder.onstop = () => {
+        const blob = new Blob(chunksRef.current, { type: recorder.mimeType })
+        const url = URL.createObjectURL(blob)
 
-        // Take first channel (mono) for MP3
-        const buffers = [audioBuffer.getChannelData(0)]
-        const mp3Blob = encodePCMToMP3(buffers, audioBuffer.sampleRate, 64)
-
-        setPendingBlob(mp3Blob)
-        setAudioURL(URL.createObjectURL(mp3Blob))
+        setPendingBlob(blob)
+        setAudioURL(url)
       }
 
       recorder.start()
