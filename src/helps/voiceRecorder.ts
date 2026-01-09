@@ -20,7 +20,7 @@ export const voiceRecorder = ({ onConfirmSend }: Props) => {
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true })
       streamRef.current = stream
 
-      const recorder = new MediaRecorder(stream)
+      const recorder = new MediaRecorder(stream, { mimeType: 'audio/mp4' })
       chunksRef.current = []
 
       recorder.ondataavailable = (e) => {
