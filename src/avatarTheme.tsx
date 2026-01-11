@@ -3,16 +3,6 @@ import { createMultiStyleConfigHelpers, defineStyle } from '@chakra-ui/react'
 
 const { defineMultiStyleConfig } = createMultiStyleConfigHelpers(avatarAnatomy.keys)
 
-const middle = defineStyle({
-  container: {
-    width: '40px',
-    height: '40px',
-  },
-  label: {
-    fontSize: 'xl',
-  },
-})
-
 const small = defineStyle({
   container: {
     width: '30px',
@@ -23,8 +13,28 @@ const small = defineStyle({
   },
 })
 
+const middle = defineStyle({
+  container: {
+    width: '40px',
+    height: '40px',
+  },
+  label: {
+    fontSize: 'lg',
+  },
+})
+
+const large = defineStyle({
+  container: {
+    width: '80px',
+    height: '80px',
+  },
+  label: {
+    fontSize: '4xl',
+  },
+})
+
 const sizes = {
-  middle, small
+ small, middle, large
 }
 
 export const avatarTheme = defineMultiStyleConfig({ sizes })

@@ -1,6 +1,6 @@
 import homepageData from '@/data/homepageData'
 import useLanguageStore from '@/stores/languageStore'
-import heroImage from '@/assets/profile-back.webp'
+import aiTutor from '@/assets/practice-with-an-ai-tutor.jpg'
 import { Box, Button, Heading, Image, SimpleGrid, Text } from '@chakra-ui/react'
 import { FaArrowRight } from 'react-icons/fa6'
 import { useAuth } from '@/AuthContext'
@@ -48,7 +48,7 @@ const Hero = () => {
         </Link>
       </Box>
       <Box overflow='hidden'>
-        <Image src={heroImage} objectFit='cover' borderRadius='lg'/>
+        <Image src={aiTutor} objectFit='cover' borderRadius='lg'/>
       </Box>
     </SimpleGrid>
   )

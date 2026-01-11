@@ -16,7 +16,7 @@ const Layout = () => {
   }, [location.pathname])
 
   return (
-    <Container maxW='1400px' px={0}>
+    <Container maxW='1350px' px={0}>
       <ScrollToTop/>
       <Grid
         templateAreas={{

@@ -1,12 +1,12 @@
-import backImage from '@/assets/profile-back.webp'
 import { useAuth } from '@/AuthContext'
 import profilePagesData from '@/data/profilePagesData'
 import useSignout from '@/hooks/useSignout'
 import useLanguageStore from '@/stores/languageStore'
-import { Avatar, Box, Button, Heading, Image, Text } from '@chakra-ui/react'
+import { Avatar, Box, Button, Heading, Text } from '@chakra-ui/react'
 import { useQueryClient } from '@tanstack/react-query'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import UserCredit from './UserCredit'
+import Gradient from './Gradient'
 
 const UserProfile = () => {
   const lang = useLanguageStore(s => s.language)
@@ -41,13 +41,14 @@ const UserProfile = () => {
   return (
     <>
       <Box position='relative'>
-        <Box h='200px' overflow='hidden'>
-          <Image h='200px' w='100%' src={backImage} objectFit='cover' opacity={0.8}/>
-        </Box>
+        <Gradient/>
         <Avatar
-          size='lg'
-          position='absolute' top='165px' ml={5}
-          name={fullName} src={portraitUrl}
+          size='large'
+          position='absolute' 
+          top='165px' 
+          ml={5}
+          name={fullName} 
+          src={portraitUrl}
           sx={{boxShadow: '0 0 0 4px #CBD5E0'}}
           opacity={0.95}
         />
@@ -56,7 +57,7 @@ const UserProfile = () => {
         </Box>
       </Box>
       <Box p={5}>
-        <Box textAlign='right' pb={3}>
+        <Box pb={6} textAlign='right'>
           {isProfileMePage &&
             <Button size='sm' variant='outline' onClick={handleLogout}>
               {buttons.logout}
