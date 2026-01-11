@@ -1,4 +1,4 @@
-import { Box, Button, Card, HStack, Icon, Input, InputGroup, InputLeftElement, Image, useToast, Text, InputRightElement } from '@chakra-ui/react'
+import { Box, Button, Card, HStack, Icon, Input, InputGroup, InputLeftElement, Image, useToast, Text } from '@chakra-ui/react'
 import { CiBarcode } from 'react-icons/ci'
 import clip_studio from '@/assets/clip-studio.jpg'
 import useVoucherPost from '@/hooks/billing/useVoucherPost'
@@ -31,7 +31,7 @@ const GiftCard = () => {
   return (
     <Card
       mx={4} mt={8}
-      maxW='400px'
+      maxW='450px'
       direction='column'
       overflow='hidden'
       variant='outline'
@@ -53,7 +53,7 @@ const GiftCard = () => {
       </Box>
       {/* form */}
       <form onSubmit={handleSubmit(onSubmit)}>
-        <HStack p={4}>
+        <HStack my={4} px={4} gap={3}>
           <InputGroup>
             <InputLeftElement pointerEvents='none' h='100%' pr={2}>
               <Icon as={CiBarcode} boxSize={6} color='gray.200'/>
@@ -61,18 +61,19 @@ const GiftCard = () => {
             <Input 
               {...register('code')}
               variant='filled'
-              width={{base: '240px', sm: '300px'}}
-              focusBorderColor='yellow.500'
-              size='sm'
+              size='md'
               fontSize='16px'
               placeholder='input gift card code..'
               _placeholder={{ opacity: 0.6, color: 'inherit' }}
               isInvalid={!!errors.code}
+              border='0.5px solid'
+              borderColor='gray.500'
+              focusBorderColor='yellow.300'
             />
           </InputGroup>
           <Button
             type='submit'
-            size='sm'
+            size='md'
             variant='solid'
             borderRadius='full'
             px='15px'
