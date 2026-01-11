@@ -17,7 +17,7 @@ const UserAvatarDrawer = () => {
   return (
     <>
       {user ? <Avatar
-        size='sm'
+        size='middle'
         fontWeight='semibold'
         name={fullName}
         src={user?.portrait ? portrait : ''}

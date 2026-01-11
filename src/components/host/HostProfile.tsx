@@ -9,12 +9,12 @@ const HostProfile = ({ host }: { host: Host }) => {
   return (
     <>
       <Box position='relative'>
-        <Box height='200px' overflow='hidden'>
-          <Image src={host.cover} objectFit='cover'/>
+        <Box h='200px' overflow='hidden'>
+          <Image h='200px' w='100%' src={host.cover} objectFit='cover'/>
         </Box>
         <Avatar
           position='absolute'
-          top='145px' 
+          top='150px' 
           ml={5} 
           size='xl'
           name={host.name} 
@@ -29,10 +29,10 @@ const HostProfile = ({ host }: { host: Host }) => {
             onToggle={toggleMarked}
           />
         </Box>
-        <Heading fontSize='3xl'>
+        <Heading fontSize='2xl'>
           {host?.name}
         </Heading>
-        <Text fontSize='lg' color='gray.300' pb={3}>
+        <Text fontSize='md' color='gray.300' pb={3}>
           {`@${host?.slug}`}
         </Text>
       </Box>

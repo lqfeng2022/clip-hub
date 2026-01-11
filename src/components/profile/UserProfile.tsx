@@ -41,12 +41,12 @@ const UserProfile = () => {
   return (
     <>
       <Box position='relative'>
-        <Box height='200px' overflow='hidden'>
-          <Image src={backImage} objectFit='cover' opacity={0.8}/>
+        <Box h='200px' overflow='hidden'>
+          <Image h='200px' w='100%' src={backImage} objectFit='cover' opacity={0.8}/>
         </Box>
         <Avatar
           size='lg'
-          position='absolute' top={{base: '150px', sm: '160px'}} ml={5}
+          position='absolute' top='165px' ml={5}
           name={fullName} src={portraitUrl}
           sx={{boxShadow: '0 0 0 4px #CBD5E0'}}
           opacity={0.95}

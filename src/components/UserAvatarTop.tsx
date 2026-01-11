@@ -11,11 +11,11 @@ const UserAvatarTop = () => {
   
   return (
     <Stack gap={3} px={4} py={3} mt={4}>
-      <Avatar 
+      <Avatar
         fontWeight='semibold'
         name={fullName} 
         src={portrait} 
-        opacity={0.9}
+        opacity={0.8}
       />
       <Box>
         <Heading size='md'>{fullName}</Heading>
