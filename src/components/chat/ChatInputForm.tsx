@@ -131,6 +131,7 @@ const ChatInputForm = ({ chatSession, setMessages }: Props) => {
         minH='40px'
         maxH='150px'
         lineHeight='1.5'
+        fontSize='16px'
         placeholder='Type a message...'
         onInput={autoGrow}
         onKeyDown={handleKeyDown}

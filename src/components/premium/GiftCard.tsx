@@ -1,4 +1,4 @@
-import { Box, Button, Card, HStack, Icon, Input, InputGroup, InputLeftElement, Image, useToast, Text } from '@chakra-ui/react'
+import { Box, Button, Card, HStack, Icon, Input, InputGroup, InputLeftElement, Image, useToast, Text, InputRightElement } from '@chakra-ui/react'
 import { CiBarcode } from 'react-icons/ci'
 import clip_studio from '@/assets/clip-studio.jpg'
 import useVoucherPost from '@/hooks/billing/useVoucherPost'
@@ -53,7 +53,7 @@ const GiftCard = () => {
       </Box>
       {/* form */}
       <form onSubmit={handleSubmit(onSubmit)}>
-        <HStack p={4} spacing={3}>
+        <HStack p={4}>
           <InputGroup>
             <InputLeftElement pointerEvents='none' h='100%' pr={2}>
               <Icon as={CiBarcode} boxSize={6} color='gray.200'/>
@@ -61,9 +61,10 @@ const GiftCard = () => {
             <Input 
               {...register('code')}
               variant='filled'
-              width='280px' 
+              width={{base: '240px', sm: '300px'}}
               focusBorderColor='yellow.500'
               size='sm'
+              fontSize='16px'
               placeholder='input gift card code..'
               _placeholder={{ opacity: 0.6, color: 'inherit' }}
               isInvalid={!!errors.code}
@@ -74,13 +75,13 @@ const GiftCard = () => {
             size='sm'
             variant='solid'
             borderRadius='full'
-            px='20px'
+            px='15px'
             bg='gray.700'
             _hover={{bg: 'yellow.500'}}
             isLoading={isLoading}
             isDisabled={isLoading}
           >
-            Redeem
+            Post
           </Button>
         </HStack>
         {/* error */}
