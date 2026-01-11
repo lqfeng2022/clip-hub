@@ -45,7 +45,7 @@ const ChatSessionCardSimple = ({ chat } : Props) => {
               borderRadius='lg'
               overflow='hidden'
               w={{base: '130px', sm: '180px'}}
-              maxH={{base: '60px', sm: '90px'}}
+              maxH={{base: '60px', sm: '80px'}}
               flexShrink={0}
             >
               <Image 

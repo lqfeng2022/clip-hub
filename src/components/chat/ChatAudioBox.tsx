@@ -46,7 +46,6 @@ const ChatAudioBox = ({ audioUrl, content, align = 'left' }: Props) => {
         borderRadius='10px'
         background='gray.700'
         p='10px 15px'
-        mt={3}
       >
         <HStack spacing={5}>
           <Icon

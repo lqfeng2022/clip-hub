@@ -1,7 +1,6 @@
 import { Box, Badge, Image } from '@chakra-ui/react'
-import bro_image from '@/assets/bro.jpg'
 
-const PremiumCoverBadge = ({ step }: { step: string }) => {
+const PremiumCoverBadge = ({ step, image }: { step: string, image: string }) => {
   return (
     <Box 
       position='relative' 
@@ -11,7 +10,7 @@ const PremiumCoverBadge = ({ step }: { step: string }) => {
     >
       <Image
         objectFit='cover'
-        src={bro_image}
+        src={image}
         opacity={0.7}
       />
       <Badge 

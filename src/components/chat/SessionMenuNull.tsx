@@ -20,7 +20,7 @@ const SessionMenuNull = ({ chat }: { chat: ChatSession}) => {
         aria-label='Options'
         icon={<TfiMoreAlt />}
         variant='ghost'
-        boxSize={10}
+        boxSize={6}
         color='gray.300'
         borderRadius='full'
       />

@@ -7,8 +7,9 @@ interface Props {
   price: string,
   step: string,
   note: string,
+  image: string,
 }
-const PremiumCard = ({ credits, price, step, note }: Props) => {
+const PremiumCard = ({ credits, price, step, note, image }: Props) => {
   return (
     <Card
       mx={4} mt={8}
@@ -19,7 +20,7 @@ const PremiumCard = ({ credits, price, step, note }: Props) => {
       borderRadius='15px'
       display='flex'
     >
-      <PremiumCoverBadge step={step}/>
+      <PremiumCoverBadge step={step} image={image}/>
       <Stack p={5}>
         <HStack mb={2} justifyContent='space-between'>
           <HStack align='flex-end'>  {/* make Text bottom-aligned */}

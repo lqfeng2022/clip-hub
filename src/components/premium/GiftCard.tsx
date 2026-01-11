@@ -1,6 +1,6 @@
 import { Box, Button, Card, HStack, Icon, Input, InputGroup, InputLeftElement, Image, useToast, Text } from '@chakra-ui/react'
 import { CiBarcode } from 'react-icons/ci'
-import clip_studio from '@/assets/clip-studio.jpg'
+import gift_card from '@/assets/gift-card.webp'
 import useVoucherPost from '@/hooks/billing/useVoucherPost'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { VoucherForm, voucherSchema } from '@/validation/voucherSchema'
@@ -39,7 +39,7 @@ const GiftCard = () => {
     >
       {/* cover */}
       <Box position='relative' h='180px' overflow='hidden'>
-        <Image objectFit='cover' src={clip_studio} opacity={0.8}/>
+        <Image objectFit='cover' src={gift_card} opacity={0.8}/>
         <Box 
           position='absolute'
           top={0}
