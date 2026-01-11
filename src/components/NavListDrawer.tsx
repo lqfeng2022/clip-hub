@@ -3,7 +3,7 @@ import useLanguageStore from '@/stores/languageStore'
 import { Box, HStack, Icon, List, ListItem, Text } from '@chakra-ui/react'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import NavListButton from './NavListButton'
+import NavChatButton from './NavChatButton'
 import UserAvatarTop from './UserAvatarTop'
 
 interface Props {
@@ -45,7 +45,7 @@ const NavListDrawer = ({onItemClick}: Props) => {
           </ListItem>
         ))}
       </List>
-      <NavListButton onItemClick={onItemClick}/>
+      <NavChatButton onItemClick={onItemClick}/>
     </Box>
   )
 }

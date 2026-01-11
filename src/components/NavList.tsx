@@ -5,7 +5,7 @@ import ClipLogo from './ClipLogo'
 import navListData from '@/data/navListData'
 import UserAvatarBottom from './UserAvatarBottom'
 import { useAuth } from '@/AuthContext'
-import NavListButton from './NavListButton'
+import NavChatButton from './NavChatButton'
 
 const NavList = () => {
   const { user } = useAuth()
@@ -50,7 +50,7 @@ const NavList = () => {
         ))}
       </List>
       <Show above='xl'>
-        <NavListButton/>
+        <NavChatButton/>
       </Show>
       <UserAvatarBottom/>
     </Box>

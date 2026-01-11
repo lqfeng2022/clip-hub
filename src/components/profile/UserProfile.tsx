@@ -46,7 +46,7 @@ const UserProfile = () => {
         </Box>
         <Avatar
           size='lg'
-          position='absolute' top={{base: '145px', sm: '160px'}} ml={5}
+          position='absolute' top={{base: '150px', sm: '160px'}} ml={5}
           name={fullName} src={portraitUrl}
           sx={{boxShadow: '0 0 0 4px #CBD5E0'}}
           opacity={0.95}
@@ -55,7 +55,7 @@ const UserProfile = () => {
           <UserCredit/>
         </Box>
       </Box>
-      <Box px={5} py={3}>
+      <Box p={5}>
         <Box textAlign='right' pb={3}>
           {isProfileMePage &&
             <Button size='sm' variant='outline' onClick={handleLogout}>

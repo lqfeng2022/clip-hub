@@ -45,8 +45,8 @@ export function formatSimpleDate(dateString: string): string {
 
   // 3) 1 year or more → return 'Oct 30, 2024'
   return date.toLocaleDateString('en-US', {
-    month: 'short',
-    day: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
     year: 'numeric',
   })
 }

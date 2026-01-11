@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom'
 interface Props {
   onItemClick?: () => void
 }
-const NavListButton = ({ onItemClick }: Props) => {
+const NavChatButton = ({ onItemClick }: Props) => {
   const { user }= useAuth()
   const { mutate: createChat } = useChatSessionPostNull()
   const navigate = useNavigate()
@@ -40,4 +40,4 @@ const NavListButton = ({ onItemClick }: Props) => {
   )
 }
 
-export default NavListButton
+export default NavChatButton

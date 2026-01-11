@@ -23,7 +23,7 @@ const HostProfile = ({ host }: { host: Host }) => {
         />
       </Box>
       <Box p={5}>
-        <Box pb={5} textAlign='right'>
+        <Box pb={9} textAlign='right'>
           <SubscribeButton 
             followed={marked} 
             onToggle={toggleMarked}

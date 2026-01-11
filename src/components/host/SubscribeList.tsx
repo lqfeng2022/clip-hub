@@ -25,14 +25,22 @@ const SubscribeList = ({ host }: Props) => {
           />
         </Link>
         {/* HOST INFO */}
-        <Stack gap={1}>
+        <Stack gap={2}>
           <HStack>
             <Text fontWeight='semibold' lineHeight={1}>
               {host.name}
             </Text>
-            <Badge colorScheme='green'>Host</Badge>
+            <Text color='gray' fontSize='sm'>@{host.slug}</Text>
+            <Badge colorScheme='green' fontWeight='light'>Host</Badge>
           </HStack>
-          <Text color='gray' fontSize='sm'>@{host.slug}</Text>
+          <HStack gap={2}>
+            <Text color='yellow.200' fontWeight='semibold'>
+              {host.videos_count} {host.subtitles_count} {host.expressions_count}
+            </Text>
+            <Text fontWeight='light' color='gray.200'>
+              videos/clips/words
+            </Text>
+          </HStack>
         </Stack>
       </HStack>
       {/* SUBSCRIBE button */}

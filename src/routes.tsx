@@ -16,7 +16,9 @@ import HostDetailPage from './pages/HostDetailPage'
 import Layout from './Layout'
 import ChatDetailPage from './pages/ChatDetailPage'
 import NotificationPage from './pages/NotificationPage'
-import BeBroPage from './pages/BeBroPage'
+import PremiumPage from './pages/PremiumPage'
+import PremiumPaymentPage from './pages/PremiumPaymentPage'
+import HostsPage from './pages/HostsPage'
 
 const router = createBrowserRouter([
   {
@@ -29,7 +31,12 @@ const router = createBrowserRouter([
       { path: 'notifications', element: <NotificationPage/> },
       { path: 'products/:id', element: <ProductDetailPage/> },
       { path: 'host/:hostSlug', element: <HostDetailPage/> },
-      { path: 'bebro', element: <BeBroPage/> },
+      { path: 'premium', 
+        children: [
+          { index: true, element: <PremiumPage/> },
+          { path: 'payment', element: <PremiumPaymentPage/> },
+        ],
+      },
       { path: 'languages', element: <LanguageSettingPage/> },
       { 
         path: 'profile', 
@@ -43,6 +50,7 @@ const router = createBrowserRouter([
           { path: 'collection/:slug', element: <ProfileListDetailPage /> },
         ],
       },
+      { path: 'hosts', element: <HostsPage/>},
       { path: 'user/signin', element: <SigninPage/> },
       { path: 'user/signup', element: <SignupPage/> },
     ]

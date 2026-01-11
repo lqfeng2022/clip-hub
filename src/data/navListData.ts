@@ -5,6 +5,7 @@ import { GoHome, GoHomeFill } from 'react-icons/go'
 import { HiChat, HiOutlineChat } from 'react-icons/hi'
 import { IoBookmark, IoBookmarkOutline, IoLanguage, IoLanguageOutline } from 'react-icons/io5'
 import { RiSearchFill, RiSearchLine } from 'react-icons/ri'
+import { PiPaperclipHorizontalFill, PiPaperclipHorizontalLight } from 'react-icons/pi'
 
 export default [
   { 
@@ -31,8 +32,8 @@ export default [
     icon: FaBlogger, 
     icon2: FaBloggerB, 
     isAnon: false, 
-    link: '/bebro',
-    link2: '/bebro',
+    link: '/premium',
+    link2: '/premium',
   },
   { 
     title: 'Chat History', 
@@ -59,6 +60,15 @@ export default [
     icon2: BiSolidCollection, 
     isAnon: false, 
     link: '/profile/collection',
+    link2: '/user/signin',
+  },
+  { 
+    title: 'Hosts', 
+    title_ch: 'Host', 
+    icon: PiPaperclipHorizontalLight, 
+    icon2: PiPaperclipHorizontalFill, 
+    isAnon: false, 
+    link: '/hosts',
     link2: '/user/signin',
   },
   { 

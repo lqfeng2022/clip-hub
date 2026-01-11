@@ -32,23 +32,23 @@ const PostMenu = ({ product }: Props) => {
         borderRadius='xl'
         overflow='hidden'
       >
-        <MenuItem fontSize='2xl' py={2}>
+        <MenuItem fontSize='xl' py={2}>
           <Icon 
             as={FaUserCheck} 
             mr={4}
             color={marked ? 'yellow.200' : ''}
           />
-          <Text fontWeight='semibold' fontSize='md'>
+          <Text fontWeight='semibold' fontSize='sm'>
             {`${follow_state}${product.host.slug}`}
           </Text>
         </MenuItem>
-        <MenuItem fontSize='2xl' py={2}>
+        <MenuItem fontSize='xl' py={2}>
           <Icon 
             as={IoMdHeartDislike} 
             mr={4}
             color='gray.300'
           />
-          <Text fontWeight='semibold' fontSize='md'>
+          <Text fontWeight='semibold' fontSize='sm'>
             Dislike this Post
           </Text>
         </MenuItem>

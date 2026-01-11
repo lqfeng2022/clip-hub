@@ -1,5 +1,6 @@
 import { Button, Card, Heading, HStack, Stack, Text } from '@chakra-ui/react'
 import PremiumCoverBadge from './PremiumCoverBadge'
+import { Link } from 'react-router-dom'
 
 interface Props {
   credits: string,
@@ -27,15 +28,17 @@ const PremiumCard = ({ credits, price, step, note }: Props) => {
             </Heading>
             <Text fontSize='sm'>/ ${price}</Text>
           </HStack>
-          <Button
-            size='sm'
-            variant='solid'
-            borderRadius='full'
-            bg='gray.600'
-            _hover={{bg: 'green.500'}}
-          >
-            Subscribe
-          </Button>
+          <Link to={'payment/'}>
+            <Button
+              size='sm'
+              variant='solid'
+              borderRadius='full'
+              bg='gray.600'
+              _hover={{bg: 'green.500'}}
+            >
+              Subscribe
+            </Button>
+          </Link>
         </HStack>
         <Text color='gray.100'>
           {note}
