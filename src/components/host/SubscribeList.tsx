@@ -19,7 +19,6 @@ const SubscribeList = ({ host }: { host: Host }) => {
             src={host.portrait}
             _hover={{boxShadow: '0 0 0 5px #CBD5E0'}}
             transition='.15s'
-            opacity={0.65}
           />
         </Link>
         {/* HOST INFO */}

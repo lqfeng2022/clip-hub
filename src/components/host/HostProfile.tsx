@@ -10,12 +10,7 @@ const HostProfile = ({ host }: { host: Host }) => {
     <>
       <Box position='relative'>
         <Box h='200px' overflow='hidden'>
-          <Image 
-            h='200px' w='100%' 
-            src={host.cover} 
-            objectFit='cover' 
-            opacity={0.85}
-          />
+          <Image h='200px' w='100%' src={host.cover} objectFit='cover' opacity={0.85}/>
         </Box>
         <Avatar
           position='absolute'
@@ -25,7 +20,6 @@ const HostProfile = ({ host }: { host: Host }) => {
           name={host.name} 
           src={host.portrait}
           sx={{boxShadow: '0 0 0 5px #CBD5E0'}}
-          opacity={0.85}
         />
       </Box>
       <Box p={5}>

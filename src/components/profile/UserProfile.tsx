@@ -2,11 +2,11 @@ import { useAuth } from '@/AuthContext'
 import profilePagesData from '@/data/profilePagesData'
 import useSignout from '@/hooks/useSignout'
 import useLanguageStore from '@/stores/languageStore'
-import { Avatar, Box, Button, Heading, Text } from '@chakra-ui/react'
+import { Avatar, Box, Button, Heading, Text, Image } from '@chakra-ui/react'
 import { useQueryClient } from '@tanstack/react-query'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import UserCredit from './UserCredit'
-import Gradient from './Gradient'
+import backImage from '@/assets/words-art-001.jpg'
 
 const UserProfile = () => {
   const lang = useLanguageStore(s => s.language)
@@ -41,11 +41,13 @@ const UserProfile = () => {
   return (
     <>
       <Box position='relative'>
-        <Gradient/>
+        <Box h='200px' overflow='hidden'>
+          <Image h='200px' w='100%' src={backImage} objectFit='cover' opacity={0.6}/>
+        </Box>
         <Avatar
           size='large'
           position='absolute' 
-          top='165px' 
+          top='160px' 
           ml={5}
           name={fullName} 
           src={portraitUrl}
