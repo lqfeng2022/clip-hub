@@ -1,13 +1,10 @@
-import { Avatar, Badge, HStack, Stack, Text } from '@chakra-ui/react'
-import { Link } from 'react-router-dom'
-import SubscribeButton from './SubscribeButton'
 import Host from '@/entities/Host'
 import useFollowManager from '@/hooks/useFollowManager'
+import { Avatar, HStack, Stack, Text } from '@chakra-ui/react'
+import { Link } from 'react-router-dom'
+import SubscribeButton from './SubscribeButton'
 
-interface Props {
-  host: Host,
-}
-const SubscribeList = ({ host }: Props) => {
+const SubscribeList = ({ host }: { host: Host }) => {
   const { marked, toggleMarked } = useFollowManager(host.id, host.followed)
 
   return (
@@ -31,16 +28,15 @@ const SubscribeList = ({ host }: Props) => {
               {host.name}
             </Text>
             <Text color='gray' fontSize='sm'>@{host.slug}</Text>
-            <Badge colorScheme='green' fontWeight='light'>Host</Badge>
           </HStack>
-          <HStack gap={2}>
+          <Stack gap={0} lineHeight='1.2'>
             <Text color='yellow.200' fontWeight='semibold'>
               {host.videos_count} {host.subtitles_count} {host.expressions_count}
             </Text>
-            <Text fontWeight='light' color='gray.200'>
+            <Text fontWeight='light' color='gray.200' fontSize='xs'>
               videos/clips/words
             </Text>
-          </HStack>
+          </Stack>
         </Stack>
       </HStack>
       {/* SUBSCRIBE button */}

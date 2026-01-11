@@ -14,9 +14,9 @@ const HostProfile = ({ host }: { host: Host }) => {
         </Box>
         <Avatar
           position='absolute'
-          top='135px' 
+          top='145px' 
           ml={5} 
-          size='large'
+          size='xl'
           name={host.name} 
           src={host.portrait}
           sx={{boxShadow: '0 0 0 5px #CBD5E0'}}
