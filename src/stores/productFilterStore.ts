@@ -14,12 +14,12 @@ const hostTabToType = (tab: HostTab): ProductType => {
 }
 
 // Convert Search tabs -> type filter
-export type SearchTab = 'Latest' | 'Clip' | 'Words' | 'Video'
+export type SearchTab = 'Latest' | 'Clips' | 'Words' | 'Videos'
 const searchTabToType = (tab: SearchTab): ProductType | undefined => {
   switch (tab) {
     case 'Words':  return 'expression'
-    case 'Clip':   return 'subtitle'
-    case 'Video':  return 'video'
+    case 'Clips':   return 'subtitle'
+    case 'Videos':  return 'video'
     default:       return undefined
   }
 }
