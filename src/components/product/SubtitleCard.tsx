@@ -1,6 +1,5 @@
 import { SubtitleProduct } from '@/entities/Product'
 import { Box, HStack, Image } from '@chakra-ui/react'
-import { Link } from 'react-router-dom'
 import { renderHighlights } from '@/helps/renderHighlights'
 import PostContainer from './PostContainer'
 
@@ -11,14 +10,13 @@ interface Props {
 const SubtitleCard = ({ product }: Props) => {
   const content = product.content.content
   const phrases = product.content.expressions.map(exp => exp.title)
+  const productId = product.id.toString()
   const expressions = product.content.expressions
 
   return (
     <PostContainer product={product}>
       <Box py={1}>
-        <Link to={`/products/${product.id}`}>
-          {renderHighlights(content, phrases)}
-        </Link>
+        {renderHighlights(content, phrases, productId)}
       </Box>
       <HStack 
         overflowX='auto' 

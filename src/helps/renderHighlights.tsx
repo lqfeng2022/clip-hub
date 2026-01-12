@@ -1,18 +1,24 @@
 import { Text, Box, Button } from '@chakra-ui/react'
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 
-export function renderHighlights(text: string, phrases: string[], maxLength = 500) {
+export function renderHighlights(
+  text: string, 
+  phrases: string[], 
+  productId: string,
+  maxLength = 400
+) {
   const [expanded, setExpanded] = useState(false)
 
-  // Determine if text is long
   const isLongText = text.length > maxLength
-  const displayText = !expanded && isLongText ? text.slice(0, maxLength) : text
+  const displayText = !expanded && isLongText 
+    ? truncateAtWord(text, maxLength)
+    : text
 
   const normalizedText = normalizeQuotes(displayText)
   const normalizedPhrases = phrases.map(normalizeQuotes).filter(Boolean)
 
   const sortedPhrases = [...normalizedPhrases].sort((a, b) => b.length - a.length)
-
   const regex = sortedPhrases.length > 0 
     ? new RegExp(`(${sortedPhrases.map(escapeRegex).join('|')})`, 'gi')
     : null
@@ -24,8 +30,7 @@ export function renderHighlights(text: string, phrases: string[], maxLength = 50
     <>
       {lines.map((line, index) => {
         const isBullet = line.trim().startsWith('-')
-        
-        // Handle blank line explicitly
+
         if (line.trim() === '')
           return <Box key={index} height="0.8em"/>
 
@@ -37,37 +42,43 @@ export function renderHighlights(text: string, phrases: string[], maxLength = 50
             lineHeight="1.4"
             pl={hasBullet ? (isBullet ? 0 : '10px') : undefined}
           >
-            {splitByAsterisks(line).map((segment, segIndex) =>
-              isStarBold(segment) ? (
-                <Text key={segIndex} as="span" fontWeight="bold">
-                  {stripAsterisks(segment)}
-                </Text>
-              ) : (
-                <Text key={segIndex} as="span">
-                  {renderHighlightedText(segment, sortedPhrases, regex)}
-                </Text>
-              )
+            {/* Wrap each line in Link separately */}
+            <Link to={`/products/${productId}`}>
+              {splitByAsterisks(line).map((segment, segIndex) =>
+                isStarBold(segment) ? (
+                  <Text key={segIndex} as="span" fontWeight="bold">
+                    {stripAsterisks(segment)}
+                  </Text>
+                ) : (
+                  <Text key={segIndex} as="span">
+                    {renderHighlightedText(segment, sortedPhrases, regex)}
+                  </Text>
+                )
+              )}
+            </Link>
+
+            {/* Render Show More button only on last line */}
+            {index === lines.length - 1 && isLongText && (
+              <Button
+                size="xs"
+                variant="ghost"
+                ml="0.5rem"
+                color="blue.200"
+                p={0}
+                onClick={() => setExpanded(!expanded)}
+                _hover={{bg: ''}}
+              >
+                {expanded ? 'Show Less' : 'Show More'}
+              </Button>
             )}
           </Text>
         )
       })}
-
-      {/* Show More / Less button */}
-      {isLongText && (
-        <Button
-          size="xs"
-          variant="ghost"
-          p={0}
-          onClick={() => setExpanded(!expanded)}
-          _hover={{bg: '', color: 'blue.300'}}
-        >
-          Show {expanded ? 'Less' : 'More'}
-        </Button>
-      )}
     </>
   )
 }
 
+// ------------------ helpers ------------------
 function renderHighlightedText(text: string, phrases: string[], regex: RegExp | null) {
   if (!regex || phrases.length === 0)
     return <Text as="span">{text}</Text>
@@ -79,7 +90,6 @@ function renderHighlightedText(text: string, phrases: string[], regex: RegExp | 
   )
 }
 
-// escape regex special characters
 function escapeRegex(str: string) {
   return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
 }
@@ -98,4 +108,14 @@ function isStarBold(segment: string) {
 
 function stripAsterisks(segment: string) {
   return segment.slice(1, -1)
+}
+
+// truncate text at word boundary
+function truncateAtWord(text: string, maxLength: number) {
+  if (text.length <= maxLength) return text
+
+  const sliced = text.slice(0, maxLength)
+  const lastSpace = sliced.lastIndexOf(' ')
+  if (lastSpace === -1) return sliced // no spaces, just return slice
+  return sliced.slice(0, lastSpace)
 }
