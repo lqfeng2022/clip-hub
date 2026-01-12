@@ -13,7 +13,7 @@ const ExpressionCard = ({ product }: Props) => {
     <PostContainer product={product}>
       <Link to={`/products/${product.id}`}>
         <Text 
-          fontSize='md' 
+          fontSize='sm' 
           py={1} 
           _hover={{color: 'yellow.200'}}
         >

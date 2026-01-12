@@ -8,8 +8,12 @@ interface Options {
   linkTo?: string
   maxLength?: number
 }
-export function renderHighlights(text: string, phrases: string[], options: Options = {}) {
-  const { linkTo, maxLength = 400 } = options
+export function renderHighlights(
+  text: string, 
+  phrases: string[], 
+  options: Options = {}
+) {
+  const { linkTo, maxLength = 500 } = options
   const [expanded, setExpanded] = useState(false)
 
   const isLongText = text.length > maxLength
@@ -78,7 +82,7 @@ export function renderHighlights(text: string, phrases: string[], options: Optio
           _active={{ bg: 'transparent' }}
           _focusVisible={{ boxShadow: 'none' }}
         >
-          Show {expanded ? 'Less' : 'More'}
+          Show {expanded ? 'less' : 'more'}
         </Button>
       )}
     </Box>

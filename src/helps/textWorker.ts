@@ -14,7 +14,7 @@ export function truncateAtWord(text: string, maxLength: number): string {
   // remove only trailing punctuation or dashes
   truncated = truncated.replace(/[\s\-.,;:!?]+$/g, '')
 
-  return truncated + ' …'
+  return truncated + '…'
 }
 
 export function escapeRegex(str: string) {
