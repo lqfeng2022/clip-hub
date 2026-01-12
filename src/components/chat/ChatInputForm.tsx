@@ -16,7 +16,6 @@ import { IoVideocamOutline } from 'react-icons/io5'
 import ChatAudioBoxSimple from './ChatAudioBoxSimple'
 import { GoSmiley } from 'react-icons/go'
 
-
 interface Props {
   chatSession: ChatSession,
   disabledClear: boolean, 
@@ -127,7 +126,7 @@ const ChatInputForm = ({ chatSession, setMessages }: Props) => {
         {...register('content')}
         resize='none'
         overflowY='auto'
-        p={2}
+        p={1}
         minH='40px'
         maxH='150px'
         lineHeight='1.5'
@@ -185,7 +184,7 @@ const ChatInputForm = ({ chatSession, setMessages }: Props) => {
   const chatModeLabel = `${chatMode}-${isHostSpeakOn ? 'tts' : 'plain'}`
 
   return (
-    <Box px={4} my={4}>
+    <Box px={3} my={4}>
       <form onSubmit={handleSubmit(onSubmit)}>
         <Stack 
           spacing={0} 

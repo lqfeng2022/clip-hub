@@ -26,7 +26,7 @@ const ChatMessagesList = ({ host, messages }: Props) => {
   }, [messages])
   
   return (
-    <List p={4} spacing={6}>
+    <List p={3} spacing={6}>
       {messages.map(m => m.role === 'user' ? 
         <ChatUserMessage key={m.id} fullName={fullName} message={m}/> : 
         <ChatBotMessage key={m.id} message={m} host={host}/>

@@ -17,7 +17,8 @@ const ChatSessionCardSimple = ({ chat } : Props) => {
     <HStack 
       align='flex-start' 
       spacing={5} 
-      mt={4} mx={4} p={3}
+      m={4} 
+      p={3}
       bg='RGBA(0, 0, 0, 0.22)'
       borderRadius='15px'
     >

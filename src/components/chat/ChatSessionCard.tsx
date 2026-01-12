@@ -15,7 +15,8 @@ const ChatSessionCard = ({ chat } : { chat: ChatSession }) => {
     <HStack 
       align='flex-start' 
       spacing={4} 
-      m={3} p={2}
+      m={3} 
+      p={2}
       bg='#1A202CAA'
       borderRadius='15px'
     >

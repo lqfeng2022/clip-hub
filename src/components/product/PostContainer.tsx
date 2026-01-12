@@ -25,7 +25,7 @@ const PostContainer = ({ product, children }: Props) => {
       <HStack align='flex-start' spacing={2}>
         <Box pt={1}>
           <Link to={`/host/${product.host.slug}`}>
-            <HostAvatar host={product.host} size='sm'/>
+            <HostAvatar host={product.host} size='middle'/>
           </Link>
         </Box>
         <Card boxShadow='none' flex='1' bg='transparent'>
