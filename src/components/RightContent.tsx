@@ -1,6 +1,6 @@
 import { Box, Divider } from '@chakra-ui/react'
 import { useMatch } from 'react-router-dom'
-import HpIntro from './hpIntro/HpIntro'
+import HpIntro from '../pages/HomeIntroPage'
 import SearchInput from './search/SearchInput'
 
 const RightContent = () => {

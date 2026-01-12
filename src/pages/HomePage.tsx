@@ -1,5 +1,5 @@
 import { useAuth } from '@/AuthContext'
-import HpIntro from '@/components/hpIntro/HpIntro'
+import HpIntro from '@/pages/HomeIntroPage'
 import ProductFeed from '@/components/product/FeedPosts'
 import FeedTabs from '@/components/product/FeedTabs'
 import FollowingPosts from '@/components/product/FollowingPosts'

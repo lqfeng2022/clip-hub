@@ -15,7 +15,7 @@ const InteractChatIcon = ({ product }: Props) => {
     <>
       {user && <Icon
         as={IoIosChatbubbles}
-        boxSize='25px'
+        boxSize='20px'
         color={product.chat_state ? 'green.300' : ''}
         cursor='pointer'
         _hover={{ color: 'green.300', transform: 'scale(1.3)' }}
@@ -25,7 +25,7 @@ const InteractChatIcon = ({ product }: Props) => {
       {!user && <Icon 
         as={IoIosChatbubbles} 
         color='gray.600'
-        boxSize='25px' 
+        boxSize='20px' 
       />}
     </>
   )

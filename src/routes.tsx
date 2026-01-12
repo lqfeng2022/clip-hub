@@ -50,7 +50,7 @@ const router = createBrowserRouter([
           { path: 'collection/:slug', element: <ProfileListDetailPage /> },
         ],
       },
-      { path: 'hosts', element: <HostsPage/>},
+      { path: 'hosts', element: <HostsPage/> },
       { path: 'user/signin', element: <SigninPage/> },
       { path: 'user/signup', element: <SignupPage/> },
     ]

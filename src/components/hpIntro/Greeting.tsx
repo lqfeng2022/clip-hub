@@ -1,4 +1,4 @@
-import simonintroposter from '@/assets/mosh-intro-poster.avif'
+import simonintroposter from '@/assets/a-fucking-genius.jpg'
 import homepageData from '@/data/homepageData'
 import useLanguageStore from '@/stores/languageStore'
 import { AspectRatio, Box, Center, Heading, Text, Image } from '@chakra-ui/react'

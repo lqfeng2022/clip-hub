@@ -24,7 +24,7 @@ const InteractIcons = ({ product }: { product: Product}) => {
         </HStack>
         {/* POST VIEWS */}
         <HStack>
-          <Icon as={IoEyeOutline} boxSize='20px'/>
+          <Icon as={IoEyeOutline} boxSize='22px'/>
           <Text fontSize='sm' fontWeight='semibold'>
             {product.views_count}
           </Text>

@@ -4,8 +4,8 @@ import { FaBlogger, FaBloggerB, FaRegUser, FaUser } from 'react-icons/fa'
 import { GoHome, GoHomeFill } from 'react-icons/go'
 import { HiChat, HiOutlineChat } from 'react-icons/hi'
 import { IoBookmark, IoBookmarkOutline, IoLanguage, IoLanguageOutline } from 'react-icons/io5'
-import { RiSearchFill, RiSearchLine } from 'react-icons/ri'
 import { PiPaperclipHorizontalFill, PiPaperclipHorizontalLight } from 'react-icons/pi'
+import { RiSearchFill, RiSearchLine } from 'react-icons/ri'
 
 export default [
   { 

@@ -12,7 +12,7 @@ const SubscribeButton = ({ followed, onToggle }: Props) => {
     <Button
       // colorScheme={followed ? 'gray' : 'cyan'}
       borderRadius='full'
-      size='sm'
+      size='xs'
       fontWeight='bold'
       onClick={onToggle}
       bg={followed ? 'gray.100' : 'gray.700'}

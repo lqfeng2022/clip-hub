@@ -5,7 +5,7 @@ export default {
       content: "A hub of 10,000+ real-life English expressions and 10+ unique AI tutors that help you speak naturally - through text, voice, and even face-to-face conversations."
     },
     greeting: {
-      title: "I’m Simon Lee.",
+      title: "I’m Simon.",
       content: "As a developer, I’ve learned everything in Computer Science through English - Computer Science, UI Design, Programming languages and skills, AI, Quantum Computing - yet I still struggled to speak English confidently.",
       foot: "So I built this platform - to help people and me speak English with confidence, not hesitation.",
     },

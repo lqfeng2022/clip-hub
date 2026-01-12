@@ -58,8 +58,8 @@ const UserProfile = () => {
           <UserCredit/>
         </Box>
       </Box>
-      <Box p={5}>
-        <Box pb={6} textAlign='right'>
+      <Box px={5} pt={3}>
+        <Box pb={7} textAlign='right'>
           {isProfileMePage &&
             <Button size='sm' variant='outline' onClick={handleLogout}>
               {buttons.logout}
