@@ -4,7 +4,7 @@ import Relevants from './Relevants'
 const RelevantPosts = () => {
   return (
     <Box>
-      <Stack spacing='0' height='65px' py={2} pl={4}>
+      <Stack spacing='0' height='65px' py={2} pl={3}>
         <Heading fontSize='xl'>
           Discover more
         </Heading>

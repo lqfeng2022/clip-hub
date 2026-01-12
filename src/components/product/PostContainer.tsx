@@ -17,15 +17,15 @@ const PostContainer = ({ product, children }: Props) => {
   
   return (
     <Box 
-      py={3} 
+      p={2} 
       borderBottom='1px solid' 
       borderColor='gray.700' 
       _hover={{ bg: 'gray.700'}}
     >
-      <HStack align='flex-start' spacing={3} px={4}>
-        <Box py={1}>
+      <HStack align='flex-start' spacing={2}>
+        <Box pt={1}>
           <Link to={`/host/${product.host.slug}`}>
-            <HostAvatar host={product.host}/>
+            <HostAvatar host={product.host} size='sm'/>
           </Link>
         </Box>
         <Card boxShadow='none' flex='1' bg='transparent'>

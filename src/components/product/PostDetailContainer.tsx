@@ -35,12 +35,12 @@ const PostDetailContainer = ({ product, children }: Props) => {
   }, []) // run only on mount
 
   return (
-    <Box px={4} pt={3}>
+    <Box p={3}>
       {/* HOST info */}
       <HStack justifyContent='space-between' align='flex-start'>
         <HStack spacing={2.5}>
           <Link to={`/host/${product.host.slug}`}>
-            <HostAvatar host={product.host}/>
+            <HostAvatar host={product.host} size='md'/>
           </Link>
           <Stack gap={1}>
             <HStack>
@@ -63,7 +63,7 @@ const PostDetailContainer = ({ product, children }: Props) => {
         {children}
       {/* POST updated date & views */}
       <Box height='50px' alignContent='center'>
-        <Text color='gray'>{frommatedDate}</Text>
+        <Text color='gray' fontSize='sm'>{frommatedDate}</Text>
       </Box>
       <Divider/>
       {/* POST interact icons */}

@@ -1,10 +1,14 @@
 import Host from '@/entities/Host'
 import { Avatar } from '@chakra-ui/react'
 
-const HostAvatar = ({ host }: { host: Host }) => {
+interface Props {
+  host: Host,
+  size: string
+}
+const HostAvatar = ({ host, size }: Props) => {
   return (
     <Avatar
-      size='md'
+      size={size}
       fontWeight='bold'
       name={host.name}
       src={host.portrait}

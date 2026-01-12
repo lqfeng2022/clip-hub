@@ -20,10 +20,10 @@ const PostMenu = ({ product }: Props) => {
         aria-label='Options'
         icon={<TfiMoreAlt />}
         variant='ghost'
-        boxSize={10}
+        boxSize={5}
         color='gray.300'
-        borderRadius='full'
         disabled={!user}
+        _hover={{bg: '', borderRadius: '5px'}}
       />
       <MenuList 
         bg='gray.700' 

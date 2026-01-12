@@ -62,7 +62,7 @@ export function renderHighlights(
               <Button
                 size="xs"
                 variant="ghost"
-                ml="0.5rem"
+                ml="5px"
                 color="blue.200"
                 p={0}
                 onClick={() => setExpanded(!expanded)}
