@@ -1,7 +1,7 @@
 import { SubtitleProduct } from '@/entities/Product'
-import { renderHighlights } from '@/helps/renderHighlights'
 import { Box, HStack, Image } from '@chakra-ui/react'
 import PostDetailContainer from './PostDetailContainer'
+import { renderHighlights } from '@/helps/renderHighlights'
 
 interface Props {
   product: SubtitleProduct,
