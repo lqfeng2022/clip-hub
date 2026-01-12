@@ -10,13 +10,12 @@ interface Props {
 const SubtitleCard = ({ product }: Props) => {
   const content = product.content.content
   const phrases = product.content.expressions.map(exp => exp.title)
-  const productId = product.id.toString()
   const expressions = product.content.expressions
 
   return (
     <PostContainer product={product}>
       <Box py={1}>
-        {renderHighlights(content, phrases, productId)}
+        {renderHighlights(content, phrases, {linkTo: `/products/${product.id}`,})}
       </Box>
       <HStack 
         overflowX='auto' 

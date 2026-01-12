@@ -3,7 +3,7 @@ import { Avatar, AvatarGroup, HStack, Stack, Text } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
 import SessionMenuNull from './SessionMenuNull'
 import ChatSession from '@/entities/ChatSession'
-import { truncate } from '@/helps/truncate'
+import { truncateAtWord } from '@/helps/textWorker'
 
 const ChatSessionCardNull = ({ chat } : { chat: ChatSession }) => {
   const { user } = useAuth()
@@ -15,7 +15,7 @@ const ChatSessionCardNull = ({ chat } : { chat: ChatSession }) => {
 
   const content = () => {
     const latest_message = chat.latest_chat
-    if (latest_message) return `- ${truncate(latest_message, 50)}`
+    if (latest_message) return `- ${truncateAtWord(latest_message, 50)}`
     return "There's no messages"
   } 
 

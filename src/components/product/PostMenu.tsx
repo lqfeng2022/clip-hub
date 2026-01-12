@@ -23,7 +23,9 @@ const PostMenu = ({ product }: Props) => {
         boxSize={5}
         color='gray.300'
         disabled={!user}
-        _hover={{bg: '', borderRadius: '5px'}}
+        _hover={{ bg: 'transparent', color: 'white' }}
+        _active={{ bg: 'transparent' }}
+        _focusVisible={{ boxShadow: 'none' }}
       />
       <MenuList 
         bg='gray.700' 
