@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 export function renderHighlights(
   text: string, 
   phrases: string[], 
-  productId: string,
+  productId?: string,
   maxLength = 400
 ) {
   const [expanded, setExpanded] = useState(false)
