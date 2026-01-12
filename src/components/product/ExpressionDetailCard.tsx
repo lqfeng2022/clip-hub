@@ -10,7 +10,7 @@ const ExpressionDetailCard = ({ product }: Props) => {
   return (
     <PostDetailContainer product={product}>
       {/* POST content */}
-      <Text fontSize='lg' py={2} color='gray.100'>
+      <Text fontSize='sm' py={2} color='gray.100'>
         {product.content.title}
       </Text>
       {/* POST video/image.. */}

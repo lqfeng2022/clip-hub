@@ -42,14 +42,14 @@ const PostDetailContainer = ({ product, children }: Props) => {
           <Link to={`/host/${product.host.slug}`}>
             <HostAvatar host={product.host} size='md'/>
           </Link>
-          <Stack gap={1}>
+          <Stack gap={1} fontSize='sm'>
             <HStack>
               <Text fontWeight='bold' lineHeight={1}>
                 {product.host.name}
               </Text>
               <HostBadge/>
             </HStack>
-            <Text color='gray' fontSize='sm'>
+            <Text color='gray'>
               @{product.host.slug}
             </Text>
           </Stack>

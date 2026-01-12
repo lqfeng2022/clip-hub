@@ -31,17 +31,11 @@ const PostContainer = ({ product, children }: Props) => {
         <Card boxShadow='none' flex='1' bg='transparent'>
           {/* TOP: host info + menu */}
           <HStack justifyContent='space-between'>
-            <HStack>
-              <Text fontWeight='bold'>
-                {product.host.name}
-              </Text>
-              <Text color='gray' fontSize='sm'>
-                @{product.host.slug}
-              </Text>
+            <HStack fontSize='sm'>
+              <Text fontWeight='bold'>{product.host.name}</Text>
+              <Text color='gray'>@{product.host.slug}</Text>
               <HostBadge/>
-              <Text color='gray.300' fontSize='sm'>
-                {frommatedDate}
-              </Text>
+              <Text color='gray.300'>{frommatedDate}</Text>
             </HStack>
             <Box my='-8px'>
               <PostMenu product={product}/>

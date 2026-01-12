@@ -12,8 +12,8 @@ interface Props {
 const PremiumCard = ({ credits, price, step, note, image }: Props) => {
   return (
     <Card
-      mx={4} mt={8}
-      maxW='400px'
+      mx={4} mt={6}
+      maxW='500px'
       direction='column'
       overflow='hidden'
       variant='outline'
