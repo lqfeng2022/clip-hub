@@ -1,6 +1,5 @@
-import { truncateAtWord } from '@/helps/textWorker'
 import useNavStack from '@/stores/navStack'
-import { Box, Heading, HStack, Icon, Text } from '@chakra-ui/react'
+import { Box, Heading, HStack, Icon } from '@chakra-ui/react'
 import { IoIosArrowRoundBack } from 'react-icons/io'
 import { useNavigate } from 'react-router-dom'
 

@@ -8,13 +8,10 @@ import { Badge, Box, FormControl, HStack, Icon, InputGroup, Stack, Textarea } fr
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Dispatch, SetStateAction, useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { BsTextLeft } from 'react-icons/bs'
 import { CiKeyboard, CiMicrophoneOn, CiPhone } from 'react-icons/ci'
-import { IoAddOutline } from 'react-icons/io5'
-import { PiWaveform } from 'react-icons/pi'
-import { IoVideocamOutline } from 'react-icons/io5'
-import ChatAudioBoxSimple from './ChatAudioBoxSimple'
 import { GoSmiley } from 'react-icons/go'
+import { IoAddOutline, IoVideocamOutline } from 'react-icons/io5'
+import ChatAudioBoxSimple from './ChatAudioBoxSimple'
 
 interface Props {
   chatSession: ChatSession,
@@ -202,23 +199,22 @@ const ChatInputForm = ({ chatSession, setMessages }: Props) => {
           {/* Footer controls */}
           <HStack justifyContent='space-between' pt={1.5} textAlign='center'>
             <HStack gap={4}>
+              {/* ADD files(images, videos, text, pdf...) */}
               <Icon as={IoAddOutline} boxSize={6} color='gray'/>
-              <Icon 
-                as={isHostSpeakOn ? PiWaveform : BsTextLeft} 
-                boxSize={5}
-                cursor='pointer'
-                onClick={() => {
-                  setIsHostSpeakOn(prev => !prev)
-                  if (isEnhancement) setIsEnhancement(prev => !prev)
-                }}
-              />
+              {/* CHAT mode: TEXT or AUDIO */}
               <Icon 
                 as={isSpeakOn ? CiKeyboard : CiMicrophoneOn} 
                 boxSize={6} 
                 cursor='pointer'
-                onClick={() => setIsSpeakOn(prev => !prev)}
+                onClick={() => {
+                  setIsSpeakOn(prev => !prev)
+                  setIsHostSpeakOn(prev => !prev)
+                  if (isEnhancement) setIsEnhancement(prev => !prev)
+                }}
               />
+              {/* CALL mode */}
               <Icon as={CiPhone} boxSize={6} color='gray'/>
+              {/* VIDEO CALL mode */}
               <Icon as={IoVideocamOutline} boxSize={6} color='gray'/>
               {isHostSpeakOn && <Icon 
                 boxSize={5}
