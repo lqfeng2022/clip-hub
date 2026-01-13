@@ -13,7 +13,7 @@ export function renderHighlights(
   phrases: string[], 
   options: Options = {}
 ) {
-  const { linkTo, maxLength = 500 } = options
+  const { linkTo, maxLength = 300 } = options
   const [expanded, setExpanded] = useState(false)
 
   const isLongText = text.length > maxLength
