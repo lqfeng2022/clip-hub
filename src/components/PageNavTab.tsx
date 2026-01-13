@@ -1,12 +1,10 @@
+import { truncateAtWord } from '@/helps/textWorker'
 import useNavStack from '@/stores/navStack'
-import { Box, HStack, Icon, Text } from '@chakra-ui/react'
+import { Box, Heading, HStack, Icon, Text } from '@chakra-ui/react'
 import { IoIosArrowRoundBack } from 'react-icons/io'
 import { useNavigate } from 'react-router-dom'
 
-interface Props {
-  title?: string,
-}
-const PageNavTab = ({ title }: Props) => {
+const PageNavTab = ({ title }: { title?: string }) => {
   const navigate = useNavigate()
   const pop = useNavStack((s) => s.pop)
 
@@ -41,13 +39,12 @@ const PageNavTab = ({ title }: Props) => {
           cursor='pointer'
           transition='0.1s'
         />
-        <Text
-          fontWeight='bold'
-          fontSize='lg'
+        <Heading
+          fontSize='md'
           borderColor='yellow.400'
         >
           {title}
-        </Text>
+        </Heading>
       </HStack>
     </Box>
   )
