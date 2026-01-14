@@ -33,8 +33,18 @@ const large = defineStyle({
   },
 })
 
+const big = defineStyle({
+  container: {
+    width: '120px',
+    height: '120px',
+  },
+  label: {
+    fontSize: '5xl',
+  },
+})
+
 const sizes = {
- small, middle, large
+ small, middle, large, big
 }
 
 export const avatarTheme = defineMultiStyleConfig({ sizes })

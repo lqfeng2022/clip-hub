@@ -3,7 +3,7 @@ import ErrorPage from './pages/ErrorPage'
 import ProfilePage from './pages/ProfilePage'
 import ProfileEditPage from './pages/ProfileEditPage'
 import SigninPage from './pages/SigninPage'
-import ProductDetailPage from './pages/ProductDetailPage'
+import PostDetailPage from './pages/PostDetailPage'
 import ProfileListDetailPage from './pages/ProfileListDetailPage'
 import ProfileListsPage from './pages/ProfileListsPage'
 import SignupPage from './pages/SignupPage'
@@ -29,7 +29,7 @@ const router = createBrowserRouter([
       { index: true, element: <HomePage/> },
       { path: 'search', element: <SearchPage/> },
       { path: 'notifications', element: <NotificationPage/> },
-      { path: 'products/:id', element: <ProductDetailPage/> },
+      { path: 'products/:id', element: <PostDetailPage/> },
       { path: 'host/:hostSlug', element: <HostDetailPage/> },
       { path: 'premium', 
         children: [

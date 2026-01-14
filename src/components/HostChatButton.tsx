@@ -7,7 +7,7 @@ interface Props {
   hostId?: string | null
   onItemClick?: () => void
 }
-const NavChatButton = ({ hostId, onItemClick }: Props) => {
+const HostChatButton = ({ hostId, onItemClick }: Props) => {
   const { user }= useAuth()
   const { mutate: createChat } = useChatSessionPostNull()
   const navigate = useNavigate()
@@ -16,8 +16,8 @@ const NavChatButton = ({ hostId, onItemClick }: Props) => {
     if (!user) {
       navigate('/user/signin')
       return
-    }
-    // Only pass hostId if it's truthy
+    } 
+    
     createChat(hostId ?? undefined, {
       onSuccess: (newSession) => {
         if (!newSession?.id) return
@@ -28,21 +28,20 @@ const NavChatButton = ({ hostId, onItemClick }: Props) => {
 
   return (
     <Button
-      size='md'
-      px='75px' py='27px' my={4}
-      bg='gray.100'
+      mr={2}
       borderRadius='full'
-      _hover={{ bg: 'gray.200'}}
+      size='sm'
+      fontWeight='bold'
+      bg='gray.600'
+      _hover={{bg: 'green.200', color: 'gray.700'}}
       onClick={() => {
         onItemClick?.()
         handleCreate()
       }}
       >
-      <Text fontWeight='bold' color='gray.800' fontSize='lg'>
-        Let's Chat
-      </Text>
+        Chat
     </Button>
   )
 }
 
-export default NavChatButton
+export default HostChatButton

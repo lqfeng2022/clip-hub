@@ -9,7 +9,7 @@ import SubtitleDetailCard from '@/components/product/SubtitleDetailCard'
 import VideoDetailCard from '@/components/product/VideoDetailCard'
 import PostMenu from '@/components/product/PostMenu'
 
-const ProductDetailPage = () => {
+const PostDetailPage = () => {
   const { id } = useParams() // get `slug` from url
   const { data: prod, isLoading, error } = useProduct(id!)
   
@@ -46,4 +46,4 @@ const ProductDetailPage = () => {
 )
 }
 
-export default ProductDetailPage
+export default PostDetailPage
