@@ -27,7 +27,7 @@ const HostsPage = () => {
           {data?.pages.map((page, index) => (
             <React.Fragment key={index}>
                 {page?.results.map((h) =>
-                  <Box key={h.id} px={3} pb={3}>
+                  <Box key={h.id} px={3} py={1}>
                     <SubscribeList host={h}/>
                     <Divider my={5}/>
                   </Box>

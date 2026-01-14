@@ -23,20 +23,23 @@ const SubscribeList = ({ host }: { host: Host }) => {
         </Link>
         {/* HOST INFO */}
         <Stack gap={2}>
-          <HStack>
+          <Stack gap={0}>
             <Text fontWeight='semibold' lineHeight={1}>
               {host.name}
             </Text>
-            <Text color='gray' fontSize='sm'>@{host.slug}</Text>
-          </HStack>
-          <Stack gap={0} lineHeight='1.2'>
-            <Text color='yellow.200' fontWeight='semibold'>
-              {host.videos_count} {host.subtitles_count} {host.expressions_count}
-            </Text>
-            <Text fontWeight='light' color='gray.200' fontSize='xs'>
-              videos/clips/words
-            </Text>
+            <Text color='gray' fontSize='xs'>@{host.slug}</Text>
           </Stack>
+          <HStack gap={1} lineHeight='1.2'>
+            <Text color='yellow.200' fontWeight='bold'>
+              {host.videos_count}
+            </Text>
+            <Text color='yellow.400'>
+              {host.subtitles_count}
+            </Text>
+            <Text color='yellow.500' fontWeight='light'>
+              {host.expressions_count}
+            </Text>
+          </HStack>
         </Stack>
       </HStack>
       {/* SUBSCRIBE button */}
