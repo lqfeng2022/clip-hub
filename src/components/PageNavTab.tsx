@@ -39,7 +39,7 @@ const PageNavTab = ({ title }: { title?: string }) => {
           transition='0.1s'
         />
         <Heading
-          fontSize='md'
+          fontSize='lg'
           borderColor='yellow.400'
         >
           {title}

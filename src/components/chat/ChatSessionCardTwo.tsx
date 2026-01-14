@@ -5,7 +5,7 @@ import SessionMenuNull from './SessionMenuNull'
 import ChatSession from '@/entities/ChatSession'
 import { truncateAtWord } from '@/helps/textWorker'
 
-const ChatSessionCardNull = ({ chat } : { chat: ChatSession }) => {
+const ChatSessionCardTwo = ({ chat } : { chat: ChatSession }) => {
   const { user } = useAuth()
 
   const portrait = `${user?.portrait}`
@@ -28,8 +28,8 @@ const ChatSessionCardNull = ({ chat } : { chat: ChatSession }) => {
       borderRadius='15px'
     >
       <AvatarGroup size={{base: 'md', sm: 'lg'}} max={2}>
-        <Avatar name={fullName} src={portrait} borderColor='gray.200'/>
-        <Avatar src={chat.host.portrait} opacity={0.8} />
+        <Avatar name={fullName} src={portrait} borderColor='gray.200' opacity={0.8}/>
+        <Avatar src={chat.host.portrait} />
       </AvatarGroup>
       {/* `flex: '1'`: Make this HStack grow to fill available space */}
       <HStack justifyContent='space-between' flex='1' align='flex-start'>
@@ -60,4 +60,4 @@ const ChatSessionCardNull = ({ chat } : { chat: ChatSession }) => {
   )
 }
 
-export default ChatSessionCardNull
+export default ChatSessionCardTwo

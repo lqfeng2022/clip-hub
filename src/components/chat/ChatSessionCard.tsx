@@ -9,7 +9,7 @@ import ChatSession from '@/entities/ChatSession'
 const ChatSessionCard = ({ chat } : { chat: ChatSession }) => {
   const product = chat.product
   const host = chat.host
-  const {image, title } = getProductDisplay(product, 30)
+  const {image, title } = getProductDisplay(product, 25)
 
   return (
     <HStack 

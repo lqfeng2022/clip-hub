@@ -8,7 +8,7 @@ import useLanguageStore from '@/stores/languageStore'
 import { Box, SimpleGrid, Text } from '@chakra-ui/react'
 import React from 'react'
 import InfiniteScroll from 'react-infinite-scroll-component'
-import ChatSessionCardNull from '@/components/chat/ChatSessionCardNull'
+import ChatSessionCardTwo from '@/components/chat/ChatSessionCardTwo'
 
 const ProfileChatPage = () => {
   const lang = useLanguageStore(s => s.language)
@@ -38,7 +38,7 @@ const ProfileChatPage = () => {
                 <Box key={chat.id}>
                   {chat.product ?
                     <ChatSessionCard chat={chat}/> :
-                    <ChatSessionCardNull chat={chat}/>
+                    <ChatSessionCardTwo chat={chat}/>
                   }
                 </Box>
               )}

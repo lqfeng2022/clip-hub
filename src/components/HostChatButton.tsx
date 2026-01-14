@@ -28,11 +28,11 @@ const HostChatButton = ({ hostId, onItemClick }: Props) => {
 
   return (
     <Button
-      mr={2}
+      mr={4}
       borderRadius='full'
       size='sm'
       fontWeight='bold'
-      bg='gray.600'
+      bg='yellow.700'
       _hover={{bg: 'green.200', color: 'gray.700'}}
       onClick={() => {
         onItemClick?.()

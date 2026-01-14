@@ -11,7 +11,7 @@ interface Props {
 const ChatSessionCardSimple = ({ chat } : Props) => {
   const product = chat.product
   const host = chat.host
-  const { image, title } = getProductDisplay(product, 50)
+  const { image, title } = getProductDisplay(product, 35)
 
   return (
     <HStack 
