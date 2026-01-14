@@ -19,7 +19,7 @@ const UserAvatarTop = () => {
       />
       <Box>
         <Heading size='md'>{fullName}</Heading>
-        <Text color='gray'>@{user?.username}</Text>
+        <Text color='gray' fontSize='sm'>@{user?.username}</Text>
       </Box>
     </Stack>
   )

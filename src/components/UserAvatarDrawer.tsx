@@ -24,7 +24,7 @@ const UserAvatarDrawer = () => {
         onClick={() => onOpen()}
         cursor='pointer'
         opacity={0.9}
-        _hover={{ bg: 'gray.200' }}
+        _hover={{ bg: 'gray.600' }}
         transition='.25s'
       /> : <Link to='/user/signin'>
         <Icon 

@@ -31,11 +31,11 @@ const NavListDrawer = ({onItemClick}: Props) => {
               <HStack spacing={5}>
                 <Icon
                   as={p.icon}
-                  boxSize='28px'
+                  boxSize='25px'
                   color={selected === p.title ? 'yellow.300' : ''}
                 />
                 <Text 
-                  fontSize='xl' 
+                  fontSize='lg' 
                   fontWeight={selected === p.title ? 'bold' : ''}
                 >
                   {lang === 'en' ? p.title : p.title_ch}

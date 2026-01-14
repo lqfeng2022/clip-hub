@@ -28,7 +28,7 @@ const ChatSessionCardNull = ({ chat } : { chat: ChatSession }) => {
       borderRadius='15px'
     >
       <AvatarGroup size={{base: 'md', sm: 'lg'}} max={2}>
-        <Avatar name={fullName} src={portrait} borderColor='gray'/>
+        <Avatar name={fullName} src={portrait} borderColor='gray.200'/>
         <Avatar src={chat.host.portrait} opacity={0.8} />
       </AvatarGroup>
       {/* `flex: '1'`: Make this HStack grow to fill available space */}
