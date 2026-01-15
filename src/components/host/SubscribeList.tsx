@@ -9,19 +9,19 @@ const SubscribeList = ({ host }: { host: Host }) => {
   const { marked, toggleMarked } = useFollowManager(host.id, host.followed)
   const host_info = truncateAtWord(host.description, 70)
   return (
-    <HStack alignItems='flex-start'>
-        {/* AVATAR */}
-        <Link to={`/host/${host.slug}`}>
-          <Avatar
-            size='xl'
-            fontWeight='bold'
-            name={host.name}
-            src={host.portrait}
-            _hover={{boxShadow: '0 0 0 5px #CBD5E0'}}
-            transition='.15s'
-          />
-        </Link>
-      <Stack>
+    <HStack gap={3} alignItems='flex-start'>
+      {/* AVATAR */}
+      <Link to={`/host/${host.slug}`}>
+        <Avatar
+          size='xl'
+          fontWeight='bold'
+          name={host.name}
+          src={host.portrait}
+          _hover={{boxShadow: '0 0 0 5px #CBD5E0'}}
+          transition='.15s'
+        />
+      </Link>
+      <Stack w='100%'>
         <HStack justifyContent='space-between' alignItems='flex-start'>
           {/* HOST INFO */}
           <HStack gap={2} alignItems='flex-start'>
