@@ -37,6 +37,9 @@ const HostProfile = ({ host }: { host: Host }) => {
         <Text fontSize='md' color='gray.300' pb={3}>
           {`@${host?.slug}`}
         </Text>
+        <Text fontSize='sm' color='gray.200'>
+          {host.description}
+        </Text>
       </Box>
     </>
   )

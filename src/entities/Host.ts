@@ -8,6 +8,8 @@ export default interface Host {
   slug: string,
   portrait: string,
   cover: string,
+  audio_intro: string,
+  description: string,
   videos_count: number,
   subtitles_count: number,
   expressions_count: number,

@@ -9,4 +9,5 @@ export default interface User {
   bro: string,
   portrait: string | null,
   back_image: string | null,
+  description: string,
 }

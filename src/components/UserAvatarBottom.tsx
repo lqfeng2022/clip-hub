@@ -7,7 +7,6 @@ const UserAvatarBottom = () => {
     const fullName = user?.first_name || user?.last_name
       ? `${user?.first_name ?? ''} ${user?.last_name ?? ''}`.trim()
       : user?.username
-    const portrait = `https://clipwords.me/${user?.portrait}`
   
   return (
     <>
@@ -16,7 +15,7 @@ const UserAvatarBottom = () => {
           <Avatar
             fontWeight='semibold'
             name={fullName}
-            src={portrait}
+            src={user?.portrait ?? ''}
             opacity={0.9}
           />
           <Show above='xl'>

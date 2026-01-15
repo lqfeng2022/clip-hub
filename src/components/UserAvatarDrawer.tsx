@@ -12,7 +12,6 @@ const UserAvatarDrawer = () => {
   const fullName = user?.first_name || user?.last_name
     ? `${user?.first_name ?? ''} ${user?.last_name ?? ''}`.trim()
     : user?.username
-  const portrait = `https://clipwords.me/${user?.portrait}`
     
   return (
     <>
@@ -20,7 +19,7 @@ const UserAvatarDrawer = () => {
         size='middle'
         fontWeight='semibold'
         name={fullName}
-        src={user?.portrait ? portrait : ''}
+        src={user?.portrait ?? ''}
         onClick={() => onOpen()}
         cursor='pointer'
         opacity={0.9}

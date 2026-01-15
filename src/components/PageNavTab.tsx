@@ -27,7 +27,7 @@ const PageNavTab = ({ title }: { title?: string }) => {
       borderBottom='1px'
       borderColor='gray.700'
     >
-      <HStack spacing='20px'>
+      <HStack spacing='10px'>
         <Icon
           as={IoIosArrowRoundBack}
           boxSize={8}
@@ -39,7 +39,7 @@ const PageNavTab = ({ title }: { title?: string }) => {
           transition='0.1s'
         />
         <Heading
-          fontSize='lg'
+          fontSize='md'
           borderColor='yellow.400'
         >
           {title}

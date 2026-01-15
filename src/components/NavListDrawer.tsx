@@ -36,7 +36,7 @@ const NavListDrawer = ({onItemClick}: Props) => {
                 />
                 <Text 
                   fontSize='lg' 
-                  fontWeight={selected === p.title ? 'bold' : ''}
+                  fontWeight={selected === p.title ? 'bold' : 'semibold'}
                 >
                   {lang === 'en' ? p.title : p.title_ch}
                 </Text>

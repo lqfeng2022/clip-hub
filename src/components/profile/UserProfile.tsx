@@ -73,8 +73,11 @@ const UserProfile = () => {
         <Heading fontSize='xl'>
           {fullName}
         </Heading>
-        <Text fontSize='sm' color='gray.300' pb={3}>
+        <Text fontSize='sm' color='gray.300' pb={2}>
           {`@${user?.username}`}
+        </Text>
+        <Text fontSize='sm' fontWeight='semibold' color='gray.200' pb={2}>
+          {user?.description}
         </Text>
       </Box>
     </>

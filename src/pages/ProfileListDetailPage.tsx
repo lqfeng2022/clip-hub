@@ -10,6 +10,7 @@ import BeatLoader from '@/components/BeatLoader'
 import React from 'react'
 import InfiniteScroll from 'react-infinite-scroll-component'
 import PostCount from '@/components/product/PostCount'
+import { truncateAtWord } from '@/helps/textWorker'
 
 const ProfileListDetailPage = () => {
   // fetch list using slug (this will return id)
@@ -28,7 +29,7 @@ const ProfileListDetailPage = () => {
   // When list is not loaded yet, don't run products query
   const { data: products, error, fetchNextPage, hasNextPage } = useListProducts(
     listId!, { 
-      enabled: !!listId,   // 🔥 IMPORTANT
+      enabled: !!listId,   // IMPORTANT
   })
 
   if (listLoading) return <BeatLoader />
@@ -36,10 +37,11 @@ const ProfileListDetailPage = () => {
 
   const fetchCount = products?.pages.reduce(
       (total, page) => total + page.results.length, 0) || 0
+  const list_title = truncateAtWord(list!.title, 40)
   
   return (
     <>
-      <PageNavTab title={list?.title}/>
+      <PageNavTab title={list_title}/>
       <PostCount count={fetchCount} genre='Posts'/>
       <InfiniteScroll
         dataLength={fetchCount}
