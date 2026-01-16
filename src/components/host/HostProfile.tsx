@@ -20,7 +20,7 @@ const HostProfile = ({ host }: { host: Host }) => {
           size='big'
           name={host.name} 
           src={host.portrait}
-          sx={{boxShadow: '0 0 0 5px #CBD5E0'}}
+          sx={{boxShadow: '0 0 0 4px #CBD5E0'}}
         />
       </Box>
       <Box p={5}>

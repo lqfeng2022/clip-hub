@@ -23,16 +23,21 @@ const ChatSessionCardTwo = ({ chat } : { chat: ChatSession }) => {
     <HStack 
       align='flex-start' 
       spacing={4} 
-      m={3} p={2} 
+      m={3} 
+      p={2} 
       bg='#1A202CAA'
       borderRadius='15px'
     >
       <AvatarGroup size={{base: 'md', sm: 'lg'}} max={2}>
-        <Avatar name={fullName} src={portrait} borderColor='gray.200' opacity={0.8}/>
+        <Avatar name={fullName} src={portrait} border='0'opacity={0.8}/>
         <Avatar src={chat.host.portrait} />
       </AvatarGroup>
-      {/* `flex: '1'`: Make this HStack grow to fill available space */}
-      <HStack justifyContent='space-between' flex='1' align='flex-start'>
+      <HStack 
+        align='flex-start' 
+        justifyContent='space-between' 
+        flex='1' 
+        mt='-5px'
+      >
         <Link to={`/profile/chat/${chat.id.toString()}`}>
           <HStack spacing={2} pt={2}>
             <Stack spacing={1}>

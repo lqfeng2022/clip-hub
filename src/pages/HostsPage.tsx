@@ -29,7 +29,7 @@ const HostsPage = () => {
                 {page?.results.map((h) =>
                   <Box key={h.id} px={3} py={1}>
                     <SubscribeList host={h}/>
-                    <Divider my={5}/>
+                    <Divider my={4}/>
                   </Box>
                  )}
             </React.Fragment>

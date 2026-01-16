@@ -8,22 +8,26 @@ import { useState } from 'react'
 
 const HomePage = () => {
   const { user } = useAuth()
-
   const [activeTab, setActiveTab] = useState<'For You' | 'Following'>('For You')
-  const forYou = activeTab === 'For You'
-  const following = activeTab === 'Following'
 
   return (
     <>
-      {user ? <Box>
-        <FeedTabs onChange={setActiveTab}/>
-        {forYou && <ProductFeed />}
-        {following && <FollowingPosts />}
-      </Box> : <Box>
-          <Show above='lg'><ProductFeed/></Show>
-          <Show below='xl'><HpIntro/></Show>
+      {user ? (
+        <Box>
+          <FeedTabs onChange={setActiveTab}/>
+          {(activeTab === 'For You') && <ProductFeed />}
+          {(activeTab === 'Following') && <FollowingPosts />}
         </Box>
-      }
+      ) : (
+        <Box>
+          <Show above='lg'>
+            <ProductFeed/>
+          </Show>
+          <Show below='xl'>
+            <HpIntro/>
+          </Show>
+        </Box>
+      )}
     </>
   )
 }

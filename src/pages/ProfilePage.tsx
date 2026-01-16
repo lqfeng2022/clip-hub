@@ -22,9 +22,9 @@ const Profile = () => {
       <PageNavTab title={title}/>
       <UserProfile/>
       <ProfileTabs onChange={setActiveTab}/>
-      {activeTab === 'Histories' && <ViewHistories/>}
-      {activeTab === 'Likes' && <LikedPosts/>}
-      {activeTab === 'Subscribes' && <Subscriptions/>}
+      {(activeTab === 'Histories') && <ViewHistories/>}
+      {(activeTab === 'Likes') && <LikedPosts/>}
+      {(activeTab === 'Subscribes') && <Subscriptions/>}
     </Stack>
   )
 }

@@ -25,7 +25,6 @@ const ProfileTabs = ({ value, onChange }: Props) => {
           key={tab}
           cursor='pointer'
           onClick={() => handleSelect(tab)}
-          _hover={{background: 'gray.700'}}
         >
           <Text
             fontWeight='semibold'

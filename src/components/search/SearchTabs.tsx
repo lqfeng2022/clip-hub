@@ -14,7 +14,6 @@ const SearchTabs = () => {
           key={t}
           cursor='pointer'
           onClick={() => setTab(t)}
-          _hover={{ background: 'gray.700' }}
         >
           <Text
             fontWeight='semibold'

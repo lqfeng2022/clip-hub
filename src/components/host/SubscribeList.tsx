@@ -17,7 +17,7 @@ const SubscribeList = ({ host }: { host: Host }) => {
           fontWeight='bold'
           name={host.name}
           src={host.portrait}
-          _hover={{boxShadow: '0 0 0 5px #CBD5E0'}}
+          _hover={{boxShadow: '0 0 0 3px #CBD5E0'}}
           transition='.15s'
         />
       </Link>
