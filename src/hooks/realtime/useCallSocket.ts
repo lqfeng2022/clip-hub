@@ -22,7 +22,7 @@ export function useCallSocket({ callId, onServerEvent }: Props) {
   useEffect(() => {
     if (!callId || wsRef.current) return // Only create once
 
-    const ws = new WebSocket(`ws://localhost:8000/ws/call/${callId}/`)
+    const ws = new WebSocket(`wss://clipwords.me/ws/call/${callId}/`)
     wsRef.current = ws
 
     ws.onopen = () => {
