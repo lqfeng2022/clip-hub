@@ -78,6 +78,17 @@ class APIClient<T> {
       .then((res) => res.data)
   }
 
+  // create a new call
+  postChatCall = (
+    id: number | string, 
+    data: any, 
+    config?: AxiosRequestConfig
+  ) => {
+    return axiosInstance
+      .post(`/${this.endpoint}/${id}/calls/`, data, config)
+      .then((res) => res.data)
+  }
+
   // delete a given id list/chatSession
   delete = (id: number | string, config?: AxiosRequestConfig) => {
     return axiosInstance

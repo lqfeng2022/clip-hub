@@ -36,7 +36,6 @@ const Layout = () => {
             area='aside' 
             position='sticky' 
             top='0' h='100vh'
-            borderRight='1px' borderColor='gray.700'
           >
             <NavList />
           </GridItem>
@@ -45,8 +44,9 @@ const Layout = () => {
           area='main' 
           display='flex' 
           justifyContent='center'
+          borderX='1px' borderColor='gray.700'
         >
-          <Box mx='auto' maxW='650px' width='100%'>
+          <Box mx='auto' width='100%'>
             <NavBar/>
             <Outlet /> {/* shared main content wrapper */}
           </Box>
@@ -59,7 +59,6 @@ const Layout = () => {
             display='flex'
             top='0' 
             h='100vh'
-            borderLeft='1px' borderColor='gray.700'
           >
             <Box mt={1} flex='1' overflowY='auto' px={4}>
               <RightContent/>

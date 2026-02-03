@@ -19,6 +19,7 @@ import NotificationPage from './pages/NotificationPage'
 import PremiumPage from './pages/PremiumPage'
 import PremiumPaymentPage from './pages/PremiumPaymentPage'
 import HostsPage from './pages/HostsPage'
+import Playground from './Playground'
 
 const router = createBrowserRouter([
   {
@@ -53,6 +54,7 @@ const router = createBrowserRouter([
       { path: 'hosts', element: <HostsPage/> },
       { path: 'user/signin', element: <SigninPage/> },
       { path: 'user/signup', element: <SignupPage/> },
+      { path: 'playground', element: <Playground/> },
     ]
   }
 ])

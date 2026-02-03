@@ -11,7 +11,7 @@ const ChatUserMessage = ({ fullName, message }: Props) => {
     <HStack>
       <Avatar 
         alignSelf='flex-start'
-        size='middle'
+        size='small'
         opacity={0.8}
         name={fullName}
       />

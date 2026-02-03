@@ -5,21 +5,21 @@ const { defineMultiStyleConfig } = createMultiStyleConfigHelpers(avatarAnatomy.k
 
 const small = defineStyle({
   container: {
-    width: '30px',
-    height: '30px',
+    width: '40px',
+    height: '40px',
   },
   label: {
-    fontSize: 'lg',
+    fontSize: 'md',
   },
 })
 
 const middle = defineStyle({
   container: {
-    width: '40px',
-    height: '40px',
+    width: '60px',
+    height: '60px',
   },
   label: {
-    fontSize: 'lg',
+    fontSize: 'xl',
   },
 })
 

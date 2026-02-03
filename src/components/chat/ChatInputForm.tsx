@@ -1,17 +1,19 @@
 import ChatMessage from '@/entities/ChatMessage'
 import ChatSession from '@/entities/ChatSession'
-import { autoGrow } from '@/helps/autoGrow'
 import { voiceRecorder } from '@/helps/voiceRecorder'
+import { useCallPost } from '@/hooks/interact/useCallPost'
 import useChatMessagePost from '@/hooks/interact/useChatMessagePost'
 import { ChatForm, chatSchema } from '@/validation/chatSchema'
-import { Badge, Box, FormControl, HStack, Icon, InputGroup, Stack, Textarea } from '@chakra-ui/react'
+import { Box, FormControl, Stack, useDisclosure } from '@chakra-ui/react'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Dispatch, SetStateAction, useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { CiKeyboard, CiMicrophoneOn, CiPhone } from 'react-icons/ci'
-import { GoSmiley } from 'react-icons/go'
-import { IoAddOutline, IoVideocamOutline } from 'react-icons/io5'
-import ChatAudioBoxSimple from './ChatAudioBoxSimple'
+import CallModal from './CallModal'
+import ChatAudioInput from './ChatAudioInput'
+import ChatCallInput from './ChatCallInput'
+import ChatInputControls from './ChatInputControls'
+import ChatTextInput from './ChatTextInput'
+import { handleEnterSubmit } from '@/helps/handleKeyDown'
 
 interface Props {
   chatSession: ChatSession,
@@ -19,33 +21,21 @@ interface Props {
   setMessages: Dispatch<SetStateAction<ChatMessage[]>>, // a state setter function
 }
 const ChatInputForm = ({ chatSession, setMessages }: Props) => {
-  // HOOK
+  // HOOK & FORM
   const chatId = chatSession?.id
   const { mutate: postChatMessage } = useChatMessagePost(chatId!)
-
-  // FORM
+  const { callId, startCall, endCall } = useCallPost(chatId!)
   const { register, handleSubmit, formState: { errors }, reset } = useForm<ChatForm>({
     resolver: zodResolver(chatSchema)
   })
 
-  // LOCAL STATE
+  // LOCAL UI STATE
   const [isSpeakOn, setIsSpeakOn] = useState(false)
-  const [isHostSpeakOn, setIsHostSpeakOn] = useState(false)
   const [isEnhancement, setIsEnhancement] = useState(false)
+  const [isCalling, setIsCalling] = useState(false) // show "Tap to Call" button
 
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
-    // Prevent breaking IME input (Chinese, Japanese, etc.)
-    if (e.nativeEvent.isComposing) return
-
-    if (e.key === 'Enter') {
-      // Shift + Return/Enter -> new line
-      if (e.shiftKey) return
-
-      // Enter alone -> submit
-      e.preventDefault()
-      handleSubmit(onSubmit)()
-    }
-  }
+  // Modal
+  const { isOpen, onOpen, onClose } = useDisclosure()
 
   // TEXT SUBMIT
   const onSubmit = (data: ChatForm) => {
@@ -57,7 +47,7 @@ const ChatInputForm = ({ chatSession, setMessages }: Props) => {
       role: 'user',
       content: data.content,
       audio: null,
-      is_voice: isHostSpeakOn,
+      is_voice: isSpeakOn,
       is_enhancement: isEnhancement,
       created_at: new Date().toISOString(),
     }
@@ -65,10 +55,9 @@ const ChatInputForm = ({ chatSession, setMessages }: Props) => {
     reset()
 
     // send text message to backend then append it locally
-    postChatMessage({ 
-      type: 'text', 
+    postChatMessage({ type: 'text', 
       content: data.content, 
-      is_voice: isHostSpeakOn, 
+      is_voice: isSpeakOn, 
       is_enhancement: isEnhancement 
     }, {
       onSuccess: (assistantMessage) => {
@@ -77,15 +66,11 @@ const ChatInputForm = ({ chatSession, setMessages }: Props) => {
       },
     })
   }
+  // Dynamical Input Box
+  const handleKeyDown = handleEnterSubmit(handleSubmit, onSubmit)
 
   // AUDIO LOGIC
-  const { 
-    toggleRecording, 
-    isRecording, 
-    audioURL, 
-    confirmSend, 
-    cleanup 
-  } = voiceRecorder({
+  const { toggleRecording, isRecording, audioURL, confirmSend, cleanup } = voiceRecorder({
     onConfirmSend: (blob) => {
       if (!chatId) return
 
@@ -94,18 +79,15 @@ const ChatInputForm = ({ chatSession, setMessages }: Props) => {
         id: Date.now(),
         role: 'user',
         content: null,
-        is_voice: isHostSpeakOn,
+        is_voice: isSpeakOn,
         is_enhancement: isEnhancement,
         audio: URL.createObjectURL(blob), // local preview
         created_at: new Date().toISOString(),
       }
-
       setMessages(prev => [...prev, userMessage])
-
-      postChatMessage({ 
-        type: 'audio', 
+      postChatMessage({ type: 'audio', 
         audio: blob, 
-        is_voice: isHostSpeakOn, 
+        is_voice: isSpeakOn, 
         is_enhancement: isEnhancement
       }, {
         onSuccess: (assistantMessage) => {
@@ -113,72 +95,23 @@ const ChatInputForm = ({ chatSession, setMessages }: Props) => {
           setMessages(prev => [...prev, assistantMessage])
         },
       })
-    },
+    }
   })
 
-  // UI
-  const renderTextInput = () => (
-    <InputGroup size='sm'>
-      <Textarea
-        {...register('content')}
-        resize='none'
-        overflowY='auto'
-        p={1}
-        minH='40px'
-        maxH='150px'
-        lineHeight='1.5'
-        fontSize='16px'
-        placeholder='Type a message...'
-        onInput={autoGrow}
-        onKeyDown={handleKeyDown}
-        border='none'
-        _focus={{ border: 'none', boxShadow: 'none' }}
-        />
-    </InputGroup>
-  )
-  
-  const renderAudioInput = () => (
-    <Box
-      h='40px'
-      borderRadius='5px'
-      bg={isRecording ? 'red.500' : 'gray.700'}
-      display='flex'
-      alignItems='center'
-      onClick={!audioURL ? toggleRecording : undefined}
-      >
-        {!audioURL ? (
-          <Box w='100%' textAlign='center' py={2} cursor='pointer'>
-            {isRecording ? 'Recording…' : 'Tap to Record'}
-          </Box>
-        ) : (
-          <HStack w='100%' justifyContent='space-between' pr={5}>
-            <ChatAudioBoxSimple audioUrl={audioURL} />
-            <HStack gap={5}>
-              <Badge 
-                cursor='pointer' 
-                colorScheme='red'
-                fontWeight='light'
-                onClick={cleanup}
-              >
-                Discard
-              </Badge>
-              <Badge 
-                cursor='pointer' 
-                colorScheme='green' 
-                fontWeight='light'
-                onClick={confirmSend}
-              >
-                Send
-              </Badge>
-            </HStack>
-          </HStack>
-        )}
-    </Box>
-  )
-
-  const chatMode = isSpeakOn ? 'audio' : 'text'
-  const chatModeColorScheme = isSpeakOn ? 'green' : 'blue'
-  const chatModeLabel = `${chatMode}-${isHostSpeakOn ? 'tts' : 'plain'}`
+  // UI RENDERS
+  const renderInput = () => {
+    if (isCalling) return <ChatCallInput startCall={() => startCall(onOpen)} />
+    if (isSpeakOn) return (
+      <ChatAudioInput 
+        isRecording={isRecording}
+        audioURL={audioURL}
+        toggleRecording={toggleRecording}
+        confirmSend={confirmSend}
+        cleanup={cleanup}
+      />
+    )
+    return <ChatTextInput register={register} handleKeyDown={handleKeyDown} />
+  }
 
   return (
     <Box px={3} my={4}>
@@ -194,46 +127,38 @@ const ChatInputForm = ({ chatSession, setMessages }: Props) => {
         >
           {/* Input render */}
           <FormControl isInvalid={!!errors.content}>
-            {isSpeakOn ? renderAudioInput() : renderTextInput()}
+            {renderInput()}
           </FormControl>
           {/* Footer controls */}
-          <HStack justifyContent='space-between' pt={1.5} textAlign='center'>
-            <HStack gap={4}>
-              {/* ADD files(images, videos, text, pdf...) */}
-              <Icon as={IoAddOutline} boxSize={6} color='gray'/>
-              {/* CHAT mode: TEXT or AUDIO */}
-              <Icon 
-                as={isSpeakOn ? CiKeyboard : CiMicrophoneOn} 
-                boxSize={6} 
-                cursor='pointer'
-                onClick={() => {
-                  setIsSpeakOn(prev => !prev)
-                  setIsHostSpeakOn(prev => !prev)
-                  if (isEnhancement) setIsEnhancement(prev => !prev)
-                }}
-              />
-              {/* CALL mode */}
-              <Icon as={CiPhone} boxSize={6} color='gray'/>
-              {/* VIDEO CALL mode */}
-              <Icon as={IoVideocamOutline} boxSize={6} color='gray'/>
-              {isHostSpeakOn && <Icon 
-                boxSize={5}
-                as={GoSmiley} 
-                cursor='pointer'
-                color={isEnhancement ? 'orange.200' : 'gray.100'}
-                onClick={() => setIsEnhancement(prev => !prev)}/>
-              }
-            </HStack>
-            <Badge
-              fontSize='0.8em'
-              fontWeight={isEnhancement ? 'bold' : 'light'}
-              colorScheme={chatModeColorScheme}
-            >
-              {chatModeLabel}
-            </Badge>
-          </HStack>
+          <ChatInputControls
+            isSpeakOn={isSpeakOn}
+            isCalling={isCalling}
+            isEnhancement={isEnhancement}
+            onToggleSpeak={() => {
+              setIsSpeakOn(prev => !prev)
+              if (isCalling) setIsCalling(false)
+              if (isEnhancement) setIsEnhancement(false)
+            }}
+            onToggleCall={() => {
+              setIsCalling(prev => !prev)
+              if (isSpeakOn) setIsSpeakOn(false)
+              if (isEnhancement) setIsEnhancement(false)
+            }}
+            onToggleEnhancement={() => setIsEnhancement(prev => !prev)}
+          />
         </Stack>
       </form>
+      {/* Mount the Modal Once */}
+      <CallModal 
+        host={chatSession.host}
+        isOpen={isOpen}
+        onClose={() => {
+          endCall()
+          setIsCalling(false)
+          onClose()
+        }}
+        callId={callId!}
+      />
     </Box>
   )
 }

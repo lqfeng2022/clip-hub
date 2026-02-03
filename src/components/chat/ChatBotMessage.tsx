@@ -34,7 +34,7 @@ const ChatBotMessage = ({ host, message }: Props) => {
         }
       </Stack>
       <Avatar 
-        size='middle'
+        size='small'
         alignSelf='flex-start' 
         src={host.portrait}
         opacity={0.8}
