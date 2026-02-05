@@ -5,7 +5,6 @@ import { useAuth } from '@/AuthContext'
 import ChatMessage from '@/entities/ChatMessage'
 import { useRef, useEffect, useState } from 'react'
 import Host from '@/entities/Host'
-import useMicReady from '@/helps/useMicReady'
 
 interface Props {
   host: Host,
@@ -23,15 +22,29 @@ const ChatMessagesList = ({ host, messages }: Props) => {
 
   // Track last message ID for autoplay logic
   const [lastMessageId, setLastMessageId] = useState<string | null>(null)
-
-  // useMicReady hook (extracted)
-  const micReady = useMicReady(true)
+  const [initialMessageCount, setInitialMessageCount] = useState<number | null>(null)
 
   useEffect(() => {
-    if (messages.length === 0) return
+    // On mount, record how many messages existed
+    if (initialMessageCount === null && messages.length > 0) {
+      setInitialMessageCount(messages.length)
+    }
+  }, [messages, initialMessageCount])
+
+  useEffect(() => {
+    if (messages.length === 0 || initialMessageCount === null) return
 
     const lastMsg = messages[messages.length - 1]
-    setLastMessageId(lastMsg.id.toString())
+
+    // Only autoplay if message count increased (new message arrived)
+    // AND it's an AI message with audio
+    if (
+      messages.length > initialMessageCount && 
+      lastMsg.role !== 'user' && 
+      lastMsg.audio
+    ) {
+      setLastMessageId(lastMsg.id.toString())
+    }
 
     // scroll to bottom whenever messages changes
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
@@ -50,12 +63,11 @@ const ChatMessagesList = ({ host, messages }: Props) => {
           key={m.id} 
           message={m} 
           host={host}
-          autoPlay={
-            m.id.toString() === lastMessageId && !!m.audio && micReady
-          } // only newest AI audio, and only if mic is ready
+          // only newest AI audio
+          autoPlay={m.id.toString() === lastMessageId && !!m.audio} 
         />
       )}
-      {/* 4)Add a dummy element at the end of ChatMessagesList */}
+      {/* Add a dummy element at the end of ChatMessagesList */}
       <div ref={messagesEndRef}/>
     </List>
   )
