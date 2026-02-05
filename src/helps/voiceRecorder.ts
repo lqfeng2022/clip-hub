@@ -13,7 +13,7 @@ export const voiceRecorder = ({ onConfirmSend }: Props) => {
   const streamRef = useRef<MediaStream | null>(null)
   const chunksRef = useRef<Blob[]>([])
 
-  /* ---------- START ---------- */
+  /*  START  */
   const startRecording = async () => {
     try {
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true })
@@ -44,7 +44,7 @@ export const voiceRecorder = ({ onConfirmSend }: Props) => {
     }
   }
 
-  /* ---------- STOP ---------- */
+  /*  STOP  */
   const stopRecording = () => {
     setIsRecording(false)
     mediaRecorderRef.current?.stop()
@@ -55,7 +55,7 @@ export const voiceRecorder = ({ onConfirmSend }: Props) => {
     isRecording ? stopRecording() : startRecording()
   }
 
-  /* ---------- ACTIONS ---------- */
+  /*  ACTIONS  */
   const confirmSend = () => {
     if (!pendingBlob) return
     onConfirmSend(pendingBlob)
@@ -68,7 +68,7 @@ export const voiceRecorder = ({ onConfirmSend }: Props) => {
     setPendingBlob(null)
   }
 
-  /* ---------- UNMOUNT ---------- */
+  /*  UNMOUNT  */
   useEffect(() => {
     return () => {
       if (audioURL) URL.revokeObjectURL(audioURL)

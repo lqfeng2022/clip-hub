@@ -15,7 +15,9 @@ const ElevenLabsAgent = () => {
   }, [])
 
   return (
-    <elevenlabs-convai agent-id="agent_6401kfq44hxheev9g2m0yb3dt4ds">
+    <elevenlabs-convai 
+      agent-id="agent_5601kgphw3x1ezwb0fsq50n40fnd"
+    >
     </elevenlabs-convai>
   )
 }

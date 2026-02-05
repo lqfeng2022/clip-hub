@@ -70,7 +70,7 @@ const ChatInputForm = ({ chatSession, setMessages }: Props) => {
   const handleKeyDown = handleEnterSubmit(handleSubmit, onSubmit)
 
   // AUDIO LOGIC
-  const { toggleRecording, isRecording, audioURL, confirmSend, cleanup } = voiceRecorder({
+  const { toggleRecording, isRecording, audioURL, confirmSend } = voiceRecorder({
     onConfirmSend: (blob) => {
       if (!chatId) return
 
@@ -107,7 +107,6 @@ const ChatInputForm = ({ chatSession, setMessages }: Props) => {
         audioURL={audioURL}
         toggleRecording={toggleRecording}
         confirmSend={confirmSend}
-        cleanup={cleanup}
       />
     )
     return <ChatTextInput register={register} handleKeyDown={handleKeyDown} />

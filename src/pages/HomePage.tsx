@@ -30,14 +30,10 @@ const HomePage = () => {
         </Box>
       )}
       {/* ElevenLabs Agent */}
-      {user && <Box
-        position='fixed'
-        bottom={{ base: '80px', md: '24px' }}
-        right='24px'
-        zIndex={1000}
-      >
+      {user && <Show above='lg'>
         <ElevenLabsAgent />
-      </Box>}
+        </Show>
+      }
     </>
   )
 }
