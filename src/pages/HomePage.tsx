@@ -5,6 +5,7 @@ import FeedTabs from '@/components/product/FeedTabs'
 import FollowingPosts from '@/components/product/FollowingPosts'
 import { Box, Show } from '@chakra-ui/react'
 import { useState } from 'react'
+import ElevenLabsAgent from '@/components/ElevenLabsAgent'
 
 const HomePage = () => {
   const { user } = useAuth()
@@ -28,6 +29,15 @@ const HomePage = () => {
           </Show>
         </Box>
       )}
+      {/* ElevenLabs Agent */}
+      {user && <Box
+        position="fixed"
+        bottom="24px"
+        right="24px"
+        zIndex={1000}
+      >
+        <ElevenLabsAgent />
+      </Box>}
     </>
   )
 }
