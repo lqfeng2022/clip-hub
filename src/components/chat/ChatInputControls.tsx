@@ -1,3 +1,4 @@
+import { useAuth } from '@/AuthContext'
 import { HStack, Icon, Badge } from '@chakra-ui/react'
 import { CiKeyboard, CiMicrophoneOn, CiPhone } from 'react-icons/ci'
 import { IoAddOutline, IoVideocamOutline } from 'react-icons/io5'
@@ -19,6 +20,9 @@ const ChatInputControls = ({
   onToggleCall, 
   onToggleEnhancement 
 }: Props) => {
+  const { user } = useAuth()
+  const canCall = !!user?.bro
+
   const chatMode = isCalling ? 'call' : (isSpeakOn ? 'audio' : 'text')
   const label = `${chatMode}-mode`
 
@@ -40,12 +44,13 @@ const ChatInputControls = ({
         <Icon
           as={CiPhone}
           boxSize={6}
-          cursor='pointer'
-          color={isCalling ? 'orange' : ''}
-          onClick={onToggleCall}
+          cursor={canCall ? 'pointer' : ''}
+          color={isCalling ? 'orange' : (canCall ? undefined : 'gray.500')}
+          onClick={() => { if (canCall) onToggleCall() }}
+          title={canCall ? 'Start call' : "Call unavailable cus you're not bro"}
         />
         {/* VIDEO CALL mode */}
-        <Icon as={IoVideocamOutline} boxSize={6} color='gray' cursor='pointer' />
+        <Icon as={IoVideocamOutline} boxSize={6} color='gray' />
         {/* Enhancement / Emoji toggle */}
         {isSpeakOn && (
           <Icon

@@ -6,7 +6,7 @@ export default interface User {
   phone: string,
   email: string,
   birth_date: string | null,
-  bro: string,
+  bro: boolean,
   portrait: string | null,
   back_image: string | null,
   description: string,

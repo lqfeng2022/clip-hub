@@ -1,3 +1,4 @@
+import { audioManager } from '@/helps/audioManager'
 import { formatDuration } from '@/helps/formatDate'
 import { Box, Collapse, HStack, Icon, Text } from '@chakra-ui/react'
 import { useEffect, useRef, useState } from 'react'
@@ -11,22 +12,28 @@ interface Props {
   align?: 'left' | 'right',
   autoPlay?: boolean // new prop
 }
-const ChatAudioBox = ({ audioUrl, content, align = 'left', autoPlay = false }: Props) => {
+const ChatAudioBox = ({ 
+  audioUrl, 
+  content, 
+  align = 'left', 
+  autoPlay = false,
+}: Props) => {
   const [duration, setDuration] = useState<number | null>(null)
   const formattedDuration = formatDuration(duration)
   
   const [showContent, setShowContent] = useState(false)
-  
   const [isPlaying, setIsPlaying] = useState(false)
   const audioRef = useRef<HTMLAudioElement>(null)
   
   const handlePlayClick = () => {
     if (audioRef.current) {
       if (isPlaying) {
-        audioRef.current.pause()
+        audioManager.pause(audioRef.current)
+        // audioRef.current.pause()
         setIsPlaying(false)
       } else {
-        audioRef.current.play()
+        audioManager.play(audioRef.current)
+        // audioRef.current.play()
         setIsPlaying(true)
       }
     }
@@ -35,12 +42,8 @@ const ChatAudioBox = ({ audioUrl, content, align = 'left', autoPlay = false }: P
   // Autoplay only for new AI audio
   useEffect(() => {
     if (autoPlay && audioRef.current) {
-      audioRef.current
-        .play()
-        .then(() => setIsPlaying(true))
-        .catch(() => {
-          // autoplay blocked or error → manual fallback
-        })
+      audioManager.play(audioRef.current)
+      setIsPlaying(true)
     }
   }, [audioUrl, autoPlay])
 
@@ -81,6 +84,8 @@ const ChatAudioBox = ({ audioUrl, content, align = 'left', autoPlay = false }: P
             ref={audioRef}
             src={audioUrl}
             preload='metadata'
+            onPlay={() => setIsPlaying(true)}
+            onPause={() => setIsPlaying(false)}
             onEnded={() => setIsPlaying(false)}
             onLoadedMetadata={(e) =>
               setDuration(e.currentTarget.duration)
