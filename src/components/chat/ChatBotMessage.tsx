@@ -28,7 +28,7 @@ const ChatBotMessage = ({ host, message, autoPlay }: Props) => {
           >
             <Text 
               lineHeight={1.4}
-              fontSize={{base: 'sm', sm: 'md'}}
+              fontSize='sm'
             >
               {message.content}
             </Text>
