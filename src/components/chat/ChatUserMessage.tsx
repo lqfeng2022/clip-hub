@@ -4,7 +4,8 @@ import ChatAudioBox from './ChatAudioBox'
 
 interface Props {
   fullName: string | undefined,
-  message: ChatMessage
+  message: ChatMessage,
+  autoPlay?: boolean // never true for user
 }
 const ChatUserMessage = ({ fullName, message }: Props) => {
   return (
@@ -19,6 +20,7 @@ const ChatUserMessage = ({ fullName, message }: Props) => {
         <ChatAudioBox 
           audioUrl={message.audio!} 
           content={message.content!}
+          autoPlay={false} // user audio always manual
         /> 
         : <Box 
             maxW={{base: '260px', sm: '300px'}}

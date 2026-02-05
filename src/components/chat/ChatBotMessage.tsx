@@ -6,8 +6,9 @@ import Host from '@/entities/Host'
 interface Props {
   host: Host,
   message: ChatMessage,
+  autoPlay?: boolean //receive autoplay flag
 }
-const ChatBotMessage = ({ host, message }: Props) => {
+const ChatBotMessage = ({ host, message, autoPlay }: Props) => {
   const audio = message.audio
   
   return (
@@ -17,6 +18,7 @@ const ChatBotMessage = ({ host, message }: Props) => {
           audioUrl={audio} 
           content={message.content!}
           align='right'
+          autoPlay={autoPlay}
         />
           : <Box
             maxW={{base: '260px', sm: '300px'}}

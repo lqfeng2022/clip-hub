@@ -3,8 +3,9 @@ import ChatBotMessage from './ChatBotMessage'
 import ChatUserMessage from './ChatUserMessage'
 import { useAuth } from '@/AuthContext'
 import ChatMessage from '@/entities/ChatMessage'
-import { useRef, useEffect } from 'react'
+import { useRef, useEffect, useState } from 'react'
 import Host from '@/entities/Host'
+import useMicReady from '@/helps/useMicReady'
 
 interface Props {
   host: Host,
@@ -17,19 +18,42 @@ const ChatMessagesList = ({ host, messages }: Props) => {
   ? `${user?.first_name ?? ''} ${user?.last_name ?? ''}`.trim()
   : user?.username
 
-  // 1)Add a ref to the messages container
+  // Add a ref to the messages container
   const messagesEndRef = useRef<HTMLDivElement>(null)
 
-  // 2)scroll to bottom whenever messages changes
+  // Track last message ID for autoplay logic
+  const [lastMessageId, setLastMessageId] = useState<string | null>(null)
+
+  // useMicReady hook (extracted)
+  const micReady = useMicReady(true)
+
   useEffect(() => {
+    if (messages.length === 0) return
+
+    const lastMsg = messages[messages.length - 1]
+    setLastMessageId(lastMsg.id.toString())
+
+    // scroll to bottom whenever messages changes
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
   }, [messages])
   
   return (
     <List p={3} spacing={6}>
       {messages.map(m => m.role === 'user' ? 
-        <ChatUserMessage key={m.id} fullName={fullName} message={m}/> : 
-        <ChatBotMessage key={m.id} message={m} host={host}/>
+        <ChatUserMessage 
+          key={m.id} 
+          fullName={fullName} 
+          message={m}
+          autoPlay={false} // user audio never autoplay
+        /> : 
+        <ChatBotMessage 
+          key={m.id} 
+          message={m} 
+          host={host}
+          autoPlay={
+            m.id.toString() === lastMessageId && !!m.audio && micReady
+          } // only newest AI audio, and only if mic is ready
+        />
       )}
       {/* 4)Add a dummy element at the end of ChatMessagesList */}
       <div ref={messagesEndRef}/>

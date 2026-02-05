@@ -1,6 +1,6 @@
 import { formatDuration } from '@/helps/formatDate'
 import { Box, Collapse, HStack, Icon, Text } from '@chakra-ui/react'
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { IoPlay } from 'react-icons/io5'
 import { RiStopFill } from 'react-icons/ri'
 import AudioIcons from './AudioIcons'
@@ -9,8 +9,9 @@ interface Props {
   audioUrl: string,
   content?: string,
   align?: 'left' | 'right',
+  autoPlay?: boolean // new prop
 }
-const ChatAudioBox = ({ audioUrl, content, align = 'left' }: Props) => {
+const ChatAudioBox = ({ audioUrl, content, align = 'left', autoPlay = false }: Props) => {
   const [duration, setDuration] = useState<number | null>(null)
   const formattedDuration = formatDuration(duration)
   
@@ -30,6 +31,18 @@ const ChatAudioBox = ({ audioUrl, content, align = 'left' }: Props) => {
       }
     }
   }
+
+  // Autoplay only for new AI audio
+  useEffect(() => {
+    if (autoPlay && audioRef.current) {
+      audioRef.current
+        .play()
+        .then(() => setIsPlaying(true))
+        .catch(() => {
+          // autoplay blocked or error → manual fallback
+        })
+    }
+  }, [audioUrl, autoPlay])
 
   return (
     <Box 
