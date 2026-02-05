@@ -31,9 +31,9 @@ const HomePage = () => {
       )}
       {/* ElevenLabs Agent */}
       {user && <Box
-        position="fixed"
-        bottom="24px"
-        right="24px"
+        position='fixed'
+        bottom={{ base: '80px', md: '24px' }}
+        right='24px'
         zIndex={1000}
       >
         <ElevenLabsAgent />
