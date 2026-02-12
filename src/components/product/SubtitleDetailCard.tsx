@@ -15,7 +15,7 @@ const SubtitleDetailCard = ({ product }: Props) => {
   return (
     <PostDetailContainer product={product}>
       <Box py={2}>
-        {renderHighlights(content, phrases, { maxLength: 2000 })}
+        {renderHighlights(content, phrases, { maxLength: 3000 })}
       </Box>
       <HStack 
         overflowX='auto' 
