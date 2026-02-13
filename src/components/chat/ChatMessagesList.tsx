@@ -3,7 +3,7 @@ import ChatBotMessage from './ChatBotMessage'
 import ChatUserMessage from './ChatUserMessage'
 import { useAuth } from '@/AuthContext'
 import ChatMessage from '@/entities/ChatMessage'
-import { useRef, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import Host from '@/entities/Host'
 
 interface Props {
@@ -16,9 +16,6 @@ const ChatMessagesList = ({ host, messages }: Props) => {
   const fullName = user?.first_name || user?.last_name
   ? `${user?.first_name ?? ''} ${user?.last_name ?? ''}`.trim()
   : user?.username
-
-  // Add a ref to the messages container
-  const messagesEndRef = useRef<HTMLDivElement>(null)
 
   // Track last message ID for autoplay logic
   const [lastMessageId, setLastMessageId] = useState<string | null>(null)
@@ -45,20 +42,18 @@ const ChatMessagesList = ({ host, messages }: Props) => {
     ) {
       setLastMessageId(lastMsg.id.toString())
     }
-
-    // scroll to bottom whenever messages changes
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
   }, [messages])
   
   return (
     <List p={3} spacing={6}>
-      {messages.map(m => m.role === 'user' ? 
+      {messages.map(m => m.role === 'user' ? (
         <ChatUserMessage 
           key={m.id} 
           fullName={fullName} 
           message={m}
           autoPlay={false} // user audio never autoplay
-        /> : 
+        />
+      ) : (
         <ChatBotMessage 
           key={m.id} 
           message={m} 
@@ -66,9 +61,7 @@ const ChatMessagesList = ({ host, messages }: Props) => {
           // only newest AI audio
           autoPlay={m.id.toString() === lastMessageId && !!m.audio} 
         />
-      )}
-      {/* Add a dummy element at the end of ChatMessagesList */}
-      <div ref={messagesEndRef}/>
+      ))}
     </List>
   )
 }

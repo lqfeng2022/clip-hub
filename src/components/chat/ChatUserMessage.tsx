@@ -16,27 +16,28 @@ const ChatUserMessage = ({ fullName, message }: Props) => {
         opacity={0.8}
         name={fullName}
       />
-      {message.audio ? 
+      {message.audio ? (
         <ChatAudioBox 
           audioUrl={message.audio!} 
           content={message.content!}
           autoPlay={false} // user audio always manual
-        /> 
-        : <Box 
-            maxW={{base: '260px', sm: '300px'}}
-            borderRadius='12px' 
-            background='RGBA(0, 0, 0, 0.22)'
-            p='8px 15px'
+        />
+      ): (
+        <Box 
+          maxW={{base: '260px', sm: '300px'}}
+          borderRadius='12px' 
+          background='RGBA(0, 0, 0, 0.22)'
+          p='8px 15px'
+        >
+          <Text 
+            color='gray.100' 
+            lineHeight={1.4}
+            fontSize='sm'
           >
-            <Text 
-              color='gray.100' 
-              lineHeight={1.4}
-              fontSize='sm'
-            >
-              {message.content}
-            </Text>
-          </Box> 
-      }
+            {message.content}
+          </Text>
+        </Box>
+      )}
     </HStack>
   )
 }
