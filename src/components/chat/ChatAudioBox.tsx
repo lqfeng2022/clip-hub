@@ -20,8 +20,11 @@ const ChatAudioBox = ({
   align = 'left', 
   autoPlay = false,
 }: Props) => {
-  const formattedDuration = formatDuration(duration)
-  
+  const defaultDuration = formatDuration(duration)
+
+  const [seconds, setSeconds] = useState<number | null>(null)
+  const currentDuration = formatDuration(seconds)
+
   const [showContent, setShowContent] = useState(false)
   const [isPlaying, setIsPlaying] = useState(false)
   const audioRef = useRef<HTMLAudioElement>(null)
@@ -78,7 +81,9 @@ const ChatAudioBox = ({
           >
             <AudioIcons/>
           </Box>
-          <Text fontSize='sm'>{formattedDuration}</Text>
+          <Text fontSize='sm'>
+            {defaultDuration ?? currentDuration}
+          </Text>
           <audio
             ref={audioRef}
             src={audioUrl}
@@ -86,6 +91,9 @@ const ChatAudioBox = ({
             onPlay={() => setIsPlaying(true)}
             onPause={() => setIsPlaying(false)}
             onEnded={() => setIsPlaying(false)}
+            onLoadedMetadata={(e) =>
+              setSeconds(e.currentTarget.duration)
+            }
           />
         </HStack>
       </Box>
