@@ -42,6 +42,13 @@ class APIClient<T> {
       .then((res) => res.data)
   }
 
+  // get all chat messages
+  getChatMessages = (id: number | string, config?: AxiosRequestConfig) => {
+    return axiosInstance
+      .get<FetchResponse<T>>(`${this.endpoint}/${id}/messages/`, config)
+      .then((res) => res.data) //extract data from response
+  }
+
   // update a give id serach/list
   put = (id: number | string, data: any, config?: AxiosRequestConfig) => {
     return axiosInstance
