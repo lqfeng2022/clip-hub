@@ -20,11 +20,12 @@ const ChatUserMessage = ({ fullName, message }: Props) => {
         <ChatAudioBox 
           audioUrl={message.audio!} 
           content={message.content!}
+          duration={message.audio_seconds}
           autoPlay={false} // user audio always manual
         />
       ): (
         <Box 
-          maxW={{base: '260px', sm: '300px'}}
+          maxW={{base: '260px', sm: '350px'}}
           borderRadius='12px' 
           background='RGBA(0, 0, 0, 0.22)'
           p='8px 15px'
@@ -32,7 +33,7 @@ const ChatUserMessage = ({ fullName, message }: Props) => {
           <Text 
             color='gray.100' 
             lineHeight={1.4}
-            fontSize='sm'
+            fontSize={{base: 'xs', sm: 'sm'}}
           >
             {message.content}
           </Text>

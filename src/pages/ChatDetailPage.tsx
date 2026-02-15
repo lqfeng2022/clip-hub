@@ -58,14 +58,10 @@ const ChatDetailPage = () => {
     }
   }, [messagesPages])
 
-  /**
-   * INITIAL LOAD SCROLL
-   * 
+  /** INITIAL LOAD SCROLL
    * useLayoutEffect runs BEFORE browser paint.
    * This prevents visible scrolling animation.
-   * 
-   * Result:
-   * When user opens chat → it starts at bottom instantly.
+   * Result: When user opens chat → it starts at bottom instantly.
    */
   useLayoutEffect(() => {
     if (
@@ -79,12 +75,8 @@ const ChatDetailPage = () => {
   }, [messages.length])
 
 
-  /**
-   * NEW MESSAGE SCROLL
-   * 
-   * After initial load,
-   * if a new message arrives,
-   * scroll smoothly to bottom.
+  /** NEW MESSAGE SCROLL
+   * After initial load, if a new message arrives, scroll smoothly to bottom.
    */
   useEffect(() => {
     if (!didInitialScroll.current) return
@@ -126,7 +118,7 @@ const ChatDetailPage = () => {
       <Box flex='0 0 auto'>
         <PageNavTab title='Chat Session'/>
       </Box>
-      {/* 🔹 THIS is the scrollable container */}
+      {/* THIS is the scrollable container */}
       <Box 
         ref={scrollRef}
         onScroll={handleScroll}
@@ -136,9 +128,9 @@ const ChatDetailPage = () => {
         pb='80px' // match ChatInput height
       >
         {product && <ChatSessionCardSimple chat={chat}/>}
-        <ChatMessagesList messages={messages} host={chat.host}/>
         {/* optional loader when fetching older messages */}
         {isFetchingNextPage && <BeatLoader />}
+        <ChatMessagesList messages={messages} host={chat.host}/>
       </Box>
       <Box
         position='sticky'

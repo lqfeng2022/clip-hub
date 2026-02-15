@@ -43,7 +43,7 @@ const ChatMessagesList = ({ host, messages }: Props) => {
   }, [messages])
 
   return (
-    <List p={3} spacing={6}>
+    <List p={3} spacing={10}>
       {messages.map((m, index) => {
         const prevMessage = messages[index - 1]
 
@@ -61,7 +61,6 @@ const ChatMessagesList = ({ host, messages }: Props) => {
                 </Text>
               </Center>
             )}
-
             {m.role === 'user' ? (
               <ChatUserMessage
                 key={m.id}

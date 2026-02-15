@@ -1,19 +1,21 @@
 // chatDateUtils.ts
+
+const ONE_YEAR_MS = 1000 * 60 * 60 * 24 * 365
+const THIRTY_MINUTES_MS = 1000 * 60 * 30
+
 export const shouldShowDateDivider = (
   prevMessageCreatedAt: string | null,
   currentMessageCreatedAt: string
 ) => {
-  if (!prevMessageCreatedAt) return true
+  if (!prevMessageCreatedAt) return true // first message always shows divider
 
   const prev = new Date(prevMessageCreatedAt)
   const curr = new Date(currentMessageCreatedAt)
 
   const diffMs = curr.getTime() - prev.getTime()
-  const diffMinutes = diffMs / (1000 * 60)
-  const diffYears = curr.getFullYear() - prev.getFullYear()
 
-  // Show divider if more than 30 minutes passed OR year changed
-  return diffMinutes >= 30 || diffYears >= 1
+  // show divider if gap >= 30 minutes
+  return diffMs >= THIRTY_MINUTES_MS
 }
 
 /**
@@ -26,14 +28,22 @@ export const formatDateTime = (
   prevMessageCreatedAt: string | null
 ) => {
   const curr = new Date(currentMessageCreatedAt)
-  const prev = prevMessageCreatedAt ? new Date(prevMessageCreatedAt) : null
 
   const month = curr.getMonth() + 1
   const day = curr.getDate()
   const hours = curr.getHours().toString().padStart(2, '0')
   const minutes = curr.getMinutes().toString().padStart(2, '0')
 
-  const includeYear = !prev || curr.getFullYear() !== prev.getFullYear()
+  let includeYear = false
+
+  if (prevMessageCreatedAt) {
+    const prev = new Date(prevMessageCreatedAt)
+    const diffMs = curr.getTime() - prev.getTime()
+
+    // only include year if gap >= 1 year
+    includeYear = diffMs >= ONE_YEAR_MS
+  }
+
   const yearPart = includeYear ? ` ${curr.getFullYear()}` : ''
 
   return `${month}/${day} ${hours}:${minutes}${yearPart}`

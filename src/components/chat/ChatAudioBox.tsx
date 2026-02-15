@@ -9,16 +9,17 @@ import AudioIcons from './AudioIcons'
 interface Props {
   audioUrl: string,
   content?: string,
+  duration: number | null,
   align?: 'left' | 'right',
   autoPlay?: boolean // new prop
 }
 const ChatAudioBox = ({ 
   audioUrl, 
   content, 
+  duration,
   align = 'left', 
   autoPlay = false,
 }: Props) => {
-  const [duration, setDuration] = useState<number | null>(null)
   const formattedDuration = formatDuration(duration)
   
   const [showContent, setShowContent] = useState(false)
@@ -29,11 +30,9 @@ const ChatAudioBox = ({
     if (audioRef.current) {
       if (isPlaying) {
         audioManager.pause(audioRef.current)
-        // audioRef.current.pause()
         setIsPlaying(false)
       } else {
         audioManager.play(audioRef.current)
-        // audioRef.current.play()
         setIsPlaying(true)
       }
     }
@@ -87,23 +86,13 @@ const ChatAudioBox = ({
             onPlay={() => setIsPlaying(true)}
             onPause={() => setIsPlaying(false)}
             onEnded={() => setIsPlaying(false)}
-            onLoadedMetadata={(e) =>
-              setDuration(e.currentTarget.duration)
-            }
           />
         </HStack>
       </Box>
       {/* show the audio content */}
       <Collapse in={showContent && !!content} animateOpacity>
-        <Box 
-          width={{ base: '280px', sm: '350px' }} 
-          pt={2}
-        >
-          <Text
-            fontWeight='light'
-            lineHeight='1.3'
-            fontSize={{ base: 'xs', sm: 'sm' }}
-          >
+        <Box width={{ base: '280px', sm: '350px' }} pt={2}>
+          <Text fontWeight='light' lineHeight='1.3' fontSize='xs'>
             {content}
           </Text>
         </Box>

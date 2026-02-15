@@ -47,6 +47,7 @@ const ChatInputForm = ({ chatSession, setMessages }: Props) => {
       role: 'user',
       content: data.content,
       audio: null,
+      audio_seconds: 0,
       is_voice: isSpeakOn,
       is_enhancement: isEnhancement,
       created_at: new Date().toISOString(),
@@ -80,6 +81,7 @@ const ChatInputForm = ({ chatSession, setMessages }: Props) => {
         id: Date.now(),
         role: 'user',
         content: null,
+        audio_seconds: 0,
         is_voice: isSpeakOn,
         is_enhancement: isEnhancement,
         audio: URL.createObjectURL(blob), // local preview
