@@ -83,7 +83,7 @@ const ChatAudioBox = ({
             <AudioIcons/>
           </Box>
           <Text fontSize='sm'>
-            {defaultDuration ?? currentDuration}
+            {duration !== 0 ? defaultDuration : currentDuration}
           </Text>
           <audio
             ref={audioRef}
