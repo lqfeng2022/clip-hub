@@ -15,7 +15,8 @@ const ChatSessionCardTwo = ({ chat } : { chat: ChatSession }) => {
 
   const content = () => {
     const latest_message = chat.latest_chat
-    if (latest_message) return `- ${truncateAtWord(latest_message, 50)}`
+    if (latest_message) 
+      return `${truncateAtWord(latest_message, 30)}`
     return "There's no messages"
   } 
 
@@ -43,7 +44,6 @@ const ChatSessionCardTwo = ({ chat } : { chat: ChatSession }) => {
             <Stack spacing={1}>
               <Text 
                 fontSize={{base: 'xs', sm: 'md'}}
-                fontWeight='bold' 
                 color='gray.100'
               >
                 {content()}

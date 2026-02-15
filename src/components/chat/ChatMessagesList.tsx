@@ -32,7 +32,6 @@ const ChatMessagesList = ({ host, messages }: Props) => {
     if (messages.length === 0 || initialMessageCount === null) return
 
     const lastMsg = messages[messages.length - 1]
-
     if (
       messages.length > initialMessageCount &&
       lastMsg.role !== 'user' &&
@@ -46,36 +45,39 @@ const ChatMessagesList = ({ host, messages }: Props) => {
     <List p={3} spacing={10}>
       {messages.map((m, index) => {
         const prevMessage = messages[index - 1]
+        
+        const createdAt = prevMessage?.created_at ?? null
 
         const showDateDivider = shouldShowDateDivider(
-          prevMessage?.created_at ?? null,
-          m.created_at
+          createdAt, m.created_at
         )
+
+        const isLastOne = m.id.toString() === lastMessageId
 
         return (
           <Box key={m.id}>
             {showDateDivider && (
               <Center mb={3}>
                 <Text fontSize='sm' color='gray.400'>
-                  {formatDateTime(m.created_at, prevMessage?.created_at ?? null)}
+                  {formatDateTime(m.created_at, createdAt)}
                 </Text>
               </Center>
             )}
-            {m.role === 'user' ? (
-              <ChatUserMessage
-                key={m.id}
-                fullName={fullName}
-                message={m}
+            {m.role === 'user' ? 
+              <ChatUserMessage 
+                key={index} 
+                fullName={fullName} 
+                message={m} 
                 autoPlay={false}
+              /> 
+            :
+              <ChatBotMessage 
+                key={index} 
+                message={m} 
+                host={host} 
+                autoPlay={isLastOne && !!m.audio}
               />
-            ) : (
-              <ChatBotMessage
-                key={m.id}
-                message={m}
-                host={host}
-                autoPlay={m.id.toString() === lastMessageId && !!m.audio}
-              />
-            )}
+            }
           </Box>
         )
       })}

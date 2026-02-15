@@ -2,6 +2,7 @@ import ChatMessage from '@/entities/ChatMessage'
 import { HStack, Box, Avatar, Text, Stack } from '@chakra-ui/react'
 import ChatAudioBox from './ChatAudioBox'
 import Host from '@/entities/Host'
+import { formatMessage } from '@/helps/formatMessage'
 
 interface Props {
   host: Host,
@@ -32,8 +33,9 @@ const ChatBotMessage = ({ host, message, autoPlay }: Props) => {
             <Text 
               lineHeight={1.4}
               fontSize={{base: 'xs', sm: 'sm'}}
+              whiteSpace='pre-wrap' // handle `\n` and `\n\n`
             >
-              {message.content}
+              {formatMessage(message.content!)}
             </Text>
           </Box>
         )}

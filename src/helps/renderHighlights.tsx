@@ -36,25 +36,25 @@ export function renderHighlights(
     <>
       {lines.map((line, index) => {
         if (line.trim() === '')
-          return <Box key={index} height="0.8em" />
+          return <Box key={index} height='0.8em' />
 
         const isBullet = line.trim().startsWith('-')
 
         return (
           <Text
             key={index}
-            fontSize="sm"
-            color="gray.100"
-            lineHeight="1.4"
+            fontSize='sm'
+            color='gray.100'
+            lineHeight='1.4'
             pl={hasBullet && !isBullet ? '10px' : undefined}
           >
             {splitByAsterisks(line).map((segment, segIndex) =>
               isStarBold(segment) ? (
-                <Text key={segIndex} as="span" fontWeight="bold">
+                <Text key={segIndex} as='span' fontWeight='bold'>
                   {stripAsterisks(segment)}
                 </Text>
               ) : (
-                <Text key={segIndex} as="span">
+                <Text key={segIndex} as='span'>
                   {renderHighlightedText(segment, sortedPhrases, regex)}
                 </Text>
               )
@@ -73,10 +73,10 @@ export function renderHighlights(
       }
       {isLongText && (
         <Button
-          size="xs"
-          variant="ghost"
+          size='xs'
+          variant='ghost'
           p={0}
-          color="blue.300"
+          color='blue.300'
           onClick={() => setExpanded(!expanded)}
           _hover={{ bg: 'transparent', color: 'blue.100' }}
           _active={{ bg: 'transparent' }}

@@ -5,11 +5,12 @@ import PostBadges from '../product/PostBadges'
 import { Link } from 'react-router-dom'
 import SessionMenu from './SessionMenu'
 import ChatSession from '@/entities/ChatSession'
+import { formatMessage } from '@/helps/formatMessage'
 
 const ChatSessionCard = ({ chat } : { chat: ChatSession }) => {
   const product = chat.product
   const host = chat.host
-  const {image, title } = getProductDisplay(product, 25)
+  const {image, title } = getProductDisplay(product, 30)
 
   return (
     <HStack 
@@ -52,10 +53,9 @@ const ChatSessionCard = ({ chat } : { chat: ChatSession }) => {
             <Stack spacing={1}>
               <Text 
                 fontSize={{base: 'xs', sm: 'sm'}}
-                fontWeight='bold' 
                 color='gray.100'
               >
-                {title}
+                {formatMessage(title!)}
               </Text>
               <HStack>
                 <Text fontSize='xl' fontWeight='bold'>

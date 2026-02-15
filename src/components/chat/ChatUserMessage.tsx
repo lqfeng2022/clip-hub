@@ -1,6 +1,7 @@
 import ChatMessage from '@/entities/ChatMessage'
 import { HStack, Avatar, Box, Text } from '@chakra-ui/react'
 import ChatAudioBox from './ChatAudioBox'
+import { formatMessage } from '@/helps/formatMessage'
 
 interface Props {
   fullName: string | undefined,
@@ -35,7 +36,7 @@ const ChatUserMessage = ({ fullName, message }: Props) => {
             lineHeight={1.4}
             fontSize={{base: 'xs', sm: 'sm'}}
           >
-            {message.content}
+            {formatMessage(message.content!)}
           </Text>
         </Box>
       )}

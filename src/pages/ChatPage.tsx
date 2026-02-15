@@ -36,9 +36,9 @@ const ProfileChatPage = () => {
             <React.Fragment key={index}>
               {page?.results.map((chat) =>
                 <Box key={chat.id}>
-                  {chat.product ?
-                    <ChatSessionCard chat={chat}/> :
-                    <ChatSessionCardTwo chat={chat}/>
+                  {chat.product 
+                  ? <ChatSessionCard chat={chat}/> 
+                  : <ChatSessionCardTwo chat={chat}/>
                   }
                 </Box>
               )}

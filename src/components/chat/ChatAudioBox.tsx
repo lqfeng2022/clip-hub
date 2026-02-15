@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from 'react'
 import { IoPlay } from 'react-icons/io5'
 import { RiStopFill } from 'react-icons/ri'
 import AudioIcons from './AudioIcons'
+import { formatMessage } from '@/helps/formatMessage'
 
 interface Props {
   audioUrl: string,
@@ -101,7 +102,7 @@ const ChatAudioBox = ({
       <Collapse in={showContent && !!content} animateOpacity>
         <Box width={{ base: '280px', sm: '350px' }} pt={2}>
           <Text fontWeight='light' lineHeight='1.3' fontSize='xs'>
-            {content}
+            {formatMessage(content!)}
           </Text>
         </Box>
       </Collapse>
