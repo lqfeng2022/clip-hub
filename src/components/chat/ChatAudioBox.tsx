@@ -21,10 +21,15 @@ const ChatAudioBox = ({
   align = 'left', 
   autoPlay = false,
 }: Props) => {
-  const defaultDuration = formatDuration(duration)
-
+  // duration on local (from audio element metadata)
   const [seconds, setSeconds] = useState<number | null>(null)
-  const currentDuration = formatDuration(seconds)
+
+  // prefer local `seconds` when available, otherwise fall back to backend `duration`
+  const displaySeconds: number | null = (
+    seconds != null && Number.isFinite(seconds) && seconds > 0
+  ) ? seconds : (
+    typeof duration === 'number' && Number.isFinite(duration) && duration > 0 ? duration : null
+  )
 
   const [showContent, setShowContent] = useState(false)
   const [isPlaying, setIsPlaying] = useState(false)
@@ -83,7 +88,7 @@ const ChatAudioBox = ({
             <AudioIcons/>
           </Box>
           <Text fontSize='sm'>
-            {duration !== 0 ? defaultDuration : currentDuration}
+            {formatDuration(displaySeconds)}
           </Text>
           <audio
             ref={audioRef}
@@ -92,9 +97,11 @@ const ChatAudioBox = ({
             onPlay={() => setIsPlaying(true)}
             onPause={() => setIsPlaying(false)}
             onEnded={() => setIsPlaying(false)}
-            onLoadedMetadata={(e) =>
-              setSeconds(e.currentTarget.duration)
-            }
+            // set local duration
+            onLoadedMetadata={(e) => {
+              const d = e.currentTarget.duration
+              if (Number.isFinite(d) && d > 0) setSeconds(d)
+            }}
           />
         </HStack>
       </Box>
