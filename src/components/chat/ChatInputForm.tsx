@@ -55,7 +55,8 @@ const ChatInputForm = ({ chatSession, setMessages }: Props) => {
     reset()
 
     // send text message to backend then append it locally
-    postChatMessage({ type: 'text', 
+    postChatMessage({ 
+      type: 'text', 
       content: data.content, 
       is_voice: isSpeakOn, 
       is_enhancement: isEnhancement 

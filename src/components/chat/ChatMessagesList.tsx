@@ -5,6 +5,7 @@ import { useAuth } from '@/AuthContext'
 import ChatMessage from '@/entities/ChatMessage'
 import { useEffect, useState } from 'react'
 import Host from '@/entities/Host'
+import { shouldShowDateDivider, formatDateTime } from '@/helps/chatDateUtils'
 
 interface Props {
   host: Host
@@ -41,33 +42,22 @@ const ChatMessagesList = ({ host, messages }: Props) => {
     }
   }, [messages])
 
-  // Helper to format date
-  const formatDate = (iso: string) => {
-    const d = new Date(iso)
-    const month = d.getMonth() + 1
-    const day = d.getDate()
-    const year = d.getFullYear()
-    const hours = d.getHours().toString().padStart(2, '0')
-    const minutes = d.getMinutes().toString().padStart(2, '0')
-    return `${month}/${day} ${hours}:${minutes} ${year}`
-  }
-
   return (
     <List p={3} spacing={6}>
       {messages.map((m, index) => {
-        // Determine if we need a date divider
         const prevMessage = messages[index - 1]
-        const currentDate = m.created_at.split('T')[0]
-        const prevDate = prevMessage?.created_at.split('T')[0]
 
-        const showDateDivider = !prevMessage || currentDate !== prevDate
+        const showDateDivider = shouldShowDateDivider(
+          prevMessage?.created_at ?? null,
+          m.created_at
+        )
 
         return (
           <Box key={m.id}>
             {showDateDivider && (
               <Center mb={3}>
                 <Text fontSize='sm' color='gray.400'>
-                  {formatDate(m.created_at)}
+                  {formatDateTime(m.created_at, prevMessage?.created_at ?? null)}
                 </Text>
               </Center>
             )}
