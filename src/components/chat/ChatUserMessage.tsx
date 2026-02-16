@@ -34,7 +34,7 @@ const ChatUserMessage = ({ fullName, message }: Props) => {
           <Text 
             color='gray.100' 
             lineHeight={1.4}
-            fontSize={{base: 'xs', sm: 'sm'}}
+            fontSize={{base: '0.8em', sm: 'sm'}}
           >
             {formatMessage(message.content!)}
           </Text>

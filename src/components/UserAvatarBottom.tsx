@@ -18,7 +18,7 @@ const UserAvatarBottom = () => {
             src={user?.portrait ?? ''}
             opacity={0.9}
           />
-          <Show above='xl'>
+          <Show above='lg'>
             <Box>
               <Heading size='md'>{fullName}</Heading>
               <Text color='gray'>@{user?.username}</Text>

@@ -30,7 +30,7 @@ const ChatBotMessage = ({ host, message, autoPlay }: Props) => {
           >
             <Text 
               lineHeight={1.4}
-              fontSize={{base: 'xs', sm: 'sm'}}
+              fontSize={{base: '0.8em', sm: 'sm'}}
               whiteSpace='pre-wrap' // handle `\n` and `\n\n`
             >
               {formatMessage(message.content!)}

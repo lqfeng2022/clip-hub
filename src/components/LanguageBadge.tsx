@@ -10,7 +10,7 @@ const LanguageBadge = () => {
     <Box
       position='absolute'
       top='5px'
-      right='-13px'
+      right='-10px'
       px='5px'
       py='1px'
       borderRadius='sm'
