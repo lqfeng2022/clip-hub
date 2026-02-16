@@ -7,14 +7,20 @@ import PageNavTab from '@/components/PageNavTab'
 
 const ProfileEditPage = () => {
   const lang = useLanguageStore(s => s.language)
+  
+  const navHeader = lang === 'en'
+    ? profilePagesData.en.edit : profilePagesData.zh.edit
+
   const header = lang === 'en' 
-    ? profilePagesData.en.profile : profilePagesData.zh.profile
+    ? profilePagesData.en.settings : profilePagesData.zh.settings
 
   return (
     <Stack gap={0}>
-      <PageNavTab title={'Edit Profile'}/>
+      <PageNavTab title={navHeader}/>
       <UserProfile/>
-      <Heading px={4} pt={4}>{header}</Heading>
+      <Heading px={4} pt={5} fontSize='2xl'>
+        {header}
+      </Heading>
       <ProfileForms />
     </Stack>
   )

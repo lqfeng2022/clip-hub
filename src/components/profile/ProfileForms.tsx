@@ -12,7 +12,8 @@ import { MdAlternateEmail } from 'react-icons/md'
 
 const ProfileForms = () => {
   const lang = useLanguageStore(s => s.language)
-  const content = lang === 'en' ? profileUserData.en  : profileUserData.zh
+  const content = lang === 'en' 
+    ? profileUserData.en  : profileUserData.zh
 
   // Sync user data once loaded
   const { user, fetchUser } = useAuth()
@@ -61,7 +62,7 @@ const ProfileForms = () => {
         {/* 0)username */}
         <Box mb={7}>
           <Heading fontSize='lg'>{content.username.name}</Heading>
-          <Text py={2}>{content.username.note}</Text>
+          <Text py={2} fontSize='sm'>{content.username.note}</Text>
           <FormControl maxW='600px' pb={3}>
             <Input value={`@${user.username}`} disabled/>
           </FormControl>
@@ -69,7 +70,7 @@ const ProfileForms = () => {
         {/* 1)Name (first_anme / last_name) */}
         <Box mb={7}>
           <Heading fontSize='lg'>{content.name.name}</Heading>
-          <Text py={2}>{content.name.note}</Text>
+          <Text py={2} fontSize='sm'>{content.name.note}</Text>
           <HStack maxW='600px'>
             <FormControl>
               <Input
@@ -77,7 +78,7 @@ const ProfileForms = () => {
                 {...register('first_name')}
               />
               {errors.first_name && (
-                <Text color="red.500" fontSize="sm">{errors.first_name.message}</Text>
+                <Text color='red.500' fontSize='sm'>{errors.first_name.message}</Text>
               )}
             </FormControl>
             <FormControl>
@@ -86,7 +87,7 @@ const ProfileForms = () => {
                 {...register('last_name')}
               />
               {errors.last_name && (
-                <Text color="red.500" fontSize="sm">{errors.last_name.message}</Text>
+                <Text color='red.500' fontSize='sm'>{errors.last_name.message}</Text>
               )}
             </FormControl>
           </HStack>
@@ -94,7 +95,7 @@ const ProfileForms = () => {
         {/* 2)Contact info (email/phone) */}
         <Box mb={7}>
           <Heading fontSize='lg'>{content.contact.name}</Heading>
-          <Text py={2}>{content.contact.note}</Text>
+          <Text py={2} fontSize='sm'>{content.contact.note}</Text>
           <FormControl maxW='600px' pb={3}>
             <InputGroup>
               <InputLeftElement pointerEvents='none'>
@@ -107,7 +108,7 @@ const ProfileForms = () => {
               />
             </InputGroup>
             {errors.email && (
-              <Text color="red.500" fontSize="sm">{errors.email.message}</Text>
+              <Text color='red.500' fontSize='sm'>{errors.email.message}</Text>
             )}
           </FormControl>
           <FormControl maxW='600px'>
@@ -122,14 +123,14 @@ const ProfileForms = () => {
               />
             </InputGroup>
             {errors.phone && (
-              <Text color="red.500" fontSize="sm">{errors.phone.message}</Text>
+              <Text color='red.500' fontSize='sm'>{errors.phone.message}</Text>
             )}
           </FormControl>
         </Box>
         {/* 3)Birthday form */}
         <Box mb={7}>
           <Heading fontSize='lg'>{content.birthday.name}</Heading>
-          <Text py={2}>{content.birthday.note}</Text>
+          <Text py={2} fontSize='sm'>{content.birthday.note}</Text>
           <FormControl maxW='600px'>
             <Input
               type='date'
@@ -137,7 +138,7 @@ const ProfileForms = () => {
               {...register('birth_date')}
             />
             {errors.birth_date && (
-              <Text color="red.500" fontSize="sm">{errors.birth_date.message}</Text>
+              <Text color='red.500' fontSize='sm'>{errors.birth_date.message}</Text>
             )}
           </FormControl>
         </Box>
@@ -145,8 +146,8 @@ const ProfileForms = () => {
           m='20px 10px 60px 0px'
           maxW='100px'
           size='md'
-          fontSize='lg'
-          type="submit"
+          fontSize='md'
+          type='submit'
         >
           {lang === 'en' ? 'Publish' : '保存信息'}
         </Button>

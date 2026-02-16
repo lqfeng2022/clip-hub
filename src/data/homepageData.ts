@@ -1,8 +1,8 @@
 export default {
   en : {
     hero : { 
-      title: "Master English. \nSpeak Confidently. \nLearn Real Expressions with AI.", 
-      content: "A hub of 10,000+ real-life English expressions and 10+ unique AI tutors that help you speak naturally - through text, voice, and even face-to-face conversations."
+      title: "Master Languages. \nSpeak Confidently. \nLearn Natural Expressions with AI.", 
+      content: "A hub of 10,000+ real-life English expressions and 10+ unique AI tutors that help you speak naturally - through text, voice, call, and even face-to-face conversations later."
     },
     greeting: {
       title: "I’m Simon.",
@@ -59,8 +59,8 @@ export default {
   },
   zh : {
     hero : { 
-      title: "掌握英语 · 自信开口，\n用 AI 学习最自然的日常英语表达", 
-      content: "一个拥有 10,000+ 日常英语表达式、10+ 不同性格 AI 英语老师的英语口语练习平台，让你通过文字，语音，甚至面对面对话的方式，进行日常口语练习。"
+      title: "掌握外语 · 自信开口，\n用 AI 练习最自然的日常表达", 
+      content: "一个拥有 10,000+ 日常表达式、10+ 不同性格 AI 老师的外语口语练习平台，让你通过文字，语音，电话，甚至面对面的方式（不久）进行日常口语练习。"
     },
     greeting: {
       title: "我是李 秋風",

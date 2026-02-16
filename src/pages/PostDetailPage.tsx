@@ -8,8 +8,15 @@ import ExpressionDetailCard from '@/components/product/ExpressionDetailCard'
 import SubtitleDetailCard from '@/components/product/SubtitleDetailCard'
 import VideoDetailCard from '@/components/product/VideoDetailCard'
 import PostMenu from '@/components/product/PostMenu'
+import useLanguageStore from '@/stores/languageStore'
+import profilePagesData from '@/data/profilePagesData'
 
 const PostDetailPage = () => {
+  const language = useLanguageStore((s) => s.language)
+
+  const header = language === 'en' 
+    ? profilePagesData.en.post : profilePagesData.zh.post
+
   const { id } = useParams() // get `slug` from url
   const { data: prod, isLoading, error } = useProduct(id!)
   
@@ -29,7 +36,7 @@ const PostDetailPage = () => {
         borderBottom='1px'
         borderColor='gray.700'
       >
-        <PageNavTab title='Post'/>
+        <PageNavTab title={header}/>
         <PostMenu product={prod}/>
       </HStack>
       <Box maxW='650px'>

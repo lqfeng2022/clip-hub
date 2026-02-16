@@ -14,7 +14,7 @@ import PostCount from '@/components/product/PostCount'
 const ProfileListsPage = () => {
   const lang = useLanguageStore(s => s.language)
   const header = lang === 'en' 
-    ? profilePagesData.en.your_lists : profilePagesData.zh.your_lists
+    ? profilePagesData.en.lists : profilePagesData.zh.lists
 
   const { data, error, fetchNextPage,  hasNextPage } = useLists()
   const fetchCount = data?.pages.reduce(

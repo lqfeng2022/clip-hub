@@ -9,17 +9,19 @@ const ClipLogo = () => {
           p='1px 15px'
           position='absolute' 
           zIndex={1}
-          as='b' fontSize='2xl' 
+          as='b' 
+          fontSize='2xl' 
           color='yellow'
-          _hover={{ bg: 'gray.700', borderRadius: 'full' }}
-          >
+        >
           C L I P
         </Text>
         <Text
           p='1px 15px'
           position='relative' 
-          top='4px' left='2px'
-          as='b' fontSize='2xl' 
+          top='4px' 
+          left='2px'
+          as='b' 
+          fontSize='2xl' 
           color='orange' 
           opacity='0.6'
         >

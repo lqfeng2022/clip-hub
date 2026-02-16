@@ -64,7 +64,7 @@ export default [
   },
   { 
     title: 'Hosts', 
-    title_ch: 'Host', 
+    title_ch: 'AI 智能体', 
     icon: PiPaperclipHorizontalLight, 
     icon2: PiPaperclipHorizontalFill, 
     isAnon: false, 

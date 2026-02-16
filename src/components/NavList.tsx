@@ -37,7 +37,7 @@ const NavList = () => {
                 />
                 <Show above='xl'>
                   <Text 
-                    fontSize='xl' 
+                    fontSize={lang === 'en' ? 'xl' : 'lg'}
                     color='gray.100'
                     fontWeight={pathname === p.link ? 'bold' : 'semibold'}
                   >

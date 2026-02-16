@@ -2,12 +2,19 @@ import BeatLoader from '@/components/BeatLoader'
 import SubscribeList from '@/components/host/SubscribeList'
 import PageNavTab from '@/components/PageNavTab'
 import PostCount from '@/components/product/PostCount'
+import profilePagesData from '@/data/profilePagesData'
 import useHosts from '@/hooks/store/useHosts'
+import useLanguageStore from '@/stores/languageStore'
 import { Box, Divider, SimpleGrid, Text } from '@chakra-ui/react'
 import React from 'react'
 import InfiniteScroll from 'react-infinite-scroll-component'
 
 const HostsPage = () => {
+  const lang = useLanguageStore(s => s.language)
+  const header = lang === 'en' 
+    ? profilePagesData.en.host : profilePagesData.zh.host
+
+
   const { data, error, fetchNextPage,  hasNextPage } = useHosts()
   const fetchCount = data?.pages.reduce(
     (total, page) => total + page.results.length, 0) || 0
@@ -15,7 +22,7 @@ const HostsPage = () => {
   if (error) return <Text>{error.message}</Text>
   return (
     <>
-      <PageNavTab title='Hosts'/>
+      <PageNavTab title={header}/>
       <PostCount count={fetchCount} genre='Hosts'/>
       <InfiniteScroll
         dataLength={fetchCount}

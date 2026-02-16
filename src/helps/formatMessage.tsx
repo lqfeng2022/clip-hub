@@ -2,10 +2,19 @@
 export const formatMessage = (content: string) => {
   if (!content) return content
 
-  // 1.Fix em-dash spacing
-  let formatted = content.replace(/(\S)—(\S)/g, '$1 — $2')
+  let formatted = content
 
-  // 2.Split by bold first (**text**)
+  // 1. Collapse double hyphens (--) → single em-dash
+  formatted = formatted.replace(/--/g, '—')
+
+  // 2. Collapse repeated full-width em-dashes (—— or — —) → single —
+  formatted = formatted.replace(/—{2,}|\—\s+—/g, '—')
+
+  // 3. Fix English em-dash spacing (a—b → a — b)
+  // Only add spacing if both sides are ASCII letters/numbers
+  formatted = formatted.replace(/([A-Za-z0-9])—([A-Za-z0-9])/g, '$1 — $2')
+
+  // 4. Split by bold first (**text**)
   const boldSplit = formatted.split(/(\*\*.*?\*\*)/g)
 
   return boldSplit.map((part, i) => {
