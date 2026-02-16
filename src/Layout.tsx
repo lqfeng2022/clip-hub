@@ -6,8 +6,11 @@ import RightContent from './components/RightContent'
 import useNavStack from './stores/navStack'
 import { useEffect } from 'react'
 import NavBar from './components/NavBar'
+import useInitializeLanguage from './hooks/useInitializeLanguage'
 
 const Layout = () => {
+  useInitializeLanguage()
+  
   const location = useLocation()
   const push = useNavStack((s) => s.push)
 

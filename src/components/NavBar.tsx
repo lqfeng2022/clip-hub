@@ -1,16 +1,22 @@
-import { HStack, Show, Stack } from '@chakra-ui/react'
+import { HStack, Show, Stack, Box } from '@chakra-ui/react'
 import ClipLogo from './ClipLogo'
-import LanguageTab from './LanguageTab'
 import UserAvatarDrawer from './UserAvatarDrawer'
+import LanguageBadge from './LanguageBadge'
 
 const NavBar = () => {
   return (
     <Show below='md'>
       <Stack p='16px'>
-        <HStack justifyContent='space-between' alignItems='center'>
-          <UserAvatarDrawer/>
-          <ClipLogo/>
-          <LanguageTab/>
+        <HStack
+          display='grid'
+          gridTemplateColumns='1fr auto 1fr'
+          alignItems='center'
+        >
+          <UserAvatarDrawer />
+          <Box position='relative' display='inline-block'>
+            <ClipLogo />
+            <LanguageBadge />
+          </Box>
         </HStack>
       </Stack>
     </Show>
