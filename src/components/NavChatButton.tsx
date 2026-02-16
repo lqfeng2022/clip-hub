@@ -1,5 +1,6 @@
 import { useAuth } from '@/AuthContext'
 import useChatSessionPostNull from '@/hooks/interact/useChatSessionPostNull'
+import useLanguageStore from '@/stores/languageStore'
 import { Button, Text } from '@chakra-ui/react'
 import { useNavigate } from 'react-router-dom'
 
@@ -8,8 +9,11 @@ interface Props {
   onItemClick?: () => void
 }
 const NavChatButton = ({ hostId, onItemClick }: Props) => {
+  const lang = useLanguageStore(s => s.language)
+  
   const { user }= useAuth()
   const { mutate: createChat } = useChatSessionPostNull()
+  
   const navigate = useNavigate()
 
   const handleCreate = () => {
@@ -39,7 +43,7 @@ const NavChatButton = ({ hostId, onItemClick }: Props) => {
       }}
       >
       <Text fontWeight='bold' color='gray.800' fontSize='lg'>
-        Let's Chat
+        {lang === 'en' ? "Let's Chat" : "我们聊聊"}
       </Text>
     </Button>
   )

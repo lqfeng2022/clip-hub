@@ -24,11 +24,10 @@ const ChatAudioBox = ({
   // duration on local (from audio element metadata)
   const [seconds, setSeconds] = useState<number | null>(null)
 
-  // prefer local `seconds` when available, otherwise fall back to backend `duration`
+  // always use backend duration for display
   const displaySeconds: number | null = (
-    seconds != null && Number.isFinite(seconds) && seconds > 0
-  ) ? seconds : (
-    typeof duration === 'number' && Number.isFinite(duration) && duration > 0 ? duration : null
+    typeof duration === 'number' && Number.isFinite(duration) && duration > 0 
+      ? duration : null
   )
 
   const [showContent, setShowContent] = useState(false)
@@ -88,7 +87,7 @@ const ChatAudioBox = ({
             <AudioIcons/>
           </Box>
           <Text fontSize='sm'>
-            {formatDuration(displaySeconds)}
+            {formatDuration(displaySeconds ?? seconds)}
           </Text>
           <audio
             ref={audioRef}

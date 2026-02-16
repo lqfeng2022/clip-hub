@@ -9,15 +9,13 @@ interface Props {
   message: ChatMessage,
   autoPlay?: boolean //receive autoplay flag
 }
-const ChatBotMessage = ({ host, message, autoPlay }: Props) => {
-  const audio = message.audio
-  
+const ChatBotMessage = ({ host, message, autoPlay }: Props) => {  
   return (
     <HStack justify='flex-end'>
       <Stack>
-        {audio ? (
+        {message.audio ? (
           <ChatAudioBox 
-            audioUrl={audio} 
+            audioUrl={message.audio!}
             content={message.content!}
             duration={message.audio_seconds}
             align='right'

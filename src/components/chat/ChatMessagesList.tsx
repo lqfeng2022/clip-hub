@@ -73,8 +73,8 @@ const ChatMessagesList = ({ host, messages }: Props) => {
             :
               <ChatBotMessage 
                 key={index} 
-                message={m} 
                 host={host} 
+                message={m} 
                 autoPlay={isLastOne && !!m.audio}
               />
             }
