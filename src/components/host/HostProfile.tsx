@@ -9,9 +9,16 @@ const HostProfile = ({ host }: { host: Host }) => {
 
   return (
     <>
+      {/* host back image and avatar */}
       <Box position='relative'>
         <Box h='200px' overflow='hidden'>
-          <Image h='200px' w='100%' src={host.cover} objectFit='cover' opacity={0.85}/>
+          <Image 
+            h='200px' 
+            w='100%' 
+            src={host.cover} 
+            objectFit='cover' 
+            opacity={0.85}
+          />
         </Box>
         <Avatar
           position='absolute'
@@ -23,6 +30,7 @@ const HostProfile = ({ host }: { host: Host }) => {
           sx={{boxShadow: '0 0 0 4px #CBD5E0'}}
         />
       </Box>
+      {/* host follow&chat buttons and personal info */}
       <Box p={5}>
         <Box pb={10} textAlign='right'>
           <HostChatButton hostId={host.id.toString()}/>

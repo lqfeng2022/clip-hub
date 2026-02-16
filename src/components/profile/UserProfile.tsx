@@ -40,9 +40,16 @@ const UserProfile = () => {
 
   return (
     <>
+      {/* user back image, avatar and credit bar */}
       <Box position='relative'>
         <Box h='200px' overflow='hidden'>
-          <Image h='200px' w='100%' src={backImage} objectFit='cover' opacity={0.6}/>
+          <Image 
+            h='200px' 
+            w='100%' 
+            src={backImage} 
+            objectFit='cover' 
+            opacity={0.6}
+          />
         </Box>
         <Avatar
           size='large'
@@ -58,6 +65,7 @@ const UserProfile = () => {
           <UserCredit/>
         </Box>
       </Box>
+      {/* user edit button and personal info */}
       <Box px={5} pt={3}>
         <Box pb={7} textAlign='right'>
           {isProfileMePage &&

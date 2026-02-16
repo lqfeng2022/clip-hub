@@ -23,7 +23,7 @@ const HostsPage = () => {
         next={() => fetchNextPage()}
         loader={<BeatLoader/>}
       >
-        <SimpleGrid pt={5} pb='200px'>
+        <SimpleGrid pt={5} pb='100px'>
           {data?.pages.map((page, index) => (
             <React.Fragment key={index}>
                 {page?.results.map((h) =>

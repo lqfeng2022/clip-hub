@@ -1,4 +1,5 @@
 import { useAuth } from '@/AuthContext'
+import useCredit from '@/hooks/billing/useCredit'
 import { HStack, Icon, Badge } from '@chakra-ui/react'
 import { CiKeyboard, CiMicrophoneOn, CiPhone } from 'react-icons/ci'
 import { IoAddOutline, IoVideocamOutline } from 'react-icons/io5'
@@ -21,8 +22,13 @@ const ChatInputControls = ({
   onToggleEnhancement 
 }: Props) => {
   const { user } = useAuth()
-  const canCall = !!user?.bro
+  const { data: credit } = useCredit()
 
+  const balance = credit?.lifetime_credits - credit?.lifetime_debits
+
+  const canAudioChat = balance >= 100
+  const canCall = !!user?.bro && (balance >= 1000)
+  
   const chatMode = isCalling ? 'call' : (isSpeakOn ? 'audio' : 'text')
   const label = `${chatMode}-mode`
 
@@ -37,17 +43,23 @@ const ChatInputControls = ({
         <Icon
           as={isSpeakOn ? CiKeyboard : CiMicrophoneOn}
           boxSize={6}
-          cursor='pointer'
-          onClick={onToggleSpeak}
+          cursor={canAudioChat ? 'pointer' : ''}
+          color={canAudioChat ? undefined : 'gray.500'}
+          onClick={() => { if (canAudioChat) onToggleSpeak() }}
+          title={canAudioChat ? 'Start audio chat' 
+            : "Audio chat unavailable cus you have not enough credits"
+          }
         />
-        {/* CALL mode (UI only) */}
+        {/* CALL mode (bro only) */}
         <Icon
           as={CiPhone}
           boxSize={6}
           cursor={canCall ? 'pointer' : ''}
-          color={isCalling ? 'orange' : (canCall ? undefined : 'gray.500')}
+          color={canCall ? undefined : 'gray.500'}
           onClick={() => { if (canCall) onToggleCall() }}
-          title={canCall ? 'Start call' : "Call unavailable cus you're not bro"}
+          title={canCall ? 'Start call' 
+            : "Call unavailable cus you're not bro or credit balance is less than 1000"
+          }
         />
         {/* VIDEO CALL mode */}
         <Icon as={IoVideocamOutline} boxSize={6} color='gray' />

@@ -88,7 +88,8 @@ const ChatInputForm = ({ chatSession, setMessages }: Props) => {
         created_at: new Date().toISOString(),
       }
       setMessages(prev => [...prev, userMessage])
-      postChatMessage({ type: 'audio', 
+      postChatMessage({ 
+        type: 'audio', 
         audio: blob, 
         is_voice: isSpeakOn, 
         is_enhancement: isEnhancement
