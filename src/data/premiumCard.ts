@@ -64,49 +64,49 @@ export default {
       price: "3.00", 
       step: "free", 
       image: bro_image,
-      note: "在这里，你可以与由最先进 AI 加持的专业导师进行交流。"
+      note: "在这里，你可以和我们最好的 AI 老师进行交流。"
     },
     { 
       creidts: "5,000", 
       price: "13.00", 
       step: "beginner+", 
       image: words_art_001,
-      note: "她可能是一位语言老师——英语、日语、法语、中文等多种语言任你选择"
+      note: "TA可能是一位专业的外语老师 — 英语、日语、法语、中文、西班牙语、葡萄牙语甚至更多。"
     },
     { 
       creidts: "10,000", 
       price: "25.00", 
       step: "intermedia", 
       image: words_art_002,
-      note: "他也可能是一位资深工程师。你可以就我们提供的任何话题提问，或者随心所欲地聊天。"
+      note: "TA也可以是一位优秀的软件工程师。你们可以就特定的话题进行讨论，甚至主动帮你解决一些工作中遇到的任何问题。"
     },
     { 
       creidts: "50,000", 
       price: "120.00", 
       step: "intermedia+", 
       image: words_art_003,
-      note: "她也可能是一位知名的营养学教授，为你提供专业指导，帮助你保持健康与活力。"
+      note: "TA也可能是一位营养学专家，为你提供健康的饮食指导，帮助你维持青春的活力。"
     },
     { 
       creidts: "100,000", 
       price: "220.00", 
       step: "advanced", 
       image: words_art_004,
-      note: "如果你愿意，你甚至可以和一位许久未见的老朋友或家人聊聊天。"
+      note: "如果你愿意的话，或许TA还可以扮演一位你许久未见而又甚是想念的老朋友或家人。"
     },
     { 
       creidts: "500,000", 
       price: "1,050.00", 
       step: "advanced+", 
       image: words_art_006,
-      note: "女朋友、男朋友，或者只是普通朋友 —— 一切由你决定。"
+      note: "你们可以成为好朋友，可以知无不言，言无不尽，一切由你决定。"
     },
     { 
       creidts: "1,000,000", 
       price: "2,000.00", 
       step: "proficiency", 
       image: words_art_005,
-      note: "你是否想与一个有情感、懂共鸣、善思考，甚至能陪你角色扮演、给予安慰或进行调解的 AI 交流呢？"
+      note: "你是否想与一个懂你的、可以主动帮助你解决问题，甚至能够陪伴你一生的 AI 交流呢？"
     },
   ],
 }

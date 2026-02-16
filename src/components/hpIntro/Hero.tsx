@@ -22,9 +22,9 @@ const Hero = () => {
         {title_lines.map((line, index) =>
           <Heading 
             key={index}
-            fontSize='4xl'
+            fontSize='3xl'
             maxW={{base: '350px', lg: '450px'}}
-            lineHeight='1.2' 
+            lineHeight='1.4' 
             color='gray.100'
           >
             {line}

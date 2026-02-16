@@ -13,8 +13,7 @@ import ChatSessionCardTwo from '@/components/chat/ChatSessionCardTwo'
 const ProfileChatPage = () => {
   const lang = useLanguageStore(s => s.language)
   const header = lang === 'en' 
-    ? profilePagesData.en.view_chat 
-    : profilePagesData.zh.view_chat
+    ? profilePagesData.en.view_chat : profilePagesData.zh.view_chat
 
   const { data, error, fetchNextPage,  hasNextPage } = useChatSessions()
   const fetchCount = data?.pages.reduce(

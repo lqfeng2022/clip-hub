@@ -16,7 +16,7 @@ const ChatSessionCardTwo = ({ chat } : { chat: ChatSession }) => {
   const content = () => {
     const latest_message = chat.latest_chat
     if (latest_message) 
-      return `${truncateAtWord(latest_message, 30)}`
+      return `${truncateAtWord(latest_message, 35)}`
     return "There's no messages"
   } 
 
@@ -42,10 +42,7 @@ const ChatSessionCardTwo = ({ chat } : { chat: ChatSession }) => {
         <Link to={`/profile/chat/${chat.id.toString()}`}>
           <HStack spacing={2} pt={2}>
             <Stack spacing={1}>
-              <Text 
-                fontSize={{base: 'xs', sm: 'md'}}
-                color='gray.100'
-              >
+              <Text fontSize='xs' color='gray.100'>
                 {content()}
               </Text>
               <HStack>

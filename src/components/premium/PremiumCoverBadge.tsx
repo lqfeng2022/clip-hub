@@ -1,6 +1,10 @@
 import { Box, Badge, Image } from '@chakra-ui/react'
 
-const PremiumCoverBadge = ({ step, image }: { step: string, image: string }) => {
+interface Props {
+  step: string,
+  image: string,
+}
+const PremiumCoverBadge = ({ step, image }: Props) => {
   return (
     <Box 
       position='relative' 
@@ -17,8 +21,8 @@ const PremiumCoverBadge = ({ step, image }: { step: string, image: string }) => 
         position='absolute'
         top={3}
         right={3}
-        bg='green.600'
-        fontWeight='semibold'
+        bg='green.700'
+        fontWeight='light'
         fontSize='0.8em'
       >
         {step}

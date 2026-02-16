@@ -16,6 +16,7 @@ const NavList = () => {
     <Box 
       py={5}
       px={{base: 1, xl: 5}}
+      mx={1}
       display='flex' 
       flexDirection='column' 
       height='100vh'
@@ -35,7 +36,7 @@ const NavList = () => {
                   as={pathname === p.link ? p.icon2 : p.icon}
                   boxSize='28px' color='gray.200'
                 />
-                <Show above='xl'>
+                <Show above='lg'>
                   <Text 
                     fontSize={lang === 'en' ? 'xl' : 'lg'}
                     color='gray.100'
@@ -49,7 +50,7 @@ const NavList = () => {
           </ListItem>
         ))}
       </List>
-      <Show above='xl'>
+      <Show above='lg'>
         <NavChatButton/>
       </Show>
       <UserAvatarBottom/>

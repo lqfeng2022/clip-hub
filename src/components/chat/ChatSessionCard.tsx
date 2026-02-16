@@ -10,7 +10,7 @@ import { formatMessage } from '@/helps/formatMessage'
 const ChatSessionCard = ({ chat } : { chat: ChatSession }) => {
   const product = chat.product
   const host = chat.host
-  const {image, title } = getProductDisplay(product, 30)
+  const {image, title } = getProductDisplay(product, 40)
 
   return (
     <HStack 
@@ -51,10 +51,7 @@ const ChatSessionCard = ({ chat } : { chat: ChatSession }) => {
               <Image src={image ?? noImage}/>
             </Box>
             <Stack spacing={1}>
-              <Text 
-                fontSize={{base: 'xs', sm: 'sm'}}
-                color='gray.100'
-              >
+              <Text fontSize='xs' color='gray.100'>
                 {formatMessage(title!)}
               </Text>
               <HStack>

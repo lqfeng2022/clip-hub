@@ -4,6 +4,7 @@ import { Avatar, Box, HStack, Image, Text } from '@chakra-ui/react'
 import PostBadges from '../product/PostBadges'
 import { Link } from 'react-router-dom'
 import ChatSession from '@/entities/ChatSession'
+import { formatMessage } from '@/helps/formatMessage'
 
 interface Props {
   chat: ChatSession,
@@ -11,7 +12,7 @@ interface Props {
 const ChatSessionCardSimple = ({ chat } : Props) => {
   const product = chat.product
   const host = chat.host
-  const { image, title } = getProductDisplay(product, 35)
+  const { image, title } = getProductDisplay(product, 40)
 
   return (
     <HStack 
@@ -57,10 +58,9 @@ const ChatSessionCardSimple = ({ chat } : Props) => {
           </Link>
           <Text 
             fontSize={{base: 'xs', sm: 'sm'}}
-            fontWeight='bold' 
             color='gray.100'
           >
-            {title}
+            {formatMessage(title!)}
           </Text>
         </HStack>
       </Box>
