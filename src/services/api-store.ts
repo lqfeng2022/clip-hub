@@ -28,6 +28,13 @@ class APIClient<T> {
       .then((res) => res.data)
   }
 
+  // get all playlist products
+  getPlaylistProducts = (id: string, config?: AxiosRequestConfig) => {
+    return axiosInstance
+      .get<FetchResponse<T>>(`${this.endpoint}/${id}/products/`, config)
+      .then((res) => res.data) //extract data from response
+  }
+
   getRelevant = (id: number | string, config?: AxiosRequestConfig) => {
     return axiosInstance
       .get<FetchResponse<T>>(`${this.endpoint}/${id}/relevants/`, config)

@@ -9,7 +9,7 @@ const CollectionCardIcon = () => {
       color='yellow.200'
       position='absolute'
       top={2}
-      left={2}
+      right={2}
       p={1.5}
       bg='rgba(0,0,0,0.4)'
       borderRadius='lg'

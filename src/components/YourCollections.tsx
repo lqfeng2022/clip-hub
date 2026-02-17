@@ -1,21 +1,14 @@
+import BeatLoader from '@/components/BeatLoader'
+import PostCount from '@/components/product/PostCount'
 import useListDelete from '@/hooks/interact/useListDelete'
-import useLists from '@/hooks/interact/useLists'
 import useListUpdate from '@/hooks/interact/useListPut'
-import useLanguageStore from '@/stores/languageStore'
+import useLists from '@/hooks/interact/useLists'
 import { Box, SimpleGrid, Text } from '@chakra-ui/react'
 import React from 'react'
 import InfiniteScroll from 'react-infinite-scroll-component'
-import CollectionCard from '../components/collection/CollectionCard'
-import BeatLoader from '@/components/BeatLoader'
-import profilePagesData from '@/data/profilePagesData'
-import PageNavTab from '@/components/PageNavTab'
-import PostCount from '@/components/product/PostCount'
+import CollectionCard from './collection/CollectionCard'
 
-const ProfileListsPage = () => {
-  const lang = useLanguageStore(s => s.language)
-  const header = lang === 'en' 
-    ? profilePagesData.en.lists : profilePagesData.zh.lists
-
+const YourCollections = () => {
   const { data, error, fetchNextPage,  hasNextPage } = useLists()
   const fetchCount = data?.pages.reduce(
     (total, page) => total + page.results.length, 0) || 0
@@ -33,7 +26,6 @@ const ProfileListsPage = () => {
   if (error) return <Text>{error.message}</Text>
   return (
     <>
-      <PageNavTab title={header}/>
       <PostCount count={fetchCount} genre='Lists'/>
       <InfiniteScroll
         dataLength={fetchCount}
@@ -63,4 +55,4 @@ const ProfileListsPage = () => {
   )
 }
 
-export default ProfileListsPage
+export default YourCollections

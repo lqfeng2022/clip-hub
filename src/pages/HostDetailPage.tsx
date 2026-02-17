@@ -5,18 +5,26 @@ import HostTabs from '@/components/host/HostTabs'
 import useHost from '@/hooks/store/useHost'
 import { Stack, Text } from '@chakra-ui/react'
 import { useParams } from 'react-router-dom'
-import AllPosts from '@/components/product/AllPosts'
 import { useEffect } from 'react'
 import useProductFilterStore from '@/stores/productFilterStore'
+import HostPlaylists from '@/components/host/HostPlaylists'
+import AllPosts from '@/components/product/AllPosts'
+import usePlaylistQueryStore from '@/stores/playlistStore'
 
 const HostDetailPage = () => {
+  const tab = useProductFilterStore(s => s.hostTab)
+  
   const { hostSlug } = useParams<{hostSlug?: string}>() // get `slug` from url
   const { data: host, isLoading, error } = useHost(hostSlug!)
-
+  
   // set host ID when host is loaded
-  const setHostId = useProductFilterStore((s) => s.setHostId)
+  const setPlaylistHostId = usePlaylistQueryStore((s) => s.setHostId)
+  const setProductHostId = useProductFilterStore((s) => s.setHostId)
   useEffect(() => {
-    if (host?.id) setHostId(host.id)
+    if (host?.id) {
+      setProductHostId(host.id)
+      setPlaylistHostId(host.id)
+    }
   }, [host?.id])
   
   if (!hostSlug) return <Text>No Host found</Text>
@@ -28,7 +36,7 @@ const HostDetailPage = () => {
       <PageNavTab title={host?.name}/>
       <HostProfile host={host!}/>
       <HostTabs/>
-      <AllPosts/>
+      {tab === 'Playlists' ? <HostPlaylists/> : <AllPosts/>}
     </Stack>
 )
 }

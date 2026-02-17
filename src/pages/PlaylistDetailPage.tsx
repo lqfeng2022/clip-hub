@@ -1,47 +1,37 @@
-import { Box, SimpleGrid, Text } from '@chakra-ui/react'
-import ExpressionCard from '@/components/product/ExpressionCard'
+import BeatLoader from '@/components/BeatLoader'
 import PageNavTab from '@/components/PageNavTab'
+import ExpressionCard from '@/components/product/ExpressionCard'
+import PostCount from '@/components/product/PostCount'
 import SubtitleCard from '@/components/product/SubtitleCard'
 import VideoCard from '@/components/product/VideoCard'
-import useListProducts from '@/hooks/interact/useListProducts'
-import { useLocation, useParams } from 'react-router-dom'
-import useList from '@/hooks/interact/useList'
-import BeatLoader from '@/components/BeatLoader'
+import usePlaylist from '@/hooks/store/usePlaylist'
+import usePlaylistProducts from '@/hooks/store/usePlaylistProducts'
+import { Box, SimpleGrid, Text } from '@chakra-ui/react'
 import React from 'react'
 import InfiniteScroll from 'react-infinite-scroll-component'
-import PostCount from '@/components/product/PostCount'
-import { truncateAtWord } from '@/helps/textWorker'
+import { useLocation, useParams } from 'react-router-dom'
 
-const ProfileListDetailPage = () => {
-  // fetch list using slug (this will return id)
-  const { slug } = useParams<{slug?: string}>() // we ALWAYS have slug
-  const { data: list, isLoading: listLoading } = useList(slug!)
+const PlaylistDetailPage = () => {
+  const { slug } = useParams<{slug?: string}>() // is short_uuid actually
+  const { data: list, isLoading: listLoading } = usePlaylist(slug!)
 
-  // if coming from previous page, we still get list from state (optional)
   const { state } = useLocation()
   const passedList = state?.list
 
-  // pick id priority:
-  // 1. from useList (fresh from API)
-  // 2. fallback to state (fast navigation)
-  const listId = list?.id || passedList?.id
+  const listId = list?.short_uuid || passedList?.id
 
-  // When list is not loaded yet, don't run products query
-  const { data: products, error, fetchNextPage, hasNextPage } = useListProducts(
-    listId!, { 
-      enabled: !!listId,   // IMPORTANT
-  })
+  const { data: products, error, fetchNextPage, hasNextPage } = usePlaylistProducts(
+    listId!, { enabled: !!listId })
 
   if (listLoading) return <BeatLoader />
   if (error) return <Text>{error.message}</Text>
 
   const fetchCount = products?.pages.reduce(
       (total, page) => total + page.results.length, 0) || 0
-  const list_title = truncateAtWord(list!.title, 40)
   
   return (
     <>
-      <PageNavTab title={list_title}/>
+      <PageNavTab title={list!.title}/>
       <PostCount count={fetchCount} genre='Posts'/>
       <InfiniteScroll
         dataLength={fetchCount}
@@ -70,4 +60,4 @@ const ProfileListDetailPage = () => {
   )
 }
 
-export default ProfileListDetailPage
+export default PlaylistDetailPage

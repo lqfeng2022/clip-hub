@@ -33,7 +33,7 @@ const NavChatButton = ({ hostId, onItemClick }: Props) => {
   return (
     <Button
       size='md'
-      px='75px' py='27px' my={4}
+      px='40px' py='27px' my={4}
       bg='gray.100'
       borderRadius='full'
       _hover={{ bg: 'gray.200'}}

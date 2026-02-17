@@ -11,7 +11,7 @@ import SubtitleCard from '@/components/product/SubtitleCard'
 import VideoCard from '@/components/product/VideoCard'
 import PostCount from '@/components/product/PostCount'
 
-const ProfileBookmarkPage = () => {
+const BookmarkPage = () => {
   const lang = useLanguageStore(s => s.language)
   const header = lang === 'en' 
     ? profilePagesData.en.bookmark : profilePagesData.zh.bookmark
@@ -53,4 +53,4 @@ const ProfileBookmarkPage = () => {
   )
 }
 
-export default ProfileBookmarkPage
+export default BookmarkPage

@@ -1,14 +1,14 @@
 import useProductFilterStore, { HostTab } from '@/stores/productFilterStore'
 import { Center, SimpleGrid, Text } from '@chakra-ui/react'
 
-const tabs: HostTab[] = ['All', 'Clips', 'Words', 'Videos']
+const tabs: HostTab[] = ['All', 'Clips', 'Words', 'Videos', 'Playlists']
 
 const HostTabs = () => {
   const current = useProductFilterStore(s => s.hostTab)
   const setTab = useProductFilterStore(s => s.setHostTab)
 
   return (
-    <SimpleGrid columns={4} height='55px'>
+    <SimpleGrid columns={5} height='55px'>
       {tabs.map(t => (
         <Center
           key={t}
