@@ -1,4 +1,4 @@
-import { Center, SimpleGrid, Text } from '@chakra-ui/react'
+import { Center, HStack, Text } from '@chakra-ui/react'
 import { useState } from 'react'
 
 type SearchTag = 'Likes' | 'Histories' | 'Subscribes'
@@ -19,17 +19,20 @@ const ProfileTabs = ({ value, onChange }: Props) => {
   }
 
   return (
-    <SimpleGrid columns={3} height='55px'>
+    <HStack pl='3px'>
       {tabs.map(tab => (
         <Center
           key={tab}
+          height='55px'
+          px={3}
           cursor='pointer'
           onClick={() => handleSelect(tab)}
         >
           <Text
             fontWeight='semibold'
+            fontSize='sm'
             color={selected === tab ? 'gray.100' : 'gray.500'}
-            borderBottom={selected === tab ? '2px solid' : 'none'}
+            borderBottom={selected === tab ? '1px solid' : 'none'}
             borderColor='yellow.400'
             lineHeight={2}
           >
@@ -37,7 +40,7 @@ const ProfileTabs = ({ value, onChange }: Props) => {
           </Text>
         </Center>
       ))}
-    </SimpleGrid>
+    </HStack>
   )
 }
 

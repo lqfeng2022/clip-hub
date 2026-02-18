@@ -20,7 +20,7 @@ const PostMenu = ({ product }: Props) => {
         aria-label='Options'
         icon={<TfiMoreAlt />}
         variant='ghost'
-        boxSize={5}
+        size='sm'
         color='gray.300'
         disabled={!user}
         _hover={{ bg: 'transparent', color: 'white' }}

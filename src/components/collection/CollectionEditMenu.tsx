@@ -1,5 +1,5 @@
 import { Icon, IconButton, Menu, MenuButton, MenuItem, MenuList, Text } from '@chakra-ui/react'
-import { CgMoreVertical } from 'react-icons/cg'
+import { CgMoreVerticalAlt } from 'react-icons/cg'
 import { FaRegEdit } from 'react-icons/fa'
 import { AiFillDelete } from 'react-icons/ai'
 
@@ -13,33 +13,33 @@ const CollectionEditMenu = ({ onDelete, onOpen }: Props ) => {
         <MenuButton  
           as={IconButton}
           aria-label='Options'
-          icon={<CgMoreVertical />}
+          icon={<CgMoreVerticalAlt />}
           variant='ghost'
-          size='md'
+          size='sm'
           borderRadius='full'
         />
         <MenuList 
           py={0}
-          borderRadius='xl'
+          borderRadius='lg'
           overflow='hidden'
         >
           <MenuItem 
-            fontSize='xl' 
+            fontSize='lg' 
             onClick={onDelete} 
             py={2}
           >
             <Icon as={AiFillDelete} mr={3}/>
-            <Text fontWeight='semibold' fontSize='md'>
+            <Text fontWeight='semibold' fontSize='sm'>
               Delete
             </Text>
           </MenuItem>
           <MenuItem 
-            fontSize='xl' 
+            fontSize='lg' 
             onClick={onOpen} 
             py={2}
           >
             <Icon as={FaRegEdit} mr={3}/>
-            <Text fontWeight='semibold' fontSize='md'>
+            <Text fontWeight='semibold' fontSize='sm'>
               Edit
             </Text>
           </MenuItem>

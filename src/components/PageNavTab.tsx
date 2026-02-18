@@ -1,5 +1,5 @@
 import useNavStack from '@/stores/navStack'
-import { Box, Heading, HStack, Icon } from '@chakra-ui/react'
+import { Box, Text, HStack, Icon } from '@chakra-ui/react'
 import { IoIosArrowRoundBack } from 'react-icons/io'
 import { useNavigate } from 'react-router-dom'
 
@@ -30,7 +30,7 @@ const PageNavTab = ({ title }: { title?: string }) => {
       <HStack spacing='10px'>
         <Icon
           as={IoIosArrowRoundBack}
-          boxSize={8}
+          boxSize={6}
           onClick={goBack}
           _hover={{
             bg: 'gray.600', borderRadius: 'full', opacity: '0.8'
@@ -38,12 +38,13 @@ const PageNavTab = ({ title }: { title?: string }) => {
           cursor='pointer'
           transition='0.1s'
         />
-        <Heading
-          fontSize='md'
+        <Text
+          fontSize='sm'
           borderColor='yellow.400'
+          noOfLines={1}
         >
           {title}
-        </Heading>
+        </Text>
       </HStack>
     </Box>
   )

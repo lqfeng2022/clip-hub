@@ -47,7 +47,8 @@ const Layout = () => {
           area='main' 
           display='flex' 
           justifyContent='center'
-          borderX='1px' borderColor='gray.700'
+          borderX={{base: '1px'}}
+          borderColor='gray.700'
         >
           <Box mx='auto' width='100%'>
             <NavBar/>

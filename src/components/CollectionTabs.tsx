@@ -37,9 +37,8 @@ const CollectionTabs = ({ value, onChange }: Props) => {
           _hover={{background: 'gray.700', opacity: '0.99'}}
         >
           <Text
-            fontWeight='bold'
             color={selected === tab ? 'gray.100' : 'gray.500'}
-            borderBottom={selected === tab ? '2px solid' : 'none'}
+            borderBottom={selected === tab ? '1px solid' : 'none'}
             borderColor='yellow.400'
             lineHeight={2}
           >

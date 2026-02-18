@@ -20,18 +20,18 @@ const SessionMenuNull = ({ chat }: { chat: ChatSession}) => {
         aria-label='Options'
         icon={<TfiMoreAlt />}
         variant='ghost'
-        boxSize={6}
+        size='sm'
         color='gray.300'
         borderRadius='full'
       />
       <MenuList 
         bg='gray.700' 
         py={0}
-        borderRadius='xl'
+        borderRadius='lg'
         overflow='hidden'
       >
         <MenuItem 
-          fontSize='xl' 
+          fontSize='lg' 
           py={2}
           onClick={() => handleDelteChat(chat.id)}
         >

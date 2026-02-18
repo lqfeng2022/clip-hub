@@ -6,7 +6,7 @@ const CollectionCardIcon = () => {
     <Icon
       as={FaFolder}
       boxSize={12}
-      color='yellow.200'
+      color='yellow.400'
       position='absolute'
       top={2}
       right={2}

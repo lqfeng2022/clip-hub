@@ -1,5 +1,5 @@
 import Collection from '@/entities/Collection'
-import { Heading } from '@chakra-ui/react'
+import { Text } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
 
 const CollectionCardTitle = ({ list }: { list: Collection }) => {
@@ -11,7 +11,7 @@ const CollectionCardTitle = ({ list }: { list: Collection }) => {
       to={hasItems ? contentLink : ''} 
       state={{list}}
     >
-      <Heading
+      <Text
         fontSize='sm'
         noOfLines={2}
         pt='6px'
@@ -19,7 +19,7 @@ const CollectionCardTitle = ({ list }: { list: Collection }) => {
         cursor={hasItems ? 'pointer' : 'default'}
       >
         {list.title}
-      </Heading>
+      </Text>
     </Link>
   )
 }

@@ -28,7 +28,7 @@ const SessionMenu = ({ chat }: Props) => {
         aria-label='Options'
         icon={<TfiMoreAlt />}
         variant='ghost'
-        boxSize={6}
+        size='sm'
         color='gray.300'
         borderRadius='full'
       />

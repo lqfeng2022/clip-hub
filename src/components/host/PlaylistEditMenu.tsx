@@ -1,59 +1,40 @@
 import { Icon, IconButton, Menu, MenuButton, MenuItem, MenuList, Text } from '@chakra-ui/react'
-import { CgMoreVertical } from 'react-icons/cg'
+import { CgMoreVerticalAlt } from 'react-icons/cg'
 import { IoIosAdd } from 'react-icons/io'
 import { AiFillDelete } from 'react-icons/ai'
 
 interface Props {
+  isSaved: boolean,
   onAdd?: () => void,
   onDelete?: () => void,
 }
-const PlaylistEditMenu = ({ onAdd, onDelete }: Props ) => {
+const PlaylistEditMenu = ({ onAdd, onDelete, isSaved }: Props ) => {
     return (
       <Menu>
         <MenuButton  
           as={IconButton}
           aria-label='Options'
-          icon={<CgMoreVertical />}
+          icon={<CgMoreVerticalAlt />}
           variant='ghost'
-          size='md'
+          size='sm'
           borderRadius='full'
         />
-        {onAdd && (
-          <MenuList 
-            py={0}
-            borderRadius='xl'
-            overflow='hidden'
+        <MenuList 
+          py={0}
+          borderRadius='lg'
+          overflow='hidden'
+        >
+          <MenuItem 
+            fontSize='lg' 
+            onClick={isSaved ? onDelete : onAdd} 
+            py={2}
           >
-            <MenuItem 
-              fontSize='xl' 
-              onClick={onAdd} 
-              py={2}
-            >
-              <Icon as={IoIosAdd} mr={3}/>
-              <Text fontWeight='semibold' fontSize='md'>
-                Add
-              </Text>
-            </MenuItem>
-          </MenuList>
-        )}
-        {onDelete && (
-          <MenuList 
-            py={0}
-            borderRadius='xl'
-            overflow='hidden'
-          >
-            <MenuItem 
-              fontSize='xl' 
-              onClick={onDelete} 
-              py={2}
-            >
-              <Icon as={AiFillDelete} mr={3}/>
-              <Text fontWeight='semibold' fontSize='md'>
-                Delete
-              </Text>
-            </MenuItem>
-          </MenuList>
-        )}
+            <Icon as={isSaved ? AiFillDelete : IoIosAdd} mr={3}/>
+            <Text fontWeight='semibold' fontSize='sm'>
+              {isSaved ? 'Delete' : 'Add'}
+            </Text>
+          </MenuItem>
+        </MenuList>
       </Menu>
   )
 }

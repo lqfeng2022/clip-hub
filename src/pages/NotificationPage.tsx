@@ -13,12 +13,12 @@ const NotificationPage = () => {
     <>
       <PageNavTab title={header}/>
       <Stack textAlign='start' m={5} h='90vh'>
-        <Heading fontSize='2xl'>
+        <Heading fontSize='xl'>
           Nothing to see here — yet
         </Heading>
-        <Text color='gray.400'>
+        <Text color='gray.400' fontSize='sm'>
           When someone mentions you, you’ll find it here.
-          </Text>
+        </Text>
       </Stack>
     </>
   )

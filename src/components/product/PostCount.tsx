@@ -12,7 +12,7 @@ const PostCount = ({ count, genre }: Props) => {
       borderColor='gray.500'
       opacity='0.6'
     >
-      <Text fontWeight='semibold' color='yellow.200'>
+      <Text fontSize='sm' color='yellow.200'>
         {`Show ${count} ${genre}`}
       </Text>
     </Center> 

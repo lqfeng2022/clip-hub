@@ -31,7 +31,7 @@ const PlaylistCard = ({ list, onAdd }: Props) => {
               {list.title}
             </Text>
           </Link>
-          <PlaylistEditMenu onAdd={onAdd}/>
+          <PlaylistEditMenu isSaved={false} onAdd={onAdd}/>
         </HStack>
       </CardBody>
     </Card>
