@@ -7,14 +7,14 @@ interface PlaylistQuery {
 interface PlaylistQueryStore {
   playlistQuery: PlaylistQuery,
 
-  setCourseId: (courseId: number) => void,
+  setHostId: (hostId: number) => void,
 }
 
 const usePlaylistQueryStore = create<PlaylistQueryStore>((set) => ({
   playlistQuery: {},
 
-  setCourseId: (courseId) => set((store) => ({ 
-    playlistQuery: { ...store.playlistQuery, courseId } 
+  setHostId: (hostId) => set((store) => ({ 
+    playlistQuery: { ...store.playlistQuery, hostId } 
   })),
 }))
 

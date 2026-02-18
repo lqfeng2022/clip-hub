@@ -11,6 +11,7 @@ import HostPlaylists from '@/components/host/HostPlaylists'
 import AllPosts from '@/components/product/AllPosts'
 import usePlaylistQueryStore from '@/stores/playlistStore'
 import HostCourses from '@/components/host/HostCourses'
+import useCourseQueryStore from '@/stores/courseStore'
 
 const HostDetailPage = () => {
   const { hostSlug } = useParams<{hostSlug?: string}>() // get `slug` from url
@@ -19,15 +20,17 @@ const HostDetailPage = () => {
   const tab = useProductFilterStore(s => s.hostTab)
   
   // set host ID when host is loaded
-  const setPlaylistHostId = usePlaylistQueryStore((s) => s.setCourseId)
   const setProductHostId = useProductFilterStore((s) => s.setHostId)
+  const setPlaylistHostId = usePlaylistQueryStore((s) => s.setHostId)
+  const setCourseHostId = useCourseQueryStore((s) => s.setHostId)
 
   // Sync host ID into stores
   useEffect(() => {
     if (!host?.id) return
     setProductHostId(host.id)
     setPlaylistHostId(host.id)
-  }, [host?.id, setProductHostId, setPlaylistHostId])
+    setCourseHostId(host.id)
+  }, [host?.id])
   
   if (!hostSlug) return <Text>No Host found</Text>
   if (isLoading) return <BeatLoader/>

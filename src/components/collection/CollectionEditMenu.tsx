@@ -17,6 +17,10 @@ const CollectionEditMenu = ({ onDelete, onOpen }: Props ) => {
           variant='ghost'
           size='sm'
           borderRadius='full'
+          _hover={{ bg: 'transparent' }}
+          _active={{ bg: 'transparent' }}
+          _focus={{ boxShadow: 'none' }}
+          _expanded={{ bg: 'transparent' }}
         />
         <MenuList 
           py={0}

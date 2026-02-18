@@ -40,6 +40,7 @@ const PageNavTab = ({ title }: { title?: string }) => {
         />
         <Text
           fontSize='md'
+          fontWeight='semibold'
           borderColor='yellow.400'
           noOfLines={1}
         >

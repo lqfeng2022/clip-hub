@@ -23,6 +23,7 @@ const CourseCard = ({ course, onAdd }: Props) => {
           <Link to={contentLink} state={{course}}>
             <Text
               fontSize='sm'
+              fontWeight='bold'
               noOfLines={3}
               pt='6px'
               _hover={{ color: 'yellow.300' }}
