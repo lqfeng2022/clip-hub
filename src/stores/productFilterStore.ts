@@ -3,7 +3,7 @@ import { create } from 'zustand'
 export type ProductType = 'expression' | 'subtitle' | 'video' | null
 
 // Convert Host tabs -> type filter
-export type HostTab = 'All' | 'Words' | 'Clips' | 'Videos' | 'Playlists'
+export type HostTab = 'All' | 'Words' | 'Clips' | 'Videos' | 'Playlists' | 'Courses'
 const hostTabToType = (tab: HostTab): ProductType => {
   switch (tab) {
     case 'Words':   return 'expression'

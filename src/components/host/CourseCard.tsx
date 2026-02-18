@@ -1,15 +1,15 @@
-import { Card, CardBody, Text, HStack } from '@chakra-ui/react'
+import Course from '@/entities/Course'
+import { Card, CardBody, HStack, Text } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
-import PlaylistCardCover from './PlaylistCardCover'
+import CourseCardCover from './CourseCardCover'
 import PlaylistEditMenu from './PlaylistEditMenu'
-import SavedPlaylist from '@/entities/SavedPlaylist'
 
 interface Props {
-  list: SavedPlaylist,
-  onDelete: () => void,
+  course: Course,
+  onAdd: () => void,
 }
-const PlaylistCardSaved = ({ list, onDelete }: Props) => {
-  const contentLink = `/profile/playlist/${list.playlist.short_uuid}`
+const CourseCard = ({ course, onAdd }: Props) => {
+  const contentLink = `/profile/courses/${course.slug}`
 
   return (
     <Card 
@@ -17,10 +17,10 @@ const PlaylistCardSaved = ({ list, onDelete }: Props) => {
       variant='unstyled' 
       borderRadius={12}
     >
-      <PlaylistCardCover list={list.playlist}/>
+      <CourseCardCover course={course}/>
       <CardBody pl='10px' pr='5px'>
         <HStack justifyContent='space-between' alignItems='flex-start'>
-          <Link to={contentLink} state={{list}}>
+          <Link to={contentLink} state={{course}}>
             <Text
               fontSize='sm'
               noOfLines={3}
@@ -28,14 +28,14 @@ const PlaylistCardSaved = ({ list, onDelete }: Props) => {
               _hover={{ color: 'yellow.300' }}
               cursor='pointer'
             >
-              {list.playlist.title}
+              {course.title}
             </Text>
           </Link>
-          <PlaylistEditMenu isSaved={true} onDelete={onDelete}/>
+          <PlaylistEditMenu isSaved={false} onAdd={onAdd}/>
         </HStack>
       </CardBody>
     </Card>
   )
 }
 
-export default PlaylistCardSaved
+export default CourseCard

@@ -1,13 +1,13 @@
 import { Box, Image, AspectRatio } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
 import CollectionCardIcon from '../collection/CollectionCardIcon'
-import Playlist from '@/entities/Playlist'
+import Course from '@/entities/Course'
 
-const PlaylistCardCover = ({ list }: { list: Playlist }) => {
-  const contentLink = `/profile/collection/${list.slug}`
+const CourseCardCover = ({ course }: { course: Course }) => {
+  const contentLink = `/profile/course/${course.slug}`
   
   return (
-    <Link to={contentLink} state={{list}}>
+    <Link to={contentLink} state={{course}}>
       <Box 
         position='relative' 
         width={{ base: '50vw', sm: '300px' }}   // fixed width instead of only maxW
@@ -19,7 +19,7 @@ const PlaylistCardCover = ({ list }: { list: Playlist }) => {
       >
         <AspectRatio ratio={16 / 9} width='100%'>
           <Image
-            src={list.cover}
+            src={course.cover}
             objectFit='cover'
             className={'img-hover'}
             cursor='pointer'
@@ -33,4 +33,4 @@ const PlaylistCardCover = ({ list }: { list: Playlist }) => {
   )
 }
 
-export default PlaylistCardCover
+export default CourseCardCover

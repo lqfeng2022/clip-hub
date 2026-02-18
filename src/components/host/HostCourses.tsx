@@ -1,28 +1,28 @@
 import BeatLoader from '@/components/BeatLoader'
-import usePlaylists from '@/hooks/store/usePlaylists'
 import { Box, SimpleGrid, Text, useToast } from '@chakra-ui/react'
 import React from 'react'
 import InfiniteScroll from 'react-infinite-scroll-component'
 import PostCount from '../product/PostCount'
-import PlaylistCard from './PlaylistCard'
-import usePlaylistAdd from '@/hooks/interact/usePlaylistAdd'
+import useCourses from '@/hooks/store/useCourses'
+import CourseCard from './CourseCard'
+import useCourseAdd from '@/hooks/interact/useCourseAdd'
 
-const HostPlaylists = () => {
-  const { data, error, fetchNextPage, hasNextPage, isLoading  } = usePlaylists()
+const HostCourses = () => {
+  const { data, error, fetchNextPage, hasNextPage, isLoading  } = useCourses()
   
   const fetchCount = data?.pages.reduce(
     (sum, page) => sum + page.results.length, 0) || 0
     
   const toast = useToast()
   
-  const { mutate: addPlaylist } = usePlaylistAdd()
+  const { mutate: addCourse } = useCourseAdd()
 
-  const handleAddPlaylist = (playlist: string) => {
-    addPlaylist({ playlist }, { 
+  const handleAddCourse = (course: string) => {
+    addCourse({ course }, { 
       onSuccess: () => {
         toast({
-          title: 'Playlist added.',
-          description: "We've put this playlist in your collections",
+          title: 'Course added.',
+          description: "We've put this course in your collections",
           status: 'success',
           duration: 3000,
           isClosable: true,
@@ -36,7 +36,7 @@ const HostPlaylists = () => {
 
   return (
     <>
-      <PostCount count={fetchCount} genre='Playlists'/>
+      <PostCount count={fetchCount} genre='Courses'/>
       <InfiniteScroll
         dataLength={fetchCount}
         hasMore={!!hasNextPage}
@@ -46,11 +46,11 @@ const HostPlaylists = () => {
         <SimpleGrid  pl={4} py={8} gap={6} pb='100px'>
           {data?.pages.map((page, index) => (
             <React.Fragment key={index}>
-              {page?.results.map((list) =>
-                <Box key={list.short_uuid}>
-                  <PlaylistCard 
-                    list={list} 
-                    onAdd={() => handleAddPlaylist(list.short_uuid)}
+              {page?.results.map((course) =>
+                <Box key={course.id}>
+                  <CourseCard 
+                    course={course} 
+                    onAdd={() => handleAddCourse(course.slug)}
                   />
                 </Box>
               )}
@@ -62,4 +62,4 @@ const HostPlaylists = () => {
   )
 }
 
-export default HostPlaylists
+export default HostCourses

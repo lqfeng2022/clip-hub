@@ -21,6 +21,7 @@ import PremiumPaymentPage from './pages/PremiumPaymentPage'
 import HostsPage from './pages/HostsPage'
 import Playground from './Playground'
 import PlaylistDetailPage from './pages/PlaylistDetailPage'
+import CourseDetailPage from './pages/CourseDetailPage'
 
 const router = createBrowserRouter([
   {
@@ -32,28 +33,29 @@ const router = createBrowserRouter([
       { path: 'search', element: <SearchPage/> },
       { path: 'notifications', element: <NotificationPage/> },
       { path: 'products/:id', element: <PostDetailPage/> },
-      { path: 'host/:hostSlug', element: <HostDetailPage/> },
       { path: 'premium', 
         children: [
           { index: true, element: <PremiumPage/> },
           { path: 'payment', element: <PremiumPaymentPage/> },
         ],
       },
+      { path: 'hosts', element: <HostsPage/> },
+      { path: 'host/:hostSlug', element: <HostDetailPage/> },
       { path: 'languages', element: <LanguageSettingPage/> },
       { 
         path: 'profile', 
         children: [
-          { index: true, element: <ProfilePage /> },
-          { path: 'me', element: <ProfileEditPage /> },
+          { index: true, element: <ProfilePage/> },
+          { path: 'me', element: <ProfileEditPage/> },
           { path: 'chat', element: <ProfileChatPage/> },
           { path: 'chat/:id', element: <ChatDetailPage/> },
           { path: 'bookmark', element: <BookmarkPage/> },
-          { path: 'collection', element: <CollectionPage /> },
-          { path: 'collection/:slug', element: <CollectionDetailPage /> },
+          { path: 'collection', element: <CollectionPage/> },
+          { path: 'collection/:slug', element: <CollectionDetailPage/> },
+          { path: 'courses/:slug', element: <CourseDetailPage/> }, 
           { path: 'playlist/:slug', element: <PlaylistDetailPage/> },
         ],
       },
-      { path: 'hosts', element: <HostsPage/> },
       { path: 'user/signin', element: <SigninPage/> },
       { path: 'user/signup', element: <SignupPage/> },
       { path: 'playground', element: <Playground/> },

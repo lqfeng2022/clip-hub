@@ -1,24 +1,18 @@
 import BeatLoader from '@/components/BeatLoader'
+import PlaylistCardSaved from '@/components/host/PlaylistCardSaved'
 import PostCount from '@/components/product/PostCount'
-import useListDelete from '@/hooks/interact/useListDelete'
-import useListUpdate from '@/hooks/interact/useListPut'
-import useLists from '@/hooks/interact/useLists'
+import useSavedPlaylists from '@/hooks/interact/useSavedPlaylist'
+import useSavedPlaylistDelete from '@/hooks/interact/useSavedPlaylistDelete'
 import { Box, SimpleGrid, Text } from '@chakra-ui/react'
 import React from 'react'
 import InfiniteScroll from 'react-infinite-scroll-component'
-import CollectionCard from './collection/CollectionCard'
 
-const YourCollections = () => {
-  const { data, error, fetchNextPage,  hasNextPage } = useLists()
+const SavedPlaylistPage = () => {
+  const { data, error, fetchNextPage,  hasNextPage } = useSavedPlaylists()
   const fetchCount = data?.pages.reduce(
     (total, page) => total + page.results.length, 0) || 0
 
-  const { mutate: updateList } = useListUpdate()
-  const handleUpdateList = (listId: number, title: string) => {
-    updateList({ listId, title })
-  }
-
-  const { mutate: deleteList } = useListDelete()
+  const { mutate: deleteList } = useSavedPlaylistDelete()
   const handleDelteList = (listId: number) => {
     deleteList({listId})
   }
@@ -26,7 +20,7 @@ const YourCollections = () => {
   if (error) return <Text>{error.message}</Text>
   return (
     <>
-      <PostCount count={fetchCount} genre='collections'/>
+      <PostCount count={fetchCount} genre='playlists'/>
       <InfiniteScroll
         dataLength={fetchCount}
         hasMore={!!hasNextPage}
@@ -38,12 +32,9 @@ const YourCollections = () => {
             <React.Fragment key={index}>
               {page?.results.map((list) => (
                 <Box key={list.id}>
-                  <CollectionCard
+                  <PlaylistCardSaved
                     list={list}
                     onDelete={() => handleDelteList(list.id)}
-                    onUpdate={(title) => { 
-                      handleUpdateList(list.id, title) 
-                    }}
                   />
                 </Box>
               ))}
@@ -55,4 +46,4 @@ const YourCollections = () => {
   )
 }
 
-export default YourCollections
+export default SavedPlaylistPage

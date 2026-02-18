@@ -1,12 +1,14 @@
 import Host from './Host'
+import Playlist from './Playlist'
 
-export default interface Playlist {
-  short_uuid: string,
+export default interface Course {
+  id: number,
   title: string,
   slug: string,
   host: Host,
-  items_count: number,
   cover: string,
+  items_count: number,
+  playlists: Playlist[],
   created_at: string,
   updated_at: string,
 }

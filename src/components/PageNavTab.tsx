@@ -30,7 +30,7 @@ const PageNavTab = ({ title }: { title?: string }) => {
       <HStack spacing='10px'>
         <Icon
           as={IoIosArrowRoundBack}
-          boxSize={6}
+          boxSize={8}
           onClick={goBack}
           _hover={{
             bg: 'gray.600', borderRadius: 'full', opacity: '0.8'
@@ -39,7 +39,7 @@ const PageNavTab = ({ title }: { title?: string }) => {
           transition='0.1s'
         />
         <Text
-          fontSize='sm'
+          fontSize='md'
           borderColor='yellow.400'
           noOfLines={1}
         >

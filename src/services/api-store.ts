@@ -52,6 +52,14 @@ class APIClient<T> {
       .post(`${this.endpoint}/${id}/${action}/`, data, config)
       .then((res) => res.data)
   }
+
+  // get a given slug list
+  getCourse = (id: number | string, config?: AxiosRequestConfig) => {
+    return axiosInstance
+      .get<T>(`${this.endpoint}/${id}/`, config)
+      .then((res) => res.data)
+  }
+
 }
 
 export default APIClient

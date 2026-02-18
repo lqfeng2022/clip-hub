@@ -1,20 +1,20 @@
 import { useInfiniteQuery } from '@tanstack/react-query'
 import FetchResponse from '@/entities/FetchResponse'
 import APIClient from '@/services/api-store'
-import Playlist from '@/entities/Playlist'
 import usePlaylistQueryStore from '@/stores/playlistStore'
+import Course from '@/entities/Course'
 
-const apiClient = new APIClient<Playlist>('playlists')
+const apiClient = new APIClient<Course>('courses')
 
-const usePlaylists = () => {
-  const playlistQuery = usePlaylistQueryStore(
+const useCourses = () => {
+  const courseQuery = usePlaylistQueryStore(
     (s) => s.playlistQuery)
 
-  return useInfiniteQuery<FetchResponse<Playlist>, Error>({
-    queryKey: ['playlists', playlistQuery],
+  return useInfiniteQuery<FetchResponse<Course>, Error>({
+    queryKey: ['courses', courseQuery],
     queryFn: ({pageParam = 1}) => apiClient.getAll({
       params: {
-        host: playlistQuery.hostId,
+        host: courseQuery.hostId,
         page: pageParam,
       },
     }),
@@ -25,4 +25,4 @@ const usePlaylists = () => {
   })
 }
 
-export default usePlaylists
+export default useCourses
