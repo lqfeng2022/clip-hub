@@ -5,24 +5,24 @@ import { useAuth } from '@/AuthContext'
 const apiClient = new APIClient('collections')
 
 interface Props {
-  listId: number
-  listItemId: number 
+  product_id: number
+  listIds: number[]
 }
 
-const useListItemDelete = () => {
+const useListItemsDelete = () => {
   const { user } = useAuth()
 
   return useMutation({
-    mutationFn: async({ listId, listItemId }: Props) => {
+    mutationFn: async ({ product_id, listIds }: Props) => {
       if (!user) return
-      
-      return apiClient.deleteListItem(
-        listId, 
-        listItemId, 
+
+      // Backend accepts bulk deletion by product_id + listIds
+      return apiClient.deleteListItemsBulk(
+        { product_id, listIds }, 
         { withCredentials: true }
       )
     }
   })
 }
 
-export default useListItemDelete
+export default useListItemsDelete

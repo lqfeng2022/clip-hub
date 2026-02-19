@@ -8,7 +8,7 @@ interface Props {
   onUnmark?: () => void,
 }
 const SubtitleCard = ({ product }: Props) => {
-  const content = product.content.content
+  const content = product.content.title
   const phrases = product.content.expressions.map(exp => exp.title)
   const expressions = product.content.expressions
 

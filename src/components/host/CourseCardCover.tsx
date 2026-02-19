@@ -27,7 +27,7 @@ const CourseCardCover = ({ course }: { course: Course }) => {
             height='100%'
           />
         </AspectRatio>
-        <CollectionCardIcon/>
+        <CollectionCardIcon count={course.items_count}/>
       </Box>
     </Link>
   )

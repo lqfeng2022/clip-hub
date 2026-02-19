@@ -35,6 +35,13 @@ class APIClient<T> {
       .then((res) => res.data) //extract data from response
   }
 
+  // get all collections with the target product
+  getProductLists = (id: number | string, config?: AxiosRequestConfig) => {
+    return axiosInstance
+      .get<T>(this.endpoint + `/products/${id}/`, config)
+      .then((res) => res.data)
+  }
+
   // get a given id chatsession
   getChatSession = (id: number | string, config?: AxiosRequestConfig) => {
     return axiosInstance
@@ -110,6 +117,17 @@ class APIClient<T> {
   ) => {
     return axiosInstance
       .delete(`/${this.endpoint}/${ListId}/items/${listItemId}/`, config)
+  }
+
+  // delete multiple CollectionItems at once
+  deleteListItemsBulk = (
+    data: { product_id: number, listIds: number[] }, 
+    config?: AxiosRequestConfig
+  ) => {
+    return axiosInstance
+      // send list in request body
+      .delete(`${this.endpoint}/product/`, { ...config, data }) 
+      .then(res => res.data)
   }
 
 }

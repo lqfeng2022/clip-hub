@@ -5,6 +5,7 @@ import Video from './Video'
 export default interface Subtitle {
   id: number,
   order: number,
+  title: string,
   content: string,
   video: Video,
   host: Host,

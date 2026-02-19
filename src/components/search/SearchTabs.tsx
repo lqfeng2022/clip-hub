@@ -1,5 +1,5 @@
 import useProductFilterStore, { SearchTab } from '@/stores/productFilterStore'
-import { Center, HStack, SimpleGrid, Text } from '@chakra-ui/react'
+import { Center, HStack, Text } from '@chakra-ui/react'
 
 const tabs: SearchTab[] = ['Latest', 'Clips', 'Words', 'Videos']
 
@@ -18,10 +18,11 @@ const SearchTabs = () => {
           onClick={() => setTab(t)}
         >
           <Text
-            color={current === t ? 'gray.100' : 'gray.500'}
-            borderBottom={current === t ? '1px solid' : 'none'}
-            borderColor='yellow.400'
             lineHeight={2}
+            fontWeight='semibold'
+            borderBottom={current === t ? '1px solid' : 'none'}
+            color={current === t ? 'gray.100' : 'gray.500'}
+            borderColor='yellow.400'
           >
             {t}
           </Text>

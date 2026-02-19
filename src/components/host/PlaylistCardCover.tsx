@@ -27,7 +27,7 @@ const PlaylistCardCover = ({ list }: { list: Playlist }) => {
             height='100%'
           />
         </AspectRatio>
-        <CollectionCardIcon/>
+        <CollectionCardIcon count={list.items_count}/>
       </Box>
     </Link>
   )

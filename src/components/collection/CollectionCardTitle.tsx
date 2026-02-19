@@ -3,7 +3,7 @@ import { Text } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
 
 const CollectionCardTitle = ({ list }: { list: Collection }) => {
-  const hasItems = list.items && list.items.length > 0
+  const hasItems = list.items_count > 0
   const contentLink = `/profile/collection/${list.slug}`
 
   return (

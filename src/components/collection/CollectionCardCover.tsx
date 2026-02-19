@@ -2,12 +2,10 @@ import { Box, Image, AspectRatio } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
 import CollectionCardIcon from './CollectionCardIcon'
 import Collection from '@/entities/Collection'
-import getCollectionCover from '@/helps/getCollectionCover'
 
 const CollectionCardCover = ({ list }: { list: Collection }) => {
-  const hasItems = list.items && list.items.length > 0
+  const hasItems = list.items_count > 0
   const contentLink = `/profile/collection/${list.slug}`
-  const image = getCollectionCover(list)
   
   return (
     <Link 
@@ -25,7 +23,7 @@ const CollectionCardCover = ({ list }: { list: Collection }) => {
       >
         <AspectRatio ratio={16 / 9} width='100%'>
           <Image
-            src={image}
+            src={list.first_thumbnail}
             objectFit='cover'
             className={hasItems ? 'img-hover' : ''}
             opacity={hasItems ? 1 : 0.5}
@@ -35,7 +33,7 @@ const CollectionCardCover = ({ list }: { list: Collection }) => {
             height='100%'
           />
         </AspectRatio>
-        <CollectionCardIcon/>
+        <CollectionCardIcon count={list.items_count}/>
       </Box>
     </Link>
   )
