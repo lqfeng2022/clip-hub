@@ -1,4 +1,4 @@
-import { Card, CardBody, Text, HStack } from '@chakra-ui/react'
+import { Card, CardBody, Text, HStack, Stack } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
 import PlaylistCardCover from './PlaylistCardCover'
 import PlaylistEditMenu from './PlaylistEditMenu'
@@ -10,6 +10,7 @@ interface Props {
 }
 const PlaylistCardSaved = ({ list, onDelete }: Props) => {
   const contentLink = `/playlist/${list.playlist.short_uuid}`
+  const course = list.playlist.course
 
   return (
     <Card 
@@ -20,17 +21,51 @@ const PlaylistCardSaved = ({ list, onDelete }: Props) => {
       <PlaylistCardCover list={list.playlist}/>
       <CardBody pl='10px' pr='5px'>
         <HStack justifyContent='space-between' alignItems='flex-start'>
-          <Link to={contentLink} state={{list}}>
-            <Text
-              fontSize='sm'
-              noOfLines={3}
-              pt='6px'
-              _hover={{ color: 'yellow.300' }}
-              cursor='pointer'
-            >
-              {list.playlist.title}
-            </Text>
-          </Link>
+          <Stack spacing={0}>
+            <Link to={contentLink} state={{list}}>
+              <Text
+                fontSize='sm'
+                noOfLines={2}
+                pt='6px'
+                _hover={{ color: 'yellow.300' }}
+                cursor='pointer'
+              >
+                {list.playlist.title}
+              </Text>
+            </Link>
+            {course &&
+              <Link to={`/courses/${course.slug}`} >
+                <Text
+                  pt='6px'
+                  noOfLines={2}
+                  fontSize='0.8em'
+                  fontWeight='bold'
+                  color='yellow.200'
+                  _hover={{ color: 'white' }}
+                  cursor='pointer'
+                  opacity={0.7}
+                >
+                  {course.title}
+                </Text>
+              </Link>
+            }
+            {course &&
+              <HStack pt='5px'>
+                <Text fontSize='0.7em'>by</Text>
+                <Link to={`/host/${course.host.slug}`} >
+                  <Text
+                    fontSize='0.9em'
+                    fontWeight='bold'
+                    _hover={{ color: 'orange' }}
+                    cursor='pointer'
+                    opacity={0.8}
+                  >
+                  {course.host.name}
+                  </Text>
+                </Link>
+              </HStack>
+            }
+          </Stack>
           <PlaylistEditMenu isSaved={true} onDelete={onDelete}/>
         </HStack>
       </CardBody>

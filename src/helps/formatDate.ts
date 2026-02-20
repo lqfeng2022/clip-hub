@@ -52,13 +52,16 @@ export function formatSimpleDate(dateString: string): string {
 }
 
 // Format chat duration
-export function  formatDuration(sec: number | null) {
-    if (sec == null || !isFinite(sec)) return '0:00'
-    
-    const total = Math.max(0, Math.floor(sec))
-    const minutes = Math.floor(total / 60)
-    const seconds = total % 60
-    const mm = String(minutes) // no zero-pad for minutes
-    const ss = String(seconds).padStart(2, '0')
-    return `${mm}:${ss}`
-  }
+export function formatDuration(sec: number | null) {
+  if (sec == null || !isFinite(sec)) return '0:00'
+
+  const total = Math.max(0, Math.floor(sec))
+  const hours = Math.floor(total / 3600)
+  const minutes = Math.floor((total % 3600) / 60)
+  const seconds = total % 60
+
+  const mm = String(minutes).padStart(hours > 0 ? 2 : 1, '0') // pad minutes only if hours exist
+  const ss = String(seconds).padStart(2, '0')
+
+  return hours > 0 ? `${hours}:${mm}:${ss}` : `${mm}:${ss}`
+}

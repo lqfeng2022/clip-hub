@@ -1,11 +1,15 @@
 import noImage from '@/assets/no-image.jpg'
 import getProductDisplay from '@/helps/getProductDisplay'
-import { Avatar, Box, HStack, Image, Stack, Text } from '@chakra-ui/react'
+import { Avatar, Box, HStack, Icon, Image, Stack, Text } from '@chakra-ui/react'
 import PostBadges from '../product/PostBadges'
 import { Link } from 'react-router-dom'
 import SessionMenu from './SessionMenu'
 import ChatSession from '@/entities/ChatSession'
 import { formatMessage } from '@/helps/formatMessage'
+import { formatDuration } from '@/helps/formatDate'
+import { AiOutlineMessage } from 'react-icons/ai'
+import { CiCreditCard2 } from 'react-icons/ci'
+import { IoIosTime } from 'react-icons/io'
 
 const ChatSessionCard = ({ chat } : { chat: ChatSession }) => {
   const product = chat.product
@@ -39,7 +43,7 @@ const ChatSessionCard = ({ chat } : { chat: ChatSession }) => {
           </HStack>
           <SessionMenu chat={chat}/>
         </HStack>
-        <Link to={`/profile/chat/${chat.id}`}>
+        <Link to={`/chat/${chat.id}`}>
           <HStack align='flex-start' pt={1}>
             <Box
               borderRadius='lg'
@@ -50,6 +54,7 @@ const ChatSessionCard = ({ chat } : { chat: ChatSession }) => {
             >
               <Image src={image ?? noImage}/>
             </Box>
+            {/* Chat Session metadata */}
             <Stack spacing={1}>
               <Text fontSize='xs' color='gray.100'>
                 {formatMessage(title!)}
@@ -58,9 +63,15 @@ const ChatSessionCard = ({ chat } : { chat: ChatSession }) => {
                 <Text fontSize='xl' fontWeight='bold'>
                   {chat.messages_count ?? 0}
                 </Text>
-                <Text fontSize='xs' color='gray.500'>
-                  messages
+                <Icon as={AiOutlineMessage} boxSize='15px' color='gold' opacity={0.5}/>
+                <Text fontSize='sm'>
+                  {formatDuration(chat.total_duration) ?? 0}
                 </Text>
+                <Icon as={IoIosTime} boxSize='16px' color='gold' opacity={0.5}/>
+                <Text fontSize='sm'>
+                  {chat.credits_used.toLocaleString() ?? 0}
+                </Text>
+                <Icon as={CiCreditCard2} boxSize='18px' color='gold' opacity={0.5}/>
               </HStack>
             </Stack>
           </HStack>

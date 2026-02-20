@@ -1,9 +1,13 @@
 import { useAuth } from '@/AuthContext'
-import { Avatar, AvatarGroup, HStack, Stack, Text } from '@chakra-ui/react'
+import { Avatar, AvatarGroup, HStack, Icon, Stack, Text } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
 import SessionMenuNull from './SessionMenuNull'
 import ChatSession from '@/entities/ChatSession'
 import { truncateAtWord } from '@/helps/textWorker'
+import { formatDuration } from '@/helps/formatDate'
+import { AiOutlineMessage } from 'react-icons/ai'
+import { CiCreditCard2 } from 'react-icons/ci'
+import { IoIosTime } from 'react-icons/io'
 
 const ChatSessionCardTwo = ({ chat } : { chat: ChatSession }) => {
   const { user } = useAuth()
@@ -39,7 +43,7 @@ const ChatSessionCardTwo = ({ chat } : { chat: ChatSession }) => {
         flex='1' 
         mt='-5px'
       >
-        <Link to={`/profile/chat/${chat.id.toString()}`}>
+        <Link to={`/chat/${chat.id.toString()}`}>
           <HStack spacing={2} pt={2}>
             <Stack spacing={1}>
               <Text fontSize='xs' color='gray.100'>
@@ -49,9 +53,15 @@ const ChatSessionCardTwo = ({ chat } : { chat: ChatSession }) => {
                 <Text fontSize='xl' fontWeight='bold'>
                   {chat.messages_count ?? 0}
                 </Text>
-                <Text fontSize='xs' color='gray.500'>
-                  messages
+                <Icon as={AiOutlineMessage} boxSize='15px' color='gold' opacity={0.5}/>
+                <Text fontSize='sm'>
+                  {formatDuration(chat.total_duration) ?? 0}
                 </Text>
+                <Icon as={IoIosTime} boxSize='16px' color='gold' opacity={0.5}/>
+                <Text fontSize='sm'>
+                  {chat.credits_used.toLocaleString() ?? 0}
+                </Text>
+                <Icon as={CiCreditCard2} boxSize='18px' color='gold' opacity={0.5}/>
               </HStack>
             </Stack>
           </HStack>

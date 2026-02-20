@@ -1,5 +1,5 @@
 import Collection from '@/entities/Collection'
-import { Card, CardBody, HStack, useDisclosure } from '@chakra-ui/react'
+import { Card, CardBody, HStack, useDisclosure, Text, Stack } from '@chakra-ui/react'
 import CollectionCardCover from './CollectionCardCover'
 import CollectionCardTitle from './CollectionCardTitle'
 import CollectionCardModal from './CollectionCardModal'
@@ -23,7 +23,12 @@ const CollectionCard = ({ list, onUpdate, onDelete }: Props) => {
       <CollectionCardCover list={list}/>
       <CardBody pl='10px' pr='5px'>
         <HStack justifyContent='space-between' alignItems='flex-start'>
-          <CollectionCardTitle list={list}/>
+          <Stack>
+            <CollectionCardTitle list={list}/>
+            <Text fontSize='sm' color='yellow.200' opacity={0.8}>
+              personal lists
+            </Text>
+          </Stack>
           <CollectionEditMenu onDelete={onDelete} onOpen={onOpen}/>
         </HStack>
         <CollectionCardModal 
