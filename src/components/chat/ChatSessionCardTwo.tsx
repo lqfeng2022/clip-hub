@@ -53,11 +53,11 @@ const ChatSessionCardTwo = ({ chat } : { chat: ChatSession }) => {
                 <Text fontSize='xl' fontWeight='bold'>
                   {chat.messages_count ?? 0}
                 </Text>
-                <Icon as={AiOutlineMessage} boxSize='15px' color='gold' opacity={0.5}/>
+                <Icon as={AiOutlineMessage} boxSize='15px' color='gray' opacity={0.5}/>
                 <Text fontSize='sm'>
                   {formatDuration(chat.total_duration) ?? 0}
                 </Text>
-                <Icon as={IoIosTime} boxSize='16px' color='gold' opacity={0.5}/>
+                <Icon as={IoIosTime} boxSize='16px' color='gray' opacity={0.5}/>
                 <Text fontSize='sm'>
                   {chat.credits_used.toLocaleString() ?? 0}
                 </Text>

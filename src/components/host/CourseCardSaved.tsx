@@ -27,7 +27,7 @@ const CourseCardSaved = ({ course, onDelete }: Props) => {
                 fontWeight='bold'
                 noOfLines={3}
                 pt='6px'
-                _hover={{ color: 'yellow.300' }}
+                _hover={{ color: 'orange' }}
                 cursor='pointer'
               >
                 {course.course.title}

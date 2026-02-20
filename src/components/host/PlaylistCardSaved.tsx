@@ -27,7 +27,7 @@ const PlaylistCardSaved = ({ list, onDelete }: Props) => {
                 fontSize='sm'
                 noOfLines={2}
                 pt='6px'
-                _hover={{ color: 'yellow.300' }}
+                _hover={{ color: 'orange' }}
                 cursor='pointer'
               >
                 {list.playlist.title}
@@ -41,7 +41,7 @@ const PlaylistCardSaved = ({ list, onDelete }: Props) => {
                   fontSize='0.8em'
                   fontWeight='bold'
                   color='yellow.200'
-                  _hover={{ color: 'white' }}
+                  _hover={{ color: 'orange' }}
                   cursor='pointer'
                   opacity={0.7}
                 >
