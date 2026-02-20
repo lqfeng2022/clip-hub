@@ -5,7 +5,6 @@ import PostBadges from '../product/PostBadges'
 import { Link } from 'react-router-dom'
 import SessionMenu from './SessionMenu'
 import ChatSession from '@/entities/ChatSession'
-import { formatMessage } from '@/helps/formatMessage'
 import { formatDuration } from '@/helps/formatDate'
 import { AiOutlineMessage } from 'react-icons/ai'
 import { CiCreditCard2 } from 'react-icons/ci'
@@ -14,7 +13,7 @@ import { IoIosTime } from 'react-icons/io'
 const ChatSessionCard = ({ chat } : { chat: ChatSession }) => {
   const product = chat.product
   const host = chat.host
-  const {image, title } = getProductDisplay(product, 40)
+  const {image, title } = getProductDisplay(product)
 
   return (
     <HStack 
@@ -56,8 +55,8 @@ const ChatSessionCard = ({ chat } : { chat: ChatSession }) => {
             </Box>
             {/* Chat Session metadata */}
             <Stack spacing={0}>
-              <Text fontSize='xs' color='gray.100'>
-                {formatMessage(title!)}
+              <Text fontSize='xs' color='gray.100' noOfLines={2}>
+                {title!}
               </Text>
               <HStack>
                 <Text fontSize='xl' fontWeight='bold'>

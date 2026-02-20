@@ -3,11 +3,11 @@ import { Avatar, AvatarGroup, HStack, Icon, Stack, Text } from '@chakra-ui/react
 import { Link } from 'react-router-dom'
 import SessionMenuNull from './SessionMenuNull'
 import ChatSession from '@/entities/ChatSession'
-import { truncateAtWord } from '@/helps/textWorker'
 import { formatDuration } from '@/helps/formatDate'
 import { AiOutlineMessage } from 'react-icons/ai'
 import { CiCreditCard2 } from 'react-icons/ci'
 import { IoIosTime } from 'react-icons/io'
+import { formatMessage } from '@/helps/formatMessage'
 
 const ChatSessionCardTwo = ({ chat } : { chat: ChatSession }) => {
   const { user } = useAuth()
@@ -19,9 +19,7 @@ const ChatSessionCardTwo = ({ chat } : { chat: ChatSession }) => {
 
   const content = () => {
     const latest_message = chat.latest_chat
-    if (latest_message) 
-      return `${truncateAtWord(latest_message, 35)}`
-    return "There's no messages"
+    return formatMessage(latest_message) ?? "There's no messages"
   } 
 
   return (
@@ -46,7 +44,7 @@ const ChatSessionCardTwo = ({ chat } : { chat: ChatSession }) => {
         <Link to={`/chat/${chat.id.toString()}`}>
           <HStack spacing={2} pt={2}>
             <Stack spacing={1}>
-              <Text fontSize='xs' color='gray.100'>
+              <Text fontSize='xs' color='gray.100' noOfLines={2}>
                 {content()}
               </Text>
               <HStack>

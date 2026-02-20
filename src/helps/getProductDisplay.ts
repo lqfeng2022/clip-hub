@@ -1,7 +1,6 @@
 import { Product } from '@/entities/Product'
-import { truncateAtWord } from './textWorker'
 
-export default function getProductDisplay(product: Product, count: number) {
+export default function getProductDisplay(product: Product) {
   if (!product) return { image: null, title: null }
 
   switch (product.type) {
@@ -18,7 +17,7 @@ export default function getProductDisplay(product: Product, count: number) {
     case 'subtitle':
       return {
         image: product.content.expressions[0]?.image || null, // subtitles do not have image
-        title: truncateAtWord(product.content.content, count), // subtitle text
+        title: product.content.title, // subtitle text
       }
   }
 }
