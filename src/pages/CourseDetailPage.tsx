@@ -33,7 +33,7 @@ const CourseDetailPage = () => {
   return (
     <>
       <PageNavTab title={data!.title}/>
-      <PostCount count={data!.items_count ?? 0} genre='Playlists'/>
+      <PostCount count={data!.playlist_count ?? 0} genre='Playlists'/>
       <SimpleGrid pl={4} py={8} gap={6}>
         {data!.playlists.map((list) => (
           <Box key={list.short_uuid}>

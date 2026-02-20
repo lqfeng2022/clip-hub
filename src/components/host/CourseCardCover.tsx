@@ -4,7 +4,7 @@ import CollectionCardIcon from '../collection/CollectionCardIcon'
 import Course from '@/entities/Course'
 
 const CourseCardCover = ({ course }: { course: Course }) => {
-  const contentLink = `/profile/course/${course.slug}`
+  const contentLink = `/course/${course.slug}`
   
   return (
     <Link to={contentLink} state={{course}}>
@@ -27,7 +27,7 @@ const CourseCardCover = ({ course }: { course: Course }) => {
             height='100%'
           />
         </AspectRatio>
-        <CollectionCardIcon count={course.items_count}/>
+        <CollectionCardIcon count={course.playlist_count}/>
       </Box>
     </Link>
   )

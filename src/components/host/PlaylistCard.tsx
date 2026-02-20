@@ -9,7 +9,7 @@ interface Props {
   onAdd: () => void,
 }
 const PlaylistCard = ({ list, onAdd }: Props) => {
-  const contentLink = `/profile/playlist/${list.short_uuid}`
+  const contentLink = `/playlist/${list.short_uuid}`
 
   return (
     <Card 

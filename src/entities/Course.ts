@@ -7,7 +7,7 @@ export default interface Course {
   slug: string,
   host: Host,
   cover: string,
-  items_count: number,
+  playlist_count: number,
   playlists: Playlist[],
   created_at: string,
   updated_at: string,

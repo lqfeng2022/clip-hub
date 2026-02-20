@@ -9,7 +9,7 @@ interface Props {
   onAdd: () => void,
 }
 const CourseCard = ({ course, onAdd }: Props) => {
-  const contentLink = `/profile/courses/${course.slug}`
+  const contentLink = `/courses/${course.slug}`
 
   return (
     <Card 

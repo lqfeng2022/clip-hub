@@ -9,7 +9,7 @@ interface Props {
   onDelete: () => void,
 }
 const CourseCardSaved = ({ course, onDelete }: Props) => {
-  const contentLink = `/profile/courses/${course.course.slug}`
+  const contentLink = `/courses/${course.course.slug}`
 
   return (
     <Card 

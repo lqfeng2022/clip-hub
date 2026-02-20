@@ -5,7 +5,7 @@ export default interface Playlist {
   title: string,
   slug: string,
   host: Host,
-  items_count: number,
+  product_count: number,
   cover: string,
   created_at: string,
   updated_at: string,

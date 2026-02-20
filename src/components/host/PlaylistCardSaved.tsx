@@ -9,7 +9,7 @@ interface Props {
   onDelete: () => void,
 }
 const PlaylistCardSaved = ({ list, onDelete }: Props) => {
-  const contentLink = `/profile/playlist/${list.playlist.short_uuid}`
+  const contentLink = `/playlist/${list.playlist.short_uuid}`
 
   return (
     <Card 

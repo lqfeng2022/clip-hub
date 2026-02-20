@@ -5,7 +5,7 @@ import Collection from '@/entities/Collection'
 
 const CollectionCardCover = ({ list }: { list: Collection }) => {
   const hasItems = list.items_count > 0
-  const contentLink = `/profile/collection/${list.slug}`
+  const contentLink = `/collection/${list.slug}`
   
   return (
     <Link 

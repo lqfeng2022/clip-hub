@@ -41,7 +41,7 @@ export default [
     icon: HiOutlineChat, 
     icon2: HiChat, 
     isAnon: false, 
-    link: '/profile/chat',
+    link: '/chat',
     link2: '/user/signin',
   },
   { 
@@ -50,7 +50,7 @@ export default [
     icon: IoBookmarkOutline, 
     icon2: IoBookmark, 
     isAnon: false, 
-    link: '/profile/bookmark',
+    link: '/bookmark',
     link2: '/user/signin',
   },
   { 
@@ -59,7 +59,7 @@ export default [
     icon: BiCollection, 
     icon2: BiSolidCollection, 
     isAnon: false, 
-    link: '/profile/collection',
+    link: '/collection',
     link2: '/user/signin',
   },
   { 

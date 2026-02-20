@@ -14,28 +14,26 @@ const CollectionCardIcon = ({ count }: { count: number }) => {
         borderRadius='lg'
       />
       {/* Badge */}
-      {count > 0 && (
-        <Box
-          position='absolute'
-          top='15px'
-          right='12px'
-          minW='20px'
-          h='20px'
-          px={1}
-          borderRadius='full'
-          display='flex'
-          alignItems='center'
-          justifyContent='center'
+      <Box
+        position='absolute'
+        top='15px'
+        right='12px'
+        minW='20px'
+        h='20px'
+        px={1}
+        borderRadius='full'
+        display='flex'
+        alignItems='center'
+        justifyContent='center'
+      >
+        <Text
+          fontSize='sm'
+          fontWeight='semibold'
+          color='gray.500'
         >
-          <Text
-            fontSize='sm'
-            fontWeight='semibold'
-            color='gray.500'
-          >
-            {count > 99 ? '99+' : count}
-          </Text>
-        </Box>
-      )}
+          {count > 999 ? '999+' : count}
+        </Text>
+      </Box>
     </Box>
   )
 }

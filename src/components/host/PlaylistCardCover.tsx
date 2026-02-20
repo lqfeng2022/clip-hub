@@ -4,7 +4,7 @@ import CollectionCardIcon from '../collection/CollectionCardIcon'
 import Playlist from '@/entities/Playlist'
 
 const PlaylistCardCover = ({ list }: { list: Playlist }) => {
-  const contentLink = `/profile/collection/${list.slug}`
+  const contentLink = `/collection/${list.slug}`
   
   return (
     <Link to={contentLink} state={{list}}>
@@ -27,7 +27,7 @@ const PlaylistCardCover = ({ list }: { list: Playlist }) => {
             height='100%'
           />
         </AspectRatio>
-        <CollectionCardIcon count={list.items_count}/>
+        <CollectionCardIcon count={list.product_count}/>
       </Box>
     </Link>
   )
