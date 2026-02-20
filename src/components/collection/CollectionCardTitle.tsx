@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 const CollectionCardTitle = ({ list }: { list: Collection }) => {
   const hasItems = list.items_count > 0
-  const contentLink = `/collection/${list.slug}`
+  const contentLink = `/collection/${list.short_uuid}`
 
   return (
     <Link 

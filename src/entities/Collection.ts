@@ -4,6 +4,7 @@ export default interface Collection {
   id: number,
   title: string,
   slug: string,
+  short_uuid: string,
   items_count: number,
   first_thumbnail: string,
   items: CollectionItem[],
