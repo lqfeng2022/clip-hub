@@ -26,6 +26,7 @@ const PlaylistCardSaved = ({ list, onDelete }: Props) => {
               <Text
                 fontSize='sm'
                 noOfLines={2}
+                lineHeight={1.3}
                 pt='6px'
                 _hover={{ color: 'orange' }}
                 cursor='pointer'
@@ -38,7 +39,8 @@ const PlaylistCardSaved = ({ list, onDelete }: Props) => {
                 <Text
                   pt='6px'
                   noOfLines={2}
-                  fontSize='0.8em'
+                  lineHeight={1.3}
+                  fontSize='0.7em'
                   fontWeight='bold'
                   color='yellow.200'
                   _hover={{ color: 'orange' }}
@@ -54,7 +56,7 @@ const PlaylistCardSaved = ({ list, onDelete }: Props) => {
                 <Text fontSize='0.7em'>by</Text>
                 <Link to={`/host/${course.host.slug}`} >
                   <Text
-                    fontSize='0.9em'
+                    fontSize='0.8em'
                     fontWeight='bold'
                     _hover={{ color: 'orange' }}
                     cursor='pointer'

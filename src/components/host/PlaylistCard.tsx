@@ -23,6 +23,7 @@ const PlaylistCard = ({ list, onAdd }: Props) => {
               <Text
                 fontSize='sm'
                 noOfLines={3}
+                lineHeight={1.3}
                 pt='6px'
                 _hover={{ color: 'orange' }}
                 cursor='pointer'
@@ -37,6 +38,7 @@ const PlaylistCard = ({ list, onAdd }: Props) => {
                   fontWeight='bold'
                   color='yellow.200'
                   noOfLines={2}
+                  lineHeight={1.3}
                   pt='6px'
                   _hover={{ color: 'orange' }}
                   cursor='pointer'

@@ -25,6 +25,7 @@ const CourseCard = ({ course, onAdd }: Props) => {
               fontSize='sm'
               fontWeight='bold'
               noOfLines={3}
+              lineHeight={1.4}
               pt='6px'
               _hover={{ color: 'orange' }}
               cursor='pointer'

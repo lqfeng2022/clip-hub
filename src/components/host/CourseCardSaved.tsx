@@ -33,11 +33,11 @@ const CourseCardSaved = ({ course, onDelete }: Props) => {
                 {course.course.title}
               </Text>
             </Link>
-            <HStack pt='5px'>
+            <HStack>
               <Text fontSize='0.7em'>by</Text>
               <Link to={`/host/${course.course.host.slug}`} >
                 <Text
-                  fontSize='0.9em'
+                  fontSize='0.8em'
                   fontWeight='bold'
                   _hover={{ color: 'orange' }}
                   cursor='pointer'
