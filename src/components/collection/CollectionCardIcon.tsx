@@ -30,7 +30,7 @@ const CollectionCardIcon = ({ count }: { count: number }) => {
         <Text
           fontSize='xs'
           fontWeight='semibold'
-          color='gray.500'
+          color='gray.600'
         >
           {count > 999 ? '999+' : count}
         </Text>

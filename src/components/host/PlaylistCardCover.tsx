@@ -1,7 +1,7 @@
 import { Box, Image, AspectRatio } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
-import CollectionCardIcon from '../collection/CollectionCardIcon'
 import Playlist from '@/entities/Playlist'
+import PlaylistCardIcon from './PlaylistCardIcon'
 
 const PlaylistCardCover = ({ list }: { list: Playlist }) => {
   const contentLink = `/collection/${list.slug}`
@@ -27,7 +27,7 @@ const PlaylistCardCover = ({ list }: { list: Playlist }) => {
             height='100%'
           />
         </AspectRatio>
-        <CollectionCardIcon count={list.product_count}/>
+        <PlaylistCardIcon count={list.product_count}/>
       </Box>
     </Link>
   )

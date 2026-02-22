@@ -1,7 +1,7 @@
 import { Box, Image, AspectRatio } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
-import CollectionCardIcon from '../collection/CollectionCardIcon'
 import Course from '@/entities/Course'
+import CourseCardIcon from './CourseCardIcon'
 
 const CourseCardCover = ({ course }: { course: Course }) => {
   const contentLink = `/course/${course.slug}`
@@ -27,7 +27,7 @@ const CourseCardCover = ({ course }: { course: Course }) => {
             height='100%'
           />
         </AspectRatio>
-        <CollectionCardIcon count={course.playlist_count}/>
+        <CourseCardIcon count={course.playlist_count}/>
       </Box>
     </Link>
   )
