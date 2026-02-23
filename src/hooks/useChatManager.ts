@@ -10,7 +10,7 @@ const useChatManager = (productId: number) => {
 
   const navigate = useNavigate()
   const { pathname } = useLocation()
-  const isChatPage = pathname === '/profile/chat'
+  const isChatPage = pathname === '/chat'
 
   const deleteChat = () => {
     if (!user) return
@@ -25,7 +25,7 @@ const useChatManager = (productId: number) => {
       onSuccess: (session) => {
         refetch()
           if (!isChatPage) 
-            navigate(`/profile/chat/${session.id}`)
+            navigate(`/chat/${session.id}`)
       }
     })
   }
