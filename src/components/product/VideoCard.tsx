@@ -1,5 +1,5 @@
 import { VideoProduct } from '@/entities/Product'
-import { AspectRatio, Box, Text } from '@chakra-ui/react'
+import { AspectRatio, Box, Text, Image } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
 import PostContainer from './PostContainer'
 
@@ -9,8 +9,6 @@ interface Props {
 }
 const VideoCard = ({ product }: Props) => {
   const isShort = product.content.kind === 'SHORT'
-  const ratio = isShort ? 9/16 : 16/9
-  const width = isShort ? '50%' : '100%'
 
   return (
     <PostContainer product={product}>
@@ -27,14 +25,10 @@ const VideoCard = ({ product }: Props) => {
       <Box 
         overflow='hidden'
         borderRadius='lg'
-        width={width}
+        width={isShort ? '50%' : '100%'}
       >
-        <AspectRatio ratio={ratio}>
-          <video 
-            src={product.content.file} 
-            poster={product.content.cover} 
-            controls
-          />
+        <AspectRatio ratio={isShort ? 9/16 : 16/9}>
+          <Image src={product.content.cover} />
         </AspectRatio>
       </Box>
     </PostContainer>
