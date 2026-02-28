@@ -1,6 +1,6 @@
 import { useAuth } from '@/AuthContext'
 import useChatSessionPostNull from '@/hooks/interact/useChatSessionPostNull'
-import { Button, Text } from '@chakra-ui/react'
+import { Button } from '@chakra-ui/react'
 import { useNavigate } from 'react-router-dom'
 
 interface Props {
@@ -21,7 +21,7 @@ const HostChatButton = ({ hostId, onItemClick }: Props) => {
     createChat(hostId ?? undefined, {
       onSuccess: (newSession) => {
         if (!newSession?.id) return
-        navigate(`/profile/chat/${newSession.id}`)
+        navigate(`/chat/${newSession.id}`)
       }
     })
   }
