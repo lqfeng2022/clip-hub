@@ -27,6 +27,7 @@ const VideoDetailCard = ({ product }: Props) => {
             url={youtubeUrl}
             ratio={ratio}
             title={content}
+            poster={product.content.cover}
           />
         ) : (
           <AspectRatio ratio={ratio}>
