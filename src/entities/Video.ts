@@ -8,6 +8,7 @@ export default interface Video {
   slug: string,
   realse: number,
   original: string,
+  website: string,
   cover: string,
   file: string,
   created_at: string,

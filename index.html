@@ -7,6 +7,10 @@
     <title>Clip Expression</title>
   </head>
   <body>
+    <!-- fix chakra-ui initial dark mode -->
+    <script>
+      localStorage.setItem('chakra-ui-color-mode', 'dark')
+    </script>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
