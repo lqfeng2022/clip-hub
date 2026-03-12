@@ -6,7 +6,7 @@ import { Product } from '@/entities/Product'
 
 const apiClient = new APIClient<Product>('playlists')
 
-const usePlaylistProducts = (
+const useProductsPlaylist = (
   listslug: string,
   options?: { enabled?: boolean }) => {
     const { user } = useAuth()
@@ -29,4 +29,4 @@ const usePlaylistProducts = (
     })
 }
 
-export default usePlaylistProducts
+export default useProductsPlaylist

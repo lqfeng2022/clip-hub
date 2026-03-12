@@ -6,7 +6,7 @@ import { useAuth } from '@/AuthContext'
 
 const apiClient = new APIClient<Host>('followed-hosts')
 
-const useFollowedHosts = () => {
+const useHostsFollowed = () => {
   const { user } = useAuth()
   
   return useInfiniteQuery<FetchResponse<Host>, Error>({
@@ -25,4 +25,4 @@ const useFollowedHosts = () => {
   })
 }
 
-export default useFollowedHosts
+export default useHostsFollowed

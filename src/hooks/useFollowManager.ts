@@ -1,7 +1,7 @@
 import { useAuth } from '@/AuthContext'
 import { useEffect, useRef, useState } from 'react'
-import useFollowPost from './store/useFollowPost'
-import useFollowedHosts from './store/useFollowedHosts'
+import useHostsFollowPost from './store/useHostsFollowPost'
+import useHostsFollowed from './store/useHostsFollowed'
 
 const useFollowManager = (
   hostId: number, initialState: boolean, onUnmark?: () => void
@@ -13,8 +13,8 @@ const useFollowManager = (
   const lastState = useRef(initialState)
   const timer = useRef<number | null>(null)
 
-  const { mutate } = useFollowPost(hostId, 'follow')
-  const { refetch } = useFollowedHosts()
+  const { mutate } = useHostsFollowPost(hostId, 'follow')
+  const { refetch } = useHostsFollowed()
 
   useEffect(() => {
     if (marked !== lastState.current) {

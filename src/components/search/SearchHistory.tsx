@@ -1,6 +1,6 @@
 import { Badge, Box, HStack, ListItem, UnorderedList } from '@chakra-ui/react'
-import useSearches from '../../hooks/interact/useSearches'
-import useSearchPut from '../../hooks/interact/useSearchPut'
+import useSearches from '../../hooks/interact-search/useSearches'
+import useSearchPut from '../../hooks/interact-search/useSearchPut'
 import { useAuth } from '../../AuthContext'
 
 interface Props {

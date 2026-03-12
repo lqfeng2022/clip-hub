@@ -5,7 +5,7 @@ import PostCount from '@/components/product/PostCount'
 import SubtitleCard from '@/components/product/SubtitleCard'
 import VideoCard from '@/components/product/VideoCard'
 import usePlaylist from '@/hooks/store/usePlaylist'
-import usePlaylistProducts from '@/hooks/store/usePlaylistProducts'
+import useProductsPlaylist from '@/hooks/store/useProductsPlaylist'
 import { Box, SimpleGrid, Text } from '@chakra-ui/react'
 import React from 'react'
 import InfiniteScroll from 'react-infinite-scroll-component'
@@ -20,7 +20,7 @@ const PlaylistDetailPage = () => {
 
   const listId = list?.short_uuid || passedList?.id
 
-  const { data: products, error, fetchNextPage, hasNextPage } = usePlaylistProducts(
+  const { data: products, error, fetchNextPage, hasNextPage } = useProductsPlaylist(
     listId!, { enabled: !!listId })
 
   if (listLoading) return <BeatLoader />

@@ -1,6 +1,6 @@
 import { useAuth } from '@/AuthContext'
 import { useEffect, useRef, useState } from 'react'
-import useLikes from './store/useLikes'
+import useProductsLiked from './store/useProductsLiked'
 import useInteractPost from './store/useInteractPost'
 
 const useLikeManager = (
@@ -14,7 +14,7 @@ const useLikeManager = (
   const timer = useRef<number | null>(null)
 
   const { mutate } = useInteractPost(productId, 'like')
-  const { refetch } = useLikes()
+  const { refetch } = useProductsLiked()
 
   useEffect(() => {
     if (marked !== lastState.current) {

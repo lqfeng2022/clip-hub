@@ -1,7 +1,7 @@
 // components/chat/RealtimeCall.ts
 import Host from '@/entities/Host'
 import { formatDuration } from '@/helps/formatDate'
-import { useCallRealtime } from '@/hooks/interact/useCallRealtime'
+import { useCallRealtime } from '@/hooks/interact-call/useCallRealtime'
 import { Heading, HStack, Icon, Stack, Text } from '@chakra-ui/react'
 import { CiPhone } from 'react-icons/ci'
 import HostAvatar from '../host/HostAvatar'

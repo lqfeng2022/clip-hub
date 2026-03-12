@@ -5,7 +5,7 @@ import React from 'react'
 import InfiniteScroll from 'react-infinite-scroll-component'
 import SubtitleCard from './SubtitleCard'
 import VideoCard from './VideoCard'
-import useSearchProducts from '@/hooks/store/useSearchProducts'
+import useProductsSearch from '@/hooks/store/useProductsSearch'
 import PostCount from './PostCount'
 
 const AllPosts = () => {
@@ -15,7 +15,7 @@ const AllPosts = () => {
     fetchNextPage, 
     hasNextPage, 
     isLoading 
-  } = useSearchProducts()
+  } = useProductsSearch()
 
   const fetchCount = data?.pages.reduce(
     (sum, page) => sum + page.results.length, 0) || 0

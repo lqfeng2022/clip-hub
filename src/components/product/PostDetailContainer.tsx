@@ -1,7 +1,7 @@
 import { Product } from '@/entities/Product'
 import { formatDate } from '@/helps/formatDate'
 import useInteractPost from '@/hooks/store/useInteractPost'
-import useViews from '@/hooks/store/useViews'
+import useProductsViewed from '@/hooks/store/useProductsViewed'
 import useFollowManager from '@/hooks/useFollowManager'
 import { Box, Divider, HStack, Stack, Text } from '@chakra-ui/react'
 import { ReactNode, useEffect } from 'react'
@@ -23,7 +23,7 @@ const PostDetailContainer = ({ product, children }: Props) => {
   const frommatedDate = formatDate(product.updated_at)
 
   const { mutate } = useInteractPost(product.id, 'view')
-  const { refetch } = useViews()
+  const { refetch } = useProductsViewed()
   
   // post view obj when user is authenticated, then refetch the views
   useEffect(() => { 

@@ -1,5 +1,5 @@
 import { useAuth } from '@/AuthContext'
-import useChatSessionPostNull from '@/hooks/interact/useChatSessionPostNull'
+import useChatSessionPostNull from '@/hooks/interact-chat/useChatSessionPostNull'
 import useLanguageStore from '@/stores/languageStore'
 import { Button, Text } from '@chakra-ui/react'
 import { useNavigate } from 'react-router-dom'

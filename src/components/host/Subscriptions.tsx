@@ -1,5 +1,5 @@
 import BeatLoader from '@/components/BeatLoader'
-import useFollowedHosts from '@/hooks/store/useFollowedHosts'
+import useHostsFollowed from '@/hooks/store/useHostsFollowed'
 import { Box, Divider, SimpleGrid, Text } from '@chakra-ui/react'
 import React from 'react'
 import InfiniteScroll from 'react-infinite-scroll-component'
@@ -7,7 +7,7 @@ import SubscribeList from './SubscribeList'
 import PostCount from '../product/PostCount'
 
 const Subscriptions = () => {
-  const { data, error, fetchNextPage,  hasNextPage } = useFollowedHosts()
+  const { data, error, fetchNextPage,  hasNextPage } = useHostsFollowed()
   const fetchCount = data?.pages.reduce(
     (total, page) => total + page.results.length, 0) || 0
 

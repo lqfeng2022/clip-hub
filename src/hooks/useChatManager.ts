@@ -1,6 +1,6 @@
 import { useAuth } from '@/AuthContext'
 import useChatSessionPost from './store/useChatSessionPost'
-import useChatSessions from './interact/useChatSessions'
+import useChatSessions from './interact-chat/useChatSessions'
 import { useLocation, useNavigate } from 'react-router-dom'
 
 const useChatManager = (productId: number) => {

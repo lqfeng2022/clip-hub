@@ -6,12 +6,12 @@ import PostCount from './PostCount'
 import ExpressionCard from './ExpressionCard'
 import SubtitleCard from './SubtitleCard'
 import VideoCard from './VideoCard'
-import useRelevant from '@/hooks/store/useRelevant'
+import useProductsRelevant from '@/hooks/store/useProductsRelevant'
 import { useParams } from 'react-router-dom'
 
 const Relevants = () => {
   const { id } = useParams() // get `slug` from url
-  const { data, error, fetchNextPage, hasNextPage } = useRelevant(id!)
+  const { data, error, fetchNextPage, hasNextPage } = useProductsRelevant(id!)
   const postCount = data?.pages.reduce(
     (total, page) => total + page.results.length, 0) || 0
 

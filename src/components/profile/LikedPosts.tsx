@@ -3,13 +3,13 @@ import { SimpleGrid, Text, Box } from '@chakra-ui/react'
 import React from 'react'
 import InfiniteScroll from 'react-infinite-scroll-component'
 import ExpressionCard from '../product/ExpressionCard'
-import useLikes from '../../hooks/store/useLikes'
+import useProductsLiked from '../../hooks/store/useProductsLiked'
 import SubtitleCard from '@/components/product/SubtitleCard'
 import VideoCard from '@/components/product/VideoCard'
 import PostCount from '@/components/product/PostCount'
 
 const LikedPosts = () => {
-  const { data, error, fetchNextPage,  hasNextPage } = useLikes()
+  const { data, error, fetchNextPage,  hasNextPage } = useProductsLiked()
   const fetchCount = data?.pages.reduce(
     (total, page) => total + page.results.length, 0) || 0
 

@@ -5,7 +5,7 @@ import { useAuth } from '@/AuthContext'
 
 const apiClient = new APIClient<Host>('hosts')
 
-const useFollowPost = (hostId: number, action: string) => {
+const useHostsFollowPost = (hostId: number, action: string) => {
   const { user } = useAuth()
   
   return useMutation({
@@ -21,4 +21,4 @@ const useFollowPost = (hostId: number, action: string) => {
   })
 }
 
-export default useFollowPost
+export default useHostsFollowPost

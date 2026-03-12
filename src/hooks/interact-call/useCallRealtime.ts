@@ -1,10 +1,10 @@
 // hooks/realtime-call/useRealtimeCall.ts
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { ClientEvent, ServerEvent } from '@/protocol/call'
-import { useAudioPlayer } from '@/hooks/realtime/useAudioPlayer'
-import { useCallSocket } from '@/hooks/realtime/useCallSocket'
-import { useRealtimeSTT } from '@/hooks/realtime/useRealtimeSTT'
-import { useTTSSocket } from '../realtime/useTTSSocket'
+import { useAudioPlayer } from './useAudioPlayer'
+import { useCallSocket } from './useCallSocket'
+import { useRealtimeSTT } from './useRealtimeSTT'
+import { useTTSSocket } from './useTTSSocket'
 import Host from '@/entities/Host'
 
 const CALL_STATES = ['idle', 'thinking', 'speaking'] as const

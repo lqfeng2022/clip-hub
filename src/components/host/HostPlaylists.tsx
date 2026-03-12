@@ -5,7 +5,7 @@ import React from 'react'
 import InfiniteScroll from 'react-infinite-scroll-component'
 import PostCount from '../product/PostCount'
 import PlaylistCard from './PlaylistCard'
-import usePlaylistAdd from '@/hooks/interact/usePlaylistAdd'
+import usePlaylistAdd from '@/hooks/interact-playlist/usePlaylistAdd'
 
 const HostPlaylists = () => {
   const { data, error, fetchNextPage, hasNextPage, isLoading  } = usePlaylists()

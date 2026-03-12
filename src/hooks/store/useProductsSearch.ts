@@ -6,7 +6,7 @@ import useProductFilterStore from '@/stores/productFilterStore'
 
 const apiClient = new APIClient<Product>('products')
 
-const useSearchProducts = () => {
+const useProductsSearch = () => {
   const query = useProductFilterStore(s => s.query)
 
   return useInfiniteQuery<FetchResponse<Product>, Error>({
@@ -28,4 +28,4 @@ const useSearchProducts = () => {
   })
 }
 
-export default useSearchProducts
+export default useProductsSearch

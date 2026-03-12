@@ -1,18 +1,14 @@
 import { useInfiniteQuery } from '@tanstack/react-query'
 import APIClient from '@/services/api-store'
-import { useAuth } from '@/AuthContext'
 import FetchResponse from '@/entities/FetchResponse'
 import { Product } from '@/entities/Product'
 
-const apiClient = new APIClient<Product>('bookmarked-products')
+const apiClient = new APIClient<Product>('products')
 
-const useBookmarks = () => {
-  const { user } = useAuth()
-
+const useProductsRelevant = (id: string) => {
   return useInfiniteQuery<FetchResponse<Product>, Error>({
-    queryKey: ['bookmarked-products'],
-    queryFn: ({pageParam = 1}) => apiClient.getAll({
-      withCredentials: true,
+    queryKey: ['relevants', id],
+    queryFn: ({pageParam = 1}) => apiClient.getRelevant(id, {
       params: {
         page: pageParam,
       },
@@ -21,9 +17,9 @@ const useBookmarks = () => {
       return lastPage.next ? allPages.length + 1 : undefined
     },
     staleTime: 24 * 60 * 60 * 1000, // 24h
-    enabled: !!user,
-    retry: false,
+    enabled: !!id, // avoid undefined id
+    keepPreviousData: true, // optional for smoother UX
   })
 }
 
-export default useBookmarks
+export default useProductsRelevant

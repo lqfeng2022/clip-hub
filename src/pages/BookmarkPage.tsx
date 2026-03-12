@@ -1,7 +1,7 @@
 import BeatLoader from '@/components/BeatLoader'
 import PageNavTab from '@/components/PageNavTab'
 import profilePagesData from '@/data/profilePagesData'
-import useBookmarks from '@/hooks/store/useBookmarks'
+import useProductsBookmarked from '@/hooks/store/useProductsBookmarked'
 import useLanguageStore from '@/stores/languageStore'
 import { Box, SimpleGrid, Text } from '@chakra-ui/react'
 import React from 'react'
@@ -16,7 +16,7 @@ const BookmarkPage = () => {
   const header = lang === 'en' 
     ? profilePagesData.en.bookmark : profilePagesData.zh.bookmark
 
-  const { data, error, fetchNextPage,  hasNextPage } = useBookmarks()
+  const { data, error, fetchNextPage,  hasNextPage } = useProductsBookmarked()
   const fetchCount = data?.pages.reduce(
     (sum, page) => sum + page.results.length, 0) || 0
 

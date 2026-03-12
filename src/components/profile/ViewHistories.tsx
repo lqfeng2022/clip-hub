@@ -3,13 +3,13 @@ import ExpressionCard from '@/components/product/ExpressionCard'
 import { Box, SimpleGrid, Text } from '@chakra-ui/react'
 import React from 'react'
 import InfiniteScroll from 'react-infinite-scroll-component'
-import useViews from '../../hooks/store/useViews'
+import useProductsViewed from '../../hooks/store/useProductsViewed'
 import SubtitleCard from '../product/SubtitleCard'
 import VideoCard from '../product/VideoCard'
 import PostCount from '../product/PostCount'
 
 const ViewHistories = () => {
-  const { data, error, fetchNextPage,  hasNextPage } = useViews()
+  const { data, error, fetchNextPage,  hasNextPage } = useProductsViewed()
   const fetchCount = data?.pages.reduce(
     (total, page) => total + page.results.length, 0) || 0
 

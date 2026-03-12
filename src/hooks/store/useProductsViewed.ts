@@ -6,7 +6,7 @@ import { useAuth } from '@/AuthContext'
 
 const apiClient = new APIClient<Product>('viewed-products')
 
-const useViews = () => {
+const useProductsViewed = () => {
   const { user } = useAuth()
   
   return useInfiniteQuery<FetchResponse<Product>, Error>({
@@ -25,4 +25,4 @@ const useViews = () => {
   })
 }
 
-export default useViews
+export default useProductsViewed

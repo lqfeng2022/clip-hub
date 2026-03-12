@@ -1,4 +1,4 @@
-import useFeed from '@/hooks/store/useFeed'
+import useProductsFeed from '@/hooks/store/useProductsFeed'
 import { Box, SimpleGrid, Text } from '@chakra-ui/react'
 import React from 'react'
 import InfiniteScroll from 'react-infinite-scroll-component'
@@ -9,7 +9,7 @@ import SubtitleCard from './SubtitleCard'
 import VideoCard from './VideoCard'
 
 const ProductFeed = () => {
-  const { data, error, fetchNextPage, hasNextPage } = useFeed()
+  const { data, error, fetchNextPage, hasNextPage } = useProductsFeed()
   const postCount = data?.pages.reduce(
     (total, page) => total + page.results.length, 0) || 0
 

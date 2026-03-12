@@ -1,4 +1,4 @@
-import useFollowing from '@/hooks/store/useFollowedProducts'
+import useProductsFollowedHosts from '@/hooks/store/useProductsFollowedHosts'
 import { Box, SimpleGrid, Text } from '@chakra-ui/react'
 import React from 'react'
 import InfiniteScroll from 'react-infinite-scroll-component'
@@ -9,7 +9,7 @@ import VideoCard from './VideoCard'
 import PostCount from './PostCount'
 
 const FollowingPosts = () => {
-  const { data, error, fetchNextPage, hasNextPage } = useFollowing()
+  const { data, error, fetchNextPage, hasNextPage } = useProductsFollowedHosts()
   const postCount = data?.pages.reduce(
     (total, page) => total + page.results.length, 0) || 0
 

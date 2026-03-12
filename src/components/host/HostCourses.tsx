@@ -5,7 +5,7 @@ import InfiniteScroll from 'react-infinite-scroll-component'
 import PostCount from '../product/PostCount'
 import useCourses from '@/hooks/store/useCourses'
 import CourseCard from './CourseCard'
-import useCourseAdd from '@/hooks/interact/useCourseAdd'
+import useCourseAdd from '@/hooks/interact-course/useCourseAdd'
 
 const HostCourses = () => {
   const { data, error, fetchNextPage, hasNextPage, isLoading  } = useCourses()

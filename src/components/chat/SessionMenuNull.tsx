@@ -1,6 +1,6 @@
 import ChatSession from '@/entities/ChatSession'
-import useChatSessionDelete from '@/hooks/interact/useChatSessionDelete'
-import useChatSessions from '@/hooks/interact/useChatSessions'
+import useChatSessionDelete from '@/hooks/interact-chat/useChatSessionDelete'
+import useChatSessions from '@/hooks/interact-chat/useChatSessions'
 import { Icon, IconButton, Menu, MenuButton, MenuItem, MenuList, Text } from '@chakra-ui/react'
 import { AiFillDelete } from 'react-icons/ai'
 import { TfiMoreAlt } from 'react-icons/tfi'
