@@ -1,33 +1,101 @@
-# Real-Time AI Voice Call (React Client)
+# Talk With Videos — AI Hosts for Learning
 
-This project implements a real-time AI voice call system that allows users to have a **natural phone-style conversation with an AI agent**.
+This project explores a new way of learning from online videos.
 
-The client streams microphone audio to a speech-to-text service, sends transcripts to an AI agent, and receives streaming text-to-speech audio responses — all with **low latency and interruptible turn-taking**.
+Instead of only watching a video, users can **talk with an AI Host that understands the content of the video**.  
+The Host can answer questions, discuss topics, and guide the conversation based on the video material.
 
-The goal is to replicate a **human-like conversation flow** where users can interrupt the AI while it speaks and immediately take control of the conversation.
-
----
-
-## System Overview
-
-The voice system is part of a larger AI chat platform that supports:
-
-- **text chat** (HTTP)
-- **audio messages** (HTTP)
-- **real-time voice calls** (WebSocket streaming)
-
-The real-time voice stack combines:
-
-- React client
-- Django AI backend
-- Node.js real-time audio gateway
-- ElevenLabs real-time STT/TTS
+This turns passive video watching into an **interactive learning experience**.
 
 ---
 
-## Real-Time Voice Architecture
+## The Idea
 
-The system separates responsibilities between two backend services.
+Platforms like YouTube contain enormous amounts of knowledge, but learning from videos is usually **one-directional**.
+
+This project adds a conversational layer:
+
+```
+Watch video → Ask questions → Discuss ideas → Practice speaking
+```
+
+Each video can have an **AI Host** that understands the content and interacts with the viewer.
+
+Examples of possible learning scenarios:
+
+- language learning
+- IELTS speaking practice
+- programming tutorials
+- math explanations
+- general educational content
+
+Instead of only watching, users can **ask questions and explore topics through conversation**.
+
+---
+
+## AI Hosts
+
+Each Host is designed like a character.
+
+Hosts can have:
+
+- a unique voice
+- a defined personality
+- a role or background story
+- knowledge about specific videos or topics
+
+The concept is inspired by the **Hosts from Westworld**, where each character has its own identity.
+
+Example Host:
+
+```
+Host: IELTS Speaking Examiner
+Voice: British Male
+Role: IELTS examiner
+Knowledge: IELTS practice videos and speaking topics
+Personality: formal and structured
+```
+
+---
+
+## Interaction Modes
+
+Users can communicate with Hosts in several ways.
+
+### Text Chat
+
+Standard conversation with the Host.
+
+```
+User message → Django API → AI agent → response
+```
+
+### Audio Messages
+
+Users can send recorded voice messages and receive spoken replies.
+
+```
+Voice message → Speech-to-text → AI agent → Text-to-speech
+```
+
+### Real-Time Voice Call
+
+Users can have a live conversation with the Host.
+
+Features:
+
+- real-time speech recognition
+- streaming AI responses
+- streaming speech synthesis
+- interruptible AI speech
+
+This makes the interaction feel like **talking to a real person**.
+
+---
+
+## System Architecture
+
+The system separates conversation logic from real-time voice processing.
 
 ```mermaid
 flowchart LR
@@ -35,48 +103,42 @@ flowchart LR
 User((User))
 Browser[React Client]
 
-Django[Django AI Server<br>Conversation Brain]
+Django[Django Server<br>AI Agents + API]
 
 Node[Node.js Voice Gateway]
 
-STT[ElevenLabs<br>Realtime STT]
-TTS[ElevenLabs<br>Streaming TTS]
+SpeechAI[Speech Models<br>STT + TTS]
 
 User --> Browser
 
-Browser -->|WebSocket events| Django
-Django -->|agent.text| Browser
+Browser -->|REST API| Django
+Browser -->|WebSocket| Django
 
-Browser -->|audio stream| STT
-STT -->|partial/final transcript| Browser
-
-Browser -->|TTS request| Node
-Node -->|generate audio| TTS
-TTS -->|audio chunks| Node
-Node -->|binary audio stream| Browser
+Browser -->|voice stream| Node
+Node --> SpeechAI
+SpeechAI --> Node
+Node --> Browser
 ```
 
-### Responsibilities
+### React Client
 
-**React Client**
+Provides the user interface and voice interaction:
 
-- microphone capture
-- STT streaming
-- AI event protocol
-- TTS streaming playback
-- conversation turn-taking
+- video + chat interface
+- audio recording
+- real-time call
+- streaming audio playback
 
-**Django (Core AI Backend)**
+### Django (Core AI Backend)
 
+Main backend responsible for:
+
+- AI conversation logic
+- Hosts and video knowledge
+- chat APIs
 - WebSocket call protocol
-- AI agent logic
-- conversation state
-- dialogue generation
-- message orchestration
 
-Django acts as the brain of the conversation.
-
-**Node.js (Realtime Voice Gateway)**
+### Node.js (Realtime Voice Gateway)
 
 - authentication token proxy for STT
 - streaming TTS audio
@@ -92,28 +154,24 @@ The Node service isolates real-time media processing from the main backend.
 The voice interaction pipeline works as follows:
 
 ```
-User Speech
-   ↓
-Realtime STT (ElevenLabs Scribe)
-   ↓
-Partial + Final Transcripts
-   ↓
-WebSocket → Django Agent
-   ↓
-Agent Reasoning
-   ↓
-Agent Text Response
-   ↓
-Node TTS Gateway
-   ↓
-Streaming Audio Playback
+User speech
+  ↓
+Speech-to-text
+  ↓
+AI Host reasoning
+  ↓
+Text response
+  ↓
+Text-to-speech
+  ↓
+Audio playback
 ```
 
-This pipeline allows low latency responses and continuous conversation flow.
+Users can also interrupt the AI while it is speaking, creating a natural conversational experience.
 
 ---
 
-## Conversation Sequence Example
+## Conversation Example
 
 ```mermaid
 sequenceDiagram
@@ -149,224 +207,31 @@ Browser->>User: Play AI speech
 
 ---
 
-## Turn-Taking & Barge-In
-
-A key challenge in voice interfaces is conversation control.
-
-This system implements barge-in support, allowing users to interrupt the AI mid-speech.
-
-When user speech is detected during AI playback:
-
-1. TTS generation stops
-2. Audio playback resets
-3. STT resumes
-4. User speech becomes the active input
-
-Example logic from the call orchestrator:
-
-```ts
-if (agentState === "speaking") {
-  tts.stop();
-  audio.reset();
-  stt.resume();
-}
-```
-
-This produces **a natural conversational dynamic** similar to human phone calls.
-
----
-
-## Client Architecture
-
-The real-time call is orchestrated through specialized React hooks.
-
-### `useCallRealtime`
-
-The main hook that manages the call lifecycle.
-
-Responsibilities:
-
-- WebSocket connection lifecycle
-- STT start / pause / resume
-- TTS playback coordination
-- AI agent state tracking
-- call timer
-- teardown logic
-
-Agent states:
-
-```
-idle
-thinking
-speaking
-```
-
-These states control whether STT should listen or pause.
-
----
-
-### `useRealtimeSTT`
-
-Handles **speech recognition streaming**.
-
-Features:
-
-- microphone streaming
-- partial transcript events
-- final transcript commits
-- pause/resume gating
-- session lifecycle management
-
-Transcript types:
-
-```
-PARTIAL_TRANSCRIPT
-COMMITTED_TRANSCRIPT
-```
-
-Partial transcripts allow the system to react before the user finishes speaking.
-
----
-
-### `useTTSSocket`
-
-Handles **streaming text-to-speech audio** from the Node.js gateway.
-
-Features:
-
-- WebSocket streaming
-- binary PCM audio chunks
-- playback signaling
-- graceful stop handling
-
-Audio data is streamed as ArrayBuffer PCM frames and pushed into the audio player buffer.
-
----
-
-### `useAudioPlayer`
-
-Handles low-latency audio playback.
-
-Responsibilities:
-
-- audio chunk buffering
-- streaming playback
-- reset and stop control
-
----
-
-## Event Protocol
-
-The real-time call uses a lightweight event protocol.
-
-### Client → Server
-
-```
-text.partial   streaming transcript
-text.final     confirmed transcript
-call.end       user ends the call
-```
-
-### Server → Client
-
-```
-agent.state    idle | thinking | speaking
-agent.text     final AI response text
-error          error message
-```
-
-This protocol separates conversation state from audio streaming.
-
----
-
-## Microphone Diagnostics
-
-The client performs microphone health checks before starting STT.
-
-Possible block reasons:
-
-```
-mic-unavailable
-permission-denied
-device-muted
-```
-
-This prevents silent failures when browsers block audio input.
-
----
-
-## Call Lifecycle
-
-1. WebSocket call connection established
-2. Microphone permission requested
-3. STT session starts
-4. User begins speaking
-5. AI agent processes transcripts
-6. Streaming TTS responses are played
-7. User can interrupt AI at any time
-8. Call ends via teardown or user action
-
-Shutdown sequence:
-
-```
-STT.stop()
-TTS.stop()
-audio.reset()
-CALL_END event
-```
-
----
-
 ## Technologies Used
 
 Frontend:
 
-- React
+- React.js
 - TypeScript
-- WebSocket streaming
 - Web Audio API
+- WebSocket streaming
 
 Backend:
 
-- Django (AI orchestration)
-- Node.js (voice gateway)
+- Django (AI agents + APIs)
+- Node.js (real-time voice gateway)
 
-AI & Voice:
+Speech:
 
 - ElevenLabs realtime Scribe (STT)
 - ElevenLabs streaming TTS
 
 ---
 
-## Why This Architecture?
-
-Real-time voice systems introduce challenges that do not exist in text chat:
-
-- audio streaming
-- concurrency control
-- turn-taking
-- latency management
-- interrupt handling
-
-Separating the **AI brain (Django)** from the **voice gateway (Node.js)** allows the system to scale and evolve independently.
-
----
-
-## Future Improvements
-
-Possible extensions:
-
-- voice activity detection (VAD)
-- WebRTC audio transport
-- adaptive latency buffering
-- multi-agent voice conversations
-- conversation memory
-- mobile browser optimization
-
----
-
 ## Project Goal
 
-This project explores how to build a **production-style AI voice conversation stack** in the browser, combining modern speech models with real-time web technologies.
+The goal of this project is to transform video learning from a passive experience into an **interactive conversation**.
+
+Instead of only watching a video, users can **talk with it**.
 
 ---
