@@ -7,8 +7,6 @@ The Host can answer questions, discuss topics, and guide the conversation based 
 
 This turns passive video watching into an **interactive learning experience**.
 
----
-
 ## The Idea
 
 Platforms like YouTube contain enormous amounts of knowledge, but learning from videos is usually **one-directional**.
@@ -30,8 +28,6 @@ Examples of possible learning scenarios:
 - general educational content
 
 Instead of only watching, users can **ask questions and explore topics through conversation**.
-
----
 
 ## AI Hosts
 
@@ -55,8 +51,6 @@ Role: IELTS examiner
 Knowledge: IELTS practice videos and speaking topics
 Personality: formal and structured
 ```
-
----
 
 ## Interaction Modes
 
@@ -90,8 +84,6 @@ Features:
 - interruptible AI speech
 
 This makes the interaction feel like **talking to a real person**.
-
----
 
 ## System Architecture
 
@@ -147,8 +139,6 @@ Main backend responsible for:
 
 The Node service isolates real-time media processing from the main backend.
 
----
-
 ## Voice Conversation Pipeline
 
 The voice interaction pipeline works as follows:
@@ -168,8 +158,6 @@ Audio playback
 ```
 
 Users can also interrupt the AI while it is speaking, creating a natural conversational experience.
-
----
 
 ## Conversation Example
 
@@ -205,8 +193,6 @@ Node-->>Browser: Stream audio
 Browser->>User: Play AI speech
 ```
 
----
-
 ## Technologies Used
 
 Frontend:
@@ -226,12 +212,21 @@ Speech:
 - ElevenLabs realtime Scribe (STT)
 - ElevenLabs streaming TTS
 
----
-
 ## Project Goal
 
 The goal of this project is to transform video learning from a passive experience into an **interactive conversation**.
 
 Instead of only watching a video, users can **talk with it**.
 
----
+## More Info
+
+- **Website**  
+  https://app.clipwords.me
+
+- **Backend (Django Server)**  
+  https://github.com/lqfeng2022/enfucker
+
+- **Voice Gateway (Node.js)**
+  https://github.com/lqfeng2022/enfucker
+
+- **Frontend (this repository)**
