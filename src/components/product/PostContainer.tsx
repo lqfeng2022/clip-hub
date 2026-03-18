@@ -4,9 +4,9 @@ import { ReactNode } from 'react'
 import { Link } from 'react-router-dom'
 import HostAvatar from '../host/HostAvatar'
 import InteractIcons from '../profile/InteractIcons'
-import HostBadge from './HostBadge'
 import PostMenu from './PostMenu'
 import { formatSimpleDate } from '@/helps/formatDate'
+import PostBadges from './PostBadges'
 
 interface Props {
   product: Product,
@@ -38,7 +38,7 @@ const PostContainer = ({ product, children }: Props) => {
               <Text color='gray' fontSize='sm'>
                 @{product.host.slug}
               </Text>
-              <HostBadge/>
+              <PostBadges product={product}/>
               <Text color='gray.300' fontSize='sm'>
                 {frommatedDate}
               </Text>

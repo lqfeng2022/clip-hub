@@ -13,9 +13,16 @@ import ChatSessionCardTwo from '@/components/chat/ChatSessionCardTwo'
 const ProfileChatPage = () => {
   const lang = useLanguageStore(s => s.language)
   const header = lang === 'en' 
-    ? profilePagesData.en.view_chat : profilePagesData.zh.view_chat
+    ? profilePagesData.en.view_chat 
+    : profilePagesData.zh.view_chat
 
-  const { data, error, fetchNextPage,  hasNextPage } = useChatSessions()
+  const { 
+    data, 
+    error, 
+    fetchNextPage,  
+    hasNextPage 
+  } = useChatSessions()
+  
   const fetchCount = data?.pages.reduce(
     (total, page) => total + page.results.length, 0) || 0
 
@@ -35,9 +42,9 @@ const ProfileChatPage = () => {
             <React.Fragment key={index}>
               {page?.results.map((chat) =>
                 <Box key={chat.id}>
-                  {chat.product 
-                  ? <ChatSessionCard chat={chat}/> 
-                  : <ChatSessionCardTwo chat={chat}/>
+                  {chat.product ? 
+                    <ChatSessionCard chat={chat}/> : 
+                    <ChatSessionCardTwo chat={chat}/>
                   }
                 </Box>
               )}

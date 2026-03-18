@@ -9,8 +9,8 @@ import { Link } from 'react-router-dom'
 import HostAvatar from '../host/HostAvatar'
 import SubscribeButton from '../host/SubscribeButton'
 import InteractIcons from '../profile/InteractIcons'
-import HostBadge from './HostBadge'
 import { useAuth } from '@/AuthContext'
+import PostBadges from './PostBadges'
 
 interface Props {
   product: Product,
@@ -47,7 +47,7 @@ const PostDetailContainer = ({ product, children }: Props) => {
               <Text fontWeight='bold' fontSize='sm' lineHeight={1}>
                 {product.host.name}
               </Text>
-              <HostBadge/>
+              <PostBadges product={product}/>
             </HStack>
             <Text color='gray' fontSize='sm'>
               @{product.host.slug}

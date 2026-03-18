@@ -12,8 +12,7 @@ import { IoIosTime } from 'react-icons/io'
 
 const ChatSessionCard = ({ chat } : { chat: ChatSession }) => {
   const product = chat.product
-  const host = chat.host
-  const {image, title } = getProductDisplay(product)
+  const { image, title } = getProductDisplay(product)
 
   return (
     <HStack 
@@ -24,26 +23,31 @@ const ChatSessionCard = ({ chat } : { chat: ChatSession }) => {
       bg='#1A202CAA'
       borderRadius='15px'
     >
+      {/* HOST avatar */}
       <Avatar 
         size={{base: 'md', sm: 'lg'}}
-        name={host.name} 
-        src={host.portrait}
-        />
-      <Box flex='1' bg='transparent'>
+        name={chat.host.name} 
+        src={chat.host.portrait}
+      />
+      {/* CHAT SESSION details */}
+      <Box flex='1' bg='transparent' mt={-1}>
+        {/* Host name/slug + menu */}
         <HStack justifyContent='space-between'>
           <HStack>
             <Text fontWeight='semibold' color='gray.200'>
-              {host.name}
+              {chat.host.name}
             </Text>
             <Text color='gray' fontSize='sm'>
-              @{host.slug}
+              @{chat.host.slug}
             </Text>
             <PostBadges product={product}/>
           </HStack>
           <SessionMenu chat={chat}/>
         </HStack>
-        <Link to={`/chat/${chat.id}`}>
-          <HStack align='flex-start' pt={1}>
+        {/* Session details */}
+        <HStack align='flex-start' pt={1}>
+          {/* session related image */}
+          <Link to={`/chat/${chat.id}`}>
             <Box
               borderRadius='lg'
               overflow='hidden'
@@ -53,30 +57,39 @@ const ChatSessionCard = ({ chat } : { chat: ChatSession }) => {
             >
               <Image src={image ?? noImage}/>
             </Box>
-            {/* Chat Session metadata */}
-            <Stack spacing={0}>
-              <Text fontSize='xs' color='gray.100' noOfLines={2}>
+          </Link>
+          {/* session related title + metadata */}
+          <Stack spacing={0}>
+            {/* session related title */}
+            <Link to={`/chat/${chat.id}`}>
+              <Text 
+                fontSize='sm' 
+                color='gray.100' 
+                noOfLines={2} 
+                _hover={{ color: 'yellow.200' }}
+              >
                 {title!}
               </Text>
-              <HStack>
-                <Text fontSize='xl' fontWeight='bold'>
-                  {chat.messages_count ?? 0}
-                </Text>
-                <Icon as={AiOutlineMessage} boxSize='15px' color='gray' opacity={0.5}/>
-                <Text fontSize='sm'>
-                  {formatDuration(chat.total_duration) ?? 0}
-                </Text>
-                <Icon as={IoIosTime} boxSize='16px' color='gray' opacity={0.5}/>
-              </HStack>
-              <HStack>
-                <Text fontSize='sm'>
-                  {chat.credits_used.toLocaleString() ?? 0}
-                </Text>
-                <Icon as={CiCreditCard2} boxSize='18px' color='gold' opacity={0.5}/>
-              </HStack>
-            </Stack>
-          </HStack>
-        </Link>
+            </Link>
+            {/* session metadata */}
+            <HStack pt={2}>
+              <Text fontSize='sm' fontWeight='bold'>
+                {chat.messages_count ?? 0}
+              </Text>
+              <Icon as={AiOutlineMessage} boxSize='15px' color='gray' opacity={0.5}/>
+              <Text fontSize='sm' fontWeight='light'>
+                {formatDuration(chat.total_duration) ?? 0}
+              </Text>
+              <Icon as={IoIosTime} boxSize='16px' color='gray' opacity={0.5}/>
+            </HStack>
+            <HStack>
+              <Text fontSize='sm' fontWeight='light'>
+                {chat.credits_used.toLocaleString() ?? 0}
+              </Text>
+              <Icon as={CiCreditCard2} boxSize='18px' color='gray' opacity={0.5}/>
+            </HStack>
+          </Stack>
+        </HStack>
       </Box>
     </HStack>
   )
