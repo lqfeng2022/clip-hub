@@ -19,7 +19,7 @@ const Layout = () => {
   }, [location.pathname])
 
   return (
-    <Container maxW='1350px' px={0}>
+    <Container maxW='1300px' px={0}>
       <ScrollToTop/>
       <Grid
         templateAreas={{
@@ -34,6 +34,7 @@ const Layout = () => {
         }}
         columnGap={0}
       >
+        {/* Left for Nav */}
         <Show above='md'>
           <GridItem 
             area='aside' 
@@ -43,6 +44,7 @@ const Layout = () => {
             <NavList />
           </GridItem>
         </Show>
+        {/* Middle for Content */}
         <GridItem 
           area='main' 
           display='flex' 

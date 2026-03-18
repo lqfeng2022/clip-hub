@@ -39,7 +39,7 @@ const PostDetailPage = () => {
         <PageNavTab title={header}/>
         <PostMenu product={prod}/>
       </HStack>
-      <Box maxW='650px'>
+      <Box>
         {prod.type === 'expression' && 
           <ExpressionDetailCard product={prod}/>}
         {prod.type === 'subtitle' && 

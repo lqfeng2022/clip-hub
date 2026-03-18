@@ -15,8 +15,7 @@ const NavList = () => {
   return (
     <Box 
       py={5}
-      px={{base: 1, xl: 5}}
-      mx={1}
+      px={{base: 1, md: 5}}
       display='flex' 
       flexDirection='column' 
       height='100vh'
@@ -27,9 +26,9 @@ const NavList = () => {
         {navListData.map((p) => (
           <ListItem
             key={p.title}
-            p='10px 15px' my={3}
+            p='10px 15px' my={2}
             _hover={{ bg: 'gray.700', borderRadius: 'full' }}
-            >
+          >
             <Link to={user ? p.link : p.link2}>
               <HStack spacing={5}>
                 <Icon
