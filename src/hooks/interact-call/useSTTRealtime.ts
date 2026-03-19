@@ -8,7 +8,7 @@ interface Props {
   onFinalText?: (text: string) => void
   onPartialText?: (text: string) => void
 }
-export function useRealtimeSTT({ onFinalText, onPartialText }: Props) {
+export function useSTTRealtime({ onFinalText, onPartialText }: Props) {
   const connectionRef = useRef<ReturnType<typeof Scribe.connect> | null>(null)
 
   const activeRef = useRef(false)

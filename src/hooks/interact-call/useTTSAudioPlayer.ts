@@ -1,7 +1,7 @@
 // hooks/realtime-call/useAudioPlayer.ts
 import { useRef, useCallback, useEffect } from 'react'
 
-export function useAudioPlayer() {
+export function useTTSAudioPlayer() {
   const audioCtxRef = useRef<AudioContext | null>(null)
 
   // ---- PCM byte re-framing ----
