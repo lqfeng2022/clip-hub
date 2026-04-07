@@ -77,7 +77,6 @@ const ChatMessagesList = ({ host, messages, chatSessionId }: Props) => {
                 key={index} 
                 host={host} 
                 message={m} 
-                chatSessionId={chatSessionId}
                 autoPlay={isLastOne && !!m.audio}
               />
             }

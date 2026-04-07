@@ -1,6 +1,6 @@
 import ChatMessage from '@/entities/ChatMessage'
 import { HStack, Avatar, Box, Text } from '@chakra-ui/react'
-import ChatAudioBox from './ChatAudioBox'
+import ChatAudioBoxUser from './ChatAudioBoxUser'
 import { formatMessage } from '@/helps/formatMessage'
 
 interface Props {
@@ -19,7 +19,7 @@ const ChatUserMessage = ({ fullName, message, chatSessionId }: Props) => {
         name={fullName}
       />
       {message.audio ? (
-        <ChatAudioBox 
+        <ChatAudioBoxUser 
           audioUrl={message.audio!} 
           content={message.content!}
           rewrite_content={message.rewrite?.content ?? undefined}

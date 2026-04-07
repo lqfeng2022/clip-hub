@@ -18,7 +18,7 @@ interface Props {
   chatSessionId: number,
   messageId: number,
 }
-const ChatAudioBox = ({ 
+const ChatAudioBoxUser = ({ 
   audioUrl, 
   content, 
   rewrite_content,
@@ -117,13 +117,23 @@ const ChatAudioBox = ({
       </Box>
       {/* show the audio content */}
       <Collapse in={showContent && (!!content || !!localRewrite)} animateOpacity>
-        <Box width={{ base: '280px', sm: '350px' }} pt={2}>
-          <Text fontWeight='light' lineHeight='1.3' fontSize='xs'>
+        <Box 
+          width={{ base: '280px', sm: '350px' }} 
+          pt={2} mt={2} 
+          background='RGBA(0, 0, 0, 0.22)' 
+          borderRadius='5px'
+        >
+          <Text 
+            fontWeight='light' 
+            lineHeight='1.3' 
+            fontSize='xs'
+            px={2}
+          >
             {formatMessage(
               viewingRewrite && localRewrite ? localRewrite : content ?? localRewrite ?? ''
             )}
           </Text>
-          <Box pt={1}>
+          <Box p={2}>
             {localRewrite ? (
               <Button 
                 size='xs'
@@ -159,4 +169,4 @@ const ChatAudioBox = ({
   )
 }
 
-export default ChatAudioBox
+export default ChatAudioBoxUser

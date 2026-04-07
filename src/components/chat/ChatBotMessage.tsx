@@ -1,27 +1,24 @@
 import ChatMessage from '@/entities/ChatMessage'
 import { HStack, Box, Avatar, Text, Stack } from '@chakra-ui/react'
-import ChatAudioBox from './ChatAudioBox'
+import ChatAudioBoxBot from './ChatAudioBoxBot'
 import Host from '@/entities/Host'
 import { formatMessage } from '@/helps/formatMessage'
 
 interface Props {
   host: Host,
   message: ChatMessage,
-  chatSessionId: number,
   autoPlay?: boolean //receive autoplay flag
 }
-const ChatBotMessage = ({ host, message, chatSessionId, autoPlay }: Props) => {  
+const ChatBotMessage = ({ host, message, autoPlay }: Props) => {  
   return (
     <HStack justify='flex-end'>
       <Stack>
         {message.audio ? (
-          <ChatAudioBox 
+          <ChatAudioBoxBot 
             audioUrl={message.audio!}
             content={message.content!}
             duration={message.audio_seconds}
             align='right'
-            chatSessionId={chatSessionId}
-            messageId={message.id}
             autoPlay={autoPlay}
           />
         ) : (
