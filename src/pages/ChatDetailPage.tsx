@@ -130,7 +130,11 @@ const ChatDetailPage = () => {
         {product && <ChatSessionCardSimple chat={chat}/>}
         {/* optional loader when fetching older messages */}
         {isFetchingNextPage && <BeatLoader />}
-        <ChatMessagesList messages={messages} host={chat.host}/>
+        <ChatMessagesList 
+          chatSessionId={Number(id)} 
+          messages={messages} 
+          host={chat.host}
+        />
       </Box>
       <Box
         position='sticky'

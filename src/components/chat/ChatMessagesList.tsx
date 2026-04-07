@@ -10,8 +10,9 @@ import { shouldShowDateDivider, formatDateTime } from '@/helps/chatDateUtils'
 interface Props {
   host: Host
   messages: ChatMessage[]
+  chatSessionId: number,
 }
-const ChatMessagesList = ({ host, messages }: Props) => {
+const ChatMessagesList = ({ host, messages, chatSessionId }: Props) => {
   const { user } = useAuth()
 
   const fullName = user?.first_name || user?.last_name
@@ -68,6 +69,7 @@ const ChatMessagesList = ({ host, messages }: Props) => {
                 key={index} 
                 fullName={fullName} 
                 message={m} 
+                chatSessionId={chatSessionId}
                 autoPlay={false}
               /> 
             :
@@ -75,6 +77,7 @@ const ChatMessagesList = ({ host, messages }: Props) => {
                 key={index} 
                 host={host} 
                 message={m} 
+                chatSessionId={chatSessionId}
                 autoPlay={isLastOne && !!m.audio}
               />
             }

@@ -92,6 +92,18 @@ class APIClient<T> {
       .then((res) => res.data)
   }
 
+  // rewrite chatmessage
+  rewriteChatMessage = (
+    session_id: number | string,
+    message_id: number | string,
+    data: any,
+    config?: AxiosRequestConfig
+  ) => {
+    return axiosInstance
+      .post(`/${this.endpoint}/${session_id}/messages/${message_id}/rewrite/`, data, config)
+      .then((res) => res.data)
+  }
+
   // create a new call
   postChatCall = (
     id: number | string, 

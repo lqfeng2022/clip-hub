@@ -1,28 +1,37 @@
 import { audioManager } from '@/helps/audioManager'
 import { formatDuration } from '@/helps/formatDate'
-import { Box, Collapse, HStack, Icon, Text } from '@chakra-ui/react'
+import { Box, Button, Collapse, HStack, Icon, Text } from '@chakra-ui/react'
 import { useEffect, useRef, useState } from 'react'
 import { IoPlay } from 'react-icons/io5'
 import { RiStopFill } from 'react-icons/ri'
 import AudioIcons from './AudioIcons'
 import { formatMessage } from '@/helps/formatMessage'
+import useChatMessageRewrite from '@/hooks/interact-chat/useChatMessageRewrite'
 
 interface Props {
   audioUrl: string,
   content?: string,
+  rewrite_content?: string,
   duration: number | null,
   align?: 'left' | 'right',
-  autoPlay?: boolean // new prop
+  autoPlay?: boolean,
+  chatSessionId: number,
+  messageId: number,
 }
 const ChatAudioBox = ({ 
   audioUrl, 
   content, 
+  rewrite_content,
   duration,
   align = 'left', 
   autoPlay = false,
+  chatSessionId,
+  messageId,
 }: Props) => {
   // duration on local (from audio element metadata)
   const [seconds, setSeconds] = useState<number | null>(null)
+  
+  const { mutate: rewriteMessage, isLoading } = useChatMessageRewrite(chatSessionId, messageId)
 
   // always use backend duration for display
   const displaySeconds: number | null = (
@@ -31,8 +40,10 @@ const ChatAudioBox = ({
   )
 
   const [showContent, setShowContent] = useState(false)
+  const [viewingRewrite, setViewingRewrite] = useState(false)
   const [isPlaying, setIsPlaying] = useState(false)
   const audioRef = useRef<HTMLAudioElement>(null)
+  const [localRewrite, setLocalRewrite] = useState<string | null>(rewrite_content || null)
   
   const handlePlayClick = () => {
     if (audioRef.current) {
@@ -105,11 +116,43 @@ const ChatAudioBox = ({
         </HStack>
       </Box>
       {/* show the audio content */}
-      <Collapse in={showContent && !!content} animateOpacity>
+      <Collapse in={showContent && (!!content || !!localRewrite)} animateOpacity>
         <Box width={{ base: '280px', sm: '350px' }} pt={2}>
           <Text fontWeight='light' lineHeight='1.3' fontSize='xs'>
-            {formatMessage(content!)}
+            {formatMessage(
+              viewingRewrite && localRewrite ? localRewrite : content ?? localRewrite ?? ''
+            )}
           </Text>
+          <Box pt={1}>
+            {localRewrite ? (
+              <Button 
+                size='xs'
+                variant='outline'
+                _hover={{background: 'yellow.800'}}
+                onClick={() => setViewingRewrite(!viewingRewrite)}
+              >
+                {viewingRewrite ? 'View Original' : 'View Rewrite'}
+              </Button>
+            ) : (
+              <Button 
+                size='xs'
+                variant='outline'
+                isLoading={isLoading}
+                isDisabled={isLoading}
+                onClick={() => rewriteMessage(undefined, {
+                  onSuccess: (data) => {
+                    if (data?.content) {
+                      setLocalRewrite(data.content)
+                      setViewingRewrite(true)
+                      setShowContent(true)
+                    }
+                  },
+                })}
+              >
+                Rewrite
+              </Button>
+            )}
+          </Box>
         </Box>
       </Collapse>
     </Box>

@@ -7,9 +7,10 @@ import { formatMessage } from '@/helps/formatMessage'
 interface Props {
   host: Host,
   message: ChatMessage,
+  chatSessionId: number,
   autoPlay?: boolean //receive autoplay flag
 }
-const ChatBotMessage = ({ host, message, autoPlay }: Props) => {  
+const ChatBotMessage = ({ host, message, chatSessionId, autoPlay }: Props) => {  
   return (
     <HStack justify='flex-end'>
       <Stack>
@@ -19,6 +20,8 @@ const ChatBotMessage = ({ host, message, autoPlay }: Props) => {
             content={message.content!}
             duration={message.audio_seconds}
             align='right'
+            chatSessionId={chatSessionId}
+            messageId={message.id}
             autoPlay={autoPlay}
           />
         ) : (

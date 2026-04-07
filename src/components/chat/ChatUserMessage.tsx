@@ -6,9 +6,10 @@ import { formatMessage } from '@/helps/formatMessage'
 interface Props {
   fullName: string | undefined,
   message: ChatMessage,
+  chatSessionId: number,
   autoPlay?: boolean // never true for user
 }
-const ChatUserMessage = ({ fullName, message }: Props) => {
+const ChatUserMessage = ({ fullName, message, chatSessionId }: Props) => {
   return (
     <HStack>
       <Avatar 
@@ -21,7 +22,10 @@ const ChatUserMessage = ({ fullName, message }: Props) => {
         <ChatAudioBox 
           audioUrl={message.audio!} 
           content={message.content!}
+          rewrite_content={message.rewrite?.content ?? undefined}
           duration={message.audio_seconds}
+          messageId={message.id}
+          chatSessionId={chatSessionId}
           autoPlay={false} // user audio always manual
         />
       ): (

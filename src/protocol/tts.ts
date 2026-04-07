@@ -1,3 +1,4 @@
+// protocol/tts.ts
 export enum ClientEvent {
   START = 'tts.start',
   STOP = 'tts.stop',
