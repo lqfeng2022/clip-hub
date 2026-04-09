@@ -1,7 +1,7 @@
 import ChatMessage from '@/entities/ChatMessage'
-import { HStack, Avatar, Box, Text } from '@chakra-ui/react'
+import { HStack, Avatar } from '@chakra-ui/react'
 import ChatAudioBoxUser from './ChatAudioBoxUser'
-import { formatMessage } from '@/helps/formatMessage'
+import TextMessageWithRewrite from './TextMessageWithRewrite'
 
 interface Props {
   fullName: string | undefined,
@@ -29,20 +29,13 @@ const ChatUserMessage = ({ fullName, message, chatSessionId }: Props) => {
           autoPlay={false} // user audio always manual
         />
       ): (
-        <Box 
-          maxW={{base: '260px', sm: '350px'}}
-          borderRadius='12px' 
-          background='RGBA(0, 0, 0, 0.22)'
-          p='8px 15px'
-        >
-          <Text 
-            color='gray.100' 
-            lineHeight={1.4}
-            fontSize={{base: '0.8em', sm: 'sm'}}
-          >
-            {formatMessage(message.content!)}
-          </Text>
-        </Box>
+        <TextMessageWithRewrite
+          content={message.content!}
+          rewrite_content={message.rewrite?.content ?? undefined}
+          chatSessionId={chatSessionId}
+          messageId={message.id}
+          align='left'
+        />
       )}
     </HStack>
   )

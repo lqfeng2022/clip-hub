@@ -1,15 +1,16 @@
 import ChatMessage from '@/entities/ChatMessage'
-import { HStack, Box, Avatar, Text, Stack } from '@chakra-ui/react'
+import { HStack, Avatar, Stack } from '@chakra-ui/react'
 import ChatAudioBoxBot from './ChatAudioBoxBot'
+import TextMessageWithRewrite from './TextMessageWithRewrite'
 import Host from '@/entities/Host'
-import { formatMessage } from '@/helps/formatMessage'
 
 interface Props {
   host: Host,
   message: ChatMessage,
+  chatSessionId: number,
   autoPlay?: boolean //receive autoplay flag
 }
-const ChatBotMessage = ({ host, message, autoPlay }: Props) => {  
+const ChatBotMessage = ({ host, message, autoPlay, chatSessionId }: Props) => {  
   return (
     <HStack justify='flex-end'>
       <Stack>
@@ -17,25 +18,21 @@ const ChatBotMessage = ({ host, message, autoPlay }: Props) => {
           <ChatAudioBoxBot 
             audioUrl={message.audio!}
             content={message.content!}
+            rewrite_content={message.rewrite?.content ?? undefined}
             duration={message.audio_seconds}
+            messageId={message.id}
+            chatSessionId={chatSessionId}
             align='right'
             autoPlay={autoPlay}
           />
         ) : (
-          <Box
-            maxW={{base: '260px', sm: '350px'}}
-            borderRadius='12px'
-            background='gray.700'
-            p='8px 15px'
-          >
-            <Text 
-              lineHeight={1.4}
-              fontSize={{base: '0.8em', sm: 'sm'}}
-              whiteSpace='pre-wrap' // handle `\n` and `\n\n`
-            >
-              {formatMessage(message.content!)}
-            </Text>
-          </Box>
+          <TextMessageWithRewrite
+            content={message.content!}
+            rewrite_content={message.rewrite?.content ?? undefined}
+            chatSessionId={chatSessionId}
+            messageId={message.id}
+            align='right'
+          />
         )}
       </Stack>
       <Avatar 
