@@ -49,10 +49,10 @@ const ChatSessionCard = ({ chat } : { chat: ChatSession }) => {
           {/* session related image */}
           <Link to={`/chat/${chat.id}`}>
             <Box
-              borderRadius='lg'
+              borderRadius='md'
               overflow='hidden'
               w={{base: '130px', sm: '180px'}}
-              maxH='80px'
+              maxH='50px'
               flexShrink={0}
             >
               <Image src={image ?? noImage}/>
@@ -71,24 +71,22 @@ const ChatSessionCard = ({ chat } : { chat: ChatSession }) => {
                 {title!}
               </Text>
             </Link>
-            {/* session metadata */}
-            <HStack pt={2}>
-              <Text fontSize='sm' fontWeight='bold'>
-                {chat.messages_count ?? 0}
-              </Text>
-              <Icon as={AiOutlineMessage} boxSize='15px' color='gray' opacity={0.5}/>
-              <Text fontSize='sm' fontWeight='light'>
-                {formatDuration(chat.total_duration) ?? 0}
-              </Text>
-              <Icon as={IoIosTime} boxSize='16px' color='gray' opacity={0.5}/>
-            </HStack>
-            <HStack>
-              <Text fontSize='sm' fontWeight='light'>
-                {chat.credits_used.toLocaleString() ?? 0}
-              </Text>
-              <Icon as={CiCreditCard2} boxSize='18px' color='gray' opacity={0.5}/>
-            </HStack>
           </Stack>
+        </HStack>
+        {/* session metadata */}
+        <HStack pt={2}>
+          <Icon as={AiOutlineMessage} boxSize='15px' color='gray' opacity={0.5}/>
+          <Text fontSize='sm' fontWeight='bold'>
+            {chat.messages_count ?? 0}
+          </Text>
+          <Icon as={IoIosTime} boxSize='16px' color='gray' opacity={0.5}/>
+          <Text fontSize='sm' fontWeight='light'>
+            {formatDuration(chat.total_duration) ?? 0}
+          </Text>
+          <Icon as={CiCreditCard2} boxSize='18px' color='gray' opacity={0.5}/>
+          <Text fontSize='sm' fontWeight='light'>
+            {chat.credits_used.toLocaleString() ?? 0}
+          </Text>
         </HStack>
       </Box>
     </HStack>

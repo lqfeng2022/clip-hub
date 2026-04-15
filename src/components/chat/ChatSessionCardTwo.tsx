@@ -50,7 +50,7 @@ const ChatSessionCardTwo = ({ chat } : { chat: ChatSession }) => {
             <Text 
               fontSize='sm' 
               color='gray.100' 
-              noOfLines={2}
+              noOfLines={1}
               _hover={{ color: 'yellow.200' }}
             >
               {content()}
@@ -58,18 +58,18 @@ const ChatSessionCardTwo = ({ chat } : { chat: ChatSession }) => {
           </Link>
           {/* session metadata */}
           <HStack>
+            <Icon as={AiOutlineMessage} boxSize='15px' color='gray' opacity={0.5}/>
             <Text fontSize='sm' fontWeight='bold'>
               {chat.messages_count ?? 0}
             </Text>
-            <Icon as={AiOutlineMessage} boxSize='15px' color='gray' opacity={0.5}/>
+            <Icon as={IoIosTime} boxSize='16px' color='gray' opacity={0.5}/>
             <Text fontSize='sm' fontWeight='light'>
               {formatDuration(chat.total_duration) ?? 0}
             </Text>
-            <Icon as={IoIosTime} boxSize='16px' color='gray' opacity={0.5}/>
+            <Icon as={CiCreditCard2} boxSize='18px' color='gold' opacity={0.5}/>
             <Text fontSize='sm' fontWeight='light'>
               {chat.credits_used.toLocaleString() ?? 0}
             </Text>
-            <Icon as={CiCreditCard2} boxSize='18px' color='gold' opacity={0.5}/>
           </HStack>
         </Stack>
       </Box>
