@@ -32,6 +32,7 @@ const ChatInputForm = ({ chatSession, setMessages }: Props) => {
   // LOCAL UI STATE
   const [isSpeakOn, setIsSpeakOn] = useState(false)
   const [isEnhancement, setIsEnhancement] = useState(false)
+  const [isTtsOn, setIsTtsOn] = useState(true) // TTS on by default
   const [isCalling, setIsCalling] = useState(false) // show "Tap to Call" button
 
   // Modal
@@ -48,7 +49,7 @@ const ChatInputForm = ({ chatSession, setMessages }: Props) => {
       content: data.content,
       audio: null,
       audio_seconds: 0,
-      is_voice: isSpeakOn,
+      is_voice: isSpeakOn && isTtsOn,
       is_enhancement: isEnhancement,
       created_at: new Date().toISOString(),
     }
@@ -59,7 +60,7 @@ const ChatInputForm = ({ chatSession, setMessages }: Props) => {
     postChatMessage({ 
       type: 'text', 
       content: data.content, 
-      is_voice: isSpeakOn, 
+      is_voice: isSpeakOn && isTtsOn, 
       is_enhancement: isEnhancement 
     }, {
       onSuccess: (assistantMessage) => {
@@ -82,7 +83,7 @@ const ChatInputForm = ({ chatSession, setMessages }: Props) => {
         role: 'user',
         content: null,
         audio_seconds: 0,
-        is_voice: isSpeakOn,
+        is_voice: isSpeakOn && isTtsOn,
         is_enhancement: isEnhancement,
         audio: URL.createObjectURL(blob), // local preview
         created_at: new Date().toISOString(),
@@ -91,7 +92,7 @@ const ChatInputForm = ({ chatSession, setMessages }: Props) => {
       postChatMessage({ 
         type: 'audio', 
         audio: blob, 
-        is_voice: isSpeakOn, 
+        is_voice: isSpeakOn && isTtsOn, 
         is_enhancement: isEnhancement
       }, {
         onSuccess: (assistantMessage) => {
@@ -135,8 +136,8 @@ const ChatInputForm = ({ chatSession, setMessages }: Props) => {
           {/* Footer controls */}
           <ChatInputControls
             isSpeakOn={isSpeakOn}
-            isCalling={isCalling}
             isEnhancement={isEnhancement}
+            isTtsOn={isTtsOn}
             onToggleSpeak={() => {
               setIsSpeakOn(prev => !prev)
               if (isCalling) setIsCalling(false)
@@ -148,6 +149,7 @@ const ChatInputForm = ({ chatSession, setMessages }: Props) => {
               if (isEnhancement) setIsEnhancement(false)
             }}
             onToggleEnhancement={() => setIsEnhancement(prev => !prev)}
+            onToggleTts={() => setIsTtsOn(prev => !prev)}
           />
         </Stack>
       </form>

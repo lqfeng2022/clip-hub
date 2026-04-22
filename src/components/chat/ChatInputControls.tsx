@@ -1,25 +1,27 @@
 import { useAuth } from '@/AuthContext'
 import useCredit from '@/hooks/billing/useCredit'
-import { HStack, Icon, Badge } from '@chakra-ui/react'
+import { HStack, Icon } from '@chakra-ui/react'
 import { CiKeyboard, CiMicrophoneOn, CiPhone } from 'react-icons/ci'
 import { IoAddOutline, IoVideocamOutline } from 'react-icons/io5'
-import { PiSmileyWinkDuotone } from 'react-icons/pi'
+import { RiSpeakLine, RiEmotionLaughLine } from 'react-icons/ri' 
 
 interface Props {
   isSpeakOn: boolean
-  isCalling: boolean
   isEnhancement: boolean
+  isTtsOn: boolean
   onToggleSpeak: () => void
   onToggleCall: () => void
   onToggleEnhancement: () => void
+  onToggleTts: () => void
 }
 const ChatInputControls = ({ 
   isSpeakOn, 
-  isCalling, 
-  isEnhancement, 
+  isEnhancement,
+  isTtsOn,
   onToggleSpeak, 
   onToggleCall, 
-  onToggleEnhancement 
+  onToggleEnhancement,
+  onToggleTts
 }: Props) => {
   const { user } = useAuth()
   const { data: credit } = useCredit()
@@ -28,11 +30,6 @@ const ChatInputControls = ({
 
   const canAudioChat = balance >= 100
   const canCall = !!user?.bro && (balance >= 1000)
-  
-  const chatMode = isCalling ? 'call' : (isSpeakOn ? 'audio' : 'text')
-  const label = `${chatMode}-mode`
-
-  const colorScheme = isCalling ? 'purple' : (isSpeakOn ? 'green' : 'blue')
 
   return (
     <HStack justifyContent='space-between' pt={1.5} textAlign='center'>
@@ -63,25 +60,27 @@ const ChatInputControls = ({
         />
         {/* VIDEO CALL mode */}
         <Icon as={IoVideocamOutline} boxSize={6} color='gray' />
-        {/* Enhancement / Emoji toggle */}
+        {/* TTS toggle */}
         {isSpeakOn && (
           <Icon
+          boxSize='22px'
+          as={RiSpeakLine}
+          cursor='pointer'
+          color={isTtsOn ? 'orange.200' : 'gray.400'}
+          onClick={onToggleTts}
+          />
+        )}
+        {/* Enhancement / Emoji toggle */}
+        {isSpeakOn && isTtsOn && (
+          <Icon
             boxSize='22px'
-            as={PiSmileyWinkDuotone}
+            as={RiEmotionLaughLine}
             cursor='pointer'
-            color={isEnhancement ? 'orange.200' : 'gray.100'}
+            color={isEnhancement ? 'blue.200' : 'gray.100'}
             onClick={onToggleEnhancement}
           />
         )}
       </HStack>
-      {/* Chat mode badge */}
-      <Badge
-        fontSize='0.8em'
-        fontWeight={isEnhancement ? 'semibold' : 'light'}
-        colorScheme={colorScheme}
-      >
-        {label}
-      </Badge>
     </HStack>
   )
 }
