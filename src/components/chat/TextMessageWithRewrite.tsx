@@ -29,11 +29,11 @@ const TextMessageWithRewrite = ({
       display='flex'
       flexDirection='column'
       alignItems={align === 'right' ? 'flex-end' : 'flex-start'}
-      width={{ base: '260px', sm: '350px' }}
+      maxW={{ base: '260px', sm: '350px' }}
     >
       {/* Main text message */}
       <Box
-        borderRadius='12px'
+        borderRadius='8px'
         background={align === 'right' ? 'gray.700' : 'RGBA(0, 0, 0, 0.22)'}
         p='8px 15px'
         width='full'
